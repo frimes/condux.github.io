@@ -1,0 +1,549 @@
+<!--
+ * FCKeditor - The text editor for Internet - http://www.fckeditor.net
+ * Copyright (C) 2003-2009 Frederico Caldeira Knabben
+ *
+ * == BEGIN LICENSE ==
+ *
+ * Licensed under the terms of any of the following licenses at your
+ * choice:
+ *
+ *  - GNU General Public License Version 2 or later (the "GPL")
+ *    http://www.gnu.org/licenses/gpl.html
+ *
+ *  - GNU Lesser General Public License Version 2.1 or later (the "LGPL")
+ *    http://www.gnu.org/licenses/lgpl.html
+ *
+ *  - Mozilla Public License Version 1.1 or later (the "MPL")
+ *    http://www.mozilla.org/MPL/MPL-1.1.html
+ *
+ * == END LICENSE ==
+ *
+ * This is the integration file for ASP.
+ *
+ * It defines the FCKeditor class that can be used to create editor
+ * instances in ASP pages on server side.
+-->
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Condux</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, maximum-scale=1, minimum-scale=1">
+    <link rel="icon" type="image/png" href="https://condux.com.br/site/img/favicon.png">
+
+    <link rel="stylesheet" href="https://condux.com.br/site/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/flexslider.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/jquery.selectBoxIt.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/entypo.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/rs-plugin/css/settings.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/jquery.fancybox.css">
+        <link rel="stylesheet" href="https://condux.com.br/site/css/style.css">
+
+    <script src="https://condux.com.br/site/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+	
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-208708250-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-208708250-1');
+</script>
+
+</head>
+<body>
+<div class="main-wrap">
+<header class="navbar navbar-inverse">
+    <div class="normal-color with-slider">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <div id="control-logo-header">
+                                <a class="navbar-brand" href="/home/"><img src="https://condux.com.br/site/content/logo.png" alt="img"/></a>
+                            </div>
+                    </div>
+                </div>
+                <div class="col-sm-9">
+                    <div class="navbar-collapse collapse navbar-right">
+                        <ul class="nav navbar-nav social-nav">
+                            <li><a href="https://twitter.com/conduxBRA" target="_blank"><i class="entyp-twitter-1"></i></a></li>
+                            <li><a href="https://www.facebook.com/ConduxConsultoria" target="_blank"><i class="entyp-facebook-1"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="inverse-color">
+        <div class="container">
+            <div class="row">
+                <div class="navbar-collapse collapse">
+                    <div class="col-sm-12">
+                        <ul class="nav navbar-nav main-nav">
+                            <li id="control-logo-menu">
+                                <a class="navbar-brand" href="/home/"><img src="https://condux.com.br/site/content/logo.png" alt="img"/></a>
+                            </li>
+                            <li>
+                                <a href="/home/">Início</a>
+                            </li>
+                            <li>
+                                <a href="/empresa/">A empresa</a>
+                            </li>
+                            <li>
+                                <a href="/servicos/">Serviços</a>
+                            </li>
+                            <li>
+                                <a href="#">Utilitários</a>
+                                <ul>	
+                                	<li><a href="http://www.condux.com.br/ler.asp?id=1" target="_blank">Tabelas Práticas</a></li>
+                                    <li><a href="http://www.condux.com.br/ler.asp?id=2" target="_blank">Agenda de Obrigações</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="/noticias/">Notícias</a>
+                            </li>
+                            <li>
+                                <a href="/login/">Área do Cliente</a>
+                            </li>
+                            <li>
+                                <a href="/downloads/">Downloads</a>
+                            </li>
+                            <li>
+                                <a href="/contato/">Contato</a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</header>
+
+
+<section class="line top">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="col-md-4 col-sm-5 col-xs-12">
+                    <div class="title">
+                        Notícias
+                        <ul class="current-page">
+                            <li><a href="/home/">Página principal</a></li>
+                            <li>></li>
+                            <li><a href="/noticias/">Noticias</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="posts">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <article class="post ">
+                            <h3 class="uppercase">BOLETO BANCÁRIO PODERÁ SER PAGO EM QUALQUER INSTITUIÇÃO APÓS VENCIMENTOS</h3><h4>A forma como milhões de brasileiros pagam suas contas começa a mudar a partir de março. Alvo de fraudes milionárias nos últimos anos, os boletos bancários vão ficar mais modernos</h4>
+                            <ul class="info">
+                                <li>
+                                    <div class="text date">terça-feira, 31 de janeiro de 2017</div>
+                                </li>
+                                <li>
+                                    <i class="entyp-pencil-1"></i>
+                                    <div class="text">Publicado por CONDUX</div>
+                                </li>
+                                
+                                <li>
+                                    <a href="/noticias/?cat=Legisla%E7%E3o">
+                                        <i class="entyp-list-1"></i>
+                                        <div class="text">Legislação</div>
+                                    </a>
+                                </li>
+                                
+                            </ul>
+                            
+                            <figure>
+                                <img src="https://condux.com.br/site/imgnews/203c.jpg" alt="BOLETO BANCÁRIO PODERÁ SER PAGO EM QUALQUER INSTITUIÇÃO APÓS VENCIMENTOS"/>
+                                
+                            </figure>
+                            
+                            <div class="content">
+                            
+                                <p>
+                                    <strong>
+                                       A forma como milhões de brasileiros pagam suas contas começa a mudar a partir de março. Alvo de fraudes milionárias nos últimos anos, os boletos bancários vão ficar mais modernos
+                                    </strong>
+                                </p>
+                            <p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;">Por tr&aacute;s da inova&ccedil;&atilde;o, est&aacute; um projeto da Federa&ccedil;&atilde;o Brasileira de Bancos (Febraban) que far&aacute; com que todos os boletos passem a ser registrados em uma &uacute;nica plataforma at&eacute; o fim do ano. A nova forma de cobran&ccedil;a tamb&eacute;m mudar&aacute; a forma como empresas e institui&ccedil;&otilde;es financeiras organizam os pagamentos.</span></span></span></p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;">O n&uacute;mero de boletos emitidos no pa&iacute;s chegou a 3,7 bilh&otilde;es em 2015. A movimenta&ccedil;&atilde;o chamou a aten&ccedil;&atilde;o de quadrilhas que se especializaram em fraudar os documentos. Sem o registro, o banco s&oacute; toma conhecimento da emiss&atilde;o do boleto quando o documento bate na compensa&ccedil;&atilde;o, o que facilita a a&ccedil;&atilde;o dos criminosos. No ano passado, o volume de recursos desviados com o golpe chegou a R$ 320 milh&otilde;es, de acordo com dados preliminares da Febraban.</span></span></span></p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;">Com o novo sistema, a empresa que emitir uma cobran&ccedil;a precisa enviar os dados para o banco, que alimenta a plataforma. No momento do pagamento, os dados do c&oacute;digo de barras ser&atilde;o comparados com os registrados no sistema. &quot;Se as informa&ccedil;&otilde;es n&atilde;o estiverem na base, ou o boleto foi fraudado ou n&atilde;o foi registrado&quot;, afirma Walter de Faria, diretor-adjunto de opera&ccedil;&otilde;es da Febraban.</span></span></span></p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;">A nova plataforma tamb&eacute;m deve evitar outros problemas recorrentes envolvendo boletos, como o erro no preenchimento de informa&ccedil;&otilde;es e o pagamento de t&iacute;tulos em duplicidade, segundo Faria. As mudan&ccedil;as ocorrer&atilde;o de forma gradual. Em mar&ccedil;o, entrar&atilde;o no sistema os boletos com valor acima de R$ 50 mil. Dois meses depois, as faturas a partir de R$ 2 mil passar&atilde;o a ser registradas. O cronograma se estende at&eacute; dezembro, quando 100% das cobran&ccedil;as devem estar na plataforma.</span></span></span></p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;">O processo de adapta&ccedil;&atilde;o dos sistemas de bancos e empresas emissoras corre bem e n&atilde;o deve haver atrasos, segundo o executivo. Originalmente, o sistema estava previsto para entrar em opera&ccedil;&atilde;o no in&iacute;cio deste ano.</span></span></span></p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;">Embora o registro n&atilde;o seja obrigat&oacute;rio, Faria espera que a ades&atilde;o seja ampla, j&aacute; que os t&iacute;tulos que n&atilde;o estiverem na plataforma s&oacute; poder&atilde;o ser pagos no banco ao qual est&atilde;o vinculados. &quot;Al&eacute;m disso, os fraudadores provavelmente v&atilde;o monitorar as empresas que decidirem operar o sem registro&quot;, afirma.</span></span></span></p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;">A perspectiva da entrada no novo sistema de cobran&ccedil;a ainda n&atilde;o inibiu as quadrilhas especializadas no chamado &quot;golpe do boleto&quot;. &quot;A percep&ccedil;&atilde;o &eacute; que houve uma migra&ccedil;&atilde;o recente da fraude de pessoas f&iacute;sicas para organiza&ccedil;&otilde;es maiores&quot;, afirma Fernando Carbone, diretor da Kroll, consultoria de riscos que tem sido contratada por empresas lesadas com o golpe. Carbone diz que a soma de recursos desviados de clientes nos &uacute;ltimos meses foi de aproximadamente R$ 21 milh&otilde;es.</span></span></span></p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;">Em geral, a fraude ocorre com um v&iacute;rus instalado no computador do pagador do boleto. Mas as quadrilhas tamb&eacute;m se especializaram em encontrar falhas na p&aacute;gina da internet ou e at&eacute; em obter informa&ccedil;&otilde;es com funcion&aacute;rios da empresa emissora do boleto, segundo o diretor da Kroll.</span></span></span></p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;">Al&eacute;m de dificultar a a&ccedil;&atilde;o dos golpistas, o registro dos boletos na plataforma vai mudar o cotidiano de uma s&eacute;rie de companhias. A principal preocupa&ccedil;&atilde;o &eacute; com o aumento de custos. O valor da cobran&ccedil;a registrada vai depender da negocia&ccedil;&atilde;o com os clientes, mas a tend&ecirc;ncia &eacute; que seja maior do que o sistema atual. &quot;Os bancos podem negociar um valor menor no registro e compensar com uma tarifa nos t&iacute;tulos que forem liquidados&quot;, diz Eduardo Morishita, gerente de Produtos do Bank of America Merrill Lynch (BofA).</span></span></span></p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;">Os impactos da mudan&ccedil;a ser&atilde;o diferentes dependendo da forma que cada empresa realiza sua cobran&ccedil;a. Entre os segmentos mais afetados est&aacute; o de com&eacute;rcio eletr&ocirc;nico. Com o novo sistema, quando um consumidor optar por fazer uma compra com boleto, o documento precisar&aacute; antes passar pelo sistema do banco. Hoje, esse processo &eacute; feito de forma autom&aacute;tica pelo site.</span></span></span></p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;">As vantagens do novo sistema, por&eacute;m, devem mais do que compensar a mudan&ccedil;a no procedimento, segundo D&ecirc;nis Corr&ecirc;a, gerente-executivo da diretoria de solu&ccedil;&otilde;es empresariais do Banco do Brasil. No BB, al&eacute;m de o sistema permitir a emiss&atilde;o e o registro do boleto de forma simult&acirc;nea durante a compra, o processamento da opera&ccedil;&atilde;o ser&aacute; feito em 30 minutos, contra um dia que a loja precisa esperar hoje para saber se o boleto foi pago e despachar o pedido. &quot;Trata-se de um benef&iacute;cio tremendo para o com&eacute;rcio&quot;, diz.</span></span></span></p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;">Quem tamb&eacute;m deve mudar a forma de atua&ccedil;&atilde;o em consequ&ecirc;ncia da mudan&ccedil;a s&atilde;o as entidades que se valem da emiss&atilde;o de boletos como forma de arrecadar recursos, como as ONGs, associa&ccedil;&otilde;es e igrejas. Como a maioria dos t&iacute;tulos n&atilde;o &eacute; paga, o custo do registro pode n&atilde;o valer a pena.</span></span></span></p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;">De forma indireta, o novo sistema de cobran&ccedil;a de boletos pode afetar at&eacute; a competi&ccedil;&atilde;o banc&aacute;ria. Com a possibilidade de pagamento de boletos vencidos em toda a rede, institui&ccedil;&otilde;es de menor porte devem ganhar maior competitividade em servi&ccedil;os prestados a empresas. &quot;Com a mudan&ccedil;a, cai por terra o argumento de que as empresas precisam de um banco com rede de ag&ecirc;ncias em cash management [gest&atilde;o de caixa]&quot;, afirma Annali Duarte, diretora dos neg&oacute;cios de transa&ccedil;&otilde;es banc&aacute;rias do BofA.</span></span></span></p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px; text-align: justify;">&nbsp;</p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;">Fonte: contadores.cnt.br</span></span></span></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+                            </div>
+                            
+                        </article>
+                        
+                        
+                    </div>
+                    <div class="col-md-1 hidden-sm"></div>
+                    <div class="col-md-2 col-sm-3">
+                        <aside class="widgets">
+                    <div class="widget list">
+                        <h3>Categorias</h3>
+                        <ul>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Calend%E1rio+de+Obriga%E7%F5es">Calendário de Obrigações</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Direitos+do+Consumidor">Direitos do Consumidor</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Empresarial">Empresarial</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=IRPF">IRPF</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Legisla%E7%E3o">Legislação</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Legisla%E7%E3o+Trabalhista">Legislação Trabalhista</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Previd%EAncia">Previdência</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Receita+Federal">Receita Federal</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Recursos+Humanos">Recursos Humanos</a>
+                            </li>
+ 
+                        </ul>
+                    </div>
+                    <div class="widget list">
+                        <h3>Por mês</h3>
+                        <ul>
+                        
+                            <li>
+                                <a href="/noticias/?mes=8&ano=2021">Agosto&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2021">Maio&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2021">Abril&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2021">Março&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=7&ano=2020">Julho&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2020">Maio&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2020">Abril&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2020">Março&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=10&ano=2019">Outubro&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2019">Setembro&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2019">Março&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2019">Janeiro&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=12&ano=2018">Dezembro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2018">Setembro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=6&ano=2018">Junho&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2018">Abril&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2018">Março&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=2&ano=2018">Fevereiro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2018">Janeiro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=12&ano=2017">Dezembro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=11&ano=2017">Novembro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=10&ano=2017">Outubro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2017">Setembro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=7&ano=2017">Julho&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=6&ano=2017">Junho&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2017">Maio&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2017">Abril&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2017">Março&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=2&ano=2017">Fevereiro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2017">Janeiro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=12&ano=2016">Dezembro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=11&ano=2016">Novembro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=10&ano=2016">Outubro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2016">Setembro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=8&ano=2016">Agosto&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=7&ano=2016">Julho&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=6&ano=2016">Junho&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2016">Maio&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2016">Abril&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2016">Março&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=2&ano=2016">Fevereiro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2016">Janeiro&nbsp;2016</a>
+                            </li>
+ 
+                        </ul>
+                    </div>
+
+                </aside>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+<footer class="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="footer-widget">
+                    <h2>Últimas Notícias</h2>
+                    <div class="widget-content latest-post">
+                        <ul>
+                        
+                            <li>
+                                <h3><a href="?a=noticia&id=295">BEM</a></h3>
+                                <p></p>
+                                <span class="date">26/08/2021</span>
+                            </li>
+                        
+                            <li>
+                                <h3><a href="?a=noticia&id=294">HOME OFFICE PARA GESTANTES</a></h3>
+                                <p></p>
+                                <span class="date">13/05/2021</span>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="footer-widget">
+                    <h2>Contato</h2>
+                    <div class="widget-content">
+                        <address>
+                            Rua Rep&uacute;blica do L&iacute;bano, 61 gr. 1102 <br/>
+                            Centro &ndash; Rio de Janeiro RJ
+                        </address>
+                        <address>
+                            <strong>Telefone: +55 (21) 3203-4348</strong> <br/>
+                            <strong>E-mail: condux@condux.com.br</strong>
+                        </address>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="footer-widget">
+                    <h2>Links</h2>
+                    <ul>    
+                        <li><a href="/home/">Home Page</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/empresa/">A Empresa</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="http://www.condux.com.br/ler.asp?id=1" target="_blank">Tabelas Pr&aacute;ticas</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="http://www.condux.com.br/ler.asp?id=2" target="_blank">Agenda de Obriga&ccedil;&otilde;es</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/noticias/">Not&iacute;cias</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/downloads/">Downloads</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/contato/">Contato</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="footer-info text-right">
+                    <ul class="footer-social">
+                        <li><a href="https://twitter.com/conduxBRA" target="_blank"><i class="entyp-twitter-1"></i></a></li>
+                        <li><a href="https://www.facebook.com/ConduxConsultoria" target="_blank"><i class="entyp-facebook-1"></i></a></li>
+                    </ul>
+                    <p>Copyright &copy; 2016</p>
+                    <p>CONDUX - Todos os Direitos Reservados</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="https://condux.com.br/site/js/vendor/jquery-1.11.0.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery-ui-1.10.3.custom.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.mousewheel.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.mCustomScrollbar.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.selectBoxIt.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.raty.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.flexslider.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.isotope.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.fancybox.pack.js"></script>
+<script src="https://condux.com.br/site/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
+<script src="https://condux.com.br/site/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/bootstrap.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/simpleInstagramFancybox.js"></script>
+<script src="https://condux.com.br/site/js/vendor/fitvids.js"></script>
+<script src="https://condux.com.br/site/js/main.js"></script>
+<script>
+    $('#revolution-shortcode').revolution({
+        delay : 90000,
+        hideThumbs:10,
+        navigationVOffset : -30,
+        navigationType : "none",
+        navigationStyle : "round-old",
+		startheight:700
+    });
+</script>
+<style>
+/*#revolution-shortcode { height: 700px !important }
+#revolution-shortcode > ul > li:nth-child(1) > div.slotholder { height: 700px !important }*/
+</style>
+</body>
+</html>

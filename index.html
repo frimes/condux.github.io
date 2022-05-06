@@ -1,0 +1,772 @@
+<!--
+ * FCKeditor - The text editor for Internet - http://www.fckeditor.net
+ * Copyright (C) 2003-2009 Frederico Caldeira Knabben
+ *
+ * == BEGIN LICENSE ==
+ *
+ * Licensed under the terms of any of the following licenses at your
+ * choice:
+ *
+ *  - GNU General Public License Version 2 or later (the "GPL")
+ *    http://www.gnu.org/licenses/gpl.html
+ *
+ *  - GNU Lesser General Public License Version 2.1 or later (the "LGPL")
+ *    http://www.gnu.org/licenses/lgpl.html
+ *
+ *  - Mozilla Public License Version 1.1 or later (the "MPL")
+ *    http://www.mozilla.org/MPL/MPL-1.1.html
+ *
+ * == END LICENSE ==
+ *
+ * This is the integration file for ASP.
+ *
+ * It defines the FCKeditor class that can be used to create editor
+ * instances in ASP pages on server side.
+-->
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Condux</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, maximum-scale=1, minimum-scale=1">
+    <link rel="icon" type="image/png" href="https://condux.com.br/site/img/favicon.png">
+
+    <link rel="stylesheet" href="https://condux.com.br/site/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/flexslider.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/jquery.selectBoxIt.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/entypo.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/rs-plugin/css/settings.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/jquery.fancybox.css">
+        <link rel="stylesheet" href="https://condux.com.br/site/css/style.css">
+
+    <script src="https://condux.com.br/site/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+	
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-208708250-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-208708250-1');
+</script>
+
+</head>
+<body>
+<div class="main-wrap">
+<header class="navbar navbar-inverse">
+    <div class="normal-color with-slider">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <div id="control-logo-header">
+                                <a class="navbar-brand" href="/home/"><img src="assets/logo.png" alt="img"/></a>
+                            </div>
+                    </div>
+                </div>
+                <div class="col-sm-9">
+                    <div class="navbar-collapse collapse navbar-right">
+                        <ul class="nav navbar-nav social-nav">
+                            <li><a href="https://twitter.com/conduxBRA" target="_blank"><i class="entyp-twitter-1"></i></a></li>
+                            <li><a href="https://www.facebook.com/ConduxConsultoria" target="_blank"><i class="entyp-facebook-1"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="header-slider">
+        <div id="revolution-shortcode" class="revolution-wrap" style="height: 600px !important">
+            <ul style="display: block;">
+                <li data-transition="zoomout" data-slotamount="7" data-autoplay="true" data-masterspeed="1100" data-hideafterloop="0" data-delay="6000">
+                    <img src="https://condux.com.br/site/content/slides/slide1.jpg"  alt="Bem Vindo � Condux"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
+                    <div class="tp-caption fade stb rev-caption"
+                         data-x="center"
+                         data-y="center"
+                         data-hoffset="0"
+                         data-voffset="-1"
+                         data-speed="800"
+                         data-start="1300"
+                         data-easing="Power4.easeOut"
+                         data-endspeed="300"
+                         data-endeasing="Power1.easeIn"
+                         data-captionhidden="off"
+                         style="z-index: 6">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-10 col-sm-offset-1">
+                                    <div class="big-inner"><center>
+                                        <h2 style="text-shadow: 2px 2px 6px #000000;">BEM VINDO � CONDUX</h2>
+                                        <p style="text-shadow: 2px 2px 6px #000000;">A CONDUX � uma empresa provedora de servi�os e solu��es nas �reas CONT�BIL, TRIBUT�RIA, FINANCEIRA e de RECURSOS HUMANOS</p>
+                                        <a href="?a=empresa" class="btn btn-primary ">Conhe�a</a></center>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                
+                <li data-transition="random" data-slotamount="7" data-autoplay="true" data-masterspeed="1100" data-hideafterloop="0" data-delay="6000">
+                    <img src="https://condux.com.br/site/content/slides/slide2.jpg"  alt="Participando das estrat�gias da sua empresa"  data-bgfit="cover" data-bgposition="left center" data-bgrepeat="no-repeat">
+                    <div class="tp-caption fade stb rev-caption"
+                         data-x="center"
+                         data-y="center"
+                         data-hoffset="0"
+                         data-voffset="-1"
+                         data-speed="800"
+                         data-start="1300"
+                         data-easing="Power4.easeOut"
+                         data-endspeed="300"
+                         data-endeasing="Power1.easeIn"
+                         data-captionhidden="off"
+                         style="z-index: 6">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-10 col-sm-offset-1">
+                                    <div class="big-inner">
+                                        <h2 style="text-shadow: 2px 2px 6px #000000;">PARTICIPANDO DAS ESTRAT�GIAS DA SUA EMPRESA</h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                
+                <li data-transition="random" data-slotamount="7" data-autoplay="true" data-masterspeed="1100" data-hideafterloop="0" data-delay="6000">
+                    <img src="https://condux.com.br/site/content/slides/slide3.jpg"  alt="Servi�os"  data-bgfit="cover" data-bgposition="left center" data-bgrepeat="no-repeat">
+                    <div class="tp-caption fade stb rev-caption"
+                         data-x="center"
+                         data-y="center"
+                         data-hoffset="0"
+                         data-voffset="-1"
+                         data-speed="800"
+                         data-start="1300"
+                         data-easing="Power4.easeOut"
+                         data-endspeed="300"
+                         data-endeasing="Power1.easeIn"
+                         data-captionhidden="off"
+                         style="z-index: 6">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-10 col-sm-offset-1">
+                                    <div class="big-inner">
+                                        <h2 style="text-shadow: 2px 2px 6px #000000;">SERVI�OS</h2>
+                                        <ul style="text-shadow: 2px 2px 6px #000000;">
+                                        	<li style="text-shadow: 2px 2px 6px #000000;"><i class="entyp-right-open-mini"></i> <a href="/servicos/#contabil"><span style="text-shadow: 2px 2px 6px #000000;">CONT�BIL</a></li>
+                                            <li style="text-shadow: 2px 2px 6px #000000;"><i class="entyp-right-open-mini"></i> <a href="/servicos/#servicofiscal"><span style="text-shadow: 2px 2px 6px #000000;">FISCAL</a></li>
+                                            <li style="text-shadow: 2px 2px 6px #000000;"><i class="entyp-right-open-mini"></i> <a href="/servicos/#dp"><span style="text-shadow: 2px 2px 6px #000000;">DEPARTAMENTO PESSOAL</a></li>
+                                            <li style="text-shadow: 2px 2px 6px #000000;"><i class="entyp-right-open-mini"></i> <a href="/servicos/#legalizacao"><span style="text-shadow: 2px 2px 6px #000000;">LEGALIZA��O</a></li>
+                                            <li style="text-shadow: 2px 2px 6px #000000;"><i class="entyp-right-open-mini"></i> <a href="/servicos/#consultoria"><span style="text-shadow: 2px 2px 6px #000000;">CONSULTORIA SOCIET�RIA E ASSESSORIA TRIBUT�RIA</a></li>
+                                         </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+    
+    <div class="inverse-color">
+        <div class="container">
+            <div class="row">
+                <div class="navbar-collapse collapse">
+                    <div class="col-sm-12">
+                        <ul class="nav navbar-nav main-nav">
+                            <li id="control-logo-menu">
+                                <a class="navbar-brand" href="/home/"><img src="assets/logo.png" alt="img"/></a>
+                            </li>
+                            <li>
+                                <a href="/home/">In�cio</a>
+                            </li>
+                            <li>
+                                <a href="/empresa/">A empresa</a>
+                            </li>
+                            <li>
+                                <a href="/servicos/">Servi�os</a>
+                            </li>
+                            <li>
+                                <a href="#">Utilit�rios</a>
+                                <ul>	
+                                	<li><a href="http://www.condux.com.br/ler.asp?id=1" target="_blank">Tabelas Pr�ticas</a></li>
+                                    <li><a href="http://www.condux.com.br/ler.asp?id=2" target="_blank">Agenda de Obriga��es</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="/noticias/">Not�cias</a>
+                            </li>
+                            <li>
+                                <a href="/login/">�rea do Cliente</a>
+                            </li>
+                            <li>
+                                <a href="/downloads/">Downloads</a>
+                            </li>
+                            <li>
+                                <a href="/contato/">Contato</a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</header>
+
+
+<section class="statement grey text-center">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                
+                <h2>Ajudando voc&ecirc;!</h2>
+                <div class="content">
+                    Orientamos voc&ecirc; a escolher a melhor forma jur&iacute;dica de iniciar o seu neg&oacute;cio e atuar no mercado com a menor carga tribut&aacute;ria poss&iacute;vel.
+              </div>
+                <a href="/empresa/"><button class="btn btn-primary btn-statement" type="submit">Saiba como</button></a>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="line pt-0">
+    <div class="container">
+    
+        <div class="row">
+            <div class="col-sm-4">
+                <article class="recent-post">
+                    <figure>
+                        <a href="/noticias/"><img src="https://condux.com.br/site/content/home1.jpg" alt="img"/></a>
+                    </figure>
+                    <center><h4><strong><br />&nbsp;<br /><a href="/noticias/">Not�cias Empresariais</a></strong></h4></center>
+                </article>
+            </div>
+            <div class="col-sm-4">
+                <article class="recent-post">
+                    <figure>
+                        <a href="https://condux.com.br/site/ler.asp?id=1" target="_blank"><img src="https://condux.com.br/site/content/home2.jpg" alt="img"/></a>
+                    </figure>
+                    <center><h4><strong><br />&nbsp;<br /><a href="https://condux.com.br/site/ler.asp?id=1" target="_blank">Tabelas Pr�ticas</a></strong></h4></center>
+                </article>
+            </div>
+            <div class="col-sm-4">
+                <article class="recent-post">
+                    <figure>
+                        <a href="https://condux.com.br/site/ler.asp?id=2" target="_blank"><img src="https://condux.com.br/site/content/home3.jpg" alt="img"/></a>
+                    </figure>
+                    <center><h4><strong><br />&nbsp;<br /><a href="https://condux.com.br/site/ler.asp?id=2" target="_blank">Calend�rio de Obriga��es</a></strong></h4></center>
+                </article>
+            </div>
+        </div>    
+    
+    </div>
+</section>
+
+<section class="line">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="col-sm-4 col-xs-12">
+                    <div class="title">�ltimas noticias</div>
+                </div>
+                <div class="col-sm-8 col-xs-12">
+                    <div class="title-content less-margin">
+                        Fique por dentro das novidades, mudan&ccedil;as e not&iacute;cias que podem lhe auxiliar. Veja abaixo as not&iacute;cias mais recentes ou <a href="/noticias/">clique aqui</a> para ver todas as not&iacute;cias.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="line pt-0">
+    <div class="container">
+        <div class="recent-posts">
+            <div class="slider-controls">
+                <button class="left"><i class="entyp-left-open-1"></i></button>
+                <button class="right"><i class="entyp-right-open-1"></i></button>
+            </div>
+            <ul class="slides">
+   
+                <li>
+                    <div class="row">
+
+
+                        <div class="col-sm-4">
+                            <article class="recent-post">
+                                <figure>
+                                    <img src="https://condux.com.br/site/imgnews/294h.jpg" alt="HOME OFFICE PARA GESTANTES"/>
+                                    <div class="overlay">
+                                        <a href="/noticia/?id=294" class="btn btn-primary">Leia Mais...</a>
+                                        <div class="background"></div>
+                                    </div>
+                                </figure>
+                                <h4><strong><a href="/noticia/?id=294">HOME OFFICE PARA GESTANTES</a></strong> <span class="comment-count"></h4>
+                                <div class="date">quinta-feira, 13 de maio de 2021</div>
+                                <p>Texto publicado afirma que funcion�rias n�o devem ter redu��o salarial pelo afastamento presencial</p>
+                            </article>
+                        </div>
+
+
+
+
+                        <div class="col-sm-4">
+                            <article class="recent-post">
+                                <figure>
+                                    <img src="https://condux.com.br/site/imgnews/293h.jpg" alt="MEDIDAS TRABALHISTAS"/>
+                                    <div class="overlay">
+                                        <a href="/noticia/?id=293" class="btn btn-primary">Leia Mais...</a>
+                                        <div class="background"></div>
+                                    </div>
+                                </figure>
+                                <h4><strong><a href="/noticia/?id=293">MEDIDAS TRABALHISTAS</a></strong> <span class="comment-count"></h4>
+                                <div class="date">sexta-feira, 30 de abril de 2021</div>
+                                <p>Governo publicou a MP 1.046/2021 que flexibiliza diversas normas trabalhistas como forma de atenuar o impacto econ�mico das medidas de isolamento social.</p>
+                            </article>
+                        </div>
+
+
+
+
+                        <div class="col-sm-4">
+                            <article class="recent-post">
+                                <figure>
+                                    <img src="https://condux.com.br/site/imgnews/292h.jpg" alt="BENEF�CIO EMERGENCIAL"/>
+                                    <div class="overlay">
+                                        <a href="/noticia/?id=292" class="btn btn-primary">Leia Mais...</a>
+                                        <div class="background"></div>
+                                    </div>
+                                </figure>
+                                <h4><strong><a href="/noticia/?id=292">BENEF�CIO EMERGENCIAL</a></strong> <span class="comment-count"></h4>
+                                <div class="date">quinta-feira, 29 de abril de 2021</div>
+                                <p>O Di�rio Oficial da Uni�o publicou nesta quarta-feira (28) a MP 1.045/2021 que recria o Programa Emergencial de Manuten��o do Emprego e Renda.</p>
+                            </article>
+                        </div>
+
+
+
+                    </div>
+                </li>
+	   
+                <li>
+                    <div class="row">
+
+
+                        <div class="col-sm-4">
+                            <article class="recent-post">
+                                <figure>
+                                    <img src="https://condux.com.br/site/imgnews/290h.jpg" alt="SIMPLES NACIONAL"/>
+                                    <div class="overlay">
+                                        <a href="/noticia/?id=290" class="btn btn-primary">Leia Mais...</a>
+                                        <div class="background"></div>
+                                    </div>
+                                </figure>
+                                <h4><strong><a href="/noticia/?id=290">SIMPLES NACIONAL</a></strong> <span class="comment-count"></h4>
+                                <div class="date">sexta-feira, 23 de abril de 2021</div>
+                                <p>Mais de 16 milh�es de micro e pequenas empresas e de microempreendedores individuais (MEI) j� podem usar o Pix para recolher os tributos do Simples Nacional.</p>
+                            </article>
+                        </div>
+
+
+
+
+                        <div class="col-sm-4">
+                            <article class="recent-post">
+                                <figure>
+                                    <img src="https://condux.com.br/site/imgnews/288h.jpg" alt="IRPF 2021-PRORROGA��O"/>
+                                    <div class="overlay">
+                                        <a href="/noticia/?id=288" class="btn btn-primary">Leia Mais...</a>
+                                        <div class="background"></div>
+                                    </div>
+                                </figure>
+                                <h4><strong><a href="/noticia/?id=288">IRPF 2021-PRORROGA��O</a></strong> <span class="comment-count"></h4>
+                                <div class="date">segunda-feira, 12 de abril de 2021</div>
+                                <p>Os contribuintes poder�o enviar a declara��o do Imposto de Renda at� o dia 31 de maio.</p>
+                            </article>
+                        </div>
+
+
+
+
+                        <div class="col-sm-4">
+                            <article class="recent-post">
+                                <figure>
+                                    <img src="https://condux.com.br/site/imgnews/287h.jpg" alt="PRORROGA��O SIMPLES NACIONAL"/>
+                                    <div class="overlay">
+                                        <a href="/noticia/?id=287" class="btn btn-primary">Leia Mais...</a>
+                                        <div class="background"></div>
+                                    </div>
+                                </figure>
+                                <h4><strong><a href="/noticia/?id=287">PRORROGA��O SIMPLES NACIONAL</a></strong> <span class="comment-count"></h4>
+                                <div class="date">quinta-feira, 25 de mar�o de 2021</div>
+                                <p>Pagamentos dos tributos do Simples Nacional s�o prorrogados por conta da crise econ�mica provocada pela pandemia de coronav�rus. Resolu��o CGSN 158/2021</p>
+                            </article>
+                        </div>
+
+
+
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+<section class="line">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="col-sm-4 col-xs-12">
+                    <div class="title">Nosso Time</div>
+                </div>
+                <div class="col-sm-8 col-xs-12">
+                    <div class="title-content less-margin">
+                        Profissionais qualificados e sempre atentos a lhe ajudar da melhor forma poss&iacute;vel, conte conosco. Passe o mouse sobre a foto para ver os meios de contato.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="team">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <figure>
+                    <img src="https://condux.com.br/site/content/team_monica.jpg" alt="img"/>
+                    <div class="overlay"></div>
+                    <div class="buttons">
+                        <div class="inner">
+                            <ul class="buttons-wrap" style="color: #FFF">
+                                <li><strong>(21) 3203-4348</strong></li>
+                                <li><strong>Ramal 200</strong></li>
+                                <li><a href="mailto:monica@condux.com.br" target="_blank"><i class="entyp-mail-1"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </figure>
+                <h5><strong>M&ocirc;nica Penteado</strong></h5>
+                  <div class="position">Secretaria</div>
+            </div>
+            <div class="col-sm-3">
+                <figure>
+                    <img src="https://condux.com.br/site/content/team_valeska.jpg" alt="img"/>
+                    <div class="overlay"></div>
+                    <div class="buttons">
+                        <div class="inner">
+                            <ul class="buttons-wrap" style="color: #FFF">
+                                <li><strong>(21) 3203-4348</strong></li>
+                                <li><strong>Ramal 206</strong></li>
+                                <li><a href="mailto:valeska@condux.com.br" target="_blank"><i class="entyp-mail-1"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </figure>
+                <h5><strong>Valeska Medina</strong></h5>
+                  <div class="position">Depto Pessoal</div>
+            </div>
+            <div class="col-sm-3">
+                <figure>
+                    <img src="https://condux.com.br/site/content/team_mariana.jpg" alt="img"/>
+                    <div class="overlay"></div>
+                    <div class="buttons">
+                        <div class="inner">
+                            <ul class="buttons-wrap" style="color: #FFF">
+                                <li><strong>(21) 3203-4348</strong></li>
+                                <li><strong>Ramal 212</strong></li>
+                                <li><a href="mailto:mariana@condux.com.br" target="_blank"><i class="entyp-mail-1"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </figure>
+                <h5><strong>Mariana Ara&uacute;jo</strong></h5>
+                  <div class="position">Assessoria Imediata</div>
+            </div>
+            <div class="col-sm-3">
+                <figure>
+                    <img src="https://condux.com.br/site/content/team_debora.jpg" alt="img"/>
+                    <div class="overlay"></div>
+                    <div class="buttons">
+                        <div class="inner">
+                            <ul class="buttons-wrap" style="color: #FFF">
+                                <li><strong>(21) 3203-4348</strong></li>
+                                <li><strong>Ramal 209</strong></li>
+                                <li><a href="mailto:debora@condux.com.br" target="_blank"><i class="entyp-mail-1"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </figure>
+                <h5><strong>D&eacute;bora Gaifem</strong></h5>
+                  <div class="position">Legaliza&ccedil;&atilde;o</div>
+            </div>
+        </div>
+		<div class="row" style="padding-top:80px">
+            <div class="col-sm-3">
+                <figure>
+                    <img src="https://condux.com.br/site/content/team_rimes.jpg" alt="img"/>
+                    <div class="overlay"></div>
+                    <div class="buttons">
+                        <div class="inner">
+                            <ul class="buttons-wrap" style="color: #FFF">
+                                <li><strong>(21) 3203-4348</strong></li>
+                                <li><strong>Ramal 9</strong></li>
+                                <li><a href="mailto:rimes@condux.com.br" target="_blank"><i class="entyp-mail-1"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </figure>
+                <h5><strong>Roberto Rimes</strong></h5>
+                <div class="position">S&oacute;cio Diretor</div>
+            </div>
+            <div class="col-sm-3">
+                <figure>
+                    <img src="https://condux.com.br/site/content/team_leo.jpg" alt="img"/>
+                    <div class="overlay"></div>
+                    <div class="buttons">
+                        <div class="inner">
+                            <ul class="buttons-wrap" style="color: #FFF">
+                                <li><strong>(21) 3203-4348</strong></li>
+                                <li><strong>Ramal 203</strong></li>
+                                <li><a href="mailto:leonardo@condux.com.br" target="_blank"><i class="entyp-mail-1"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </figure>
+                <h5><strong>Leonardo Amaral</strong></h5>
+                  <div class="position">S&oacute;cio/&Aacute;rea Fiscal</div>
+            </div>
+            <div class="col-sm-3">
+                <figure>
+                    <img src="https://condux.com.br/site/content/team_marcia.jpg" alt="img"/>
+                    <div class="overlay"></div>
+                    <div class="buttons">
+                        <div class="inner">
+                            <ul class="buttons-wrap" style="color: #FFF">
+                                <li><strong>(21) 3203-4348</strong></li>
+                                <li><strong>Ramal 208</strong></li>
+                                <li><a href="mailto:marcia@condux.com.br" target="_blank"><i class="entyp-mail-1"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </figure>
+                <h5><strong>M&aacute;rcia Azevedo</strong></h5>
+                  <div class="position">Contabilidade</div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="line">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="col-sm-4 col-xs-12">
+                    <div class="title">Nossos Servi&ccedil;os</div>
+                </div>
+                <div class="col-sm-8 col-xs-12">
+                    <div class="title-content less-margin">
+                        A CONDUX orienta voc&ecirc; a escolher a melhor forma jur&iacute;dica de iniciar o seu neg&oacute;cio e atuar no mercado com a menor carga tribut&aacute;ria poss&iacute;vel
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="line pt-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="box">
+                    <header>
+                        <div class="title">
+                            <div class="oldal-icon grey-icon lg-icon">
+                                <i class="entyp-chart-line"></i>
+                            </div>
+                            Contabilidade
+                        </div>
+                    </header>
+                    <div class="content lg-padded">
+                        Escritura&ccedil;&atilde;o de livro cont&aacute;beis/comerciais (Livro Di&aacute;rio, Raz&atilde;o e Livro Caixa), demonstra&ccedil;&otilde;es financeiras, an&aacute;lise de consist&ecirc;ncia de saldos cont&aacute;beis, levantamento e controle patrimonial, emiss&atilde;o de relat&oacute;rios/extratos gerenciais, etc...
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="box">
+                    <header>
+                        <div class="title">
+                            <div class="oldal-icon grey-icon lg-icon">
+                                <i class="entyp-book-open"></i>
+                            </div>
+                            Fiscal
+                        </div>
+                    </header>
+                    <div class="content lg-padded">
+                        Escritura&ccedil;&atilde;o de livros fiscais, apura&ccedil;&atilde;o e controle dos Impostos Federais, Estaduais e Municipais nos Regimes do Lucro Presumido e Lucro Real, apura&ccedil;&atilde;o e controle dos Impostos de empresas enquadradas no SIMPLES, elabora&ccedil;&atilde;o da Declara&ccedil;&atilde;o do Imposto de Renda, elabora&ccedil;&atilde;o da Declara&ccedil;&atilde;o Simplificada, etc...
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="box">
+                    <header>
+                        <div class="title">
+                            <div class="oldal-icon grey-icon lg-icon">
+                                <i class="entyp-users-1"></i>
+                            </div>
+                            Departamento Pessoal
+                        </div>
+                    </header>
+                    <div class="content lg-padded">
+                        Gerenciamento de Pro Labore dos s&oacute;cios, cadastro e manuten&ccedil;&atilde;o de Registro de Empregados, elabora&ccedil;&atilde;o de contratos de experi&ecirc;ncia e de estagi&aacute;rios, procedimentos para formaliza&ccedil;&atilde;o de admiss&atilde;o e demiss&atilde;o, cadastro do funcion&aacute;rio, preenchimento do Livro de Registro ou de FRE, registro em CTPS, etc...
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="box">
+                    <header>
+                        <div class="title">
+                            <div class="oldal-icon grey-icon lg-icon">
+                                <i class="entyp-vcard"></i>
+                            </div>
+                            Legaliza&ccedil;&atilde;o
+                        </div>
+                    </header>
+                    <div class="content lg-padded">
+                        Elabora&ccedil;&atilde;o de Contratos Sociais observando as exig&ecirc;ncias legais e dos &oacute;rg&atilde;os regulamentadores, constitui&ccedil;&atilde;o de empresas, altera&ccedil;&atilde;o de empresas, encerramento de Empresas, registro de marca junto ao INPI, busca pr&eacute;via de local e licen&ccedil;a junto a Prefeitura, obten&ccedil;&atilde;o de Certid&otilde;es de &Oacute;rg&atilde;os Governamentais, etc...
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="statement statement-contact">
+    <h2 style="background-color: rgba(0, 0, 0, 0.5);">
+        "Algo s&oacute; &eacute; imposs&iacute;vel at&eacute; que algu&eacute;m duvide e resolva provar o contr&aacute;rio"<br />- Albert Einstein
+    </h2>
+    <a href="/contato/"><button class="btn btn-primary btn-statement" type="submit">Contate-nos</button></a>
+</section>
+</div>
+
+<footer class="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="footer-widget">
+                    <h2>�ltimas Not�cias</h2>
+                    <div class="widget-content latest-post">
+                        <ul>
+                        
+                            <li>
+                                <h3><a href="?a=noticia&id=295">BEM</a></h3>
+                                <p></p>
+                                <span class="date">26/08/2021</span>
+                            </li>
+                        
+                            <li>
+                                <h3><a href="?a=noticia&id=294">HOME OFFICE PARA GESTANTES</a></h3>
+                                <p></p>
+                                <span class="date">13/05/2021</span>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="footer-widget">
+                    <h2>Contato</h2>
+                    <div class="widget-content">
+                        <address>
+                            Rua Rep&uacute;blica do L&iacute;bano, 61 gr. 1102 <br/>
+                            Centro &ndash; Rio de Janeiro RJ
+                        </address>
+                        <address>
+                            <strong>Telefone: +55 (21) 3203-4348</strong> <br/>
+                            <strong>E-mail: condux@condux.com.br</strong>
+                        </address>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="footer-widget">
+                    <h2>Links</h2>
+                    <ul>    
+                        <li><a href="/home/">Home Page</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/empresa/">A Empresa</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="http://www.condux.com.br/ler.asp?id=1" target="_blank">Tabelas Pr&aacute;ticas</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="http://www.condux.com.br/ler.asp?id=2" target="_blank">Agenda de Obriga&ccedil;&otilde;es</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/noticias/">Not&iacute;cias</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/downloads/">Downloads</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/contato/">Contato</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="footer-info text-right">
+                    <ul class="footer-social">
+                        <li><a href="https://twitter.com/conduxBRA" target="_blank"><i class="entyp-twitter-1"></i></a></li>
+                        <li><a href="https://www.facebook.com/ConduxConsultoria" target="_blank"><i class="entyp-facebook-1"></i></a></li>
+                    </ul>
+                    <p>Copyright &copy; 2016</p>
+                    <p>CONDUX - Todos os Direitos Reservados</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="https://condux.com.br/site/js/vendor/jquery-1.11.0.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery-ui-1.10.3.custom.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.mousewheel.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.mCustomScrollbar.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.selectBoxIt.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.raty.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.flexslider.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.isotope.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.fancybox.pack.js"></script>
+<script src="https://condux.com.br/site/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
+<script src="https://condux.com.br/site/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/bootstrap.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/simpleInstagramFancybox.js"></script>
+<script src="https://condux.com.br/site/js/vendor/fitvids.js"></script>
+<script src="https://condux.com.br/site/js/main.js"></script>
+<script>
+    $('#revolution-shortcode').revolution({
+        delay : 90000,
+        hideThumbs:10,
+        navigationVOffset : -30,
+        navigationType : "none",
+        navigationStyle : "round-old",
+		startheight:700
+    });
+</script>
+
+        <script>window.rwbp={email:'condux@condux.com.br',phone:'+5521999144021',message:'Olá, me conta quem é você para iniciar a conversa!',lang:'pt-BR'}</script><script defer async src='https://duz4dqsaqembt.cloudfront.net/client/whats.js'></script>
+
+<style>
+/*#revolution-shortcode { height: 700px !important }
+#revolution-shortcode > ul > li:nth-child(1) > div.slotholder { height: 700px !important }*/
+</style>
+</body>
+</html>

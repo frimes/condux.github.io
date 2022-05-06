@@ -1,0 +1,538 @@
+<!--
+ * FCKeditor - The text editor for Internet - http://www.fckeditor.net
+ * Copyright (C) 2003-2009 Frederico Caldeira Knabben
+ *
+ * == BEGIN LICENSE ==
+ *
+ * Licensed under the terms of any of the following licenses at your
+ * choice:
+ *
+ *  - GNU General Public License Version 2 or later (the "GPL")
+ *    http://www.gnu.org/licenses/gpl.html
+ *
+ *  - GNU Lesser General Public License Version 2.1 or later (the "LGPL")
+ *    http://www.gnu.org/licenses/lgpl.html
+ *
+ *  - Mozilla Public License Version 1.1 or later (the "MPL")
+ *    http://www.mozilla.org/MPL/MPL-1.1.html
+ *
+ * == END LICENSE ==
+ *
+ * This is the integration file for ASP.
+ *
+ * It defines the FCKeditor class that can be used to create editor
+ * instances in ASP pages on server side.
+-->
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Condux</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, maximum-scale=1, minimum-scale=1">
+    <link rel="icon" type="image/png" href="https://condux.com.br/site/img/favicon.png">
+
+    <link rel="stylesheet" href="https://condux.com.br/site/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/flexslider.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/jquery.selectBoxIt.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/entypo.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/rs-plugin/css/settings.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/jquery.fancybox.css">
+        <link rel="stylesheet" href="https://condux.com.br/site/css/style.css">
+
+    <script src="https://condux.com.br/site/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+	
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-208708250-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-208708250-1');
+</script>
+
+</head>
+<body>
+<div class="main-wrap">
+<header class="navbar navbar-inverse">
+    <div class="normal-color with-slider">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <div id="control-logo-header">
+                                <a class="navbar-brand" href="/home/"><img src="https://condux.com.br/site/content/logo.png" alt="img"/></a>
+                            </div>
+                    </div>
+                </div>
+                <div class="col-sm-9">
+                    <div class="navbar-collapse collapse navbar-right">
+                        <ul class="nav navbar-nav social-nav">
+                            <li><a href="https://twitter.com/conduxBRA" target="_blank"><i class="entyp-twitter-1"></i></a></li>
+                            <li><a href="https://www.facebook.com/ConduxConsultoria" target="_blank"><i class="entyp-facebook-1"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="inverse-color">
+        <div class="container">
+            <div class="row">
+                <div class="navbar-collapse collapse">
+                    <div class="col-sm-12">
+                        <ul class="nav navbar-nav main-nav">
+                            <li id="control-logo-menu">
+                                <a class="navbar-brand" href="/home/"><img src="https://condux.com.br/site/content/logo.png" alt="img"/></a>
+                            </li>
+                            <li>
+                                <a href="/home/">Início</a>
+                            </li>
+                            <li>
+                                <a href="/empresa/">A empresa</a>
+                            </li>
+                            <li>
+                                <a href="/servicos/">Serviços</a>
+                            </li>
+                            <li>
+                                <a href="#">Utilitários</a>
+                                <ul>	
+                                	<li><a href="http://www.condux.com.br/ler.asp?id=1" target="_blank">Tabelas Práticas</a></li>
+                                    <li><a href="http://www.condux.com.br/ler.asp?id=2" target="_blank">Agenda de Obrigações</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="/noticias/">Notícias</a>
+                            </li>
+                            <li>
+                                <a href="/login/">Área do Cliente</a>
+                            </li>
+                            <li>
+                                <a href="/downloads/">Downloads</a>
+                            </li>
+                            <li>
+                                <a href="/contato/">Contato</a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</header>
+
+
+<section class="line top">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="col-md-4 col-sm-5 col-xs-12">
+                    <div class="title">
+                        Notícias
+                        <ul class="current-page">
+                            <li><a href="/home/">Página principal</a></li>
+                            <li>></li>
+                            <li><a href="/noticias/">Noticias</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="posts">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <article class="post ">
+                            <h3 class="uppercase">MICROEMPRESAS: AS NORMAS PARA PARCELAMENTO DE DÍVIDAS</h3><h4>A nova versão da lei ampliou de 60 para 120 prestações o prazo para pagamento das dívidas tributárias</h4>
+                            <ul class="info">
+                                <li>
+                                    <div class="text date">terça-feira, 22 de novembro de 2016</div>
+                                </li>
+                                <li>
+                                    <i class="entyp-pencil-1"></i>
+                                    <div class="text">Publicado por CONDUX</div>
+                                </li>
+                                
+                                <li>
+                                    <a href="/noticias/?cat=Receita+Federal">
+                                        <i class="entyp-list-1"></i>
+                                        <div class="text">Receita Federal</div>
+                                    </a>
+                                </li>
+                                
+                            </ul>
+                            
+                            <figure>
+                                <img src="https://condux.com.br/site/imgnews/174c.jpg" alt="MICROEMPRESAS: AS NORMAS PARA PARCELAMENTO DE DÍVIDAS"/>
+                                
+                            </figure>
+                            
+                            <div class="content">
+                            <p style="text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;">O Di&aacute;rio Oficial da Uni&atilde;o publicou no dia 14/11 instru&ccedil;&atilde;o normativa que estabelece procedimentos preliminares relativos ao parcelamento de d&iacute;vidas de microempresas e empresas de pequeno porte.</span></span></span></p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;">As mudan&ccedil;as est&atilde;o previstas na Lei Complementar n&ordm; 155 de 2016, sancionada no dia 27 de outubro pelo Presidente da Rep&uacute;blica.</span></span></span></p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;">A nova vers&atilde;o da lei ampliou de 60 para 120 presta&ccedil;&otilde;es o prazo para pagamento das d&iacute;vidas tribut&aacute;rias.</span></span></span></p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;">Pelo texto da instru&ccedil;&atilde;o normativa, o contribuinte com d&eacute;bitos apurados na forma prevista no Simples Nacional at&eacute; a compet&ecirc;ncia do m&ecirc;s de maio de 2016 -nos termos da nova vers&atilde;o da lei - poder&aacute; manifestar previamente a op&ccedil;&atilde;o pelo parcelamento, no per&iacute;odo de 14 de novembro de 2016 a 11 de dezembro de 2016, por meio do formul&aacute;rio eletr&ocirc;nico &quot;Op&ccedil;&atilde;o Pr&eacute;via ao Parcelamento da LC 155/2016&quot; , dispon&iacute;vel na p&aacute;gina da Receita Federal na Internet.</span></span></span></p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;">A Receita Federal enviou notifica&ccedil;&atilde;o para 584.677 contribuintes devedores do Simples Nacional, que respondem por d&iacute;vidas de R$ 21,3 bilh&otilde;es e poder&atilde;o se regularizar. O per&iacute;odo para fazer a op&ccedil;&atilde;o pr&eacute;via vai de 14 de novembro a 11 de dezembro.</span></span></span></p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;">A op&ccedil;&atilde;o pr&eacute;via evita a exclus&atilde;o do contribuinte do Simples Nacional, mas n&atilde;o o dispensa de efetuar o pedido definitivo de parcelamento a partir de 12 de dezembro.</span></span></span></p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;">A solicita&ccedil;&atilde;o definitiva &eacute; necess&aacute;ria para a consolida&ccedil;&atilde;o dos d&eacute;bitos e o pagamento da primeira parcela, conforme regulamenta&ccedil;&atilde;o a ser editada pelo Comit&ecirc; Gestor do Simples Nacional.</span></span></span></p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;">Criado em 2006, o Supersimples tem o objetivo de desburocratizar e facilitar o recolhimento de tributos pelos micro e pequenos empres&aacute;rios. </span></span></span></p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px; text-align: justify;">&nbsp;</p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;">Condux Consultoria</span></span></span></p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px; text-align: justify;">&nbsp;</p>
+<p>&nbsp;</p>
+                            </div>
+                            
+                        </article>
+                        
+                        
+                    </div>
+                    <div class="col-md-1 hidden-sm"></div>
+                    <div class="col-md-2 col-sm-3">
+                        <aside class="widgets">
+                    <div class="widget list">
+                        <h3>Categorias</h3>
+                        <ul>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Calend%E1rio+de+Obriga%E7%F5es">Calendário de Obrigações</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Direitos+do+Consumidor">Direitos do Consumidor</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Empresarial">Empresarial</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=IRPF">IRPF</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Legisla%E7%E3o">Legislação</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Legisla%E7%E3o+Trabalhista">Legislação Trabalhista</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Previd%EAncia">Previdência</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Receita+Federal">Receita Federal</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Recursos+Humanos">Recursos Humanos</a>
+                            </li>
+ 
+                        </ul>
+                    </div>
+                    <div class="widget list">
+                        <h3>Por mês</h3>
+                        <ul>
+                        
+                            <li>
+                                <a href="/noticias/?mes=8&ano=2021">Agosto&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2021">Maio&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2021">Abril&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2021">Março&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=7&ano=2020">Julho&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2020">Maio&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2020">Abril&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2020">Março&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=10&ano=2019">Outubro&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2019">Setembro&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2019">Março&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2019">Janeiro&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=12&ano=2018">Dezembro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2018">Setembro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=6&ano=2018">Junho&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2018">Abril&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2018">Março&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=2&ano=2018">Fevereiro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2018">Janeiro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=12&ano=2017">Dezembro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=11&ano=2017">Novembro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=10&ano=2017">Outubro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2017">Setembro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=7&ano=2017">Julho&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=6&ano=2017">Junho&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2017">Maio&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2017">Abril&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2017">Março&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=2&ano=2017">Fevereiro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2017">Janeiro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=12&ano=2016">Dezembro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=11&ano=2016">Novembro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=10&ano=2016">Outubro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2016">Setembro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=8&ano=2016">Agosto&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=7&ano=2016">Julho&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=6&ano=2016">Junho&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2016">Maio&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2016">Abril&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2016">Março&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=2&ano=2016">Fevereiro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2016">Janeiro&nbsp;2016</a>
+                            </li>
+ 
+                        </ul>
+                    </div>
+
+                </aside>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+<footer class="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="footer-widget">
+                    <h2>Últimas Notícias</h2>
+                    <div class="widget-content latest-post">
+                        <ul>
+                        
+                            <li>
+                                <h3><a href="?a=noticia&id=295">BEM</a></h3>
+                                <p></p>
+                                <span class="date">26/08/2021</span>
+                            </li>
+                        
+                            <li>
+                                <h3><a href="?a=noticia&id=294">HOME OFFICE PARA GESTANTES</a></h3>
+                                <p></p>
+                                <span class="date">13/05/2021</span>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="footer-widget">
+                    <h2>Contato</h2>
+                    <div class="widget-content">
+                        <address>
+                            Rua Rep&uacute;blica do L&iacute;bano, 61 gr. 1102 <br/>
+                            Centro &ndash; Rio de Janeiro RJ
+                        </address>
+                        <address>
+                            <strong>Telefone: +55 (21) 3203-4348</strong> <br/>
+                            <strong>E-mail: condux@condux.com.br</strong>
+                        </address>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="footer-widget">
+                    <h2>Links</h2>
+                    <ul>    
+                        <li><a href="/home/">Home Page</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/empresa/">A Empresa</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="http://www.condux.com.br/ler.asp?id=1" target="_blank">Tabelas Pr&aacute;ticas</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="http://www.condux.com.br/ler.asp?id=2" target="_blank">Agenda de Obriga&ccedil;&otilde;es</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/noticias/">Not&iacute;cias</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/downloads/">Downloads</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/contato/">Contato</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="footer-info text-right">
+                    <ul class="footer-social">
+                        <li><a href="https://twitter.com/conduxBRA" target="_blank"><i class="entyp-twitter-1"></i></a></li>
+                        <li><a href="https://www.facebook.com/ConduxConsultoria" target="_blank"><i class="entyp-facebook-1"></i></a></li>
+                    </ul>
+                    <p>Copyright &copy; 2016</p>
+                    <p>CONDUX - Todos os Direitos Reservados</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="https://condux.com.br/site/js/vendor/jquery-1.11.0.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery-ui-1.10.3.custom.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.mousewheel.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.mCustomScrollbar.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.selectBoxIt.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.raty.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.flexslider.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.isotope.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.fancybox.pack.js"></script>
+<script src="https://condux.com.br/site/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
+<script src="https://condux.com.br/site/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/bootstrap.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/simpleInstagramFancybox.js"></script>
+<script src="https://condux.com.br/site/js/vendor/fitvids.js"></script>
+<script src="https://condux.com.br/site/js/main.js"></script>
+<script>
+    $('#revolution-shortcode').revolution({
+        delay : 90000,
+        hideThumbs:10,
+        navigationVOffset : -30,
+        navigationType : "none",
+        navigationStyle : "round-old",
+		startheight:700
+    });
+</script>
+<style>
+/*#revolution-shortcode { height: 700px !important }
+#revolution-shortcode > ul > li:nth-child(1) > div.slotholder { height: 700px !important }*/
+</style>
+</body>
+</html>

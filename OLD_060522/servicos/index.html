@@ -1,0 +1,402 @@
+<!--
+ * FCKeditor - The text editor for Internet - http://www.fckeditor.net
+ * Copyright (C) 2003-2009 Frederico Caldeira Knabben
+ *
+ * == BEGIN LICENSE ==
+ *
+ * Licensed under the terms of any of the following licenses at your
+ * choice:
+ *
+ *  - GNU General Public License Version 2 or later (the "GPL")
+ *    http://www.gnu.org/licenses/gpl.html
+ *
+ *  - GNU Lesser General Public License Version 2.1 or later (the "LGPL")
+ *    http://www.gnu.org/licenses/lgpl.html
+ *
+ *  - Mozilla Public License Version 1.1 or later (the "MPL")
+ *    http://www.mozilla.org/MPL/MPL-1.1.html
+ *
+ * == END LICENSE ==
+ *
+ * This is the integration file for ASP.
+ *
+ * It defines the FCKeditor class that can be used to create editor
+ * instances in ASP pages on server side.
+-->
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Condux</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, maximum-scale=1, minimum-scale=1">
+    <link rel="icon" type="image/png" href="https://condux.com.br/site/img/favicon.png">
+
+    <link rel="stylesheet" href="https://condux.com.br/site/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/flexslider.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/jquery.selectBoxIt.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/entypo.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/rs-plugin/css/settings.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/jquery.fancybox.css">
+        <link rel="stylesheet" href="https://condux.com.br/site/css/style.css">
+
+    <script src="https://condux.com.br/site/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+	
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-208708250-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-208708250-1');
+</script>
+
+</head>
+<body>
+<div class="main-wrap">
+<header class="navbar navbar-inverse">
+    <div class="normal-color with-slider">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <div id="control-logo-header">
+                                <a class="navbar-brand" href="/home/"><img src="https://condux.com.br/site/content/logo.png" alt="img"/></a>
+                            </div>
+                    </div>
+                </div>
+                <div class="col-sm-9">
+                    <div class="navbar-collapse collapse navbar-right">
+                        <ul class="nav navbar-nav social-nav">
+                            <li><a href="https://twitter.com/conduxBRA" target="_blank"><i class="entyp-twitter-1"></i></a></li>
+                            <li><a href="https://www.facebook.com/ConduxConsultoria" target="_blank"><i class="entyp-facebook-1"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="inverse-color">
+        <div class="container">
+            <div class="row">
+                <div class="navbar-collapse collapse">
+                    <div class="col-sm-12">
+                        <ul class="nav navbar-nav main-nav">
+                            <li id="control-logo-menu">
+                                <a class="navbar-brand" href="/home/"><img src="https://condux.com.br/site/content/logo.png" alt="img"/></a>
+                            </li>
+                            <li>
+                                <a href="/home/">Início</a>
+                            </li>
+                            <li>
+                                <a href="/empresa/">A empresa</a>
+                            </li>
+                            <li>
+                                <a href="/servicos/">Serviços</a>
+                            </li>
+                            <li>
+                                <a href="#">Utilitários</a>
+                                <ul>	
+                                	<li><a href="http://www.condux.com.br/ler.asp?id=1" target="_blank">Tabelas Práticas</a></li>
+                                    <li><a href="http://www.condux.com.br/ler.asp?id=2" target="_blank">Agenda de Obrigações</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="/noticias/">Notícias</a>
+                            </li>
+                            <li>
+                                <a href="/login/">Área do Cliente</a>
+                            </li>
+                            <li>
+                                <a href="/downloads/">Downloads</a>
+                            </li>
+                            <li>
+                                <a href="/contato/">Contato</a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</header>
+
+ 
+<section class="statement statement-servicos" style="height: 600px !important"><a name="contabil" id="contabil"></a>
+    </section><h2>
+        <br /><br /><br /><br />
+    </h2>
+
+
+
+
+        <section class="line">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="col-sm-4">
+                            <div class="title">Cont&aacute;bil</div>
+                        </div>
+                        <div class="col-sm-8">
+                            <div class="title-content less-margin" style="color: #333333">
+<p>• Escrituração de livro contábeis/comerciais (Livro Di&aacute;rio, Raz&atilde;o e Livro Caixa): Organizaç&atilde;o, classificaç&atilde;o e processamento dos documentos contábeis em atendimento às normas/legislações vigentes;</p>
+<p>• Demonstrações financeiras: Elaboração de balancetes/balanços mensais, trimestrais e anuais com observância aos princípios contábeis e normas estabelecidas pelo CFC - Conselho Federal de Contabilidade - e a Legislação Fiscal pertinente;</p>
+<p>• Análise de consistência de saldos cont&aacute;beis: Conciliação e composição das contas contábeis;</p>
+<p>• Levantamento e controle patrimonial: Manutenção de controles sobre os bens patrimoniais;</p>
+<p>• Emissão de relatórios/extratos gerenciais: Elaboração e envio de extratos mensais e resumo com as informações contábeis da empresa;</p>
+<p>• Atendimento às consultas: On-line, por telefone, fax ou pessoal.</p><a name="servicofiscal" id="servicofiscal"></a>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section> 
+        
+        <section class="line">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="col-sm-4">
+                            <div class="title">Fiscal</div>
+                        </div>
+                        <div class="col-sm-8">
+                            <div class="title-content less-margin" style="color: #333333">
+<p>• Escrituração de livros fiscais: ICMS, IPI, Livro de Inventário, Livro de Entrada e Saída;</p>
+<p>• Apuração e controle dos Impostos Federais, Estaduais e Municipais nos Regimes do Lucro Presumido e Lucro Real;</p>
+<p>• Apuração e controle dos Impostos de empresas enquadradas no SIMPLES;</p>
+<p>• Elaboração da Declaração do Imposto de Renda: Para empresas com Lucro Real, Presumido, Arbitrado, Isentas e Imunes;</p>
+<p>• Elaboração da Declaração Simplificada: Para empresas optantes pelo Simples e Inativas;</p>
+<p>• Elaboração da DCTF - Declaração de Débitos e Créditos Tributários Federais - trimestral;</p>
+<p>• Elaboração de todas as obrigações fiscais relativas ao Estado;</p>
+<p>• Atendimento das obrigações acessórias;</p>
+<p>• Parcelamento de Impostos e Impugnações Administrativas de Autos de Infração e Multas;</p>
+<p>• Atendimento às consultas.</p><a name="dp" id="dp"></a>
+
+                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section> 
+        
+        <section class="line">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="col-sm-4">
+                            <div class="title">Departamento Pessoal</div>
+                        </div>
+                        <div class="col-sm-8">
+                            <div class="title-content less-margin" style="color: #333333">
+<p>• Gerenciamento de Pro Labore dos sócios;</p>
+<p>• Cadastro e manutenção de Registro de Empregados;</p>
+<p>• Elaboração de contratos de experiência e de estagiários;</p>
+<p>• Procedimentos para formalização de admissão e demissão;</p>
+<p>• Cadastro do funcionário: PIS;</p>
+<p>• Preenchimento do Livro de Registro ou de FRE;</p>
+<p>• Registro em CTPS;</p>
+<p>• Elaboração de fichas de dependentes para IRRF e Salário Família;</p>
+<p>• Elaboração da folha de pagamentos de salários e Pró Labore com a emissão de holerites;</p>
+<p>• Elaboração das guias de recolhimentos dos encargos sociais e tributos afins: FGTS, INSS, IRRF e obrigações sindicais;</p>
+<p>• Atendimento às obrigações acessórias CAGED/RAIS/DIRF;</p>
+<p>• Manutenção e controles sobre a concessão e pagamento de férias normais ou coletivas a funcionários;</p>
+<p>• Elaboração de documentos para requerer benefícios junto ao INSS: CAT e RCS;</p>
+<p>• Acompanhamento de Acordos e Dissídios Coletivos;</p>
+<p>• Orientação para adesão ao PCMSO - Programa de Controle Médico de Saúde Ocupacional - e CIPA;</p>
+<p>• Atendimento às consultas.</p><a name="legalizacao" id="legalizacao"></a>
+
+                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section> 
+        
+        <section class="line">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="col-sm-4">
+                            <div class="title">Legaliza&ccedil;&atilde;o</div>
+                        </div>
+                        <div class="col-sm-8">
+                            <div class="title-content less-margin" style="color: #333333">
+<p>• Elaboração de Contratos Sociais observando as exigências legais e dos órgãos regulamentadores;</p>
+<p>• Constituição de empresas: Sociedades Anônimas (S/A), Sociedades Simples (S/S), Sociedade por cotas de responsabilidade limitada (Ltda.);</p>
+<p>• Alteração de empresas: Capital Social, Razão Social, Diretoria, Transformação de Sociedade, entre outros;</p>
+<p>• Encerramento de Empresas: Cancelamento e baixa de inscrições junto aos órgãos governamentais (Federal, Estadual e Municipal), regulamentadores e reguladores (JUCERJA, Secretarias da Fazenda, CRM, CRO, CREA, entre outros);</p>
+<p>• Registro de marca junto ao INPI;</p>
+<p>• Busca prévia de local e licença junto a Prefeitura;</p>
+<p>• Obtenção de Certidões de Órgãos Governamentais;</p>
+<p>• Obtenção de Certidões de Dívida Ativa da União;</p>
+<p>• Obtenção de Certidões de Tributos Federais, Estaduais e Municipais;</p>
+<p>• Obtenção de Certidões da Justiça Federal (FGTS e INSS);</p>
+<p>• Obtenção de Certidões Forenses;</p>
+<p>• Obtenção de Certidões junto aos Cartórios;</p>
+<p>• Inscrição de micro empresa e empresa de pequeno porte no Simples Nacional;</p>
+<p>• Atendimento às consultas</p><a name="consultoria" id="consultoria"></a>
+
+                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section> 
+        
+        <section class="line">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="col-sm-4">
+                            <div class="title">Societ&aacute;ria e Tribut&aacute;ria</div>
+                        </div>
+                        <div class="col-sm-8">
+                            <div class="title-content less-margin" style="color: #333333">
+<p>• Área Societária:</p>
+<p>• Movimentação de sócios;</p>
+<p>• Avaliação de cotas;</p>
+<p>• Criação de sociedades de participação;</p>
+<p>• Participação de custos e carga tributária;</p>
+<p>• Atendimento às consultas.</p>
+<p>• Planejamento Tributário:</p>
+<p>• Estudo para formação de objetivos;</p>
+<p>• Avaliação do perfil e enquadramento de cada cliente na forma mais adequada para recolhimento dos tributos;</p>
+<p>• Identificação de prioridades na economia tributária;</p>
+<p>• Levantamento de Créditos Extemporâneos.</p>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>                                 
+
+
+<section class="statement statement-services-dark">
+    <h2 style="background-color: rgba(0, 0, 0, 0.5);">
+     <a href="?a=contato" style="color:#ffffff !important">Ainda tem d&uacute;vidas sobre nossos servi&ccedil;os?<br />Clique aqui!</a>
+    </h2>
+            
+</section>
+</div>
+
+<footer class="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="footer-widget">
+                    <h2>Últimas Notícias</h2>
+                    <div class="widget-content latest-post">
+                        <ul>
+                        
+                            <li>
+                                <h3><a href="?a=noticia&id=295">BEM</a></h3>
+                                <p></p>
+                                <span class="date">26/08/2021</span>
+                            </li>
+                        
+                            <li>
+                                <h3><a href="?a=noticia&id=294">HOME OFFICE PARA GESTANTES</a></h3>
+                                <p></p>
+                                <span class="date">13/05/2021</span>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="footer-widget">
+                    <h2>Contato</h2>
+                    <div class="widget-content">
+                        <address>
+                            Rua Rep&uacute;blica do L&iacute;bano, 61 gr. 1102 <br/>
+                            Centro &ndash; Rio de Janeiro RJ
+                        </address>
+                        <address>
+                            <strong>Telefone: +55 (21) 3203-4348</strong> <br/>
+                            <strong>E-mail: condux@condux.com.br</strong>
+                        </address>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="footer-widget">
+                    <h2>Links</h2>
+                    <ul>    
+                        <li><a href="/home/">Home Page</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/empresa/">A Empresa</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="http://www.condux.com.br/ler.asp?id=1" target="_blank">Tabelas Pr&aacute;ticas</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="http://www.condux.com.br/ler.asp?id=2" target="_blank">Agenda de Obriga&ccedil;&otilde;es</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/noticias/">Not&iacute;cias</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/downloads/">Downloads</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/contato/">Contato</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="footer-info text-right">
+                    <ul class="footer-social">
+                        <li><a href="https://twitter.com/conduxBRA" target="_blank"><i class="entyp-twitter-1"></i></a></li>
+                        <li><a href="https://www.facebook.com/ConduxConsultoria" target="_blank"><i class="entyp-facebook-1"></i></a></li>
+                    </ul>
+                    <p>Copyright &copy; 2016</p>
+                    <p>CONDUX - Todos os Direitos Reservados</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="https://condux.com.br/site/js/vendor/jquery-1.11.0.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery-ui-1.10.3.custom.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.mousewheel.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.mCustomScrollbar.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.selectBoxIt.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.raty.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.flexslider.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.isotope.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.fancybox.pack.js"></script>
+<script src="https://condux.com.br/site/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
+<script src="https://condux.com.br/site/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/bootstrap.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/simpleInstagramFancybox.js"></script>
+<script src="https://condux.com.br/site/js/vendor/fitvids.js"></script>
+<script src="https://condux.com.br/site/js/main.js"></script>
+<script>
+    $('#revolution-shortcode').revolution({
+        delay : 90000,
+        hideThumbs:10,
+        navigationVOffset : -30,
+        navigationType : "none",
+        navigationStyle : "round-old",
+		startheight:700
+    });
+</script>
+<style>
+/*#revolution-shortcode { height: 700px !important }
+#revolution-shortcode > ul > li:nth-child(1) > div.slotholder { height: 700px !important }*/
+</style>
+</body>
+</html>

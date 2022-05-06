@@ -1,0 +1,556 @@
+<!--
+ * FCKeditor - The text editor for Internet - http://www.fckeditor.net
+ * Copyright (C) 2003-2009 Frederico Caldeira Knabben
+ *
+ * == BEGIN LICENSE ==
+ *
+ * Licensed under the terms of any of the following licenses at your
+ * choice:
+ *
+ *  - GNU General Public License Version 2 or later (the "GPL")
+ *    http://www.gnu.org/licenses/gpl.html
+ *
+ *  - GNU Lesser General Public License Version 2.1 or later (the "LGPL")
+ *    http://www.gnu.org/licenses/lgpl.html
+ *
+ *  - Mozilla Public License Version 1.1 or later (the "MPL")
+ *    http://www.mozilla.org/MPL/MPL-1.1.html
+ *
+ * == END LICENSE ==
+ *
+ * This is the integration file for ASP.
+ *
+ * It defines the FCKeditor class that can be used to create editor
+ * instances in ASP pages on server side.
+-->
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Condux</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, maximum-scale=1, minimum-scale=1">
+    <link rel="icon" type="image/png" href="https://condux.com.br/site/img/favicon.png">
+
+    <link rel="stylesheet" href="https://condux.com.br/site/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/flexslider.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/jquery.selectBoxIt.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/entypo.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/rs-plugin/css/settings.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/jquery.fancybox.css">
+        <link rel="stylesheet" href="https://condux.com.br/site/css/style.css">
+
+    <script src="https://condux.com.br/site/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+	
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-208708250-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-208708250-1');
+</script>
+
+</head>
+<body>
+<div class="main-wrap">
+<header class="navbar navbar-inverse">
+    <div class="normal-color with-slider">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <div id="control-logo-header">
+                                <a class="navbar-brand" href="/home/"><img src="https://condux.com.br/site/content/logo.png" alt="img"/></a>
+                            </div>
+                    </div>
+                </div>
+                <div class="col-sm-9">
+                    <div class="navbar-collapse collapse navbar-right">
+                        <ul class="nav navbar-nav social-nav">
+                            <li><a href="https://twitter.com/conduxBRA" target="_blank"><i class="entyp-twitter-1"></i></a></li>
+                            <li><a href="https://www.facebook.com/ConduxConsultoria" target="_blank"><i class="entyp-facebook-1"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="inverse-color">
+        <div class="container">
+            <div class="row">
+                <div class="navbar-collapse collapse">
+                    <div class="col-sm-12">
+                        <ul class="nav navbar-nav main-nav">
+                            <li id="control-logo-menu">
+                                <a class="navbar-brand" href="/home/"><img src="https://condux.com.br/site/content/logo.png" alt="img"/></a>
+                            </li>
+                            <li>
+                                <a href="/home/">Início</a>
+                            </li>
+                            <li>
+                                <a href="/empresa/">A empresa</a>
+                            </li>
+                            <li>
+                                <a href="/servicos/">Serviços</a>
+                            </li>
+                            <li>
+                                <a href="#">Utilitários</a>
+                                <ul>	
+                                	<li><a href="http://www.condux.com.br/ler.asp?id=1" target="_blank">Tabelas Práticas</a></li>
+                                    <li><a href="http://www.condux.com.br/ler.asp?id=2" target="_blank">Agenda de Obrigações</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="/noticias/">Notícias</a>
+                            </li>
+                            <li>
+                                <a href="/login/">Área do Cliente</a>
+                            </li>
+                            <li>
+                                <a href="/downloads/">Downloads</a>
+                            </li>
+                            <li>
+                                <a href="/contato/">Contato</a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</header>
+
+
+<section class="line top">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="col-md-4 col-sm-5 col-xs-12">
+                    <div class="title">
+                        Notícias
+                        <ul class="current-page">
+                            <li><a href="/home/">Página principal</a></li>
+                            <li>></li>
+                            <li><a href="/noticias/">Noticias</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="posts">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <article class="post ">
+                            <h3 class="uppercase">TRIBUTAÇÃO E SAÍDA DEFINITIVA DO PAÍS</h3><h4>Informe-se sobre as obrigações que a mudança exige</h4>
+                            <ul class="info">
+                                <li>
+                                    <div class="text date">segunda-feira, 19 de setembro de 2016</div>
+                                </li>
+                                <li>
+                                    <i class="entyp-pencil-1"></i>
+                                    <div class="text">Publicado por CONDUX</div>
+                                </li>
+                                
+                                <li>
+                                    <a href="/noticias/?cat=Legisla%E7%E3o">
+                                        <i class="entyp-list-1"></i>
+                                        <div class="text">Legislação</div>
+                                    </a>
+                                </li>
+                                
+                            </ul>
+                            
+                            <figure>
+                                <img src="https://condux.com.br/site/imgnews/170c.jpg" alt="TRIBUTAÇÃO E SAÍDA DEFINITIVA DO PAÍS"/>
+                                
+                            </figure>
+                            
+                            <div class="content">
+                            <p style="margin-bottom: 0cm; border: none; padding: 0cm; line-height: 0.53cm; text-align: justify;"><font color="#000000"><font face="Arial, sans-serif"><font style="font-size: 12pt;">A emigra&ccedil;&atilde;o de fam&iacute;lias brasileiras para o exterior tem se tornado um movimento cada vez mais comum, sobretudo considerando o atual contexto pol&iacute;tico e econ&ocirc;mico do pa&iacute;s. Por&eacute;m, esse processo n&atilde;o necessariamente implica uma ruptura absoluta, uma vez que a condi&ccedil;&atilde;o de residente no exterior n&atilde;o impede a manuten&ccedil;&atilde;o e realiza&ccedil;&atilde;o de investimentos no Brasil.</font></font></font></p>
+<p style="margin-bottom: 0cm; border: none; padding: 0cm; line-height: 0.53cm; text-align: justify;">&nbsp;</p>
+<p style="margin-bottom: 0cm; border: none; padding: 0cm; line-height: 0.53cm; text-align: justify;"><font color="#000000"><font face="Arial, sans-serif"><font style="font-size: 12pt;">Do ponto de vista pr&aacute;tico, o cidad&atilde;o brasileiro que se muda para o exterior deve cumprir com algumas obriga&ccedil;&otilde;es perante as autoridades locais, tal como a transmiss&atilde;o da Declara&ccedil;&atilde;o de Sa&iacute;da Definitiva para o Imposto de Renda (IR). Em rela&ccedil;&atilde;o aos investimentos financeiros que eventualmente sejam mantidos no Brasil, esses ativos devem ser transferidos para contas espec&iacute;ficas para n&atilde;o residentes (e.g. contas de investidor n&atilde;o residente), que possuem caracter&iacute;sticas e regula&ccedil;&atilde;o pr&oacute;prias.</font></font></font></p>
+<p style="margin-bottom: 0cm; border: none; padding: 0cm; line-height: 0.53cm; text-align: justify;">&nbsp;</p>
+<p style="margin-bottom: 0cm; border: none; padding: 0cm; line-height: 0.53cm; text-align: justify;"><font color="#000000"><font face="Arial, sans-serif"><font style="font-size: 12pt;">Entendemos que a migra&ccedil;&atilde;o dos ativos financeiros para a conta de n&atilde;o residente n&atilde;o corresponde &agrave; sua realiza&ccedil;&atilde;o, em que pese ser um movimento mais complexo do que uma simples transfer&ecirc;ncia de recursos (podendo envolver fechamento de c&acirc;mbio, recolhimento do IOF, comunica&ccedil;&otilde;es ao Banco Central etc). Nesse caso, n&atilde;o h&aacute; opera&ccedil;&atilde;o de venda, pois a propriedade dos ativos permanece com a mesma pessoa, apenas a qualifica&ccedil;&atilde;o do seu titular &eacute; transformada (de residente para n&atilde;o residente). Logo, se n&atilde;o h&aacute; a realiza&ccedil;&atilde;o do investimento, n&atilde;o h&aacute; incid&ecirc;ncia do IR sobre os respectivos rendimentos acumulados.</font></font></font></p>
+<p style="margin-bottom: 0cm; border: none; padding: 0cm; line-height: 0.53cm; text-align: justify;">&nbsp;</p>
+<p style="margin-bottom: 0cm; border: none; padding: 0cm; line-height: 0.53cm; text-align: justify;"><font color="#000000"><font face="Arial, sans-serif"><font style="font-size: 12pt;">&Eacute; esperado que a administra&ccedil;&atilde;o tribut&aacute;ria siga a interpreta&ccedil;&atilde;o mais conservadora do ADI n&ordm; 1</font></font></font></p>
+<p style="margin-bottom: 0cm; border: none; padding: 0cm; line-height: 0.53cm; text-align: justify;">&nbsp;</p>
+<p style="margin-bottom: 0cm; border: none; padding: 0cm; line-height: 0.53cm; text-align: justify;"><font color="#000000"><font face="Arial, sans-serif"><font style="font-size: 12pt;">Essa l&oacute;gica foi incorporada pela legisla&ccedil;&atilde;o em rela&ccedil;&atilde;o &agrave;s aplica&ccedil;&otilde;es de renda fixa em geral, ao impor que os rendimentos estejam sujeitos &agrave; reten&ccedil;&atilde;o do imposto (IRRF) pela fonte pagadora no momento da liquida&ccedil;&atilde;o, resgate, cess&atilde;o ou repactua&ccedil;&atilde;o do t&iacute;tulo ou aplica&ccedil;&atilde;o, ou, em alguns casos expressamente previstos na lei, em bases semestrais (come cotas).</font></font></font></p>
+<p style="margin-bottom: 0cm; border: none; padding: 0cm; line-height: 0.53cm; text-align: justify;">&nbsp;</p>
+<p style="margin-bottom: 0cm; border: none; padding: 0cm; line-height: 0.53cm; text-align: justify;"><font color="#000000"><font face="Arial, sans-serif"><font style="font-size: 12pt;">Sendo assim, &eacute; preciso estabelecer que o fato gerador do IR equivale &agrave; efetiva realiza&ccedil;&atilde;o da renda, n&atilde;o havendo norma legal ou constru&ccedil;&atilde;o jur&iacute;dica poss&iacute;vel que suporte a conclus&atilde;o de que a aquisi&ccedil;&atilde;o da condi&ccedil;&atilde;o de n&atilde;o residente deflagre a tributa&ccedil;&atilde;o dos rendimentos acumulados em aplica&ccedil;&otilde;es de renda fixa ainda n&atilde;o realizadas.</font></font></font></p>
+<p style="margin-bottom: 0cm; border: none; padding: 0cm; line-height: 0.53cm; text-align: justify;">&nbsp;</p>
+<p style="margin-bottom: 0cm; border: none; padding: 0cm; line-height: 0.53cm; text-align: justify;"><font color="#000000"><font face="Arial, sans-serif"><font style="font-size: 12pt;">Em janeiro deste ano, a Receita Federal publicou o Ato Declarat&oacute;rio Interpretativo n&ordm; 1 (ADI 1/2016). O ato exp&otilde;e que, para fins de aplica&ccedil;&atilde;o do regime especial de tributa&ccedil;&atilde;o de n&atilde;o residente (exceto os localizados em para&iacute;sos fiscais), o respons&aacute;vel tribut&aacute;rio dever&aacute; reter e recolher o IR sobre os rendimentos auferidos at&eacute; o dia anterior &agrave; aquisi&ccedil;&atilde;o da condi&ccedil;&atilde;o de n&atilde;o residente. Se o tributo n&atilde;o for objeto de reten&ccedil;&atilde;o na fonte, o IR dever&aacute; ser pago pelo pr&oacute;prio contribuinte ou seu representante legal.</font></font></font></p>
+<p style="margin-bottom: 0cm; border: none; padding: 0cm; line-height: 0.53cm; text-align: justify;">&nbsp;</p>
+<p style="margin-bottom: 0cm; border: none; padding: 0cm; line-height: 0.53cm; text-align: justify;"><font color="#000000"><font face="Arial, sans-serif"><font style="font-size: 12pt;">Esse regime especial, consolidado pela IN RFB n&ordm; 1.585/15 (artigo 88 e ss), &eacute; respons&aacute;vel por conferir &agrave;s pessoas f&iacute;sicas residentes no exterior a redu&ccedil;&atilde;o da al&iacute;quota do IR ou promover a sua isen&ccedil;&atilde;o total em rela&ccedil;&atilde;o &agrave; diversas classes de investimentos (e.g. t&iacute;tulos p&uacute;blicos).</font></font></font></p>
+<p style="margin-bottom: 0cm; border: none; padding: 0cm; line-height: 0.53cm; text-align: justify;">&nbsp;</p>
+<p style="margin-bottom: 0cm; border: none; padding: 0cm; line-height: 0.53cm; text-align: justify;"><font color="#000000"><font face="Arial, sans-serif"><font style="font-size: 12pt;">Consideremos que uma determinada pessoa f&iacute;sica detenha cotas de um fundo fechado com aplica&ccedil;&otilde;es em renda fixa. A legisla&ccedil;&atilde;o prev&ecirc; que a incid&ecirc;ncia do IRRF s&oacute; ocorrer&aacute; na realiza&ccedil;&atilde;o das cotas via amortiza&ccedil;&atilde;o ou aliena&ccedil;&atilde;o. O fato de essa mesma pessoa tornar-se investidor n&atilde;o residente n&atilde;o corresponde &agrave; percep&ccedil;&atilde;o de renda tribut&aacute;vel, ali&aacute;s, como os ganhos ainda n&atilde;o foram realizados, sequer haveria recursos para liquida&ccedil;&atilde;o do suposto IR devido.</font></font></font></p>
+<p style="margin-bottom: 0cm; border: none; padding: 0cm; line-height: 0.53cm; text-align: justify;">&nbsp;</p>
+<p style="margin-bottom: 0cm; border: none; padding: 0cm; line-height: 0.53cm; text-align: justify;"><font color="#000000"><font face="Arial, sans-serif"><font style="font-size: 12pt;">Uma interpreta&ccedil;&atilde;o mais apressada do ADI levaria &agrave; conclus&atilde;o de que se exige o pagamento do IR do fundo fechado no momento da sa&iacute;da definitiva do pa&iacute;s. Essa interpreta&ccedil;&atilde;o, contudo, carece de amparo legal, pois, conforme previs&atilde;o constitucional, apenas a lei &eacute; capaz de estabelecer a incid&ecirc;ncia do IR, de modo que os atos expedidos pelo Fisco n&atilde;o s&atilde;o capazes de criar fato gerador do imposto. Deslocar a incid&ecirc;ncia do IR para o momento da mudan&ccedil;a para o exterior significa alterar o fato gerador do imposto.</font></font></font></p>
+<p style="margin-bottom: 0cm; border: none; padding: 0cm; line-height: 0.53cm; text-align: justify;">&nbsp;</p>
+<p style="margin-bottom: 0cm; border: none; padding: 0cm; line-height: 0.53cm; text-align: justify;"><font color="#000000"><font face="Arial, sans-serif"><font style="font-size: 12pt;">Outra interpreta&ccedil;&atilde;o, mais fiscalista, seria entender que a qualidade de n&atilde;o residente deve ser observada ao longo de todo o investimento e, portanto, o regime especial n&atilde;o se aplicaria aos investimentos adquiridos como residente no Brasil. Por&eacute;m, esse entendimento igualmente corresponderia a condi&ccedil;&atilde;o n&atilde;o prevista em lei.</font></font></font></p>
+<p style="margin-bottom: 0cm; border: none; padding: 0cm; line-height: 0.53cm; text-align: justify;">&nbsp;</p>
+<p style="margin-bottom: 0cm; border: none; padding: 0cm; line-height: 0.53cm; text-align: justify;"><font color="#000000"><font face="Arial, sans-serif"><font style="font-size: 12pt;">A nosso ver, o ADI sobreveio com uma interpreta&ccedil;&atilde;o intermedi&aacute;ria, admitindo que, sobre a mesma aplica&ccedil;&atilde;o, podem existir rendimentos auferidos na qualidade de residente (tribut&aacute;veis) e de n&atilde;o residente (eleg&iacute;veis ao regime especial). Por&eacute;m, como determinar qual parcela do rendimento foi auferida antes ou depois da sa&iacute;da do pa&iacute;s? Essa d&uacute;vida (entre muitas outras) traz diversos desafios para a aplica&ccedil;&atilde;o da legisla&ccedil;&atilde;o em rela&ccedil;&atilde;o ao controle operacional da administra&ccedil;&atilde;o tribut&aacute;ria.</font></font></font></p>
+<p style="margin-bottom: 0cm; border: none; padding: 0cm; line-height: 0.53cm; text-align: justify;">&nbsp;</p>
+<p style="margin-bottom: 0cm; border: none; padding: 0cm; line-height: 0.53cm; text-align: justify;"><font color="#000000"><font face="Arial, sans-serif"><font style="font-size: 12pt;">O ato viria a oferecer uma solu&ccedil;&atilde;o de ordem pr&aacute;tica. Se o titular do investimento deseja ser beneficiado pelo regime especial, ent&atilde;o os rendimentos acumulados como residente devem ser tributados por ocasi&atilde;o da sa&iacute;da definitiva. De outro lado, o contribuinte poder&aacute; optar por recolher o IR apenas no momento da aliena&ccedil;&atilde;o do investimento, mas n&atilde;o far&aacute; jus ao regime especial.</font></font></font></p>
+<p style="margin-bottom: 0cm; border: none; padding: 0cm; line-height: 0.53cm; text-align: justify;">&nbsp;</p>
+<p style="margin-bottom: 0cm; border: none; padding: 0cm; line-height: 0.53cm; text-align: justify;"><font color="#000000"><font face="Arial, sans-serif"><font style="font-size: 12pt;">Dessa sorte, o ADI teria estabelecido uma condi&ccedil;&atilde;o adicional, que tamb&eacute;m, vale dizer,</font></font></font><font color="#000000"><font face="Arial, sans-serif"><font style="font-size: 12pt;">excederia os limites da lei, mas para propor norma teoricamente mais favor&aacute;vel ao contribuinte. Na pr&aacute;tica, contudo, &eacute; esperado que as entidades respons&aacute;veis pela reten&ccedil;&atilde;o do IR tendam a seguir a interpreta&ccedil;&atilde;o mais conservadora do ADI, exigindo a reten&ccedil;&atilde;o e o pagamento do IR sobre as aplica&ccedil;&otilde;es financeiras no momento em que seja feita a sa&iacute;da definitiva do pa&iacute;s.</font></font></font></p>
+<p style="margin-bottom: 0cm; border: none; padding: 0cm; line-height: 0.53cm; text-align: justify;">&nbsp;</p>
+<p style="margin-bottom: 0cm; border: none; padding: 0cm; line-height: 0.53cm; text-align: justify;"><font color="#000000"><font face="Arial, sans-serif"><font style="font-size: 12pt;">Fonte: Ibet</font></font></font></p>
+<p>&nbsp;</p>
+                            </div>
+                            
+                        </article>
+                        
+                        
+                    </div>
+                    <div class="col-md-1 hidden-sm"></div>
+                    <div class="col-md-2 col-sm-3">
+                        <aside class="widgets">
+                    <div class="widget list">
+                        <h3>Categorias</h3>
+                        <ul>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Calend%E1rio+de+Obriga%E7%F5es">Calendário de Obrigações</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Direitos+do+Consumidor">Direitos do Consumidor</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Empresarial">Empresarial</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=IRPF">IRPF</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Legisla%E7%E3o">Legislação</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Legisla%E7%E3o+Trabalhista">Legislação Trabalhista</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Previd%EAncia">Previdência</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Receita+Federal">Receita Federal</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Recursos+Humanos">Recursos Humanos</a>
+                            </li>
+ 
+                        </ul>
+                    </div>
+                    <div class="widget list">
+                        <h3>Por mês</h3>
+                        <ul>
+                        
+                            <li>
+                                <a href="/noticias/?mes=8&ano=2021">Agosto&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2021">Maio&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2021">Abril&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2021">Março&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=7&ano=2020">Julho&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2020">Maio&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2020">Abril&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2020">Março&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=10&ano=2019">Outubro&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2019">Setembro&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2019">Março&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2019">Janeiro&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=12&ano=2018">Dezembro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2018">Setembro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=6&ano=2018">Junho&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2018">Abril&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2018">Março&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=2&ano=2018">Fevereiro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2018">Janeiro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=12&ano=2017">Dezembro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=11&ano=2017">Novembro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=10&ano=2017">Outubro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2017">Setembro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=7&ano=2017">Julho&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=6&ano=2017">Junho&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2017">Maio&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2017">Abril&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2017">Março&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=2&ano=2017">Fevereiro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2017">Janeiro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=12&ano=2016">Dezembro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=11&ano=2016">Novembro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=10&ano=2016">Outubro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2016">Setembro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=8&ano=2016">Agosto&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=7&ano=2016">Julho&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=6&ano=2016">Junho&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2016">Maio&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2016">Abril&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2016">Março&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=2&ano=2016">Fevereiro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2016">Janeiro&nbsp;2016</a>
+                            </li>
+ 
+                        </ul>
+                    </div>
+
+                </aside>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+<footer class="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="footer-widget">
+                    <h2>Últimas Notícias</h2>
+                    <div class="widget-content latest-post">
+                        <ul>
+                        
+                            <li>
+                                <h3><a href="?a=noticia&id=295">BEM</a></h3>
+                                <p></p>
+                                <span class="date">26/08/2021</span>
+                            </li>
+                        
+                            <li>
+                                <h3><a href="?a=noticia&id=294">HOME OFFICE PARA GESTANTES</a></h3>
+                                <p></p>
+                                <span class="date">13/05/2021</span>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="footer-widget">
+                    <h2>Contato</h2>
+                    <div class="widget-content">
+                        <address>
+                            Rua Rep&uacute;blica do L&iacute;bano, 61 gr. 1102 <br/>
+                            Centro &ndash; Rio de Janeiro RJ
+                        </address>
+                        <address>
+                            <strong>Telefone: +55 (21) 3203-4348</strong> <br/>
+                            <strong>E-mail: condux@condux.com.br</strong>
+                        </address>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="footer-widget">
+                    <h2>Links</h2>
+                    <ul>    
+                        <li><a href="/home/">Home Page</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/empresa/">A Empresa</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="http://www.condux.com.br/ler.asp?id=1" target="_blank">Tabelas Pr&aacute;ticas</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="http://www.condux.com.br/ler.asp?id=2" target="_blank">Agenda de Obriga&ccedil;&otilde;es</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/noticias/">Not&iacute;cias</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/downloads/">Downloads</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/contato/">Contato</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="footer-info text-right">
+                    <ul class="footer-social">
+                        <li><a href="https://twitter.com/conduxBRA" target="_blank"><i class="entyp-twitter-1"></i></a></li>
+                        <li><a href="https://www.facebook.com/ConduxConsultoria" target="_blank"><i class="entyp-facebook-1"></i></a></li>
+                    </ul>
+                    <p>Copyright &copy; 2016</p>
+                    <p>CONDUX - Todos os Direitos Reservados</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="https://condux.com.br/site/js/vendor/jquery-1.11.0.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery-ui-1.10.3.custom.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.mousewheel.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.mCustomScrollbar.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.selectBoxIt.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.raty.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.flexslider.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.isotope.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.fancybox.pack.js"></script>
+<script src="https://condux.com.br/site/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
+<script src="https://condux.com.br/site/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/bootstrap.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/simpleInstagramFancybox.js"></script>
+<script src="https://condux.com.br/site/js/vendor/fitvids.js"></script>
+<script src="https://condux.com.br/site/js/main.js"></script>
+<script>
+    $('#revolution-shortcode').revolution({
+        delay : 90000,
+        hideThumbs:10,
+        navigationVOffset : -30,
+        navigationType : "none",
+        navigationStyle : "round-old",
+		startheight:700
+    });
+</script>
+<style>
+/*#revolution-shortcode { height: 700px !important }
+#revolution-shortcode > ul > li:nth-child(1) > div.slotholder { height: 700px !important }*/
+</style>
+</body>
+</html>

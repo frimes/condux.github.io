@@ -1,0 +1,609 @@
+<!--
+ * FCKeditor - The text editor for Internet - http://www.fckeditor.net
+ * Copyright (C) 2003-2009 Frederico Caldeira Knabben
+ *
+ * == BEGIN LICENSE ==
+ *
+ * Licensed under the terms of any of the following licenses at your
+ * choice:
+ *
+ *  - GNU General Public License Version 2 or later (the "GPL")
+ *    http://www.gnu.org/licenses/gpl.html
+ *
+ *  - GNU Lesser General Public License Version 2.1 or later (the "LGPL")
+ *    http://www.gnu.org/licenses/lgpl.html
+ *
+ *  - Mozilla Public License Version 1.1 or later (the "MPL")
+ *    http://www.mozilla.org/MPL/MPL-1.1.html
+ *
+ * == END LICENSE ==
+ *
+ * This is the integration file for ASP.
+ *
+ * It defines the FCKeditor class that can be used to create editor
+ * instances in ASP pages on server side.
+-->
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Condux</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, maximum-scale=1, minimum-scale=1">
+    <link rel="icon" type="image/png" href="https://condux.com.br/site/img/favicon.png">
+
+    <link rel="stylesheet" href="https://condux.com.br/site/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/flexslider.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/jquery.selectBoxIt.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/entypo.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/rs-plugin/css/settings.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/jquery.fancybox.css">
+        <link rel="stylesheet" href="https://condux.com.br/site/css/style.css">
+
+    <script src="https://condux.com.br/site/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+	
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-208708250-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-208708250-1');
+</script>
+
+</head>
+<body>
+<div class="main-wrap">
+<header class="navbar navbar-inverse">
+    <div class="normal-color with-slider">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <div id="control-logo-header">
+                                <a class="navbar-brand" href="/home/"><img src="https://condux.com.br/site/content/logo.png" alt="img"/></a>
+                            </div>
+                    </div>
+                </div>
+                <div class="col-sm-9">
+                    <div class="navbar-collapse collapse navbar-right">
+                        <ul class="nav navbar-nav social-nav">
+                            <li><a href="https://twitter.com/conduxBRA" target="_blank"><i class="entyp-twitter-1"></i></a></li>
+                            <li><a href="https://www.facebook.com/ConduxConsultoria" target="_blank"><i class="entyp-facebook-1"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="inverse-color">
+        <div class="container">
+            <div class="row">
+                <div class="navbar-collapse collapse">
+                    <div class="col-sm-12">
+                        <ul class="nav navbar-nav main-nav">
+                            <li id="control-logo-menu">
+                                <a class="navbar-brand" href="/home/"><img src="https://condux.com.br/site/content/logo.png" alt="img"/></a>
+                            </li>
+                            <li>
+                                <a href="/home/">Início</a>
+                            </li>
+                            <li>
+                                <a href="/empresa/">A empresa</a>
+                            </li>
+                            <li>
+                                <a href="/servicos/">Serviços</a>
+                            </li>
+                            <li>
+                                <a href="#">Utilitários</a>
+                                <ul>	
+                                	<li><a href="http://www.condux.com.br/ler.asp?id=1" target="_blank">Tabelas Práticas</a></li>
+                                    <li><a href="http://www.condux.com.br/ler.asp?id=2" target="_blank">Agenda de Obrigações</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="/noticias/">Notícias</a>
+                            </li>
+                            <li>
+                                <a href="/login/">Área do Cliente</a>
+                            </li>
+                            <li>
+                                <a href="/downloads/">Downloads</a>
+                            </li>
+                            <li>
+                                <a href="/contato/">Contato</a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</header>
+
+
+<section class="line top">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="col-md-4 col-sm-5 col-xs-12">
+                    <div class="title">
+                        Notícias
+                        <ul class="current-page">
+                            <li><a href="/home/">Página principal</a></li>
+                            <li>></li>
+                            <li><a href="/noticias/">Noticias</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="posts">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <article class="post ">
+                            <h3 class="uppercase">RECEITA FEDERAL ABRE HOJE CONSULTA AO SEGUNDO LOTE DE RESTITUIÇÃO DO IRPF DE 2016</h3><h4>A consulta estará disponível a partir das 9h desta sexta-feira</h4>
+                            <ul class="info">
+                                <li>
+                                    <div class="text date">sexta-feira, 8 de julho de 2016</div>
+                                </li>
+                                <li>
+                                    <i class="entyp-pencil-1"></i>
+                                    <div class="text">Publicado por CONDUX</div>
+                                </li>
+                                
+                                <li>
+                                    <a href="/noticias/?cat=IRPF">
+                                        <i class="entyp-list-1"></i>
+                                        <div class="text">IRPF</div>
+                                    </a>
+                                </li>
+                                
+                            </ul>
+                            
+                            <figure>
+                                <img src="https://condux.com.br/site/imgnews/150c.jpg" alt="RECEITA FEDERAL ABRE HOJE CONSULTA AO SEGUNDO LOTE DE RESTITUIÇÃO DO IRPF DE 2016"/>
+                                
+                            </figure>
+                            
+                            <div class="content">
+                            <p style="text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="line-height: 21.9648px; text-align: justify;">A partir das 9 horas desta sexta-feira, 8 de julho, estar&aacute; dispon&iacute;vel para consulta o segundo lote de restitui&ccedil;&atilde;o do IRPF 2016, que contempla 1.490.266 contribuintes, totalizando mais de R$ 2,5 bilh&otilde;es.&nbsp;O lote multiexerc&iacute;cio de restitui&ccedil;&atilde;o do Imposto sobre a Renda da Pessoa F&iacute;sica contempla tamb&eacute;m restitui&ccedil;&otilde;es dos exerc&iacute;cios de 2008 a 2015.</span></span></span></span></p>
+<p style="text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="line-height: 21.9648px; text-align: justify;">O cr&eacute;dito banc&aacute;rio para 1.566.533 contribuintes ser&aacute; realizado no dia 15 de julho, totalizando o valor de R$ 2,7 bilh&otilde;es. Desse total, R$ 951.605.753,26 referem-se ao quantitativo de contribuintes de que trata o Art. 69-A da Lei n&ordm; 9.784/99, sendo 477.147 contribuintes idosos e 51.310 contribuintes com alguma defici&ecirc;ncia f&iacute;sica ou mental ou mol&eacute;stia grave.</span><br style="margin: 0px; padding: 0px; list-style: none; vertical-align: baseline; color: rgb(23, 41, 56); font-family: Arial, Helvetica, sans-serif; font-size: 13.728px; line-height: 21.9648px; text-align: justify;" />
+<span style="line-height: 21.9648px; text-align: justify;">Os montantes de restitui&ccedil;&atilde;o para cada exerc&iacute;cio, e a respectiva taxa selic aplicada, podem ser acompanhados na tabela a seguir:</span></span></span><br />
+<br type="_moz" />
+</span></p>
+<table cellspacing="0" cellpadding="0" dir="ltr" border="1" style="table-layout:fixed;font-size:13px;font-family:arial,sans,sans-serif;border-collapse:collapse;border:1px solid #ccc">
+    <colgroup><col width="100" /><col width="100" /><col width="106" /><col width="235" /></colgroup>
+    <tbody>
+        <tr style="height:21px;">
+            <td style="padding: 2px 3px; border: 1px solid rgb(0, 0, 0); font-weight: bold; word-wrap: break-word; vertical-align: middle; text-align: center;" rowspan="1" colspan="4" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Lote de Restitui\u00e7\u00e3o Multiexerc\u00edcio do IRPF - JUL/2016&quot;}"><span style="color: rgb(0, 0, 0);">Lote de Restitui&ccedil;&atilde;o Multiexerc&iacute;cio do IRPF - JUL/2016</span></td>
+        </tr>
+        <tr style="height:21px;">
+            <td style="padding: 2px 3px; border-right-width: 1px; border-right-style: solid; border-right-color: rgb(0, 0, 0); border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(0, 0, 0); border-left-width: 1px; border-left-style: solid; border-left-color: rgb(0, 0, 0); word-wrap: break-word; vertical-align: middle; text-align: center;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Ano do Exerc\u00edcio&quot;}"><span style="color: rgb(0, 0, 0);">Ano do Exerc&iacute;cio</span></td>
+            <td style="padding: 2px 3px; border-right-width: 1px; border-right-style: solid; border-right-color: rgb(0, 0, 0); border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(0, 0, 0); word-wrap: break-word; vertical-align: middle; text-align: center;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;N\u00famero de Contribuintes&quot;}"><span style="color: rgb(0, 0, 0);">N&uacute;mero de Contribuintes</span></td>
+            <td style="padding: 2px 3px; border-right-width: 1px; border-right-style: solid; border-right-color: rgb(0, 0, 0); border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(0, 0, 0); word-wrap: break-word; vertical-align: middle; text-align: center;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Valor&quot;}"><span style="color: rgb(0, 0, 0);">Valor</span></td>
+            <td style="padding: 2px 3px; border-right-width: 1px; border-right-style: solid; border-right-color: rgb(0, 0, 0); border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(0, 0, 0); word-wrap: break-word; vertical-align: middle; text-align: center;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Corre\u00e7\u00e3o pela Selic &quot;}"><span style="color: rgb(0, 0, 0);">Corre&ccedil;&atilde;o pela Selic</span></td>
+        </tr>
+        <tr style="height:21px;">
+            <td style="padding:2px 3px 2px 3px;vertical-align:bottom;border-right:1px solid #000000;border-bottom:1px solid #000000;border-left:1px solid #000000;text-align:center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:2016}"><span style="color: rgb(0, 0, 0);">2016</span></td>
+            <td style="padding:2px 3px 2px 3px;vertical-align:bottom;border-right:1px solid #000000;border-bottom:1px solid #000000;text-align:center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:1490266}" data-sheets-numberformat="[null,2,&quot;#,##0&quot;,1]"><span style="color: rgb(0, 0, 0);">1.490.266</span></td>
+            <td style="padding:2px 3px 2px 3px;vertical-align:bottom;border-right:1px solid #000000;border-bottom:1px solid #000000;text-align:center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:2516420176.86}" data-sheets-numberformat="[null,2,&quot;#,##0.00&quot;,1]"><span style="color: rgb(0, 0, 0);">2.516.420.176,86</span></td>
+            <td style="padding:2px 3px 2px 3px;vertical-align:bottom;border-right:1px solid #000000;border-bottom:1px solid #000000;text-align:center;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;3,27% (maio de 2016 a julho de 2016)&quot;}"><span style="color: rgb(0, 0, 0);">3,27% (maio de 2016 a julho de 2016)</span></td>
+        </tr>
+        <tr style="height:21px;">
+            <td style="padding:2px 3px 2px 3px;vertical-align:bottom;border-right:1px solid #000000;border-bottom:1px solid #000000;border-left:1px solid #000000;text-align:center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:2015}"><span style="color: rgb(0, 0, 0);">2015</span></td>
+            <td style="padding:2px 3px 2px 3px;vertical-align:bottom;border-right:1px solid #000000;border-bottom:1px solid #000000;text-align:center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:33222}" data-sheets-numberformat="[null,2,&quot;#,##0&quot;,1]"><span style="color: rgb(0, 0, 0);">33.222</span></td>
+            <td style="padding:2px 3px 2px 3px;vertical-align:bottom;border-right:1px solid #000000;border-bottom:1px solid #000000;text-align:center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:89996127.56}" data-sheets-numberformat="[null,2,&quot;#,##0.00&quot;,1]"><span style="color: rgb(0, 0, 0);">89.996.127,56</span></td>
+            <td style="padding:2px 3px 2px 3px;vertical-align:bottom;border-right:1px solid #000000;border-bottom:1px solid #000000;text-align:center;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;16,34% (maio de 2015 a julho de 2016)&quot;}"><span style="color: rgb(0, 0, 0);">16,34% (maio de 2015 a julho de 2016)</span></td>
+        </tr>
+        <tr style="height:21px;">
+            <td style="padding:2px 3px 2px 3px;vertical-align:bottom;border-right:1px solid #000000;border-bottom:1px solid #000000;border-left:1px solid #000000;text-align:center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:2014}"><span style="color: rgb(0, 0, 0);">2014</span></td>
+            <td style="padding:2px 3px 2px 3px;vertical-align:bottom;border-right:1px solid #000000;border-bottom:1px solid #000000;text-align:center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:21947}" data-sheets-numberformat="[null,2,&quot;#,##0&quot;,1]"><span style="color: rgb(0, 0, 0);">21.947</span></td>
+            <td style="padding:2px 3px 2px 3px;vertical-align:bottom;border-right:1px solid #000000;border-bottom:1px solid #000000;text-align:center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:50789146.77}" data-sheets-numberformat="[null,2,&quot;#,##0.00&quot;,1]"><span style="color: rgb(0, 0, 0);">50.789.146,77</span></td>
+            <td style="padding:2px 3px 2px 3px;vertical-align:bottom;border-right:1px solid #000000;border-bottom:1px solid #000000;text-align:center;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;27,26% (maio de 2014 a julho 2016)&quot;}"><span style="color: rgb(0, 0, 0);">27,26% (maio de 2014 a julho 2016)</span></td>
+        </tr>
+        <tr style="height:21px;">
+            <td style="padding:2px 3px 2px 3px;vertical-align:bottom;border-right:1px solid #000000;border-bottom:1px solid #000000;border-left:1px solid #000000;text-align:center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:2013}"><span style="color: rgb(0, 0, 0);">2013</span></td>
+            <td style="padding:2px 3px 2px 3px;vertical-align:bottom;border-right:1px solid #000000;border-bottom:1px solid #000000;text-align:center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:11205}" data-sheets-numberformat="[null,2,&quot;#,##0&quot;,1]"><span style="color: rgb(0, 0, 0);">11.205</span></td>
+            <td style="padding:2px 3px 2px 3px;vertical-align:bottom;border-right:1px solid #000000;border-bottom:1px solid #000000;text-align:center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:24556717.41}" data-sheets-numberformat="[null,2,&quot;#,##0.00&quot;,1]"><span style="color: rgb(0, 0, 0);">24.556.717,41</span></td>
+            <td style="padding: 2px 3px; vertical-align: bottom; border-right-width: 1px; border-right-style: solid; border-right-color: rgb(0, 0, 0); border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(0, 0, 0); font-family: Arial; text-align: center;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;36,16% (maio de 2013 a julho 2016)&quot;}"><span style="color: rgb(0, 0, 0);">36,16% (maio de 2013 a julho 2016)</span></td>
+        </tr>
+        <tr style="height:21px;">
+            <td style="padding:2px 3px 2px 3px;vertical-align:bottom;border-right:1px solid #000000;border-bottom:1px solid #000000;border-left:1px solid #000000;text-align:center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:2012}"><span style="color: rgb(0, 0, 0);">2012</span></td>
+            <td style="padding:2px 3px 2px 3px;vertical-align:bottom;border-right:1px solid #000000;border-bottom:1px solid #000000;text-align:center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:6766}" data-sheets-numberformat="[null,2,&quot;#,##0&quot;,1]"><span style="color: rgb(0, 0, 0);">6.766</span></td>
+            <td style="padding:2px 3px 2px 3px;vertical-align:bottom;border-right:1px solid #000000;border-bottom:1px solid #000000;text-align:center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:14022335.38}" data-sheets-numberformat="[null,2,&quot;#,##0.00&quot;,1]"><span style="color: rgb(0, 0, 0);">14.022.335,38</span></td>
+            <td style="padding:2px 3px 2px 3px;vertical-align:bottom;border-right:1px solid #000000;border-bottom:1px solid #000000;text-align:center;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;43,41% (maio de 2012 a julho 2016)&quot;}"><span style="color: rgb(0, 0, 0);">43,41% (maio de 2012 a julho 2016)</span></td>
+        </tr>
+        <tr style="height:21px;">
+            <td style="padding:2px 3px 2px 3px;vertical-align:bottom;border-right:1px solid #000000;border-bottom:1px solid #000000;border-left:1px solid #000000;text-align:center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:2011}"><span style="color: rgb(0, 0, 0);">2011</span></td>
+            <td style="padding:2px 3px 2px 3px;vertical-align:bottom;border-right:1px solid #000000;border-bottom:1px solid #000000;text-align:center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:2465}"><span style="color: rgb(0, 0, 0);">2465</span></td>
+            <td style="padding:2px 3px 2px 3px;vertical-align:bottom;border-right:1px solid #000000;border-bottom:1px solid #000000;text-align:center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:3088390.52}" data-sheets-numberformat="[null,2,&quot;#,##0.00&quot;,1]"><span style="color: rgb(0, 0, 0);">3.088.390,52</span></td>
+            <td style="padding: 2px 3px; vertical-align: bottom; border-right-width: 1px; border-right-style: solid; border-right-color: rgb(0, 0, 0); border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(0, 0, 0); font-family: Arial; text-align: center;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;54,16% (maio de 2011 a julho 2016)&quot;}"><span style="color: rgb(0, 0, 0);">54,16% (maio de 2011 a julho 2016)</span></td>
+        </tr>
+        <tr style="height:21px;">
+            <td style="padding:2px 3px 2px 3px;vertical-align:bottom;border-right:1px solid #000000;border-bottom:1px solid #000000;border-left:1px solid #000000;text-align:center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:2010}"><span style="color: rgb(0, 0, 0);">2010</span></td>
+            <td style="padding:2px 3px 2px 3px;vertical-align:bottom;border-right:1px solid #000000;border-bottom:1px solid #000000;text-align:center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:258}"><span style="color: rgb(0, 0, 0);">258</span></td>
+            <td style="padding:2px 3px 2px 3px;vertical-align:bottom;border-right:1px solid #000000;border-bottom:1px solid #000000;text-align:center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:557664.25}" data-sheets-numberformat="[null,2,&quot;#,##0.00&quot;,1]"><span style="color: rgb(0, 0, 0);">557.664,25</span></td>
+            <td style="padding: 2px 3px; vertical-align: bottom; border-right-width: 1px; border-right-style: solid; border-right-color: rgb(0, 0, 0); border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(0, 0, 0); font-family: Arial; text-align: center;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;64,31% (maio de 2010 a julho 2016)&quot;}"><span style="color: rgb(0, 0, 0);">64,31% (maio de 2010 a julho 2016)</span></td>
+        </tr>
+        <tr style="height:21px;">
+            <td style="padding:2px 3px 2px 3px;vertical-align:bottom;border-right:1px solid #000000;border-bottom:1px solid #000000;border-left:1px solid #000000;text-align:center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:2009}"><span style="color: rgb(0, 0, 0);">2009</span></td>
+            <td style="padding:2px 3px 2px 3px;vertical-align:bottom;border-right:1px solid #000000;border-bottom:1px solid #000000;text-align:center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:163}"><span style="color: rgb(0, 0, 0);">163</span></td>
+            <td style="padding:2px 3px 2px 3px;vertical-align:bottom;border-right:1px solid #000000;border-bottom:1px solid #000000;text-align:center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:400179.67}" data-sheets-numberformat="[null,2,&quot;#,##0.00&quot;,1]"><span style="color: rgb(0, 0, 0);">400.179,67</span></td>
+            <td style="padding: 2px 3px; vertical-align: bottom; border-right-width: 1px; border-right-style: solid; border-right-color: rgb(0, 0, 0); border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(0, 0, 0); font-family: Arial; text-align: center;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;72,77% (maio de 2009 a julho 2016)&quot;}"><span style="color: rgb(0, 0, 0);">72,77% (maio de 2009 a julho 2016)</span></td>
+        </tr>
+        <tr style="height:21px;">
+            <td style="padding:2px 3px 2px 3px;vertical-align:bottom;border-right:1px solid #000000;border-bottom:1px solid #000000;border-left:1px solid #000000;text-align:center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:2008}"><span style="color: rgb(0, 0, 0);">2008</span></td>
+            <td style="padding:2px 3px 2px 3px;vertical-align:bottom;border-right:1px solid #000000;border-bottom:1px solid #000000;text-align:center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:241}"><span style="color: rgb(0, 0, 0);">241</span></td>
+            <td style="padding:2px 3px 2px 3px;vertical-align:bottom;border-right:1px solid #000000;border-bottom:1px solid #000000;text-align:center;" data-sheets-value="{&quot;1&quot;:3,&quot;3&quot;:169261.58}" data-sheets-numberformat="[null,2,&quot;#,##0.00&quot;,1]"><span style="color: rgb(0, 0, 0);">169.261,58</span></td>
+            <td style="padding: 2px 3px; vertical-align: bottom; border-right-width: 1px; border-right-style: solid; border-right-color: rgb(0, 0, 0); border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(0, 0, 0); font-family: Arial; text-align: center;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;84,84% (maio de 2008 a julho 2016)&quot;}"><span style="color: rgb(0, 0, 0);">84,84% (maio de 2008 a julho 2016)</span></td>
+        </tr>
+    </tbody>
+</table>
+<p style="text-align: justify;"><span style="color: rgb(0, 0, 0);"><br type="_moz" />
+</span></p>
+<p style="text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="margin: 0px; padding: 0px; list-style: none; vertical-align: baseline;">A Receita disponibiliza, ainda, aplicativo para tablets e smartphones que facilita consulta &agrave;s declara&ccedil;&otilde;es do IRPF e situa&ccedil;&atilde;o cadastral no CPF. Com ele ser&aacute; poss&iacute;vel consultar diretamente nas bases da Receita Federal informa&ccedil;&otilde;es sobre libera&ccedil;&atilde;o das restitui&ccedil;&otilde;es do IRPF e a situa&ccedil;&atilde;o cadastral de uma inscri&ccedil;&atilde;o no CPF.</span></span></span></span></p>
+<p style="text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;">A restitui&ccedil;&atilde;o ficar&aacute; dispon&iacute;vel no banco durante um ano. Se o contribuinte n&atilde;o fizer o resgate nesse prazo, dever&aacute; requer&ecirc;-la por meio da Internet, mediante o Formul&aacute;rio Eletr&ocirc;nico - Pedido de Pagamento de Restitui&ccedil;&atilde;o, ou diretamente no e-CAC, no servi&ccedil;o Extrato do Processamento da DIRPF.</span></span></span></p>
+<p style="text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;">Caso o valor n&atilde;o seja creditado, o contribuinte poder&aacute; contatar pessoalmente qualquer ag&ecirc;ncia do BB ou ligar para a Central de Atendimento por meio do telefone 4004-0001 (capitais), 0800-729-0001 (demais localidades) e 0800-729-0088 (telefone especial exclusivo para deficientes auditivos) para agendar o cr&eacute;dito em conta-corrente ou poupan&ccedil;a, em seu nome, em qualquer banco.</span></span></span></p>
+<p style="text-align: justify;"><span style="color: rgb(0, 0, 0);"><br type="_moz" />
+</span><span style="color: rgb(0, 0, 0);"><span style="font-size: 14px;"><span style="font-family: Arial;">Fonte: Site da Receita Federal&nbsp;</span></span></span></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+                            </div>
+                            
+                        </article>
+                        
+                        
+                    </div>
+                    <div class="col-md-1 hidden-sm"></div>
+                    <div class="col-md-2 col-sm-3">
+                        <aside class="widgets">
+                    <div class="widget list">
+                        <h3>Categorias</h3>
+                        <ul>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Calend%E1rio+de+Obriga%E7%F5es">Calendário de Obrigações</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Direitos+do+Consumidor">Direitos do Consumidor</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Empresarial">Empresarial</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=IRPF">IRPF</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Legisla%E7%E3o">Legislação</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Legisla%E7%E3o+Trabalhista">Legislação Trabalhista</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Previd%EAncia">Previdência</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Receita+Federal">Receita Federal</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Recursos+Humanos">Recursos Humanos</a>
+                            </li>
+ 
+                        </ul>
+                    </div>
+                    <div class="widget list">
+                        <h3>Por mês</h3>
+                        <ul>
+                        
+                            <li>
+                                <a href="/noticias/?mes=8&ano=2021">Agosto&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2021">Maio&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2021">Abril&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2021">Março&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=7&ano=2020">Julho&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2020">Maio&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2020">Abril&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2020">Março&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=10&ano=2019">Outubro&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2019">Setembro&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2019">Março&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2019">Janeiro&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=12&ano=2018">Dezembro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2018">Setembro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=6&ano=2018">Junho&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2018">Abril&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2018">Março&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=2&ano=2018">Fevereiro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2018">Janeiro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=12&ano=2017">Dezembro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=11&ano=2017">Novembro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=10&ano=2017">Outubro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2017">Setembro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=7&ano=2017">Julho&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=6&ano=2017">Junho&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2017">Maio&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2017">Abril&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2017">Março&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=2&ano=2017">Fevereiro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2017">Janeiro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=12&ano=2016">Dezembro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=11&ano=2016">Novembro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=10&ano=2016">Outubro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2016">Setembro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=8&ano=2016">Agosto&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=7&ano=2016">Julho&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=6&ano=2016">Junho&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2016">Maio&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2016">Abril&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2016">Março&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=2&ano=2016">Fevereiro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2016">Janeiro&nbsp;2016</a>
+                            </li>
+ 
+                        </ul>
+                    </div>
+
+                </aside>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+<footer class="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="footer-widget">
+                    <h2>Últimas Notícias</h2>
+                    <div class="widget-content latest-post">
+                        <ul>
+                        
+                            <li>
+                                <h3><a href="?a=noticia&id=295">BEM</a></h3>
+                                <p></p>
+                                <span class="date">26/08/2021</span>
+                            </li>
+                        
+                            <li>
+                                <h3><a href="?a=noticia&id=294">HOME OFFICE PARA GESTANTES</a></h3>
+                                <p></p>
+                                <span class="date">13/05/2021</span>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="footer-widget">
+                    <h2>Contato</h2>
+                    <div class="widget-content">
+                        <address>
+                            Rua Rep&uacute;blica do L&iacute;bano, 61 gr. 1102 <br/>
+                            Centro &ndash; Rio de Janeiro RJ
+                        </address>
+                        <address>
+                            <strong>Telefone: +55 (21) 3203-4348</strong> <br/>
+                            <strong>E-mail: condux@condux.com.br</strong>
+                        </address>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="footer-widget">
+                    <h2>Links</h2>
+                    <ul>    
+                        <li><a href="/home/">Home Page</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/empresa/">A Empresa</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="http://www.condux.com.br/ler.asp?id=1" target="_blank">Tabelas Pr&aacute;ticas</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="http://www.condux.com.br/ler.asp?id=2" target="_blank">Agenda de Obriga&ccedil;&otilde;es</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/noticias/">Not&iacute;cias</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/downloads/">Downloads</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/contato/">Contato</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="footer-info text-right">
+                    <ul class="footer-social">
+                        <li><a href="https://twitter.com/conduxBRA" target="_blank"><i class="entyp-twitter-1"></i></a></li>
+                        <li><a href="https://www.facebook.com/ConduxConsultoria" target="_blank"><i class="entyp-facebook-1"></i></a></li>
+                    </ul>
+                    <p>Copyright &copy; 2016</p>
+                    <p>CONDUX - Todos os Direitos Reservados</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="https://condux.com.br/site/js/vendor/jquery-1.11.0.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery-ui-1.10.3.custom.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.mousewheel.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.mCustomScrollbar.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.selectBoxIt.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.raty.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.flexslider.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.isotope.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.fancybox.pack.js"></script>
+<script src="https://condux.com.br/site/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
+<script src="https://condux.com.br/site/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/bootstrap.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/simpleInstagramFancybox.js"></script>
+<script src="https://condux.com.br/site/js/vendor/fitvids.js"></script>
+<script src="https://condux.com.br/site/js/main.js"></script>
+<script>
+    $('#revolution-shortcode').revolution({
+        delay : 90000,
+        hideThumbs:10,
+        navigationVOffset : -30,
+        navigationType : "none",
+        navigationStyle : "round-old",
+		startheight:700
+    });
+</script>
+<style>
+/*#revolution-shortcode { height: 700px !important }
+#revolution-shortcode > ul > li:nth-child(1) > div.slotholder { height: 700px !important }*/
+</style>
+</body>
+</html>

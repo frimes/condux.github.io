@@ -1,0 +1,564 @@
+<!--
+ * FCKeditor - The text editor for Internet - http://www.fckeditor.net
+ * Copyright (C) 2003-2009 Frederico Caldeira Knabben
+ *
+ * == BEGIN LICENSE ==
+ *
+ * Licensed under the terms of any of the following licenses at your
+ * choice:
+ *
+ *  - GNU General Public License Version 2 or later (the "GPL")
+ *    http://www.gnu.org/licenses/gpl.html
+ *
+ *  - GNU Lesser General Public License Version 2.1 or later (the "LGPL")
+ *    http://www.gnu.org/licenses/lgpl.html
+ *
+ *  - Mozilla Public License Version 1.1 or later (the "MPL")
+ *    http://www.mozilla.org/MPL/MPL-1.1.html
+ *
+ * == END LICENSE ==
+ *
+ * This is the integration file for ASP.
+ *
+ * It defines the FCKeditor class that can be used to create editor
+ * instances in ASP pages on server side.
+-->
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Condux</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, maximum-scale=1, minimum-scale=1">
+    <link rel="icon" type="image/png" href="https://condux.com.br/site/img/favicon.png">
+
+    <link rel="stylesheet" href="https://condux.com.br/site/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/flexslider.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/jquery.selectBoxIt.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/entypo.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/rs-plugin/css/settings.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/jquery.fancybox.css">
+        <link rel="stylesheet" href="https://condux.com.br/site/css/style.css">
+
+    <script src="https://condux.com.br/site/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+	
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-208708250-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-208708250-1');
+</script>
+
+</head>
+<body>
+<div class="main-wrap">
+<header class="navbar navbar-inverse">
+    <div class="normal-color with-slider">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <div id="control-logo-header">
+                                <a class="navbar-brand" href="/home/"><img src="https://condux.com.br/site/content/logo.png" alt="img"/></a>
+                            </div>
+                    </div>
+                </div>
+                <div class="col-sm-9">
+                    <div class="navbar-collapse collapse navbar-right">
+                        <ul class="nav navbar-nav social-nav">
+                            <li><a href="https://twitter.com/conduxBRA" target="_blank"><i class="entyp-twitter-1"></i></a></li>
+                            <li><a href="https://www.facebook.com/ConduxConsultoria" target="_blank"><i class="entyp-facebook-1"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="inverse-color">
+        <div class="container">
+            <div class="row">
+                <div class="navbar-collapse collapse">
+                    <div class="col-sm-12">
+                        <ul class="nav navbar-nav main-nav">
+                            <li id="control-logo-menu">
+                                <a class="navbar-brand" href="/home/"><img src="https://condux.com.br/site/content/logo.png" alt="img"/></a>
+                            </li>
+                            <li>
+                                <a href="/home/">Início</a>
+                            </li>
+                            <li>
+                                <a href="/empresa/">A empresa</a>
+                            </li>
+                            <li>
+                                <a href="/servicos/">Serviços</a>
+                            </li>
+                            <li>
+                                <a href="#">Utilitários</a>
+                                <ul>	
+                                	<li><a href="http://www.condux.com.br/ler.asp?id=1" target="_blank">Tabelas Práticas</a></li>
+                                    <li><a href="http://www.condux.com.br/ler.asp?id=2" target="_blank">Agenda de Obrigações</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="/noticias/">Notícias</a>
+                            </li>
+                            <li>
+                                <a href="/login/">Área do Cliente</a>
+                            </li>
+                            <li>
+                                <a href="/downloads/">Downloads</a>
+                            </li>
+                            <li>
+                                <a href="/contato/">Contato</a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</header>
+
+
+<section class="line top">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="col-md-4 col-sm-5 col-xs-12">
+                    <div class="title">
+                        Notícias
+                        <ul class="current-page">
+                            <li><a href="/home/">Página principal</a></li>
+                            <li>></li>
+                            <li><a href="/noticias/">Noticias</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="posts">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <article class="post ">
+                            <h3 class="uppercase">ARRECADAÇÃO DO ISS SERÁ REPASSADA AO LOCAL DE CONSUMO DO SERVIÇO</h3><h4>Parecem ter chegado ao fim as discussões em torno de um dos pontos mais polêmicos da reforma do ISS: a previsão de arrecadação do tributo no local de consumo do serviço.</h4>
+                            <ul class="info">
+                                <li>
+                                    <div class="text date">segunda-feira, 3 de julho de 2017</div>
+                                </li>
+                                <li>
+                                    <i class="entyp-pencil-1"></i>
+                                    <div class="text">Publicado por CONDUX</div>
+                                </li>
+                                
+                                <li>
+                                    <a href="/noticias/?cat=Legisla%E7%E3o">
+                                        <i class="entyp-list-1"></i>
+                                        <div class="text">Legislação</div>
+                                    </a>
+                                </li>
+                                
+                            </ul>
+                            
+                            <figure>
+                                <img src="https://condux.com.br/site/imgnews/221c.jpg" alt="ARRECADAÇÃO DO ISS SERÁ REPASSADA AO LOCAL DE CONSUMO DO SERVIÇO"/>
+                                
+                            </figure>
+                            
+                            <div class="content">
+                            
+                                <p>
+                                    <strong>
+                                       Parecem ter chegado ao fim as discussões em torno de um dos pontos mais polêmicos da reforma do ISS: a previsão de arrecadação do tributo no local de consumo do serviço.
+                                    </strong>
+                                </p>
+                            <p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;"><span style="font-size: 15px;">Ap&oacute;s a aprova&ccedil;&atilde;o de uma s&eacute;rie de medidas que alteraram o Imposto sobre Servi&ccedil;os (ISS), como a sua incid&ecirc;ncia sobre o armazenamento ou hospedagem de dados, sobre a elabora&ccedil;&atilde;o de softwares e sobre a distribui&ccedil;&atilde;o de conte&uacute;do pela internet, parecem ter chegado ao fim as discuss&otilde;es em torno de um dos pontos mais pol&ecirc;micos da reforma do ISS: a previs&atilde;o de arrecada&ccedil;&atilde;o do tributo no local de consumo do servi&ccedil;o.</span></span></span></p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;"><span style="font-size: 15px;">Com a derrubada do Veto n&ordm; 52/2016, o recolhimento do ISS ser&aacute; feito no munic&iacute;pio do domic&iacute;lio dos clientes de cart&otilde;es de cr&eacute;dito e d&eacute;bito, leasing e de planos de sa&uacute;de, e n&atilde;o mais no munic&iacute;pio do estabelecimento que presta esses servi&ccedil;os.</span></span></span></p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;"><span style="font-size: 15px;">O assunto j&aacute; constava no texto aprovado anteriormente pelo Congresso Nacional, mas havia sido vetado pelo presidente Michel Temer. No entanto o Senado Federal decidiu pela derrubada do veto presidencial na sess&atilde;o realizada em 30 de maio.</span></span></span></p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;"><span style="font-size: 15px;">A vota&ccedil;&atilde;o que selou a mudan&ccedil;a teve o aval do Pal&aacute;cio do Planalto, que com isso fez um aceno aos prefeitos em momento de intensa crise pol&iacute;tica. Semanas antes, o governo do presidente Michel Temer tamb&eacute;m lan&ccedil;ou um parcelamento de d&iacute;vidas previdenci&aacute;rias para estados e munic&iacute;pios.</span></span></span></p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;"><span style="font-size: 15px;">A CNM comemorou a decis&atilde;o, que, segundo ela, acaba com &quot;desvios&quot; e &quot;subterf&uacute;gios&quot; usados por alguns munic&iacute;pios para atrair empresas desses setores, gerando uma concentra&ccedil;&atilde;o entre poucas sedes. &quot;As empresas estavam tendo benef&iacute;cios que n&atilde;o poderiam ter&quot;, diz o presidente da entidade, Paulo Ziulkoski.</span></span></span></p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;"><span style="font-size: 15px;">Entre essas vantagens, diz, est&aacute; a redu&ccedil;&atilde;o artificial das al&iacute;quotas por meio de descontos na base de c&aacute;lculo do tributo. A lei prev&ecirc; que a cobran&ccedil;a do ISS deve ser de 2% a 5%, mas algumas prefeituras recolhiam, na pr&aacute;tica, menos de 0,5%, uma vez que descontavam da base de c&aacute;lculo pagamentos de outros tributos, como PIS/Cofins. &quot;Agora, quem cobrar menos ficar&aacute; sujeito a improbidade. Seguramente vai aumentar a arrecada&ccedil;&atilde;o&quot;, diz Ziulkoski, apostando no fim da &quot;guerra fiscal&quot; entre munic&iacute;pios.</span></span></span></p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;"><span style="font-size: 15px;">As empresas dizem que v&atilde;o cumprir a lei, mas n&atilde;o perdem a oportunidade de criticar a medida. O principal impacto mencionado &eacute; a necessidade de passarem a ter milhares de inscri&ccedil;&otilde;es municipais para recolher o ISS &agrave;s prefeituras. &quot;Isso &eacute; quase um pesadelo operacional&quot;, diz o diretor executivo da Associa&ccedil;&atilde;o Brasileira das Empresas de Cart&atilde;o de Cr&eacute;dito e Servi&ccedil;os (Abecs), Ricardo Vieira.</span></span></span></p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;"><span style="font-size: 15px;">Outro ponto citado pelas companhias &eacute; que os benef&iacute;cios &agrave;s prefeituras n&atilde;o ser&atilde;o t&atilde;o grandes se comparados &agrave;s complica&ccedil;&otilde;es trazidas pela altera&ccedil;&atilde;o. A Abecs estima que o setor pague aproximadamente R$ 600 milh&otilde;es ao ano, considerando a al&iacute;quota m&aacute;xima de 5%. &quot;Isso significa que mais de 3,8 mil munic&iacute;pios n&atilde;o ter&atilde;o renda superior a R$ 2 mil por ano (com ISS sobre cart&otilde;es). E essa &eacute; uma estimativa conservadora&quot;, afirma Vieira. A CNM estima arrecada&ccedil;&atilde;o anual de R$ 2,87 bilh&otilde;es com ISS sobre cart&otilde;es de cr&eacute;dito e d&eacute;bito.</span></span></span></p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;"><span style="font-size: 15px;">A Lei Complementar n&ordm; 157 entrou em vigor na data da sua publica&ccedil;&atilde;o, 30 de dezembro de 2016, por&eacute;m suas altera&ccedil;&otilde;es somente come&ccedil;aram a vigorar a partir do dia 30 de mar&ccedil;o de 2017, em aten&ccedil;&atilde;o ao princ&iacute;pio constitucional da anterioridade. J&aacute; as recentes altera&ccedil;&otilde;es devem passar a valer em 2018.</span></span></span></p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;"><span style="font-size: 15px;">Legisla&ccedil;&otilde;es municipais devem ser adequadas para que regra vigore</span></span></span></p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;"><span style="font-size: 15px;">O advogado especialista em Direito Tribut&aacute;rio Henry Lummertz, do escrit&oacute;rio Souto, Correa, Cesa, Lummertz &amp; Amaral Advogados, alerta que, mesmo com a aprova&ccedil;&atilde;o da Lei Complementar n&ordm; 157/2016, cabe aos munic&iacute;pios editar sua legisla&ccedil;&atilde;o a fim de contemplar as altera&ccedil;&otilde;es. Cabe &agrave;s c&acirc;maras de vereadores incluir aqueles casos em que haver&aacute; altera&ccedil;&atilde;o no recolhimento - leasing, franchising, planos de sa&uacute;de e administradoras de cart&otilde;es de cr&eacute;dito.</span></span></span></p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;"><span style="font-size: 15px;">A mudan&ccedil;a, ressalta Lummertz, ir&aacute; tomar muito mais tempo dos gestores e exigir&aacute; aten&ccedil;&atilde;o redobrada, j&aacute; que, al&eacute;m de precisar fazer o recolhimento em mais munic&iacute;pios, dever&aacute; analisar se todos os munic&iacute;pios j&aacute; realizaram a altera&ccedil;&atilde;o em sua legisla&ccedil;&atilde;o. &quot;Dever&aacute; ser feita uma avalia&ccedil;&atilde;o minuciosa de cada caso. Pode acontecer de o munic&iacute;pio onde est&aacute; sediada a empresa acatar a mudan&ccedil;a, e aquele onde est&aacute; domiciliado o tomador n&atilde;o faz&ecirc;-lo. Neste caso, a empresa cessaria o recolhimento&quot;, exemplifica o especialista.</span></span></span></p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;"><span style="font-size: 15px;">Para essas situa&ccedil;&otilde;es ou quando dois munic&iacute;pios estiverem requerendo o pagamento, o mais indicado &eacute; abrir uma consignat&oacute;ria em pagamento. &quot;Assim a empresa passa a depositar o valor em ju&iacute;zo; e os munic&iacute;pios, a discutir judicialmente quem deve receber o pagamento. &Eacute; como se a empresa dissesse: eu devo s&oacute; que n&atilde;o sei pra quem&quot;, defende o advogado.</span></span></span></p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;"><span style="font-size: 15px;">Porto Alegre &eacute; um caso em que os gestores devem ficar atentos, alerta Lummertz. Uma lei que instituiu mudan&ccedil;as no recolhimento do ISS foi aprovada pela C&acirc;mara de Vereadores no final do ano passado, antes mesmo da san&ccedil;&atilde;o da LC 157/2016. Por isso, al&eacute;m de incluir as novidades referentes &agrave;quelas transa&ccedil;&otilde;es que passam a ter recolhimento do imposto no domic&iacute;lio do contratante, ser&aacute; preciso avaliar se as disposi&ccedil;&otilde;es aprovadas em 2016 s&atilde;o legais.</span></span></span></p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;"><span style="font-size: 15px;">Os munic&iacute;pios defendem a cobran&ccedil;a desde j&aacute; do ISS distribu&iacute;do, mas advogados tributaristas argumentam que isso n&atilde;o &eacute; o correto. &quot;Precisa de lei municipal para regulamentar (a cobran&ccedil;a). Alguns munic&iacute;pios querem cobrar direto, mas isso n&atilde;o se sustenta&quot;, avalia o vice-presidente do Instituto de Estudos Tribut&aacute;rios (IET), Rafael Korff Wagner.</span></span></span></p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;"><span style="font-size: 15px;">Wagner critica a iniciativa do governo, que torna a cobran&ccedil;a do ISS sobre cart&otilde;es de cr&eacute;dito, leasing e planos de sa&uacute;de &quot;invi&aacute;vel&quot;. &quot;Poderia prever o que parece mais l&oacute;gico e adequado, uma unifica&ccedil;&atilde;o de impostos e a concentra&ccedil;&atilde;o da cobran&ccedil;a por um ente; e a Uni&atilde;o, sim, repassaria aos munic&iacute;pios a parcela que lhes caberia. Mas a reforma tribut&aacute;ria &eacute; algo que est&aacute; sempre s&oacute; no radar, nunca sai do papel&quot;, diz.</span></span></span></p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;"><span style="font-size: 15px;">A Lei Complementar n&ordm; 157/2016 alterou algumas regras sobre o Imposto sobre Servi&ccedil;os (ISS). A lei fixa em 2% a al&iacute;quota m&iacute;nima do imposto, na tentativa de acabar com a guerra fiscal entre os munic&iacute;pios, estabelece as exce&ccedil;&otilde;es permitidas e amplia a lista de servi&ccedil;os alcan&ccedil;ados pelo tributo. A nova regulamenta&ccedil;&atilde;o tipifica como ato de improbidade administrativa a concess&atilde;o do benef&iacute;cio abaixo da al&iacute;quota m&iacute;nima.</span></span></span></p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;"><span style="font-size: 15px;">A previs&atilde;o de que a al&iacute;quota m&iacute;nima do ISS &eacute; de 2% busca acabar com a guerra fiscal entre munic&iacute;pios. Assim, finalmente, o legislador complementar desempenha a compet&ecirc;ncia que o constituinte havia lhe atribu&iacute;do, restando superada a previs&atilde;o transit&oacute;ria contida no Ato das Disposi&ccedil;&otilde;es Constitucionais Transit&oacute;rias (ADCT).</span></span></span></p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;"><span style="font-size: 15px;">Tal como j&aacute; previsto no ADCT, &eacute; proibida a concess&atilde;o de isen&ccedil;&otilde;es, incentivos e benef&iacute;cios tribut&aacute;rios ou financeiros, inclusive de redu&ccedil;&atilde;o de base de c&aacute;lculo ou de cr&eacute;dito presumido ou outorgado, ou qualquer outra forma que resulte, direta ou indiretamente, em uma carga tribut&aacute;ria menor que a decorrente da aplica&ccedil;&atilde;o da al&iacute;quota m&iacute;nima de 2%.</span></span></span></p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;"><span style="font-size: 15px;">Caso o munic&iacute;pio desrespeite essa proibi&ccedil;&atilde;o e o tomador ou intermedi&aacute;rio esteja localizado em outro munic&iacute;pio, o ISS passar&aacute; a ser devido ao munic&iacute;pio onde estiver localizado o tomador ou intermedi&aacute;rio do servi&ccedil;o, que dever&aacute; reter e recolher o imposto, assegurando-se ao prestador do servi&ccedil;o o direito de reaver o valor que houver recolhido ao munic&iacute;pio onde estiver localizado. Excetuam-se dessa veda&ccedil;&atilde;o apenas os servi&ccedil;os de execu&ccedil;&atilde;o de obras de constru&ccedil;&atilde;o civil; de repara&ccedil;&atilde;o, conserva&ccedil;&atilde;o e reforma de obras de constru&ccedil;&atilde;o civil; e de transporte coletivo municipal rodovi&aacute;rio, metrovi&aacute;rio, ferrovi&aacute;rio e aquavi&aacute;rio de passageiros.</span></span></span></p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;"><span style="font-size: 15px;">Passou a haver, ainda, a previs&atilde;o de que est&aacute; submetido &agrave; incid&ecirc;ncia do ISS o armazenamento ou hospedagem de dados, textos, imagens, v&iacute;deos, p&aacute;ginas eletr&ocirc;nicas, aplicativos, sistemas de informa&ccedil;&atilde;o, entre outros formatos. At&eacute; ent&atilde;o, havia previs&atilde;o expressa da incid&ecirc;ncia do ISS apenas em rela&ccedil;&atilde;o ao processamento de dados.</span></span></span></p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;"><span style="font-size: 15px;">Os servi&ccedil;os de elabora&ccedil;&atilde;o de softwares tamb&eacute;m est&atilde;o sujeitos &agrave; incid&ecirc;ncia do ISS independentemente da arquitetura construtiva da m&aacute;quina em que o programa ser&aacute; executado, incluindo tablets, smartphones e cong&ecirc;neres. Tamb&eacute;m passa a haver a incid&ecirc;ncia de ISS sobre a distribui&ccedil;&atilde;o de conte&uacute;do pela internet e a disponibiliza&ccedil;&atilde;o, sem cess&atilde;o definitiva, de conte&uacute;dos de &aacute;udio, v&iacute;deo, imagem e texto por meio da internet. A inten&ccedil;&atilde;o foi submeter &agrave; cobran&ccedil;a do ISS opera&ccedil;&otilde;es como aquelas da Netflix ou do Spotify. Foi ressalvada a &quot;distribui&ccedil;&atilde;o de conte&uacute;dos pelas prestadoras de Servi&ccedil;o de Acesso Condicionado&quot;, disciplinada pela Lei n&ordm; 12.485/2011, que &eacute; submetida ao ICMS; e a distribui&ccedil;&atilde;o de livros, jornais e peri&oacute;dicos, em respeito &agrave; imunidade que os beneficia.</span></span></span></p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;"><span style="font-size: 15px;">Servi&ccedil;os ligados &agrave; atividade de reflorestamento e de inser&ccedil;&atilde;o de textos, desenhos e outros materiais de propaganda e publicidade, em qualquer meio, tamb&eacute;m est&atilde;o submetidos ao imposto. Anteriormente, havia a previs&atilde;o expressa da incid&ecirc;ncia do ISS apenas sobre os servi&ccedil;os de florestamento, reflorestamento, semeadura e aduba&ccedil;&atilde;o.</span></span></span></p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;"><span style="font-size: 15px;">Medida deve p&ocirc;r fim &agrave; guerra fiscal</span></span></span></p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;"><span style="font-size: 15px;">Conforme proje&ccedil;&atilde;o da Confedera&ccedil;&atilde;o Nacional dos Munic&iacute;pios (CNM), as cidades brasileiras devem arrecadar mais de R$ 6 bilh&otilde;es, que ser&atilde;o redistribu&iacute;dos de forma equ&acirc;nime, impactando positivamente a economia dos munic&iacute;pios e se fazendo justi&ccedil;a tribut&aacute;ria. &quot;Voc&ecirc; redistribui para todos os munic&iacute;pios. Inclusive o mais pequenininho munic&iacute;pio do Nordeste vai poder, de alguma forma, receber tamb&eacute;m tributo do ISS. Ocorre que hoje, dos R$ 54 bilh&otilde;es que foram pagos no ano passado de ISS, 37 cidades abocanharam mais de 60% deles. Com essa decis&atilde;o, n&oacute;s come&ccedil;amos a reverter essa situa&ccedil;&atilde;o&quot;, defende o presidente da CNM, Paulo Ziulkoski.</span></span></span></p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;"><span style="font-size: 15px;">O mecanismo havia sido vetado, pois, segundo o governo, a mudan&ccedil;a traria &quot;uma potencial perda de efici&ecirc;ncia e de arrecada&ccedil;&atilde;o tribut&aacute;ria, al&eacute;m de redundar em aumento de custos para empresas do setor, que seriam repassados ao custo final&quot;, ou seja, ao consumidor. Diversos senadores e deputados defenderam a derrubada do veto, por entenderem que os estados e munic&iacute;pios ser&atilde;o beneficiados com mais recursos. A derrubada do veto, que acarreta na san&ccedil;&atilde;o do texto original da Lei Complementar n&ordm; 157/2016 conforme aprovado no Congresso, permitir&aacute; uma redistribui&ccedil;&atilde;o anual de cerca de R$ 6 bilh&otilde;es aos munic&iacute;pios brasileiros. Segundo informa&ccedil;&otilde;es da CNM, aproximadamente R$ 2,87 bilh&otilde;es ser&atilde;o repassados aos munic&iacute;pios onde o tomador do servi&ccedil;o est&aacute; estabelecido, nesse caso onde est&atilde;o localizados os restaurantes, farm&aacute;cias, postos de gasolina etc. Isto no caso dos servi&ccedil;os de administra&ccedil;&atilde;o de cart&otilde;es de cr&eacute;dito e d&eacute;bito. No caso do leasing, ser&atilde;o cerca de R$ 2,6 bilh&otilde;es distribu&iacute;dos. Antes, esse recurso ficava nas m&atilde;os de apenas 35 munic&iacute;pios.</span></span></span></p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;"><span style="font-size: 15px;">E, no caso dos planos de sa&uacute;de, mais de 2 mil munic&iacute;pios com estabelecimentos de sa&uacute;de que atendem por planos e conv&ecirc;nios, conforme dados da Ag&ecirc;ncia Nacional de Sa&uacute;de (ANS), passar&atilde;o a receber o ISS dessa opera&ccedil;&atilde;o. Da forma em que estava, apenas 370 munic&iacute;pios recebiam tal receita.</span></span></span></p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;"><span style="font-size: 15px;">Se o veto n&atilde;o fosse derrubado, a forma de distribui&ccedil;&atilde;o dos recursos arrecadados com o imposto continuaria como est&aacute;, com mais de 60% das receitas nas m&atilde;os de 35 munic&iacute;pios. Cerca de 100 munic&iacute;pios respondem por 78% de todo o ISS. Segundo a confedera&ccedil;&atilde;o, em 2016, cerca de 75% da arrecada&ccedil;&atilde;o do ISS ficou concentrada para poucos munic&iacute;pios da regi&atilde;o Sudeste - o centro econ&ocirc;mico do Pa&iacute;s.</span></span></span></p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;"><span style="font-size: 15px;">Do total de munic&iacute;pios brasileiros, mais de 2.600 deles respondem, juntos, pela arrecada&ccedil;&atilde;o de apenas 1% do ISS, enquanto isso dois munic&iacute;pios ficam com mais de 33,83% de todo o ISS arrecadado. Em mais de 1.800 munic&iacute;pios, o ISS n&atilde;o representa 1% da receita corrente. Em mais de 4 mil munic&iacute;pios, ele n&atilde;o representa 5% da receita corrente. </span></span></span></p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px; text-align: justify;">&nbsp;</p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;"><span style="font-size: 15px;">Fonte: contadores.cnt.br</span></span></span></p>
+<p>&nbsp;</p>
+                            </div>
+                            
+                        </article>
+                        
+                        
+                    </div>
+                    <div class="col-md-1 hidden-sm"></div>
+                    <div class="col-md-2 col-sm-3">
+                        <aside class="widgets">
+                    <div class="widget list">
+                        <h3>Categorias</h3>
+                        <ul>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Calend%E1rio+de+Obriga%E7%F5es">Calendário de Obrigações</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Direitos+do+Consumidor">Direitos do Consumidor</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Empresarial">Empresarial</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=IRPF">IRPF</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Legisla%E7%E3o">Legislação</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Legisla%E7%E3o+Trabalhista">Legislação Trabalhista</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Previd%EAncia">Previdência</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Receita+Federal">Receita Federal</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Recursos+Humanos">Recursos Humanos</a>
+                            </li>
+ 
+                        </ul>
+                    </div>
+                    <div class="widget list">
+                        <h3>Por mês</h3>
+                        <ul>
+                        
+                            <li>
+                                <a href="/noticias/?mes=8&ano=2021">Agosto&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2021">Maio&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2021">Abril&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2021">Março&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=7&ano=2020">Julho&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2020">Maio&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2020">Abril&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2020">Março&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=10&ano=2019">Outubro&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2019">Setembro&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2019">Março&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2019">Janeiro&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=12&ano=2018">Dezembro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2018">Setembro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=6&ano=2018">Junho&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2018">Abril&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2018">Março&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=2&ano=2018">Fevereiro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2018">Janeiro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=12&ano=2017">Dezembro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=11&ano=2017">Novembro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=10&ano=2017">Outubro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2017">Setembro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=7&ano=2017">Julho&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=6&ano=2017">Junho&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2017">Maio&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2017">Abril&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2017">Março&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=2&ano=2017">Fevereiro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2017">Janeiro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=12&ano=2016">Dezembro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=11&ano=2016">Novembro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=10&ano=2016">Outubro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2016">Setembro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=8&ano=2016">Agosto&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=7&ano=2016">Julho&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=6&ano=2016">Junho&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2016">Maio&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2016">Abril&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2016">Março&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=2&ano=2016">Fevereiro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2016">Janeiro&nbsp;2016</a>
+                            </li>
+ 
+                        </ul>
+                    </div>
+
+                </aside>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+<footer class="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="footer-widget">
+                    <h2>Últimas Notícias</h2>
+                    <div class="widget-content latest-post">
+                        <ul>
+                        
+                            <li>
+                                <h3><a href="?a=noticia&id=295">BEM</a></h3>
+                                <p></p>
+                                <span class="date">26/08/2021</span>
+                            </li>
+                        
+                            <li>
+                                <h3><a href="?a=noticia&id=294">HOME OFFICE PARA GESTANTES</a></h3>
+                                <p></p>
+                                <span class="date">13/05/2021</span>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="footer-widget">
+                    <h2>Contato</h2>
+                    <div class="widget-content">
+                        <address>
+                            Rua Rep&uacute;blica do L&iacute;bano, 61 gr. 1102 <br/>
+                            Centro &ndash; Rio de Janeiro RJ
+                        </address>
+                        <address>
+                            <strong>Telefone: +55 (21) 3203-4348</strong> <br/>
+                            <strong>E-mail: condux@condux.com.br</strong>
+                        </address>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="footer-widget">
+                    <h2>Links</h2>
+                    <ul>    
+                        <li><a href="/home/">Home Page</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/empresa/">A Empresa</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="http://www.condux.com.br/ler.asp?id=1" target="_blank">Tabelas Pr&aacute;ticas</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="http://www.condux.com.br/ler.asp?id=2" target="_blank">Agenda de Obriga&ccedil;&otilde;es</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/noticias/">Not&iacute;cias</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/downloads/">Downloads</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/contato/">Contato</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="footer-info text-right">
+                    <ul class="footer-social">
+                        <li><a href="https://twitter.com/conduxBRA" target="_blank"><i class="entyp-twitter-1"></i></a></li>
+                        <li><a href="https://www.facebook.com/ConduxConsultoria" target="_blank"><i class="entyp-facebook-1"></i></a></li>
+                    </ul>
+                    <p>Copyright &copy; 2016</p>
+                    <p>CONDUX - Todos os Direitos Reservados</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="https://condux.com.br/site/js/vendor/jquery-1.11.0.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery-ui-1.10.3.custom.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.mousewheel.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.mCustomScrollbar.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.selectBoxIt.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.raty.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.flexslider.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.isotope.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.fancybox.pack.js"></script>
+<script src="https://condux.com.br/site/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
+<script src="https://condux.com.br/site/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/bootstrap.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/simpleInstagramFancybox.js"></script>
+<script src="https://condux.com.br/site/js/vendor/fitvids.js"></script>
+<script src="https://condux.com.br/site/js/main.js"></script>
+<script>
+    $('#revolution-shortcode').revolution({
+        delay : 90000,
+        hideThumbs:10,
+        navigationVOffset : -30,
+        navigationType : "none",
+        navigationStyle : "round-old",
+		startheight:700
+    });
+</script>
+<style>
+/*#revolution-shortcode { height: 700px !important }
+#revolution-shortcode > ul > li:nth-child(1) > div.slotholder { height: 700px !important }*/
+</style>
+</body>
+</html>

@@ -1,0 +1,571 @@
+<!--
+ * FCKeditor - The text editor for Internet - http://www.fckeditor.net
+ * Copyright (C) 2003-2009 Frederico Caldeira Knabben
+ *
+ * == BEGIN LICENSE ==
+ *
+ * Licensed under the terms of any of the following licenses at your
+ * choice:
+ *
+ *  - GNU General Public License Version 2 or later (the "GPL")
+ *    http://www.gnu.org/licenses/gpl.html
+ *
+ *  - GNU Lesser General Public License Version 2.1 or later (the "LGPL")
+ *    http://www.gnu.org/licenses/lgpl.html
+ *
+ *  - Mozilla Public License Version 1.1 or later (the "MPL")
+ *    http://www.mozilla.org/MPL/MPL-1.1.html
+ *
+ * == END LICENSE ==
+ *
+ * This is the integration file for ASP.
+ *
+ * It defines the FCKeditor class that can be used to create editor
+ * instances in ASP pages on server side.
+-->
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Condux</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, maximum-scale=1, minimum-scale=1">
+    <link rel="icon" type="image/png" href="https://condux.com.br/site/img/favicon.png">
+
+    <link rel="stylesheet" href="https://condux.com.br/site/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/flexslider.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/jquery.selectBoxIt.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/entypo.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/rs-plugin/css/settings.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/jquery.fancybox.css">
+        <link rel="stylesheet" href="https://condux.com.br/site/css/style.css">
+
+    <script src="https://condux.com.br/site/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+	
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-208708250-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-208708250-1');
+</script>
+
+</head>
+<body>
+<div class="main-wrap">
+<header class="navbar navbar-inverse">
+    <div class="normal-color with-slider">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <div id="control-logo-header">
+                                <a class="navbar-brand" href="/home/"><img src="https://condux.com.br/site/content/logo.png" alt="img"/></a>
+                            </div>
+                    </div>
+                </div>
+                <div class="col-sm-9">
+                    <div class="navbar-collapse collapse navbar-right">
+                        <ul class="nav navbar-nav social-nav">
+                            <li><a href="https://twitter.com/conduxBRA" target="_blank"><i class="entyp-twitter-1"></i></a></li>
+                            <li><a href="https://www.facebook.com/ConduxConsultoria" target="_blank"><i class="entyp-facebook-1"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="inverse-color">
+        <div class="container">
+            <div class="row">
+                <div class="navbar-collapse collapse">
+                    <div class="col-sm-12">
+                        <ul class="nav navbar-nav main-nav">
+                            <li id="control-logo-menu">
+                                <a class="navbar-brand" href="/home/"><img src="https://condux.com.br/site/content/logo.png" alt="img"/></a>
+                            </li>
+                            <li>
+                                <a href="/home/">Início</a>
+                            </li>
+                            <li>
+                                <a href="/empresa/">A empresa</a>
+                            </li>
+                            <li>
+                                <a href="/servicos/">Serviços</a>
+                            </li>
+                            <li>
+                                <a href="#">Utilitários</a>
+                                <ul>	
+                                	<li><a href="http://www.condux.com.br/ler.asp?id=1" target="_blank">Tabelas Práticas</a></li>
+                                    <li><a href="http://www.condux.com.br/ler.asp?id=2" target="_blank">Agenda de Obrigações</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="/noticias/">Notícias</a>
+                            </li>
+                            <li>
+                                <a href="/login/">Área do Cliente</a>
+                            </li>
+                            <li>
+                                <a href="/downloads/">Downloads</a>
+                            </li>
+                            <li>
+                                <a href="/contato/">Contato</a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</header>
+
+
+<section class="line top">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="col-md-4 col-sm-5 col-xs-12">
+                    <div class="title">
+                        Notícias
+                        <ul class="current-page">
+                            <li><a href="/home/">Página principal</a></li>
+                            <li>></li>
+                            <li><a href="/noticias/">Noticias</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="posts">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <article class="post ">
+                            <h3 class="uppercase">PROGRAMA EMERGENCIAL</h3><h4>Ponto a ponto MP 936/2020: Entenda cortes salariais, suspensões e benefício</h4>
+                            <ul class="info">
+                                <li>
+                                    <div class="text date">quinta-feira, 2 de abril de 2020</div>
+                                </li>
+                                <li>
+                                    <i class="entyp-pencil-1"></i>
+                                    <div class="text">Publicado por CONDUX</div>
+                                </li>
+                                
+                                <li>
+                                    <a href="/noticias/?cat=Legisla%E7%E3o+Trabalhista">
+                                        <i class="entyp-list-1"></i>
+                                        <div class="text">Legislação Trabalhista</div>
+                                    </a>
+                                </li>
+                                
+                            </ul>
+                            
+                            <figure>
+                                <img src="https://condux.com.br/site/imgnews/272c.jpg" alt="PROGRAMA EMERGENCIAL"/>
+                                
+                            </figure>
+                            
+                            <div class="content">
+                            
+                                <p>
+                                    <strong>
+                                       A MP 936/2020 possibilita o corte salarial de até 70%, suspensão do contrato de trabalho e benefício emergencial. Entenda ponto a ponto.
+                                    </strong>
+                                </p>
+                            <p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:&#10;justify;line-height:normal"><span style="color: rgb(0, 0, 0);"><span style="font-size: 16px;"><span style="font-family: Arial;"><span style="letter-spacing: 0.15pt;">O Di&aacute;rio Oficial da Uni&atilde;o publicou nesta quarta-feira, 01, a MP 936/2020 que institui o Programa Emergencial de Manuten&ccedil;&atilde;o do Emprego e da Renda.</span></span></span></span><span style="font-size:16.0pt;font-family:&quot;Arial&quot;,sans-serif;&#10;mso-fareast-font-family:&quot;Times New Roman&quot;;color:black;mso-themecolor:text1;&#10;letter-spacing:.15pt;mso-fareast-language:PT-BR"><o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:&#10;justify;line-height:normal"><span style="color: rgb(0, 0, 0);"><span style="font-size: 16px;"><span style="font-family: Arial;"><span style="letter-spacing: 0.15pt;">Em suma, a norma estabelece o pagamento de um Benef&iacute;cio Emergencial de Preserva&ccedil;&atilde;o do Emprego e da Renda e permite redu&ccedil;&atilde;o de jornadas e sal&aacute;rios e a suspens&atilde;o tempor&aacute;ria de contratos de trabalhos.</span></span></span></span><span style="font-size:16.0pt;font-family:&quot;Arial&quot;,sans-serif;&#10;mso-fareast-font-family:&quot;Times New Roman&quot;;color:black;mso-themecolor:text1;&#10;letter-spacing:.15pt;mso-fareast-language:PT-BR"><o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:&#10;justify;line-height:normal"><span style="color: rgb(0, 0, 0);"><span style="font-size: 16px;"><span style="font-family: Arial;"><span style="letter-spacing: 0.15pt;">Essa &eacute; mais uma medida anunciada pelo Governo que tem como objetivo amenizar os Impactos causados com a crise do&nbsp;Coronav&iacute;rus.</span></span></span></span><span style="font-size:16.0pt;font-family:&quot;Arial&quot;,sans-serif;&#10;mso-fareast-font-family:&quot;Times New Roman&quot;;color:black;mso-themecolor:text1;&#10;letter-spacing:.15pt;mso-fareast-language:PT-BR"><o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:&#10;justify;line-height:normal"><span style="color: rgb(0, 0, 0);"><span style="font-size: 16px;"><span style="font-family: Arial;"><span style="letter-spacing: 0.15pt;">Entenda Ponto a Ponto o que muda na MP 936/2020:</span></span></span></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:&#10;justify;line-height:normal">&nbsp;</p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:&#10;justify;line-height:normal"><span style="color: rgb(0, 0, 0);"><b style="font-family: Arial; font-size: 16px;"><span style="letter-spacing: 0.15pt;">Redu&ccedil;&atilde;o de sal&aacute;rios</span></b></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:&#10;justify;line-height:normal"><span style="color: rgb(0, 0, 0);"><span style="font-size: 16px;"><span style="font-family: Arial;"><span style="letter-spacing: 0.15pt;">Com a MP, o empregador poder&aacute; reduzir os sal&aacute;rios dos funcion&aacute;rios desde que seja de forma proporcional &agrave; jornada de trabalho. Ficam permitidos cortes de 25%, 50% ou 70%, por at&eacute; noventa dias.</span></span></span></span><span style="font-size:16.0pt;font-family:&quot;Arial&quot;,sans-serif;&#10;mso-fareast-font-family:&quot;Times New Roman&quot;;color:black;mso-themecolor:text1;&#10;letter-spacing:.15pt;mso-fareast-language:PT-BR"><o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:&#10;justify;line-height:normal"><span style="color: rgb(0, 0, 0);"><span style="font-size: 16px;"><span style="font-family: Arial;"><span style="letter-spacing: 0.15pt;">&Eacute; importante ressaltar que o valor do sal&aacute;rio-hora de trabalho do funcion&aacute;rio deve ser mantido.</span></span></span></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:&#10;justify;line-height:normal">&nbsp;</p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:&#10;justify;line-height:normal"><span style="color: rgb(0, 0, 0);"><b style="font-family: Arial; font-size: 16px;"><span style="letter-spacing: 0.15pt;">Suspens&atilde;o do Contrato de Trabalho</span></b></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:&#10;justify;line-height:normal"><span style="color: rgb(0, 0, 0);"><span style="font-size: 16px;"><span style="font-family: Arial;"><span style="letter-spacing: 0.15pt;">Durante o estado de calamidade p&uacute;blica, o empregador poder&aacute; acordar a suspens&atilde;o tempor&aacute;ria do contrato de trabalho de seus empregados, pelo prazo m&aacute;ximo de sessenta dias, que poder&aacute; ser fracionado em at&eacute; dois per&iacute;odos de trinta dias.</span></span></span></span><span style="font-size:16.0pt;font-family:&quot;Arial&quot;,sans-serif;&#10;mso-fareast-font-family:&quot;Times New Roman&quot;;color:black;mso-themecolor:text1;&#10;letter-spacing:.15pt;mso-fareast-language:PT-BR"><o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:&#10;justify;line-height:normal"><span style="color: rgb(0, 0, 0);"><span style="font-size: 16px;"><span style="font-family: Arial;"><span style="letter-spacing: 0.15pt;">A suspens&atilde;o tempor&aacute;ria do contrato de trabalho ser&aacute; pactuada por acordo individual escrito entre empregador e empregado, que ser&aacute; encaminhado ao empregado com anteced&ecirc;ncia de, no m&iacute;nimo, dois dias corridos.</span></span></span></span><span style="font-size:16.0pt;font-family:&quot;Arial&quot;,sans-serif;&#10;mso-fareast-font-family:&quot;Times New Roman&quot;;color:black;mso-themecolor:text1;&#10;letter-spacing:.15pt;mso-fareast-language:PT-BR"><o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:&#10;justify;line-height:normal"><span style="color: rgb(0, 0, 0);"><span style="font-size: 16px;"><span style="font-family: Arial;"><span style="letter-spacing: 0.15pt;">Vale lembrar que a suspens&atilde;o ser&aacute; v&aacute;lida aos empregados com sal&aacute;rio igual ou inferior a R$ 3.135 e aos portadores de diploma de n&iacute;vel superior e que percebam sal&aacute;rio mensal igual ou superior a duas vezes o limite m&aacute;ximo dos benef&iacute;cios do Regime Geral de Previd&ecirc;ncia Social.</span></span></span></span><span style="font-size:16.0pt;font-family:&quot;Arial&quot;,sans-serif;&#10;mso-fareast-font-family:&quot;Times New Roman&quot;;color:black;mso-themecolor:text1;&#10;letter-spacing:.15pt;mso-fareast-language:PT-BR"><o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:&#10;justify;line-height:normal"><span style="color: rgb(0, 0, 0);"><span style="font-size: 16px;"><span style="font-family: Arial;"><span style="letter-spacing: 0.15pt;">A empresa que tiver auferido, no ano-calend&aacute;rio de 2019, receita bruta superior a R$ 4.800.000,00, somente poder&aacute; suspender o contrato de trabalho de seus empregados mediante o pagamento de ajuda compensat&oacute;ria mensal no valor de trinta por cento do valor do sal&aacute;rio do empregado durante o per&iacute;odo de suspens&atilde;o.</span></span></span></span><span style="font-size:16.0pt;font-family:&quot;Arial&quot;,sans-serif;&#10;mso-fareast-font-family:&quot;Times New Roman&quot;;color:black;mso-themecolor:text1;&#10;letter-spacing:.15pt;mso-fareast-language:PT-BR"><o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:&#10;justify;line-height:normal"><span style="color: rgb(0, 0, 0);"><span style="font-size: 16px;"><span style="font-family: Arial;"><span style="letter-spacing: 0.15pt;">Al&eacute;m disso, se durante o per&iacute;odo de suspens&atilde;o tempor&aacute;ria do contrato de trabalho o empregado mantiver as atividades de trabalho, ainda que parcialmente, por meio de teletrabalho, trabalho remoto ou trabalho &agrave; dist&acirc;ncia, ficar&aacute; descaracterizada a suspens&atilde;o tempor&aacute;ria do contrato de trabalho e o empregador estar&aacute; sujeito &agrave; penalidades.</span></span></span></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:&#10;justify;line-height:normal">&nbsp;</p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:&#10;justify;line-height:normal"><span style="color: rgb(0, 0, 0);"><b style="letter-spacing: 0.15pt; font-family: Arial; font-size: 16px;">Rescis&atilde;o</b></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:&#10;justify;line-height:normal"><span style="color: rgb(0, 0, 0);"><span style="font-size: 16px;"><span style="font-family: Arial;"><span style="letter-spacing: 0.15pt;">A dispensa sem justa causa que ocorrer durante o per&iacute;odo de garantia provis&oacute;ria no emprego sujeitar&aacute; o empregador ao pagamento, al&eacute;m das parcelas rescis&oacute;rias previstas na legisla&ccedil;&atilde;o em vigor, de indeniza&ccedil;&atilde;o no valor de:</span></span></span></span><span style="font-size:16.0pt;font-family:&quot;Arial&quot;,sans-serif;&#10;mso-fareast-font-family:&quot;Times New Roman&quot;;color:black;mso-themecolor:text1;&#10;letter-spacing:.15pt;mso-fareast-language:PT-BR"><o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:&#10;justify;line-height:normal"><span style="color: rgb(0, 0, 0);"><span style="font-size: 16px;"><span style="font-family: Arial;"><b><span style="letter-spacing: 0.15pt;">Redu&ccedil;&atilde;o salarial de 25 &agrave; 50%</span></b><span style="letter-spacing: 0.15pt;">: Pagamento de 50% do sal&aacute;rio que o empregado teria direito inicialmente;</span></span></span></span><span style="font-size:16.0pt;font-family:&quot;Arial&quot;,sans-serif;mso-fareast-font-family:&#10;&quot;Times New Roman&quot;;color:black;mso-themecolor:text1;letter-spacing:.15pt;&#10;mso-fareast-language:PT-BR"><o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:&#10;justify;line-height:normal"><span style="color: rgb(0, 0, 0);"><span style="font-size: 16px;"><span style="font-family: Arial;"><b><span style="letter-spacing: 0.15pt;">Redu&ccedil;&atilde;o salarial de 50 a 60%</span></b><span style="letter-spacing: 0.15pt;">: Pagamento de 75% do sal&aacute;rio que o empregado teria direito inicialmente;</span></span></span></span><span style="font-size:16.0pt;font-family:&quot;Arial&quot;,sans-serif;mso-fareast-font-family:&#10;&quot;Times New Roman&quot;;color:black;mso-themecolor:text1;letter-spacing:.15pt;&#10;mso-fareast-language:PT-BR"><o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:&#10;justify;line-height:normal"><span style="color: rgb(0, 0, 0);"><span style="font-size: 16px;"><span style="font-family: Arial;"><b><span style="letter-spacing: 0.15pt;">Redu&ccedil;&atilde;o salarial superior &agrave; 70% ou suspens&atilde;o</span></b><span style="letter-spacing: 0.15pt;">: Pagamento de 100% do sal&aacute;rio que o empregado teria direito inicialmente.</span></span></span></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:&#10;justify;line-height:normal">&nbsp;</p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:&#10;justify;line-height:normal"><span style="color: rgb(0, 0, 0);"><b style="font-family: Arial; font-size: 16px;"><span style="letter-spacing: 0.15pt;">Benef&iacute;cio Emergencial</span></b></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:&#10;justify;line-height:normal"><span style="color: rgb(0, 0, 0);"><span style="font-size: 16px;"><span style="font-family: Arial;"><span style="letter-spacing: 0.15pt;">O empregador deve informar o Minist&eacute;rio da Economia sobre a redu&ccedil;&atilde;o da jornada de trabalho e de sal&aacute;rio ou a suspens&atilde;o tempor&aacute;ria do contrato de trabalho, no prazo de dez dias, contados da data da celebra&ccedil;&atilde;o do acordo.</span></span></span></span><span style="font-size:16.0pt;font-family:&quot;Arial&quot;,sans-serif;&#10;mso-fareast-font-family:&quot;Times New Roman&quot;;color:black;mso-themecolor:text1;&#10;letter-spacing:.15pt;mso-fareast-language:PT-BR"><o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:&#10;justify;line-height:normal"><span style="color: rgb(0, 0, 0);"><span style="font-size: 16px;"><span style="font-family: Arial;"><span style="letter-spacing: 0.15pt;">Dessa forma, o trabalhador poder&aacute; receber um Benef&iacute;cio Emergencial que ser&aacute; pago no prazo de trinta dias da data da celebra&ccedil;&atilde;o do acordo. O valor de tal benef&iacute;cio ter&aacute; como&nbsp;base de c&aacute;lculo&nbsp;o valor mensal do seguro-desemprego a que o empregado teria direito.</span></span></span></span><span style="font-size:16.0pt;font-family:&quot;Arial&quot;,sans-serif;&#10;mso-fareast-font-family:&quot;Times New Roman&quot;;color:black;mso-themecolor:text1;&#10;letter-spacing:.15pt;mso-fareast-language:PT-BR"><o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:&#10;justify;line-height:normal"><span style="color: rgb(0, 0, 0);"><span style="font-size: 16px;"><span style="font-family: Arial;"><span style="letter-spacing: 0.15pt;">&Eacute; importante ressaltar que o Benef&iacute;cio Emergencial ser&aacute; pago exclusivamente enquanto durar a redu&ccedil;&atilde;o proporcional da jornada de trabalho e de sal&aacute;rio ou a suspens&atilde;o tempor&aacute;ria do contrato de trabalho.</span></span></span></span><span style="font-size:16.0pt;font-family:&quot;Arial&quot;,sans-serif;&#10;mso-fareast-font-family:&quot;Times New Roman&quot;;color:black;mso-themecolor:text1;&#10;letter-spacing:.15pt;mso-fareast-language:PT-BR"><o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:&#10;justify;line-height:normal"><span style="color: rgb(0, 0, 0);"><span style="font-size: 16px;"><span style="font-family: Arial;"><span style="letter-spacing: 0.15pt;">Caso o empregador n&atilde;o preste a informa&ccedil;&atilde;o dentro do prazo previsto ficar&aacute; respons&aacute;vel pelo pagamento da remunera&ccedil;&atilde;o no valor anterior &agrave; redu&ccedil;&atilde;o da jornada de trabalho e de sal&aacute;rio ou da suspens&atilde;o tempor&aacute;ria do contrato de trabalho do empregado, inclusive dos respectivos encargos sociais, at&eacute; a que informa&ccedil;&atilde;o seja prestada.</span></span></span></span><span style="font-size:16.0pt;font-family:&quot;Arial&quot;,sans-serif;&#10;mso-fareast-font-family:&quot;Times New Roman&quot;;color:black;mso-themecolor:text1;&#10;letter-spacing:.15pt;mso-fareast-language:PT-BR"><o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:&#10;justify;line-height:normal"><span style="color: rgb(0, 0, 0);"><span style="font-size: 16px;"><span style="font-family: Arial;"><span style="letter-spacing: 0.15pt;">A forma de transmiss&atilde;o dessas informa&ccedil;&otilde;es e comunica&ccedil;&otilde;es, assim como mais detalhes do pagamento do Benef&iacute;cio Emergencial, ser&atilde;o disciplinados pelo Minist&eacute;rio da Economia.</span></span></span></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:&#10;justify;line-height:normal">&nbsp;</p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:&#10;justify;line-height:normal"><span style="color: rgb(0, 0, 0);"><b style="font-family: Arial; font-size: 16px;"><span style="letter-spacing: 0.15pt;">Valor Benef&iacute;cio Emergencial</span></b></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:&#10;justify;line-height:normal"><span style="color: rgb(0, 0, 0);"><span style="font-size: 16px;"><span style="font-family: Arial;"><span style="letter-spacing: 0.15pt;">O valor de tal Benef&iacute;cio Emergencial ter&aacute; como&nbsp;base de c&aacute;lculo&nbsp;o valor mensal do seguro-desemprego a que o empregado teria direito, nas seguintes situa&ccedil;&otilde;es:</span></span></span></span><span style="font-size:16.0pt;font-family:&quot;Arial&quot;,sans-serif;&#10;mso-fareast-font-family:&quot;Times New Roman&quot;;color:black;mso-themecolor:text1;&#10;letter-spacing:.15pt;mso-fareast-language:PT-BR"><o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:&#10;justify;line-height:normal"><span style="color: rgb(0, 0, 0);"><span style="font-size: 16px;"><span style="font-family: Arial;"><span style="letter-spacing: 0.15pt;">I - na hip&oacute;tese de redu&ccedil;&atilde;o de jornada de trabalho e de sal&aacute;rio, ser&aacute; calculado aplicando-se sobre a&nbsp;base de c&aacute;lculo&nbsp;o percentual da redu&ccedil;&atilde;o;</span></span></span></span><span style="font-size:16.0pt;font-family:&quot;Arial&quot;,sans-serif;&#10;mso-fareast-font-family:&quot;Times New Roman&quot;;color:black;mso-themecolor:text1;&#10;letter-spacing:.15pt;mso-fareast-language:PT-BR"><o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:&#10;justify;line-height:normal"><span style="color: rgb(0, 0, 0);"><span style="font-size: 16px;"><span style="font-family: Arial;"><span style="letter-spacing: 0.15pt;">II - na hip&oacute;tese de suspens&atilde;o tempor&aacute;ria do contrato de trabalho, ter&aacute; valor mensal: equivalente a cem por cento do valor do seguro-desemprego a que o empregado teria direito, ou equivalente a 70% do seguro-desemprego a que o empregado teria direito.</span></span></span></span><span style="font-size:16.0pt;font-family:&quot;Arial&quot;,sans-serif;&#10;mso-fareast-font-family:&quot;Times New Roman&quot;;color:black;mso-themecolor:text1;&#10;letter-spacing:.15pt;mso-fareast-language:PT-BR"><o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:&#10;justify;line-height:normal"><span style="color: rgb(0, 0, 0);"><span style="font-size: 16px;"><span style="font-family: Arial;"><span style="letter-spacing: 0.15pt;">O empregado com contrato de trabalho intermitente formalizado at&eacute; 1 de abril/2020, far&aacute; jus ao benef&iacute;cio emergencial mensal no valor de R$ 600, pelo per&iacute;odo de tr&ecirc;s meses.</span></span></span></span><span style="font-size:16.0pt;font-family:&quot;Arial&quot;,sans-serif;&#10;mso-fareast-font-family:&quot;Times New Roman&quot;;color:black;mso-themecolor:text1;&#10;letter-spacing:.15pt;mso-fareast-language:PT-BR"><o:p></o:p></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:&#10;justify;line-height:normal"><span style="color: rgb(0, 0, 0);"><span style="font-size: 16px;"><span style="font-family: Arial;"><span style="letter-spacing: 0.15pt;">A norma estabelece que a exist&ecirc;ncia de mais de um contrato de trabalho n&atilde;o gerar&aacute; direito &agrave; concess&atilde;o de mais de um benef&iacute;cio emergencial mensal. </span></span></span></span></p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:&#10;justify;line-height:normal">&nbsp;</p>
+<p class="MsoNormal" style="margin-bottom:0cm;margin-bottom:.0001pt;text-align:&#10;justify;line-height:normal"><span style="color: rgb(0, 0, 0);"><span style="font-size: 16px;"><span style="font-family: Arial;"><span style="letter-spacing: 0.15pt;">Fonte: Site Cont&aacute;beis</span></span></span></span><span style="font-size:16.0pt;font-family:&quot;Arial&quot;,sans-serif;&#10;mso-fareast-font-family:&quot;Times New Roman&quot;;color:black;mso-themecolor:text1;&#10;letter-spacing:.15pt;mso-fareast-language:PT-BR"><o:p></o:p></span></p>
+<p class="MsoNormal"><span style="font-family: Arial;"><span style="font-size: 16pt; line-height: 107%; color: black;"><o:p><span style="color: rgb(0, 0, 0);"><span style="font-size: 16px;">&nbsp;</span></span></o:p></span></span><span style="font-size:16.0pt;line-height:107%;font-family:&#10;&quot;Arial&quot;,sans-serif;color:black;mso-themecolor:text1"><o:p></o:p></span></p>
+<p>&nbsp;</p>
+                            </div>
+                            
+                        </article>
+                        
+                        
+                    </div>
+                    <div class="col-md-1 hidden-sm"></div>
+                    <div class="col-md-2 col-sm-3">
+                        <aside class="widgets">
+                    <div class="widget list">
+                        <h3>Categorias</h3>
+                        <ul>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Calend%E1rio+de+Obriga%E7%F5es">Calendário de Obrigações</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Direitos+do+Consumidor">Direitos do Consumidor</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Empresarial">Empresarial</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=IRPF">IRPF</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Legisla%E7%E3o">Legislação</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Legisla%E7%E3o+Trabalhista">Legislação Trabalhista</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Previd%EAncia">Previdência</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Receita+Federal">Receita Federal</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Recursos+Humanos">Recursos Humanos</a>
+                            </li>
+ 
+                        </ul>
+                    </div>
+                    <div class="widget list">
+                        <h3>Por mês</h3>
+                        <ul>
+                        
+                            <li>
+                                <a href="/noticias/?mes=8&ano=2021">Agosto&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2021">Maio&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2021">Abril&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2021">Março&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=7&ano=2020">Julho&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2020">Maio&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2020">Abril&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2020">Março&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=10&ano=2019">Outubro&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2019">Setembro&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2019">Março&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2019">Janeiro&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=12&ano=2018">Dezembro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2018">Setembro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=6&ano=2018">Junho&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2018">Abril&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2018">Março&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=2&ano=2018">Fevereiro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2018">Janeiro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=12&ano=2017">Dezembro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=11&ano=2017">Novembro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=10&ano=2017">Outubro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2017">Setembro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=7&ano=2017">Julho&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=6&ano=2017">Junho&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2017">Maio&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2017">Abril&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2017">Março&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=2&ano=2017">Fevereiro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2017">Janeiro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=12&ano=2016">Dezembro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=11&ano=2016">Novembro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=10&ano=2016">Outubro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2016">Setembro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=8&ano=2016">Agosto&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=7&ano=2016">Julho&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=6&ano=2016">Junho&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2016">Maio&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2016">Abril&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2016">Março&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=2&ano=2016">Fevereiro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2016">Janeiro&nbsp;2016</a>
+                            </li>
+ 
+                        </ul>
+                    </div>
+
+                </aside>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+<footer class="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="footer-widget">
+                    <h2>Últimas Notícias</h2>
+                    <div class="widget-content latest-post">
+                        <ul>
+                        
+                            <li>
+                                <h3><a href="?a=noticia&id=295">BEM</a></h3>
+                                <p></p>
+                                <span class="date">26/08/2021</span>
+                            </li>
+                        
+                            <li>
+                                <h3><a href="?a=noticia&id=294">HOME OFFICE PARA GESTANTES</a></h3>
+                                <p></p>
+                                <span class="date">13/05/2021</span>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="footer-widget">
+                    <h2>Contato</h2>
+                    <div class="widget-content">
+                        <address>
+                            Rua Rep&uacute;blica do L&iacute;bano, 61 gr. 1102 <br/>
+                            Centro &ndash; Rio de Janeiro RJ
+                        </address>
+                        <address>
+                            <strong>Telefone: +55 (21) 3203-4348</strong> <br/>
+                            <strong>E-mail: condux@condux.com.br</strong>
+                        </address>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="footer-widget">
+                    <h2>Links</h2>
+                    <ul>    
+                        <li><a href="/home/">Home Page</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/empresa/">A Empresa</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="http://www.condux.com.br/ler.asp?id=1" target="_blank">Tabelas Pr&aacute;ticas</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="http://www.condux.com.br/ler.asp?id=2" target="_blank">Agenda de Obriga&ccedil;&otilde;es</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/noticias/">Not&iacute;cias</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/downloads/">Downloads</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/contato/">Contato</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="footer-info text-right">
+                    <ul class="footer-social">
+                        <li><a href="https://twitter.com/conduxBRA" target="_blank"><i class="entyp-twitter-1"></i></a></li>
+                        <li><a href="https://www.facebook.com/ConduxConsultoria" target="_blank"><i class="entyp-facebook-1"></i></a></li>
+                    </ul>
+                    <p>Copyright &copy; 2016</p>
+                    <p>CONDUX - Todos os Direitos Reservados</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="https://condux.com.br/site/js/vendor/jquery-1.11.0.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery-ui-1.10.3.custom.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.mousewheel.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.mCustomScrollbar.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.selectBoxIt.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.raty.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.flexslider.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.isotope.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.fancybox.pack.js"></script>
+<script src="https://condux.com.br/site/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
+<script src="https://condux.com.br/site/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/bootstrap.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/simpleInstagramFancybox.js"></script>
+<script src="https://condux.com.br/site/js/vendor/fitvids.js"></script>
+<script src="https://condux.com.br/site/js/main.js"></script>
+<script>
+    $('#revolution-shortcode').revolution({
+        delay : 90000,
+        hideThumbs:10,
+        navigationVOffset : -30,
+        navigationType : "none",
+        navigationStyle : "round-old",
+		startheight:700
+    });
+</script>
+<style>
+/*#revolution-shortcode { height: 700px !important }
+#revolution-shortcode > ul > li:nth-child(1) > div.slotholder { height: 700px !important }*/
+</style>
+</body>
+</html>

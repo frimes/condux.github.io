@@ -1,0 +1,550 @@
+<!--
+ * FCKeditor - The text editor for Internet - http://www.fckeditor.net
+ * Copyright (C) 2003-2009 Frederico Caldeira Knabben
+ *
+ * == BEGIN LICENSE ==
+ *
+ * Licensed under the terms of any of the following licenses at your
+ * choice:
+ *
+ *  - GNU General Public License Version 2 or later (the "GPL")
+ *    http://www.gnu.org/licenses/gpl.html
+ *
+ *  - GNU Lesser General Public License Version 2.1 or later (the "LGPL")
+ *    http://www.gnu.org/licenses/lgpl.html
+ *
+ *  - Mozilla Public License Version 1.1 or later (the "MPL")
+ *    http://www.mozilla.org/MPL/MPL-1.1.html
+ *
+ * == END LICENSE ==
+ *
+ * This is the integration file for ASP.
+ *
+ * It defines the FCKeditor class that can be used to create editor
+ * instances in ASP pages on server side.
+-->
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Condux</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, maximum-scale=1, minimum-scale=1">
+    <link rel="icon" type="image/png" href="https://condux.com.br/site/img/favicon.png">
+
+    <link rel="stylesheet" href="https://condux.com.br/site/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/flexslider.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/jquery.selectBoxIt.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/entypo.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/rs-plugin/css/settings.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/jquery.fancybox.css">
+        <link rel="stylesheet" href="https://condux.com.br/site/css/style.css">
+
+    <script src="https://condux.com.br/site/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+	
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-208708250-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-208708250-1');
+</script>
+
+</head>
+<body>
+<div class="main-wrap">
+<header class="navbar navbar-inverse">
+    <div class="normal-color with-slider">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <div id="control-logo-header">
+                                <a class="navbar-brand" href="/home/"><img src="https://condux.com.br/site/content/logo.png" alt="img"/></a>
+                            </div>
+                    </div>
+                </div>
+                <div class="col-sm-9">
+                    <div class="navbar-collapse collapse navbar-right">
+                        <ul class="nav navbar-nav social-nav">
+                            <li><a href="https://twitter.com/conduxBRA" target="_blank"><i class="entyp-twitter-1"></i></a></li>
+                            <li><a href="https://www.facebook.com/ConduxConsultoria" target="_blank"><i class="entyp-facebook-1"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="inverse-color">
+        <div class="container">
+            <div class="row">
+                <div class="navbar-collapse collapse">
+                    <div class="col-sm-12">
+                        <ul class="nav navbar-nav main-nav">
+                            <li id="control-logo-menu">
+                                <a class="navbar-brand" href="/home/"><img src="https://condux.com.br/site/content/logo.png" alt="img"/></a>
+                            </li>
+                            <li>
+                                <a href="/home/">Início</a>
+                            </li>
+                            <li>
+                                <a href="/empresa/">A empresa</a>
+                            </li>
+                            <li>
+                                <a href="/servicos/">Serviços</a>
+                            </li>
+                            <li>
+                                <a href="#">Utilitários</a>
+                                <ul>	
+                                	<li><a href="http://www.condux.com.br/ler.asp?id=1" target="_blank">Tabelas Práticas</a></li>
+                                    <li><a href="http://www.condux.com.br/ler.asp?id=2" target="_blank">Agenda de Obrigações</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="/noticias/">Notícias</a>
+                            </li>
+                            <li>
+                                <a href="/login/">Área do Cliente</a>
+                            </li>
+                            <li>
+                                <a href="/downloads/">Downloads</a>
+                            </li>
+                            <li>
+                                <a href="/contato/">Contato</a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</header>
+
+
+<section class="line top">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="col-md-4 col-sm-5 col-xs-12">
+                    <div class="title">
+                        Notícias
+                        <ul class="current-page">
+                            <li><a href="/home/">Página principal</a></li>
+                            <li>></li>
+                            <li><a href="/noticias/">Noticias</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="posts">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <article class="post ">
+                            <h3 class="uppercase">RECEITA FAZ PENTE-FINO EM FUNDOS DE INVESTIMENTOS</h3><h4>30 mil brasileiros que declaram ser não residentes terão seus investimentos investigados</h4>
+                            <ul class="info">
+                                <li>
+                                    <div class="text date">quarta-feira, 13 de julho de 2016</div>
+                                </li>
+                                <li>
+                                    <i class="entyp-pencil-1"></i>
+                                    <div class="text">Publicado por CONDUX</div>
+                                </li>
+                                
+                                <li>
+                                    <a href="/noticias/?cat=Receita+Federal">
+                                        <i class="entyp-list-1"></i>
+                                        <div class="text">Receita Federal</div>
+                                    </a>
+                                </li>
+                                
+                            </ul>
+                            
+                            <figure>
+                                <img src="https://condux.com.br/site/imgnews/156c.jpg" alt="RECEITA FAZ PENTE-FINO EM FUNDOS DE INVESTIMENTOS"/>
+                                
+                            </figure>
+                            
+                            <div class="content">
+                            <p style="box-sizing: border-box; margin: 0px 0px 20px; padding: 0px; border: 0px; outline: 0px; font-stretch: inherit; line-height: 21.45px; vertical-align: baseline; font-family: &quot;Open Sans&quot;; font-size: 13px; color: rgb(102, 102, 102); text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;">Ao menos 50 fundos de investimentos, dez bancos e 30 mil brasileiros que declaram ser n&atilde;o residentes passar&atilde;o neste ano por um pente-fino da Receita Federal. N&atilde;o se tratam ainda de fiscaliza&ccedil;&otilde;es oficiais, mas de um acompanhamento especial que o Fisco est&aacute; realizando ap&oacute;s perceber que fundos de investimentos estruturados &ndash; em especial os FIPs &ndash; t&ecirc;m sido utilizados em planejamentos tribut&aacute;rios considerados &ldquo;abusivos&rdquo; ou &ldquo;agressivos&rdquo;.</span></span></span></p>
+<p style="box-sizing: border-box; margin: 0px 0px 20px; padding: 0px; border: 0px; outline: 0px; font-stretch: inherit; line-height: 21.45px; vertical-align: baseline; font-family: &quot;Open Sans&quot;; font-size: 13px; color: rgb(102, 102, 102); text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;">O resultado dessa estrat&eacute;gia, aos olhos do Fisco, &eacute; que investidores sem direito por lei estariam usufruindo do benef&iacute;cio de isen&ccedil;&atilde;o do Imposto de Renda (IR) destinado a estrangeiros. Em outra situa&ccedil;&atilde;o, estariam adiando por tempo indeterminado o recolhimento do tributo por meio de fundos criados exclusivamente para essa finalidade.</span></span></span></p>
+<p style="box-sizing: border-box; margin: 0px 0px 20px; padding: 0px; border: 0px; outline: 0px; font-stretch: inherit; line-height: 21.45px; vertical-align: baseline; font-family: &quot;Open Sans&quot;; font-size: 13px; color: rgb(102, 102, 102); text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;">As informa&ccedil;&otilde;es s&atilde;o da Delegacia de Maiores Contribuintes (Demac) de S&atilde;o Paulo. H&aacute; no momento no &oacute;rg&atilde;o seis acompanhamentos dessa natureza em curso. Apesar dos dados serem regionais, o tema est&aacute; entre as &ldquo;as opera&ccedil;&otilde;es que ser&atilde;o objeto de fiscaliza&ccedil;&atilde;o em 2016&rdquo; da Receita Federal no pa&iacute;s, conforme divulgado no planejamento anual do &oacute;rg&atilde;o. Nessa listagem, os FIPs est&atilde;o abaixo apenas dos planejamentos que envolvem &aacute;gio na negocia&ccedil;&atilde;o entre empresas.</span></span></span></p>
+<p style="box-sizing: border-box; margin: 0px 0px 20px; padding: 0px; border: 0px; outline: 0px; font-stretch: inherit; line-height: 21.45px; vertical-align: baseline; font-family: &quot;Open Sans&quot;; font-size: 13px; color: rgb(102, 102, 102); text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;">A delegada da Demac de S&atilde;o Paulo, M&aacute;rcia Cec&iacute;lia Meng, afirma que h&aacute; dois focos da Receita neste momento. Identificar brasileiros (sejam pessoas f&iacute;sicas ou jur&iacute;dicas) que se passam por n&atilde;o residentes para deixar de recolher a al&iacute;quota de 15% do imposto sobre seus rendimentos (simula&ccedil;&atilde;o). E opera&ccedil;&otilde;es montadas com o prop&oacute;sito de fugir da tributa&ccedil;&atilde;o do IR sobre o ganho de capital com a venda de empresas &ndash; consideradas fraudulentas pelo desvirtuamento jur&iacute;dico da fun&ccedil;&atilde;o de um fundo de investimento.</span></span></span></p>
+<p style="box-sizing: border-box; margin: 0px 0px 20px; padding: 0px; border: 0px; outline: 0px; font-stretch: inherit; line-height: 21.45px; vertical-align: baseline; font-family: &quot;Open Sans&quot;; font-size: 13px; color: rgb(102, 102, 102); text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;">Na primeira situa&ccedil;&atilde;o, conforme M&aacute;rcia, h&aacute; desde casos muito simples a complexas opera&ccedil;&otilde;es verticais que escondem o real benefici&aacute;rio do fundo. No exemplo mais singelo, visto recentemente, ela cita uma pessoa f&iacute;sica que dizia ser n&atilde;o residente tanto no Brasil quanto nos Estados Unidos, onde mantinha investimentos. &ldquo;Para a SEC [Securities and Exchange Commission dos EUA] ele declarava morar no Brasil. &Agrave; Receita dizia residir em Delaware. O contribuinte n&atilde;o era tributado em lugar algum&rdquo;, afirma.</span></span></span></p>
+<p style="box-sizing: border-box; margin: 0px 0px 20px; padding: 0px; border: 0px; outline: 0px; font-stretch: inherit; line-height: 21.45px; vertical-align: baseline; font-family: &quot;Open Sans&quot;; font-size: 13px; color: rgb(102, 102, 102); text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;">A falsa informa&ccedil;&atilde;o foi descoberta com uma r&aacute;pida consulta ao site do &oacute;rg&atilde;o regulador americano &ndash; o endere&ccedil;o informado pelo brasileiro ficava na Avenida Brigadeiro Faria Lima, na capital paulista.</span></span></span></p>
+<p style="box-sizing: border-box; margin: 0px 0px 20px; padding: 0px; border: 0px; outline: 0px; font-stretch: inherit; line-height: 21.45px; vertical-align: baseline; font-family: &quot;Open Sans&quot;; font-size: 13px; color: rgb(102, 102, 102); text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;">Nos Fundos de Participa&ccedil;&atilde;o em Investimentos (FIP), a al&iacute;quota zero sobre os rendimentos concedida a residentes (com at&eacute; 40% de cotas) ou domiciliados no exterior &eacute; assegurada pelo o artigo 3&ordm; da Lei n&ordm; 11.312, de 2006.</span></span></span></p>
+<p style="box-sizing: border-box; margin: 0px 0px 20px; padding: 0px; border: 0px; outline: 0px; font-stretch: inherit; line-height: 21.45px; vertical-align: baseline; font-family: &quot;Open Sans&quot;; font-size: 13px; color: rgb(102, 102, 102); text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;">Segundo M&aacute;rcia, o uso indevido desse benef&iacute;cio seria o que mais preocuparia neste momento a Receita, pois com ele h&aacute; a sa&iacute;da de capitais do Brasil. Por isso, a an&aacute;lise desses 30 mil n&atilde;o residentes declarados &agrave; Receita, com investimentos em FIP ou opera&ccedil;&otilde;es em bolsa de valores, ocorrer&aacute; para averigua&ccedil;&atilde;o da &ldquo;consist&ecirc;ncia&rdquo; dos dados informados.</span></span></span></p>
+<p style="box-sizing: border-box; margin: 0px 0px 20px; padding: 0px; border: 0px; outline: 0px; font-stretch: inherit; line-height: 21.45px; vertical-align: baseline; font-family: &quot;Open Sans&quot;; font-size: 13px; color: rgb(102, 102, 102); text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;">Dentre outras situa&ccedil;&otilde;es observadas, conforme a delegada, h&aacute; a venda de empresas brasileiras e a transfer&ecirc;ncia das cotas para fundos estrangeiros. At&eacute; a&iacute; n&atilde;o existiria ilegalidade. A quest&atilde;o estaria no fato de as cotas passarem para o fundo antes da venda efetiva para se evitar o pagamento de IR sobre o ganho de capital.</span></span></span></p>
+<p style="box-sizing: border-box; margin: 0px 0px 20px; padding: 0px; border: 0px; outline: 0px; font-stretch: inherit; line-height: 21.45px; vertical-align: baseline; font-family: &quot;Open Sans&quot;; font-size: 13px; color: rgb(102, 102, 102); text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;">H&aacute; ainda simula&ccedil;&otilde;es em opera&ccedil;&otilde;es com longas cadeias para a obten&ccedil;&atilde;o da isen&ccedil;&atilde;o de imposto, seja para mascarar o benefici&aacute;rio (brasileiro residente) ou &ldquo;diluir&rdquo; as cotas para n&atilde;o se evidenciar que um estrangeiro teria mais de 40% de participa&ccedil;&atilde;o no fundo &ndash; acima deste montante a al&iacute;quota zero deixa de existir.</span></span></span></p>
+<p style="box-sizing: border-box; margin: 0px 0px 20px; padding: 0px; border: 0px; outline: 0px; font-stretch: inherit; line-height: 21.45px; vertical-align: baseline; font-family: &quot;Open Sans&quot;; font-size: 13px; color: rgb(102, 102, 102); text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;">Segundo M&aacute;rcia, a identifica&ccedil;&atilde;o dos cotistas &eacute; sempre problem&aacute;tica quando se trata de um fundo de investimento situado fora do Brasil. Nessa linha, os bancos que representam fundos estrangeiros no Brasil poder&atilde;o, a depender da situa&ccedil;&atilde;o, ser responsabilizados pela Receita (sujeito passivo solid&aacute;rio) pelo pagamento de imposto e multas do cotista n&atilde;o identificado. &ldquo;A institui&ccedil;&atilde;o financeira n&atilde;o pode representar algu&eacute;m que n&atilde;o sabe quem &eacute;, vamos responsabilizar solidariamente quem der causa a fraudes&rdquo;, afirma M&aacute;rcia.</span></span></span></p>
+<p style="box-sizing: border-box; margin: 0px 0px 20px; padding: 0px; border: 0px; outline: 0px; font-stretch: inherit; line-height: 21.45px; vertical-align: baseline; font-family: &quot;Open Sans&quot;; font-size: 13px; color: rgb(102, 102, 102); text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;">De acordo com ela, um banco j&aacute; foi autuado solidariamente em uma opera&ccedil;&atilde;o de alguns bilh&otilde;es de reais. A institui&ccedil;&atilde;o n&atilde;o identificou para o Fisco quem seriam os benefici&aacute;rios finais de cotas de um FIP. M&aacute;rcia afirma ter ficado evidente, nesse caso, seja por inten&ccedil;&atilde;o ou por falta de preocupa&ccedil;&atilde;o no momento de aceitar o cotista estrangeiro, que o banco gerou a impossibilidade da identifica&ccedil;&atilde;o solicitada.</span></span></span></p>
+<p style="box-sizing: border-box; margin: 0px 0px 20px; padding: 0px; border: 0px; outline: 0px; font-stretch: inherit; line-height: 21.45px; vertical-align: baseline; font-family: &quot;Open Sans&quot;; font-size: 13px; color: rgb(102, 102, 102); text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;">&ldquo;Temos nos deparado com situa&ccedil;&otilde;es em que as institui&ccedil;&otilde;es financeiras foram extremamente negligentes nessa identifica&ccedil;&atilde;o. Entendemos que, com isso, abrem-se as portas para uma s&eacute;rie de fraudes em nosso pa&iacute;s&rdquo;, diz a delegada da Demac.</span></span></span></p>
+<p style="box-sizing: border-box; margin: 0px 0px 20px; padding: 0px; border: 0px; outline: 0px; font-stretch: inherit; line-height: 21.45px; vertical-align: baseline; font-family: &quot;Open Sans&quot;; font-size: 13px; color: rgb(102, 102, 102); text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;">O secret&aacute;rio-adjunto da Receita Federal, Paulo Ricardo de Souza Cardoso, afirma que h&aacute; algum tempo os fundos em geral t&ecirc;m sido acompanhados pelo &oacute;rg&atilde;o. Percebeu-se, como explica, a necessidade de um trabalho &ldquo;in loco&rdquo; com as administradoras por verificar-se ind&iacute;cios de planejamentos tribut&aacute;rios abusivos. O que &eacute; fortemente combatido pelo &oacute;rg&atilde;o.</span></span></span></p>
+<p style="box-sizing: border-box; margin: 0px 0px 20px; padding: 0px; border: 0px; outline: 0px; font-stretch: inherit; line-height: 21.45px; vertical-align: baseline; font-family: &quot;Open Sans&quot;; font-size: 13px; color: rgb(102, 102, 102); text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;">Segundo Cardoso, esse n&atilde;o &eacute; um movimento da fiscaliza&ccedil;&atilde;o brasileira, mas uma tend&ecirc;ncia internacional em raz&atilde;o dos valores envolvidos nessas opera&ccedil;&otilde;es e a dificuldade geral que existe em se identificar quem s&atilde;o os verdadeiros investidores. &ldquo;Identificar os operadores por meio dos fundos &eacute; um desafio porque muitas vezes &eacute; estrangeiro, mas o investidor &eacute; brasileiro.&rdquo;</span></span></span></p>
+<p style="box-sizing: border-box; margin: 0px 0px 20px; padding: 0px; border: 0px; outline: 0px; font-stretch: inherit; line-height: 21.45px; vertical-align: baseline; font-family: &quot;Open Sans&quot;; font-size: 13px; color: rgb(102, 102, 102); text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;">Cardoso avalia que essa identifica&ccedil;&atilde;o ser&aacute; facilitada a partir de 2018 com a troca autom&aacute;tica de informa&ccedil;&otilde;es entre os diversos pa&iacute;ses que aderiram &agrave; Conven&ccedil;&atilde;o Multilateral sobre Assist&ecirc;ncia M&uacute;tua Administrativa em Mat&eacute;ria Tribut&aacute;ria, da qual o Brasil &eacute; signat&aacute;rio. &ldquo;Cada fundo tem sua peculiaridade, queremos incentivar investimentos de longo prazo, de capital que chega para esse fim e n&atilde;o que entra de manh&atilde; e sai de tarde&rdquo;, afirma.</span></span></span></p>
+<p style="box-sizing: border-box; margin: 0px 0px 20px; padding: 0px; border: 0px; outline: 0px; font-stretch: inherit; line-height: 21.45px; vertical-align: baseline; font-family: &quot;Open Sans&quot;; font-size: 13px; color: rgb(102, 102, 102); text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;">Advogados que atuam em mercados de capitais e tributaristas afirmam que o acompanhamento da Receita j&aacute; &eacute; sentido na &aacute;rea, em raz&atilde;o do aumento de pedidos de informa&ccedil;&otilde;es a administradoras e pelas autua&ccedil;&otilde;es que envolvem cifras alt&iacute;ssimas.</span></span></span></p>
+<p style="box-sizing: border-box; margin: 0px 0px 20px; padding: 0px; border: 0px; outline: 0px; font-stretch: inherit; line-height: 21.45px; vertical-align: baseline; font-family: &quot;Open Sans&quot;; font-size: 13px; color: rgb(102, 102, 102); text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;">&ldquo;H&aacute; autua&ccedil;&otilde;es milion&aacute;rias contra investidores e gestoras, mas nenhum caso chegou ao Carf e &agrave; Justi&ccedil;a ainda&rdquo;, afirma o advogado Diego Aubin Miguita, do escrit&oacute;rio Vaz, Barreto, Shingaki e Oioli. A discuss&atilde;o, de acordo com ele, varia conforme as caracter&iacute;sticas de cada situa&ccedil;&atilde;o e, muitas vezes, a Receita entende ter havido fraude ou simula&ccedil;&atilde;o nas opera&ccedil;&otilde;es. &ldquo;O que gera inseguran&ccedil;a sobre os crit&eacute;rios que ser&atilde;o considerados nos julgamentos.&rdquo;</span></span></span></p>
+<p style="box-sizing: border-box; margin: 0px 0px 20px; padding: 0px; border: 0px; outline: 0px; font-stretch: inherit; line-height: 21.45px; vertical-align: baseline; font-family: &quot;Open Sans&quot;; font-size: 13px; color: rgb(102, 102, 102); text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;">Para Miguita, o tema estar&aacute; entre as grandes discuss&otilde;es tribut&aacute;rias dos pr&oacute;ximos anos e a Receita Federal dever&aacute; seguir nessas situa&ccedil;&otilde;es o mesmo roteiro que j&aacute; utiliza para avaliar os demais casos de planejamento tribut&aacute;rio (leia Autua&ccedil;&otilde;es por planejamento somam R$ 184 bi).</span></span></span></p>
+<p style="box-sizing: border-box; margin: 0px 0px 20px; padding: 0px; border: 0px; outline: 0px; font-stretch: inherit; line-height: 21.45px; vertical-align: baseline; font-family: &quot;Open Sans&quot;; font-size: 13px; color: rgb(102, 102, 102); text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;">O aumento das fiscaliza&ccedil;&otilde;es na &aacute;rea &eacute; observado h&aacute; cerca de um ano e meio, conforme Eduardo Herszkowicz, s&oacute;cio das &aacute;rea de fundos de investimento do Souza Cescon Advogados. Segundo o advogado, o Fisco tem ido atr&aacute;s de opera&ccedil;&otilde;es que estariam prestes a prescrever, quando completariam cinco anos.</span></span></span></p>
+<p style="box-sizing: border-box; margin: 0px 0px 20px; padding: 0px; border: 0px; outline: 0px; font-stretch: inherit; line-height: 21.45px; vertical-align: baseline; font-family: &quot;Open Sans&quot;; font-size: 13px; color: rgb(102, 102, 102); text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;">De acordo com a s&oacute;cia da &aacute;rea tribut&aacute;ria do Tozzini Freire, Ana Cl&aacute;udia Utumi, a quest&atilde;o preocupa e seria importante a Receita distinguir bem as situa&ccedil;&otilde;es para n&atilde;o espantar os bons fundos do Brasil, que legitimamente teriam direito ao incentivo. Segundo ela, o FIP &eacute; um bom incentivo para as pessoas fazerem poupan&ccedil;a, reinvestirem em empresas e movimentar a economia. &ldquo;O desafio da Receita ser&aacute; identificar o que &eacute; realmente artificial.&rdquo;</span></span></span></p>
+<p style="box-sizing: border-box; margin: 0px 0px 20px; padding: 0px; border: 0px; outline: 0px; font-stretch: inherit; line-height: 21.45px; vertical-align: baseline; font-family: &quot;Open Sans&quot;; font-size: 13px; color: rgb(102, 102, 102); text-align: justify;">&nbsp;</p>
+<p style="box-sizing: border-box; margin: 0px 0px 20px; padding: 0px; border: 0px; outline: 0px; font-stretch: inherit; line-height: 21.45px; vertical-align: baseline; font-family: &quot;Open Sans&quot;; font-size: 13px; color: rgb(102, 102, 102); text-align: justify;"><span style="font-size: 14px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Fonte: Valor Econ&ocirc;mico</span></span></span></p>
+<p>&nbsp;</p>
+                            </div>
+                            
+                        </article>
+                        
+                        
+                    </div>
+                    <div class="col-md-1 hidden-sm"></div>
+                    <div class="col-md-2 col-sm-3">
+                        <aside class="widgets">
+                    <div class="widget list">
+                        <h3>Categorias</h3>
+                        <ul>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Calend%E1rio+de+Obriga%E7%F5es">Calendário de Obrigações</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Direitos+do+Consumidor">Direitos do Consumidor</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Empresarial">Empresarial</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=IRPF">IRPF</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Legisla%E7%E3o">Legislação</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Legisla%E7%E3o+Trabalhista">Legislação Trabalhista</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Previd%EAncia">Previdência</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Receita+Federal">Receita Federal</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Recursos+Humanos">Recursos Humanos</a>
+                            </li>
+ 
+                        </ul>
+                    </div>
+                    <div class="widget list">
+                        <h3>Por mês</h3>
+                        <ul>
+                        
+                            <li>
+                                <a href="/noticias/?mes=8&ano=2021">Agosto&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2021">Maio&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2021">Abril&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2021">Março&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=7&ano=2020">Julho&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2020">Maio&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2020">Abril&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2020">Março&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=10&ano=2019">Outubro&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2019">Setembro&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2019">Março&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2019">Janeiro&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=12&ano=2018">Dezembro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2018">Setembro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=6&ano=2018">Junho&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2018">Abril&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2018">Março&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=2&ano=2018">Fevereiro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2018">Janeiro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=12&ano=2017">Dezembro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=11&ano=2017">Novembro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=10&ano=2017">Outubro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2017">Setembro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=7&ano=2017">Julho&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=6&ano=2017">Junho&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2017">Maio&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2017">Abril&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2017">Março&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=2&ano=2017">Fevereiro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2017">Janeiro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=12&ano=2016">Dezembro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=11&ano=2016">Novembro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=10&ano=2016">Outubro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2016">Setembro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=8&ano=2016">Agosto&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=7&ano=2016">Julho&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=6&ano=2016">Junho&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2016">Maio&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2016">Abril&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2016">Março&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=2&ano=2016">Fevereiro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2016">Janeiro&nbsp;2016</a>
+                            </li>
+ 
+                        </ul>
+                    </div>
+
+                </aside>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+<footer class="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="footer-widget">
+                    <h2>Últimas Notícias</h2>
+                    <div class="widget-content latest-post">
+                        <ul>
+                        
+                            <li>
+                                <h3><a href="?a=noticia&id=295">BEM</a></h3>
+                                <p></p>
+                                <span class="date">26/08/2021</span>
+                            </li>
+                        
+                            <li>
+                                <h3><a href="?a=noticia&id=294">HOME OFFICE PARA GESTANTES</a></h3>
+                                <p></p>
+                                <span class="date">13/05/2021</span>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="footer-widget">
+                    <h2>Contato</h2>
+                    <div class="widget-content">
+                        <address>
+                            Rua Rep&uacute;blica do L&iacute;bano, 61 gr. 1102 <br/>
+                            Centro &ndash; Rio de Janeiro RJ
+                        </address>
+                        <address>
+                            <strong>Telefone: +55 (21) 3203-4348</strong> <br/>
+                            <strong>E-mail: condux@condux.com.br</strong>
+                        </address>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="footer-widget">
+                    <h2>Links</h2>
+                    <ul>    
+                        <li><a href="/home/">Home Page</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/empresa/">A Empresa</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="http://www.condux.com.br/ler.asp?id=1" target="_blank">Tabelas Pr&aacute;ticas</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="http://www.condux.com.br/ler.asp?id=2" target="_blank">Agenda de Obriga&ccedil;&otilde;es</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/noticias/">Not&iacute;cias</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/downloads/">Downloads</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/contato/">Contato</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="footer-info text-right">
+                    <ul class="footer-social">
+                        <li><a href="https://twitter.com/conduxBRA" target="_blank"><i class="entyp-twitter-1"></i></a></li>
+                        <li><a href="https://www.facebook.com/ConduxConsultoria" target="_blank"><i class="entyp-facebook-1"></i></a></li>
+                    </ul>
+                    <p>Copyright &copy; 2016</p>
+                    <p>CONDUX - Todos os Direitos Reservados</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="https://condux.com.br/site/js/vendor/jquery-1.11.0.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery-ui-1.10.3.custom.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.mousewheel.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.mCustomScrollbar.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.selectBoxIt.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.raty.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.flexslider.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.isotope.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.fancybox.pack.js"></script>
+<script src="https://condux.com.br/site/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
+<script src="https://condux.com.br/site/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/bootstrap.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/simpleInstagramFancybox.js"></script>
+<script src="https://condux.com.br/site/js/vendor/fitvids.js"></script>
+<script src="https://condux.com.br/site/js/main.js"></script>
+<script>
+    $('#revolution-shortcode').revolution({
+        delay : 90000,
+        hideThumbs:10,
+        navigationVOffset : -30,
+        navigationType : "none",
+        navigationStyle : "round-old",
+		startheight:700
+    });
+</script>
+<style>
+/*#revolution-shortcode { height: 700px !important }
+#revolution-shortcode > ul > li:nth-child(1) > div.slotholder { height: 700px !important }*/
+</style>
+</body>
+</html>

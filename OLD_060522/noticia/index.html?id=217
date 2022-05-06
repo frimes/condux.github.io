@@ -1,0 +1,654 @@
+<!--
+ * FCKeditor - The text editor for Internet - http://www.fckeditor.net
+ * Copyright (C) 2003-2009 Frederico Caldeira Knabben
+ *
+ * == BEGIN LICENSE ==
+ *
+ * Licensed under the terms of any of the following licenses at your
+ * choice:
+ *
+ *  - GNU General Public License Version 2 or later (the "GPL")
+ *    http://www.gnu.org/licenses/gpl.html
+ *
+ *  - GNU Lesser General Public License Version 2.1 or later (the "LGPL")
+ *    http://www.gnu.org/licenses/lgpl.html
+ *
+ *  - Mozilla Public License Version 1.1 or later (the "MPL")
+ *    http://www.mozilla.org/MPL/MPL-1.1.html
+ *
+ * == END LICENSE ==
+ *
+ * This is the integration file for ASP.
+ *
+ * It defines the FCKeditor class that can be used to create editor
+ * instances in ASP pages on server side.
+-->
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Condux</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, maximum-scale=1, minimum-scale=1">
+    <link rel="icon" type="image/png" href="https://condux.com.br/site/img/favicon.png">
+
+    <link rel="stylesheet" href="https://condux.com.br/site/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/flexslider.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/jquery.selectBoxIt.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/entypo.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/rs-plugin/css/settings.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/jquery.fancybox.css">
+        <link rel="stylesheet" href="https://condux.com.br/site/css/style.css">
+
+    <script src="https://condux.com.br/site/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+	
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-208708250-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-208708250-1');
+</script>
+
+</head>
+<body>
+<div class="main-wrap">
+<header class="navbar navbar-inverse">
+    <div class="normal-color with-slider">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <div id="control-logo-header">
+                                <a class="navbar-brand" href="/home/"><img src="https://condux.com.br/site/content/logo.png" alt="img"/></a>
+                            </div>
+                    </div>
+                </div>
+                <div class="col-sm-9">
+                    <div class="navbar-collapse collapse navbar-right">
+                        <ul class="nav navbar-nav social-nav">
+                            <li><a href="https://twitter.com/conduxBRA" target="_blank"><i class="entyp-twitter-1"></i></a></li>
+                            <li><a href="https://www.facebook.com/ConduxConsultoria" target="_blank"><i class="entyp-facebook-1"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="inverse-color">
+        <div class="container">
+            <div class="row">
+                <div class="navbar-collapse collapse">
+                    <div class="col-sm-12">
+                        <ul class="nav navbar-nav main-nav">
+                            <li id="control-logo-menu">
+                                <a class="navbar-brand" href="/home/"><img src="https://condux.com.br/site/content/logo.png" alt="img"/></a>
+                            </li>
+                            <li>
+                                <a href="/home/">Início</a>
+                            </li>
+                            <li>
+                                <a href="/empresa/">A empresa</a>
+                            </li>
+                            <li>
+                                <a href="/servicos/">Serviços</a>
+                            </li>
+                            <li>
+                                <a href="#">Utilitários</a>
+                                <ul>	
+                                	<li><a href="http://www.condux.com.br/ler.asp?id=1" target="_blank">Tabelas Práticas</a></li>
+                                    <li><a href="http://www.condux.com.br/ler.asp?id=2" target="_blank">Agenda de Obrigações</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="/noticias/">Notícias</a>
+                            </li>
+                            <li>
+                                <a href="/login/">Área do Cliente</a>
+                            </li>
+                            <li>
+                                <a href="/downloads/">Downloads</a>
+                            </li>
+                            <li>
+                                <a href="/contato/">Contato</a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</header>
+
+
+<section class="line top">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="col-md-4 col-sm-5 col-xs-12">
+                    <div class="title">
+                        Notícias
+                        <ul class="current-page">
+                            <li><a href="/home/">Página principal</a></li>
+                            <li>></li>
+                            <li><a href="/noticias/">Noticias</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="posts">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <article class="post ">
+                            <h3 class="uppercase">DECLARAÇÃO DE AJUSTE</h3><h4>Entenda o processo de revisão da Declaração do Imposto de Renda</h4>
+                            <ul class="info">
+                                <li>
+                                    <div class="text date">sexta-feira, 12 de maio de 2017</div>
+                                </li>
+                                <li>
+                                    <i class="entyp-pencil-1"></i>
+                                    <div class="text">Publicado por CONDUX</div>
+                                </li>
+                                
+                                <li>
+                                    <a href="/noticias/?cat=Receita+Federal">
+                                        <i class="entyp-list-1"></i>
+                                        <div class="text">Receita Federal</div>
+                                    </a>
+                                </li>
+                                
+                            </ul>
+                            
+                            <figure>
+                                <img src="https://condux.com.br/site/imgnews/217c.jpg" alt="DECLARAÇÃO DE AJUSTE"/>
+                                
+                            </figure>
+                            
+                            <div class="content">
+                            
+                                <p>
+                                    <strong>
+                                       Entenda o processo de revisão da Declaração do Imposto de Renda
+
+                                    </strong>
+                                </p>
+                            <p style="text-align: center;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);"><strong style="font-size: medium; font-family: helvetica;">ORIENTA&Ccedil;&Atilde;O</strong></span></span></span></p>
+<p style="text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);"><font style="font-size: medium;">Ap&oacute;s a transmiss&atilde;o, a Declara&ccedil;&atilde;o de Ajuste de Anual ser&aacute; processada pela Receita Federal, e o resultado do processamento estar&aacute; dispon&iacute;vel na internet, no endere&ccedil;o&nbsp;</font></span></span></span><span style="font-size: 15px;"><font face="helvetica" style="font-size: medium;"><a href="http://rfb.gov.br/" target="_blank" data-saferedirecturl="https://www.google.com/url?hl=pt-BR&amp;q=http://rfb.gov.br&amp;source=gmail&amp;ust=1494684877566000&amp;usg=AFQjCNEruQ4AU1PEXtzB_VSQS87JCN0G_Q" style="color: rgb(17, 85, 204);"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">http://rfb.gov.br</span></span></a></font><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);"><font style="font-size: medium;">, op&ccedil;&atilde;o Extrato da DIRPF. Para acessar o extrato &eacute; necess&aacute;rio possuir certificado digital ou c&oacute;digo de acesso. O extrato da DIRPF permite que o contribuinte, entre outras, identifique eventuais pend&ecirc;ncias que deixaram a declara&ccedil;&atilde;o em malha e saiba como resolv&ecirc;-las por meio de retifica&ccedil;&atilde;o da declara&ccedil;&atilde;o ou de agendamento de atendimento para apresenta&ccedil;&atilde;o de documenta&ccedil;&atilde;o comprobat&oacute;ria.<br />
+<strong><br />
+1. PRINCIPAIS SITUA&Ccedil;&Otilde;ES APRESENTADAS NO EXTRATO</strong><br />
+As principais situa&ccedil;&otilde;es das declara&ccedil;&otilde;es apresentadas no Extrato da DIRPF s&atilde;o as seguintes:<br />
+<br />
+</font></span></span></span></p>
+<div align="center" style="font-family: &quot;times new roman&quot;; font-size: medium;">
+<table border="1" cellspacing="0" cellpadding="0" class="m_-6063737964295622110gmail-MsoNormalTable" style="border-collapse: collapse; border: medium none;">
+    <tbody>
+        <tr>
+            <td width="146" style="font-family: arial, sans-serif; margin: 0px; width: 109.35pt; border: 1pt solid windowtext; padding: 0pt 4pt; background: none 0% 0% repeat scroll silver;">
+            <p class="MsoNormal" style="margin: 0px; font-family: arial, helvetica, sans-serif; font-size: 14px; line-height: 22px; padding-bottom: 20px; text-align: center;">&nbsp;</p>
+            <span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">
+            <p class="MsoNormal" style="margin: 0px; font-family: arial, helvetica, sans-serif; font-size: 14px; line-height: 22px; padding-bottom: 20px; text-align: center;">&nbsp;</p>
+            </span><span style="font-size: 15px;"><span style="color: rgb(0, 0, 0);">
+            <p class="MsoNormal" style="margin: 0px; font-family: arial, helvetica, sans-serif; font-size: 14px; line-height: 22px; padding-bottom: 20px; text-align: center;"><strong>Situa&ccedil;&atilde;o</strong></p>
+            </span></span></span></td>
+            <td width="428" style="font-family: arial, sans-serif; margin: 0px; width: 321.25pt; border-style: solid solid solid none; border-top-width: 1pt; border-top-color: windowtext; border-right-width: 1pt; border-right-color: windowtext; border-bottom-width: 1pt; border-bottom-color: windowtext; padding: 0pt 4pt; background: none 0% 0% repeat scroll silver;">
+            <p class="MsoNormal" style="margin: 0px; font-family: arial, helvetica, sans-serif; font-size: 14px; line-height: 22px; padding-bottom: 20px; text-align: center;">&nbsp;</p>
+            <span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">
+            <p class="MsoNormal" style="margin: 0px; font-family: arial, helvetica, sans-serif; font-size: 14px; line-height: 22px; padding-bottom: 20px; text-align: center;">&nbsp;</p>
+            </span><span style="font-size: 15px;"><span style="color: rgb(0, 0, 0);">
+            <p class="MsoNormal" style="margin: 0px; font-family: arial, helvetica, sans-serif; font-size: 14px; line-height: 22px; padding-bottom: 20px; text-align: center;"><strong>Significado</strong></p>
+            </span></span></span></td>
+        </tr>
+        <tr>
+            <td width="146" style="font-family: arial, sans-serif; margin: 0px; width: 109.35pt; border-style: none solid solid; border-right-width: 1pt; border-right-color: windowtext; border-bottom-width: 1pt; border-bottom-color: windowtext; border-left-width: 1pt; border-left-color: windowtext; padding: 0pt 4pt;">
+            <p class="MsoNormal" style="margin: 0px; font-family: arial, helvetica, sans-serif; font-size: 14px; line-height: 22px; padding-bottom: 20px; text-align: center;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Em processamento</span></span></span></p>
+            </td>
+            <td width="428" style="font-family: arial, sans-serif; margin: 0px; width: 321.25pt; border-style: none solid solid none; border-bottom-width: 1pt; border-bottom-color: windowtext; border-right-width: 1pt; border-right-color: windowtext; padding: 0pt 4pt;">
+            <p class="MsoNormal" style="margin: 0px; font-family: arial, helvetica, sans-serif; font-size: 14px; line-height: 22px; padding-bottom: 20px;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">A declara&ccedil;&atilde;o foi recebida, mas o processamento ainda n&atilde;o foi conclu&iacute;do.</span></span></span></p>
+            </td>
+        </tr>
+        <tr>
+            <td width="146" style="font-family: arial, sans-serif; margin: 0px; width: 109.35pt; border-style: none solid solid; border-right-width: 1pt; border-right-color: windowtext; border-bottom-width: 1pt; border-bottom-color: windowtext; border-left-width: 1pt; border-left-color: windowtext; padding: 0pt 4pt;">
+            <p class="MsoNormal" style="margin: 0px; font-family: arial, helvetica, sans-serif; font-size: 14px; line-height: 22px; padding-bottom: 20px;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Em Fila de Restitui&ccedil;&atilde;o</span></span></span></p>
+            </td>
+            <td width="428" style="font-family: arial, sans-serif; margin: 0px; width: 321.25pt; border-style: none solid solid none; border-bottom-width: 1pt; border-bottom-color: windowtext; border-right-width: 1pt; border-right-color: windowtext; padding: 0pt 4pt;">
+            <p class="MsoNormal" style="margin: 0px; font-family: arial, helvetica, sans-serif; font-size: 14px; line-height: 22px; padding-bottom: 20px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Indica que, ap&oacute;s o processamento da declara&ccedil;&atilde;o, o contribuinte tem direito a restitui&ccedil;&atilde;o, mas que ainda n&atilde;o foi disponibilizada na rede banc&aacute;ria.<br />
+            Para recebimento da restitui&ccedil;&atilde;o, o contribuinte n&atilde;o poder&aacute; ter pend&ecirc;ncias de d&eacute;bitos no &acirc;mbito da RFB e/ou da PGFN.</span></span></span></p>
+            </td>
+        </tr>
+        <tr>
+            <td width="146" style="font-family: arial, sans-serif; margin: 0px; width: 109.35pt; border-style: none solid solid; border-right-width: 1pt; border-right-color: windowtext; border-bottom-width: 1pt; border-bottom-color: windowtext; border-left-width: 1pt; border-left-color: windowtext; padding: 0pt 4pt;">
+            <p class="MsoNormal" style="margin: 0px; font-family: arial, helvetica, sans-serif; font-size: 14px; line-height: 22px; padding-bottom: 20px; text-align: center;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Processada</span></span></span></p>
+            </td>
+            <td width="428" style="font-family: arial, sans-serif; margin: 0px; width: 321.25pt; border-style: none solid solid none; border-bottom-width: 1pt; border-bottom-color: windowtext; border-right-width: 1pt; border-right-color: windowtext; padding: 0pt 4pt;">
+            <p class="MsoNormal" style="margin: 0px; font-family: arial, helvetica, sans-serif; font-size: 14px; line-height: 22px; padding-bottom: 20px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">A declara&ccedil;&atilde;o foi recebida e o seu processamento conclu&iacute;do.<br />
+            Observa&ccedil;&atilde;o: A situa&ccedil;&atilde;o &ldquo;processada&rdquo; n&atilde;o significa que o resultado apurado tenha sido homologado, podendo ser revisto de of&iacute;cio pela Administra&ccedil;&atilde;o Tribut&aacute;ria (artigo 150, &sect; 4&ordm;, do C&oacute;digo Tribut&aacute;rio Nacional &ndash; CTN).</span></span></span></p>
+            </td>
+        </tr>
+        <tr>
+            <td width="146" style="font-family: arial, sans-serif; margin: 0px; width: 109.35pt; border-style: none solid solid; border-right-width: 1pt; border-right-color: windowtext; border-bottom-width: 1pt; border-bottom-color: windowtext; border-left-width: 1pt; border-left-color: windowtext; padding: 0pt 4pt;">
+            <p class="MsoNormal" style="margin: 0px; font-family: arial, helvetica, sans-serif; font-size: 14px; line-height: 22px; padding-bottom: 20px; text-align: center;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Com Pend&ecirc;ncias</span></span></span></p>
+            </td>
+            <td width="428" style="font-family: arial, sans-serif; margin: 0px; width: 321.25pt; border-style: none solid solid none; border-bottom-width: 1pt; border-bottom-color: windowtext; border-right-width: 1pt; border-right-color: windowtext; padding: 0pt 4pt;">
+            <p class="MsoNormal" style="margin: 0px; font-family: arial, helvetica, sans-serif; font-size: 14px; line-height: 22px; padding-bottom: 20px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Durante o processamento da declara&ccedil;&atilde;o foram encontradas pend&ecirc;ncias em rela&ccedil;&atilde;o a algumas informa&ccedil;&otilde;es. O contribuinte deve regularizar as pend&ecirc;ncias.</span></span></span></p>
+            </td>
+        </tr>
+        <tr>
+            <td width="146" style="font-family: arial, sans-serif; margin: 0px; width: 109.35pt; border-style: none solid solid; border-right-width: 1pt; border-right-color: windowtext; border-bottom-width: 1pt; border-bottom-color: windowtext; border-left-width: 1pt; border-left-color: windowtext; padding: 0pt 4pt;">
+            <p class="MsoNormal" style="margin: 0px; font-family: arial, helvetica, sans-serif; font-size: 14px; line-height: 22px; padding-bottom: 20px; text-align: center;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Em An&aacute;lise</span></span></span></p>
+            </td>
+            <td width="428" style="font-family: arial, sans-serif; margin: 0px; width: 321.25pt; border-style: none solid solid none; border-bottom-width: 1pt; border-bottom-color: windowtext; border-right-width: 1pt; border-right-color: windowtext; padding: 0pt 4pt;">
+            <p class="MsoNormal" style="margin: 0px; font-family: arial, helvetica, sans-serif; font-size: 14px; line-height: 22px; padding-bottom: 20px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Indica que a declara&ccedil;&atilde;o foi recepcionada, encontra-se na base de dados da Receita Federal do Brasil e aguarda: a) a apresenta&ccedil;&atilde;o de documentos solicitados em intima&ccedil;&atilde;o enviada ao contribuinte; ou<br />
+            b) a conclus&atilde;o da an&aacute;lise de documentos entregues pelo contribuinte por meio de agendamento, em atendimento &agrave; intima&ccedil;&atilde;o a ele enviada, ou para apresentar Solicita&ccedil;&atilde;o de Retifica&ccedil;&atilde;o de Lan&ccedil;amento (SRL).</span></span></span></p>
+            </td>
+        </tr>
+        <tr>
+            <td width="146" style="font-family: arial, sans-serif; margin: 0px; width: 109.35pt; border-style: none solid solid; border-right-width: 1pt; border-right-color: windowtext; border-bottom-width: 1pt; border-bottom-color: windowtext; border-left-width: 1pt; border-left-color: windowtext; padding: 0pt 4pt;">
+            <p class="MsoNormal" style="margin: 0px; font-family: arial, helvetica, sans-serif; font-size: 14px; line-height: 22px; padding-bottom: 20px; text-align: center;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Retificada</span></span></span></p>
+            </td>
+            <td width="428" style="font-family: arial, sans-serif; margin: 0px; width: 321.25pt; border-style: none solid solid none; border-bottom-width: 1pt; border-bottom-color: windowtext; border-right-width: 1pt; border-right-color: windowtext; padding: 0pt 4pt;">
+            <p class="MsoNormal" style="margin: 0px; font-family: arial, helvetica, sans-serif; font-size: 14px; line-height: 22px; padding-bottom: 20px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Indica que a declara&ccedil;&atilde;o anterior foi substitu&iacute;da integralmente por declara&ccedil;&atilde;o retificadora apresentada pelo contribuinte.</span></span></span></p>
+            </td>
+        </tr>
+        <tr>
+            <td width="146" style="font-family: arial, sans-serif; margin: 0px; width: 109.35pt; border-style: none solid solid; border-right-width: 1pt; border-right-color: windowtext; border-bottom-width: 1pt; border-bottom-color: windowtext; border-left-width: 1pt; border-left-color: windowtext; padding: 0pt 4pt;">
+            <p class="MsoNormal" style="margin: 0px; font-family: arial, helvetica, sans-serif; font-size: 14px; line-height: 22px; padding-bottom: 20px; text-align: center;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Cancelada</span></span></span></p>
+            </td>
+            <td width="428" style="font-family: arial, sans-serif; margin: 0px; width: 321.25pt; border-style: none solid solid none; border-bottom-width: 1pt; border-bottom-color: windowtext; border-right-width: 1pt; border-right-color: windowtext; padding: 0pt 4pt;">
+            <p class="MsoNormal" style="margin: 0px; font-family: arial, helvetica, sans-serif; font-size: 14px; line-height: 22px; padding-bottom: 20px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Indica que a declara&ccedil;&atilde;o foi cancelada por interesse da administra&ccedil;&atilde;o tribut&aacute;ria ou por solicita&ccedil;&atilde;o do contribuinte, encerrando todos os seus efeitos legais.</span></span></span></p>
+            </td>
+        </tr>
+        <tr>
+            <td width="146" style="font-family: arial, sans-serif; margin: 0px; width: 109.35pt; border-style: none solid solid; border-right-width: 1pt; border-right-color: windowtext; border-bottom-width: 1pt; border-bottom-color: windowtext; border-left-width: 1pt; border-left-color: windowtext; padding: 0pt 4pt;">
+            <p class="MsoNormal" style="margin: 0px; font-family: arial, helvetica, sans-serif; font-size: 14px; line-height: 22px; padding-bottom: 20px; text-align: center;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Tratamento Manual</span></span></span></p>
+            </td>
+            <td width="428" style="font-family: arial, sans-serif; margin: 0px; width: 321.25pt; border-style: none solid solid none; border-bottom-width: 1pt; border-bottom-color: windowtext; border-right-width: 1pt; border-right-color: windowtext; padding: 0pt 4pt;">
+            <p class="MsoNormal" style="margin: 0px; font-family: arial, helvetica, sans-serif; font-size: 14px; line-height: 22px; padding-bottom: 20px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">A declara&ccedil;&atilde;o est&aacute; sendo analisada. Aguarde correspond&ecirc;ncia da Receita Federal.</span></span></span></p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</div>
+<p class="MsoNormal" style="margin: 0px 0px 0.0001pt; font-family: arial, helvetica, sans-serif; font-size: 14px; line-height: 22px; padding-bottom: 20px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);"><span style="line-height: 16.1px;"><br />
+<strong>2. REVIS&Atilde;O DE OF&Iacute;CIO</strong><br />
+A Declara&ccedil;&atilde;o de Ajuste Anual da pessoa f&iacute;sica ser&aacute; submetida &agrave; revis&atilde;o mediante procedimentos internos decorrentes de par&acirc;metros previstos na legisla&ccedil;&atilde;o pertinente. Dessa revis&atilde;o, poder&aacute; resultar notifica&ccedil;&atilde;o de lan&ccedil;amento, quando se constatarem inexatid&otilde;es materiais devidas a lapso manifesto ou erros de c&aacute;lculos cometidos pelo contribuinte ou infra&ccedil;&atilde;o &agrave; legisla&ccedil;&atilde;o tribut&aacute;ria.<br />
+Para fins de simples confer&ecirc;ncia, o extrato da declara&ccedil;&atilde;o cuja revis&atilde;o n&atilde;o resultar em altera&ccedil;&atilde;o no c&aacute;lculo do imposto devido, do imposto pago e do saldo do imposto a pagar ou a restituir, ser&aacute; disponibilizado, na p&aacute;gina da RFB, na internet, no endere&ccedil;o eletr&ocirc;nico</span></span></span></span><span style="line-height: 16.1px;"><font face="helvetica" size="2"><span style="font-size: 15px;"><a href="http://rfb.gov.br/" target="_blank" data-saferedirecturl="https://www.google.com/url?hl=pt-BR&amp;q=http://rfb.gov.br&amp;source=gmail&amp;ust=1494684877566000&amp;usg=AFQjCNEruQ4AU1PEXtzB_VSQS87JCN0G_Q" style="color: rgb(17, 85, 204);"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">http://rfb.gov.br</span></span></a><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">.<br />
+O contribuinte ser&aacute; intimado a apresentar, no prazo fixado na intima&ccedil;&atilde;o, esclarecimentos ou documentos sobre inconsist&ecirc;ncias ou ind&iacute;cios de irregularidade fiscal detectadas nas revis&otilde;es das declara&ccedil;&otilde;es, salvo se houver infra&ccedil;&atilde;o claramente demonstrada, com os elementos probat&oacute;rios necess&aacute;rios ao lan&ccedil;amento.<br />
+<br />
+<strong>2.1. IMPOSTO APURADO NA REVIS&Atilde;O</strong><br />
+O imposto apurado na revis&atilde;o das declara&ccedil;&otilde;es ser&aacute; acrescido de:<br />
+a) multa:<br />
+&ndash; de mora, quando se constatarem inexatid&otilde;es materiais devidas a lapso manifesto ou erros de c&aacute;lculos, bem assim nos casos de n&atilde;o comprova&ccedil;&atilde;o do valor do imposto retido na fonte ou pago, inclusive a t&iacute;tulo de recolhimento complementar, ou imposto pago no exterior informados em sua declara&ccedil;&atilde;o;<br />
+&ndash; de of&iacute;cio, nas demais hip&oacute;teses de infra&ccedil;&atilde;o &agrave; legisla&ccedil;&atilde;o tribut&aacute;ria;<br />
+b) juros de mora equivalentes &agrave; taxa Selic.<br />
+Para o c&aacute;lculo dos acr&eacute;scimos legais, a data de vencimento do imposto &eacute; aquela estabelecida para a entrega da declara&ccedil;&atilde;o.<br />
+<br />
+<strong>2.2. RETIFICA&Ccedil;&Atilde;O DE LAN&Ccedil;AMENTO DO IMPOSTO</strong><br />
+No caso de lan&ccedil;amento efetuado sem pr&eacute;via intima&ccedil;&atilde;o, o contribuinte poder&aacute; solicitar a sua revis&atilde;o, no prazo de 30 dias contados de sua ci&ecirc;ncia. A solicita&ccedil;&atilde;o de retifica&ccedil;&atilde;o do lan&ccedil;amento dever&aacute; ser feita &agrave; unidade da RFB da jurisdi&ccedil;&atilde;o do domic&iacute;lio tribut&aacute;rio do contribuinte e ser&aacute; analisada por Auditor-Fiscal da Receita Federal daquela unidade ou de unidade definida em ato espec&iacute;fico da RFB. Na hip&oacute;tese de indeferimento total ou parcial da solicita&ccedil;&atilde;o de retifica&ccedil;&atilde;o do lan&ccedil;amento, o contribuinte poder&aacute; apresentar impugna&ccedil;&atilde;o, no prazo de 30 dias contados da ci&ecirc;ncia do indeferimento.<br />
+<br />
+</span></span></span></font></span></p>
+<p class="MsoNormal" style="margin: 0px 0px 0.0001pt; font-family: arial, helvetica, sans-serif; font-size: 14px; line-height: 22px; padding-bottom: 20px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="line-height: 16.1px;"><font face="helvetica"><strong>FUNDAMENTA&Ccedil;&Atilde;O LEGAL:</strong>&nbsp;</font></span></span></span><span style="line-height: 16.1px;"><font face="helvetica" size="2"><a href="http://www.coad.com.br/busca/detalhe_31/1176/Atos_Legais" target="_blank" data-saferedirecturl="https://www.google.com/url?hl=pt-BR&amp;q=http://www.coad.com.br/busca/detalhe_31/1176/Atos_Legais&amp;source=gmail&amp;ust=1494684877566000&amp;usg=AFQjCNHkFktbIipb2TQtU8NTlvsXabBorg" style="color: rgb(17, 85, 204);"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Lei 9.779</span></span></a><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">, de 19-1-99 &ndash; artigo 16;&nbsp;</span></span><a href="http://www.coad.com.br/busca/detalhe_31/3997/Atos_Legais" target="_blank" data-saferedirecturl="https://www.google.com/url?hl=pt-BR&amp;q=http://www.coad.com.br/busca/detalhe_31/3997/Atos_Legais&amp;source=gmail&amp;ust=1494684877566000&amp;usg=AFQjCNHclHZJuQbZxVuS3DSoEjIYE3oEpw" style="color: rgb(17, 85, 204);"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Medida Provis&oacute;ria 2.189-49</span></span></a><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">, de 23-8-2001 &ndash; artigo 18;&nbsp;</span></span><a href="http://www.coad.com.br/busca/detalhe_31/141937/Atos_Legais" target="_blank" data-saferedirecturl="https://www.google.com/url?hl=pt-BR&amp;q=http://www.coad.com.br/busca/detalhe_31/141937/Atos_Legais&amp;source=gmail&amp;ust=1494684877566000&amp;usg=AFQjCNFhBxl4e2iUl7VXKyg6WGAT4I5V-Q" style="color: rgb(17, 85, 204);"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Instru&ccedil;&atilde;o Normativa 958 RFB</span></span></a><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">, de 15-7-2009;&nbsp;</span></span><a href="http://www.coad.com.br/busca/detalhe_31/217876/Atos_Legais" target="_blank" data-saferedirecturl="https://www.google.com/url?hl=pt-BR&amp;q=http://www.coad.com.br/busca/detalhe_31/217876/Atos_Legais&amp;source=gmail&amp;ust=1494684877566000&amp;usg=AFQjCNEA6vt28iuoHOZbtFcs6tV4UjHvGw" style="color: rgb(17, 85, 204);"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Instru&ccedil;&atilde;o Normativa 1.500 RFB</span></span></a><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">, de 29-10-2014;&nbsp;</span></span><a href="http://www.coad.com.br/busca/detalhe_31/231995/Atos_Legais" target="_blank" data-saferedirecturl="https://www.google.com/url?hl=pt-BR&amp;q=http://www.coad.com.br/busca/detalhe_31/231995/Atos_Legais&amp;source=gmail&amp;ust=1494684877566000&amp;usg=AFQjCNF1vHKWAudwKaiUt8wWvieA49Fctw" style="color: rgb(17, 85, 204);"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Instru&ccedil;&atilde;o Normativa 1.690 RFB</span></span></a><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">, de 20-2-2017;&nbsp;</span></span><a href="http://www.coad.com.br/busca/detalhe_31/232006/Atos_Legais" target="_blank" data-saferedirecturl="https://www.google.com/url?hl=pt-BR&amp;q=http://www.coad.com.br/busca/detalhe_31/232006/Atos_Legais&amp;source=gmail&amp;ust=1494684877566000&amp;usg=AFQjCNFE_qUpDJoSNGnXYteL6haWWco8ag" style="color: rgb(17, 85, 204);"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Instru&ccedil;&atilde;o Normativa 1.696 RFB</span></span></a><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">, de 21-2-2017 &ndash; Instru&ccedil;&otilde;es de Preenchimento da Declara&ccedil;&atilde;o de Ajuste;&nbsp;</span></span><a href="http://www.coad.com.br/busca/detalhe_31/232601/Atos_Legais" target="_blank" data-saferedirecturl="https://www.google.com/url?hl=pt-BR&amp;q=http://www.coad.com.br/busca/detalhe_31/232601/Atos_Legais&amp;source=gmail&amp;ust=1494684877566000&amp;usg=AFQjCNE6JkTE7IKd85c0eBiBU-IuMR5ylg" style="color: rgb(17, 85, 204);"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Instru&ccedil;&atilde;o Normativa 1.703 RFB</span></span></a></font><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><font face="helvetica">, de 31-3-2017; Perguntas e Respostas &ndash; IRPF &ndash; RFB/2017.<br />
+</font></span></span></span></p>
+<p class="MsoNormal" style="margin: 0px 0px 0.0001pt; font-family: arial, helvetica, sans-serif; font-size: 14px; line-height: 22px; padding-bottom: 20px; text-align: justify;">&nbsp;</p>
+<p class="MsoNormal" style="margin: 0px 0px 0.0001pt; font-family: arial, helvetica, sans-serif; font-size: 14px; line-height: 22px; padding-bottom: 20px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: helvetica;">Fonte: COAD</span></span></span></p>
+<p><span style="font-family: Arial;"><span style="font-size: 15px;"><span style="color: rgb(0, 0, 0);"> </span></span></span></p>
+<p>&nbsp;</p>
+<p><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></span></span></p>
+                            </div>
+                            
+                        </article>
+                        
+                        
+                    </div>
+                    <div class="col-md-1 hidden-sm"></div>
+                    <div class="col-md-2 col-sm-3">
+                        <aside class="widgets">
+                    <div class="widget list">
+                        <h3>Categorias</h3>
+                        <ul>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Calend%E1rio+de+Obriga%E7%F5es">Calendário de Obrigações</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Direitos+do+Consumidor">Direitos do Consumidor</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Empresarial">Empresarial</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=IRPF">IRPF</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Legisla%E7%E3o">Legislação</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Legisla%E7%E3o+Trabalhista">Legislação Trabalhista</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Previd%EAncia">Previdência</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Receita+Federal">Receita Federal</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Recursos+Humanos">Recursos Humanos</a>
+                            </li>
+ 
+                        </ul>
+                    </div>
+                    <div class="widget list">
+                        <h3>Por mês</h3>
+                        <ul>
+                        
+                            <li>
+                                <a href="/noticias/?mes=8&ano=2021">Agosto&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2021">Maio&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2021">Abril&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2021">Março&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=7&ano=2020">Julho&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2020">Maio&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2020">Abril&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2020">Março&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=10&ano=2019">Outubro&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2019">Setembro&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2019">Março&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2019">Janeiro&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=12&ano=2018">Dezembro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2018">Setembro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=6&ano=2018">Junho&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2018">Abril&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2018">Março&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=2&ano=2018">Fevereiro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2018">Janeiro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=12&ano=2017">Dezembro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=11&ano=2017">Novembro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=10&ano=2017">Outubro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2017">Setembro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=7&ano=2017">Julho&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=6&ano=2017">Junho&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2017">Maio&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2017">Abril&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2017">Março&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=2&ano=2017">Fevereiro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2017">Janeiro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=12&ano=2016">Dezembro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=11&ano=2016">Novembro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=10&ano=2016">Outubro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2016">Setembro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=8&ano=2016">Agosto&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=7&ano=2016">Julho&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=6&ano=2016">Junho&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2016">Maio&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2016">Abril&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2016">Março&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=2&ano=2016">Fevereiro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2016">Janeiro&nbsp;2016</a>
+                            </li>
+ 
+                        </ul>
+                    </div>
+
+                </aside>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+<footer class="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="footer-widget">
+                    <h2>Últimas Notícias</h2>
+                    <div class="widget-content latest-post">
+                        <ul>
+                        
+                            <li>
+                                <h3><a href="?a=noticia&id=295">BEM</a></h3>
+                                <p></p>
+                                <span class="date">26/08/2021</span>
+                            </li>
+                        
+                            <li>
+                                <h3><a href="?a=noticia&id=294">HOME OFFICE PARA GESTANTES</a></h3>
+                                <p></p>
+                                <span class="date">13/05/2021</span>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="footer-widget">
+                    <h2>Contato</h2>
+                    <div class="widget-content">
+                        <address>
+                            Rua Rep&uacute;blica do L&iacute;bano, 61 gr. 1102 <br/>
+                            Centro &ndash; Rio de Janeiro RJ
+                        </address>
+                        <address>
+                            <strong>Telefone: +55 (21) 3203-4348</strong> <br/>
+                            <strong>E-mail: condux@condux.com.br</strong>
+                        </address>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="footer-widget">
+                    <h2>Links</h2>
+                    <ul>    
+                        <li><a href="/home/">Home Page</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/empresa/">A Empresa</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="http://www.condux.com.br/ler.asp?id=1" target="_blank">Tabelas Pr&aacute;ticas</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="http://www.condux.com.br/ler.asp?id=2" target="_blank">Agenda de Obriga&ccedil;&otilde;es</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/noticias/">Not&iacute;cias</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/downloads/">Downloads</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/contato/">Contato</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="footer-info text-right">
+                    <ul class="footer-social">
+                        <li><a href="https://twitter.com/conduxBRA" target="_blank"><i class="entyp-twitter-1"></i></a></li>
+                        <li><a href="https://www.facebook.com/ConduxConsultoria" target="_blank"><i class="entyp-facebook-1"></i></a></li>
+                    </ul>
+                    <p>Copyright &copy; 2016</p>
+                    <p>CONDUX - Todos os Direitos Reservados</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="https://condux.com.br/site/js/vendor/jquery-1.11.0.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery-ui-1.10.3.custom.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.mousewheel.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.mCustomScrollbar.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.selectBoxIt.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.raty.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.flexslider.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.isotope.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.fancybox.pack.js"></script>
+<script src="https://condux.com.br/site/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
+<script src="https://condux.com.br/site/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/bootstrap.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/simpleInstagramFancybox.js"></script>
+<script src="https://condux.com.br/site/js/vendor/fitvids.js"></script>
+<script src="https://condux.com.br/site/js/main.js"></script>
+<script>
+    $('#revolution-shortcode').revolution({
+        delay : 90000,
+        hideThumbs:10,
+        navigationVOffset : -30,
+        navigationType : "none",
+        navigationStyle : "round-old",
+		startheight:700
+    });
+</script>
+<style>
+/*#revolution-shortcode { height: 700px !important }
+#revolution-shortcode > ul > li:nth-child(1) > div.slotholder { height: 700px !important }*/
+</style>
+</body>
+</html>

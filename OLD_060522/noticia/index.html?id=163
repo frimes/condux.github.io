@@ -1,0 +1,595 @@
+<!--
+ * FCKeditor - The text editor for Internet - http://www.fckeditor.net
+ * Copyright (C) 2003-2009 Frederico Caldeira Knabben
+ *
+ * == BEGIN LICENSE ==
+ *
+ * Licensed under the terms of any of the following licenses at your
+ * choice:
+ *
+ *  - GNU General Public License Version 2 or later (the "GPL")
+ *    http://www.gnu.org/licenses/gpl.html
+ *
+ *  - GNU Lesser General Public License Version 2.1 or later (the "LGPL")
+ *    http://www.gnu.org/licenses/lgpl.html
+ *
+ *  - Mozilla Public License Version 1.1 or later (the "MPL")
+ *    http://www.mozilla.org/MPL/MPL-1.1.html
+ *
+ * == END LICENSE ==
+ *
+ * This is the integration file for ASP.
+ *
+ * It defines the FCKeditor class that can be used to create editor
+ * instances in ASP pages on server side.
+-->
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Condux</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, maximum-scale=1, minimum-scale=1">
+    <link rel="icon" type="image/png" href="https://condux.com.br/site/img/favicon.png">
+
+    <link rel="stylesheet" href="https://condux.com.br/site/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/flexslider.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/jquery.selectBoxIt.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/entypo.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/rs-plugin/css/settings.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/jquery.fancybox.css">
+        <link rel="stylesheet" href="https://condux.com.br/site/css/style.css">
+
+    <script src="https://condux.com.br/site/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+	
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-208708250-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-208708250-1');
+</script>
+
+</head>
+<body>
+<div class="main-wrap">
+<header class="navbar navbar-inverse">
+    <div class="normal-color with-slider">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <div id="control-logo-header">
+                                <a class="navbar-brand" href="/home/"><img src="https://condux.com.br/site/content/logo.png" alt="img"/></a>
+                            </div>
+                    </div>
+                </div>
+                <div class="col-sm-9">
+                    <div class="navbar-collapse collapse navbar-right">
+                        <ul class="nav navbar-nav social-nav">
+                            <li><a href="https://twitter.com/conduxBRA" target="_blank"><i class="entyp-twitter-1"></i></a></li>
+                            <li><a href="https://www.facebook.com/ConduxConsultoria" target="_blank"><i class="entyp-facebook-1"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="inverse-color">
+        <div class="container">
+            <div class="row">
+                <div class="navbar-collapse collapse">
+                    <div class="col-sm-12">
+                        <ul class="nav navbar-nav main-nav">
+                            <li id="control-logo-menu">
+                                <a class="navbar-brand" href="/home/"><img src="https://condux.com.br/site/content/logo.png" alt="img"/></a>
+                            </li>
+                            <li>
+                                <a href="/home/">Início</a>
+                            </li>
+                            <li>
+                                <a href="/empresa/">A empresa</a>
+                            </li>
+                            <li>
+                                <a href="/servicos/">Serviços</a>
+                            </li>
+                            <li>
+                                <a href="#">Utilitários</a>
+                                <ul>	
+                                	<li><a href="http://www.condux.com.br/ler.asp?id=1" target="_blank">Tabelas Práticas</a></li>
+                                    <li><a href="http://www.condux.com.br/ler.asp?id=2" target="_blank">Agenda de Obrigações</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="/noticias/">Notícias</a>
+                            </li>
+                            <li>
+                                <a href="/login/">Área do Cliente</a>
+                            </li>
+                            <li>
+                                <a href="/downloads/">Downloads</a>
+                            </li>
+                            <li>
+                                <a href="/contato/">Contato</a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</header>
+
+
+<section class="line top">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="col-md-4 col-sm-5 col-xs-12">
+                    <div class="title">
+                        Notícias
+                        <ul class="current-page">
+                            <li><a href="/home/">Página principal</a></li>
+                            <li>></li>
+                            <li><a href="/noticias/">Noticias</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="posts">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <article class="post ">
+                            <h3 class="uppercase">DIAS DE TRABALHO NAS OLIMPÍADAS (ATUALIZADO: 02/08/2016)</h3><h4>Veja como proceder em relação ao trabalho nos feriados dos Jogos Olímpicos</h4>
+                            <ul class="info">
+                                <li>
+                                    <div class="text date">quinta-feira, 28 de julho de 2016</div>
+                                </li>
+                                <li>
+                                    <i class="entyp-pencil-1"></i>
+                                    <div class="text">Publicado por CONDUX</div>
+                                </li>
+                                
+                                <li>
+                                    <a href="/noticias/?cat=Legisla%E7%E3o+Trabalhista">
+                                        <i class="entyp-list-1"></i>
+                                        <div class="text">Legislação Trabalhista</div>
+                                    </a>
+                                </li>
+                                
+                            </ul>
+                            
+                            <figure>
+                                <img src="https://condux.com.br/site/imgnews/163c.jpg" alt="DIAS DE TRABALHO NAS OLIMPÍADAS (ATUALIZADO: 02/08/2016)"/>
+                                
+                            </figure>
+                            
+                            <div class="content">
+                            
+                                <p>
+                                    <strong>
+                                       Veja como proceder em relação ao trabalho nos feriados dos Jogos Olímpicos
+                                    </strong>
+                                </p>
+                            <p style="text-align: justify;"><font color="#000000"><font face="Arial"><font style="font-size: 11pt">Em virtude da realiza&ccedil;&atilde;o dos Jogos Ol&iacute;mpicos Rio 2016, no per&iacute;odo de 5 a 21-8-2016, o Prefeito da Cidade do Rio de Janeiro, atrav&eacute;s do Decreto 41.867-MRJ/2016, alterado pelo Decreto 41.940-MRJ/2016, declarou feriado municipal nos dias 4, 5, 18 e 22-8-2016, conforme quadro a seguir:</font></font></font>&nbsp;</p>
+<table cellspacing="0" cellpadding="0" dir="ltr" border="1" style="table-layout:fixed;font-size:13px;font-family:arial,sans,sans-serif;border-collapse:collapse;border:1px solid #ccc" align="center">
+    <colgroup><col width="155" /><col width="226" /></colgroup>
+    <tbody>
+        <tr style="height:21px;">
+            <td style="padding: 2px 3px; vertical-align: bottom; border: 1px solid rgb(0, 0, 0); font-family: Arial; font-size: 90%; font-weight: bold; text-align: center;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Dias&quot;}"><span style="color: rgb(0, 0, 0);">Dias</span></td>
+            <td style="padding: 2px 3px; vertical-align: bottom; border-top-width: 1px; border-top-style: solid; border-top-color: rgb(0, 0, 0); border-right-width: 1px; border-right-style: solid; border-right-color: rgb(0, 0, 0); border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(0, 0, 0); font-family: Arial; font-size: 90%; font-weight: bold; text-align: center;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Motivos&quot;}"><span style="color: rgb(0, 0, 0);">Motivos</span></td>
+        </tr>
+        <tr style="height:36px;">
+            <td style="padding: 2px 3px; border-right-width: 1px; border-right-style: solid; border-right-color: rgb(0, 0, 0); border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(0, 0, 0); border-left-width: 1px; border-left-style: solid; border-left-color: rgb(0, 0, 0); font-family: Arial; font-size: 90%; word-wrap: break-word; vertical-align: middle; text-align: center;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;05/08/2016 (sexta-feira)&quot;}"><span style="color: rgb(0, 0, 0);"><span style="font-size: 13px;"><span style="font-family: Arial;">04/08/16 (quinta-feira)</span></span></span></td>
+            <td style="padding: 2px 3px; border-right-width: 1px; border-right-style: solid; border-right-color: rgb(0, 0, 0); border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(0, 0, 0); font-family: Arial; font-size: 90%; word-wrap: break-word; vertical-align: middle; text-align: justify;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Cerim\u00f4nia de Abertura dos Jogos Ol\u00edmpicos no Est\u00e1dio do Maracan\u00e3&quot;}"><span style="color: rgb(0, 0, 0);"><span style="font-size: 13px;"><span style="font-family: Arial;">Passagem da Tocha Ol&iacute;mpica pela cidade do Rio de Janeiro</span></span></span></td>
+        </tr>
+        <tr style="height:36px;">
+            <td style="padding: 2px 3px; border-right-width: 1px; border-right-style: solid; border-right-color: rgb(0, 0, 0); border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(0, 0, 0); border-left-width: 1px; border-left-style: solid; border-left-color: rgb(0, 0, 0); font-family: Arial; font-size: 90%; word-wrap: break-word; vertical-align: middle; text-align: center;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;05/08/2016 (sexta-feira)&quot;}"><span style="color: rgb(0, 0, 0);"><span style="font-size: 13px;"><span style="font-family: Arial;">05/08/16 (sexta-feira)</span></span></span></td>
+            <td style="padding: 2px 3px; border-right-width: 1px; border-right-style: solid; border-right-color: rgb(0, 0, 0); border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(0, 0, 0); font-family: Arial; font-size: 90%; word-wrap: break-word; vertical-align: middle; text-align: justify;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Cerim\u00f4nia de Abertura dos Jogos Ol\u00edmpicos no Est\u00e1dio do Maracan\u00e3&quot;}"><span style="color: rgb(0, 0, 0);"><span style="font-size: 13px;"><span style="font-family: Arial;">Cerim&ocirc;nia de Abertura dos Jogos Ol&iacute;mpicos no Est&aacute;dio do Maracan&atilde;</span></span></span></td>
+        </tr>
+        <tr style="height:21px;">
+            <td style="padding: 2px 3px; border-right-width: 1px; border-right-style: solid; border-right-color: rgb(0, 0, 0); border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(0, 0, 0); border-left-width: 1px; border-left-style: solid; border-left-color: rgb(0, 0, 0); font-family: Arial; font-size: 90%; word-wrap: break-word; vertical-align: middle; text-align: center;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;18/08/2016 (quinta-feira)&quot;}"><span style="color: rgb(0, 0, 0);"><span style="font-size: 13px;"><span style="font-family: Arial;">18/08/16 (quinta-feira)</span></span></span></td>
+            <td style="padding: 2px 3px; border-right-width: 1px; border-right-style: solid; border-right-color: rgb(0, 0, 0); border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(0, 0, 0); font-family: Arial; font-size: 90%; word-wrap: break-word; vertical-align: middle; text-align: justify;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Prova de Triatlo nas ruas do bairro de Copacabana&quot;}"><span style="color: rgb(0, 0, 0);"><span style="font-size: 13px;"><span style="font-family: Arial;">Prova de Triatlo nas ruas do bairro de Copacabana</span></span></span></td>
+        </tr>
+        <tr style="height:21px;">
+            <td style="padding: 2px 3px; border-right-width: 1px; border-right-style: solid; border-right-color: rgb(0, 0, 0); border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(0, 0, 0); border-left-width: 1px; border-left-style: solid; border-left-color: rgb(0, 0, 0); font-family: Arial; font-size: 90%; word-wrap: break-word; vertical-align: middle; text-align: center;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;22/08/2016 (segunda-feira)&quot;}">
+            <p><span style="color: rgb(0, 0, 0);"><span style="font-size: 13px;"><span style="font-family: Arial;">22/08/16&nbsp;</span></span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 13px;"><span style="font-family: Arial;">(segunda-feira)</span></span></span></p>
+            </td>
+            <td style="padding: 2px 3px; border-right-width: 1px; border-right-style: solid; border-right-color: rgb(0, 0, 0); border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(0, 0, 0); font-family: Arial; font-size: 90%; word-wrap: break-word; vertical-align: middle; text-align: justify;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Grande fluxo de pessoas se dirigindo aos aeroportos da cidade para o retorno aos seus locais de origem, principalmente destinos internacionais&quot;}"><span style="color: rgb(0, 0, 0);"><span style="font-size: 13px;"><span style="font-family: Arial;">Grande fluxo de pessoas se dirigindo aos aeroportos da cidade para o retorno aos seus locais de origem, principalmente destinos internacionais</span></span></span></td>
+        </tr>
+    </tbody>
+</table>
+<p style="text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;">&nbsp;</span></span></p>
+<p><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="text-align: justify;">Vale ressaltar que est&atilde;o exclu&iacute;dos desta previs&atilde;o de feriados, ou seja, dever&atilde;o funcionar regularmente:</span></span></span></span></p>
+<p style="text-align: justify; margin-left: 40px;"><font color="#000000"><font face="Arial"><font style="font-size: 11pt">a) os expedientes nos &oacute;rg&atilde;os cujos servi&ccedil;os n&atilde;o admitam paralisa&ccedil;&atilde;o, tais como Unidades de Sa&uacute;de B&aacute;sicas e Hospitalares, p&uacute;blicas e privadas, e os servi&ccedil;os de transporte p&uacute;blico; </font></font></font></p>
+<p style="text-align: justify; margin-left: 40px;"><font color="#000000"><font face="Arial"><font style="font-size: 11pt">b) os seguintes estabelecimentos: &ndash; com&eacute;rcio de rua; &ndash; bares e restaurantes; &ndash; ind&uacute;stria da panifica&ccedil;&atilde;o, tais como padarias, panifica&ccedil;&otilde;es e confeitarias; &ndash; centros comerciais, shopping centers e galerias; &ndash; estabelecimentos culturais; &ndash; pontos tur&iacute;sticos e empresas na &aacute;rea de turismo; &ndash; hot&eacute;is; e &ndash; empresas jornal&iacute;sticas e de radiodifus&atilde;o sonora e de sons e imagens, bem como empresas programadoras e de produ&ccedil;&atilde;o de televis&atilde;o por assinatura.</font></font></font></p>
+<p style="text-align: justify;"><font color="#000000"><font face="Arial"><font style="font-size: 11pt">Al&eacute;m das empresas citadas anteriormente, os demais munic&iacute;pios do Estado do Rio de Janeiro, tais como Arraial do Cabo, Barra Mansa, Belford Roxo, Cabo Frio, Duque de Caxias, Itaperuna, Maric&aacute;, Mesquita, Nil&oacute;polis, Niter&oacute;i, Nova Igua&ccedil;u, Petr&oacute;polis, Resende, S&atilde;o Jo&atilde;o de Meriti, Teres&oacute;polis, Vassouras e Volta Redonda, dentre outros, bem como as empresas situadas nos demais Estados do Brasil onde n&atilde;o ser&aacute; considerado feriado, dever&atilde;o observar os procedimentos citados a seguir. Veja como proceder em rela&ccedil;&atilde;o &agrave; jornada de trabalho e &agrave; compensa&ccedil;&atilde;o de horas, nos feriados dos dias 4, 5, 18 e 22 de agosto de 2016:</font></font></font></p>
+<table cellspacing="0" cellpadding="0" dir="ltr" border="1" style="table-layout:fixed;font-size:13px;font-family:arial,sans,sans-serif;border-collapse:collapse;border:1px solid #ccc" align="center">
+    <colgroup><col width="238" /><col width="226" /></colgroup>
+    <tbody>
+        <tr style="height:21px;">
+            <td style="padding:2px 3px 2px 3px;vertical-align:bottom;border-top:1px solid #000000;border-right:1px solid #000000;border-bottom:1px solid #000000;border-left:1px solid #000000;font-weight:bold;text-align:center;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;N\u00e3o sendo Feriado na Localidade &quot;}"><span style="color: rgb(0, 0, 0);">N&atilde;o sendo Feriado na Localidade</span></td>
+            <td style="padding:2px 3px 2px 3px;vertical-align:bottom;border-top:1px solid #000000;border-right:1px solid #000000;border-bottom:1px solid #000000;font-weight:bold;text-align:center;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Sendo Feriado na Localidade&quot;}"><span style="color: rgb(0, 0, 0);">Sendo Feriado na Localidade</span></td>
+        </tr>
+        <tr style="height:36px;">
+            <td style="padding: 2px 3px; border-right-width: 1px; border-right-style: solid; border-right-color: rgb(0, 0, 0); border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(0, 0, 0); border-left-width: 1px; border-left-style: solid; border-left-color: rgb(0, 0, 0); word-wrap: break-word; vertical-align: middle; text-align: justify;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;\u2013 O empregado trabalha normalmente.&quot;}"><span style="color: rgb(0, 0, 0);">&ndash; O empregado trabalha normalmente.</span></td>
+            <td style="padding: 2px 3px; border-right-width: 1px; border-right-style: solid; border-right-color: rgb(0, 0, 0); border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(0, 0, 0); word-wrap: break-word; vertical-align: middle; text-align: justify;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;\u2013 O empregado n\u00e3o trabalha.&quot;}"><span style="color: rgb(0, 0, 0);">&ndash; O empregado n&atilde;o trabalha.</span></td>
+        </tr>
+        <tr style="height:21px;">
+            <td style="padding: 2px 3px; border-right-width: 1px; border-right-style: solid; border-right-color: rgb(0, 0, 0); border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(0, 0, 0); border-left-width: 1px; border-left-style: solid; border-left-color: rgb(0, 0, 0); word-wrap: break-word; vertical-align: middle; text-align: justify;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;\u2013 O empregador dispensa o empregado por mera liberalidade, sem preju\u00edzo da remunera\u00e7\u00e3o correspondente aos dias e sem a necessidade de compensa\u00e7\u00e3o.&quot;}"><span style="color: rgb(0, 0, 0);">&ndash; O empregador dispensa o empregado por mera liberalidade, sem preju&iacute;zo da remunera&ccedil;&atilde;o correspondente aos dias e sem a necessidade de compensa&ccedil;&atilde;o.</span></td>
+            <td style="padding: 2px 3px; border-right-width: 1px; border-right-style: solid; border-right-color: rgb(0, 0, 0); border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(0, 0, 0); word-wrap: break-word; vertical-align: middle; text-align: justify;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;\u2013 O empregado que trabalhar no feriado ter\u00e1 a remunera\u00e7\u00e3o paga em dobro.&quot;}"><span style="color: rgb(0, 0, 0);">&ndash; O empregado que trabalhar no feriado ter&aacute; a remunera&ccedil;&atilde;o paga em dobro.</span></td>
+        </tr>
+        <tr style="height:21px;">
+            <td style="padding: 2px 3px; border-right-width: 1px; border-right-style: solid; border-right-color: rgb(0, 0, 0); border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(0, 0, 0); border-left-width: 1px; border-left-style: solid; border-left-color: rgb(0, 0, 0); word-wrap: break-word; vertical-align: middle; text-align: justify;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;\u2013 O empregador, mediante acordo por escrito, dispensa o empregado do trabalho nestes dias, determinando a compensa\u00e7\u00e3o dessas horas (at\u00e9 o limite de 2 horas di\u00e1rias) em outros dias da semana.&quot;}"><span style="color: rgb(0, 0, 0);">&ndash; O empregador, mediante acordo por escrito, dispensa o empregado do trabalho nestes dias, determinando a compensa&ccedil;&atilde;o dessas horas (at&eacute; o limite de 2 horas di&aacute;rias) em outros dias da semana.</span></td>
+            <td style="padding: 2px 3px; border-right-width: 1px; border-right-style: solid; border-right-color: rgb(0, 0, 0); border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(0, 0, 0); word-wrap: break-word; vertical-align: middle;" rowspan="2" colspan="1" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;\u2013 Ao empregado que trabalhar no feriado, o empregador se exime do pagamento em dobro, concedendo outro dia de folga na semana.&quot;}">
+            <div style="max-height: 152.636px; text-align: justify;"><span style="color: rgb(0, 0, 0);">&ndash; Ao empregado que trabalhar no feriado, o empregador se exime do pagamento em dobro, concedendo outro dia de folga na semana.</span></div>
+            </td>
+        </tr>
+        <tr style="height:21px;">
+            <td style="padding: 2px 3px; border-right-width: 1px; border-right-style: solid; border-right-color: rgb(0, 0, 0); border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(0, 0, 0); border-left-width: 1px; border-left-style: solid; border-left-color: rgb(0, 0, 0); word-wrap: break-word; vertical-align: middle; text-align: justify;" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;\u2013 O empregado falta sem justificar sua aus\u00eancia e o empregador desconta os respectivos dias.&quot;}"><span style="color: rgb(0, 0, 0);">&ndash; O empregado falta sem justificar sua aus&ecirc;ncia e o empregador desconta os respectivos dias.</span></td>
+        </tr>
+    </tbody>
+</table>
+<p><span style="font-size: 15px;"><span style="font-family: Arial;">&nbsp;</span></span></p>
+<p><span style="font-size: 15px;"><span style="font-family: Arial;"><strong style="text-align: justify;"><font color="#000000"><font style="font-size: 11pt"><span style="font-weight: normal;">FUNDAMENTA&Ccedil;&Atilde;O LEGAL</span></font></font></strong><font color="#000000" style="text-align: justify;"><font style="font-size: 11pt">: Lei 605, de 5-1-49 (Portal COAD); Decreto-lei 5.452, de 1-5-43 &ndash; CLT &ndash; Consolida&ccedil;&atilde;o das Leis do Trabalho (Portal COAD); Decreto 41.867-MRJ, de 21-6-2016 (Fasc&iacute;culo 25/2016); Decreto 41.940-MRJ, de 1-7-2016 (Fasc&iacute;culo 27/2016); Resolu&ccedil;&atilde;o 121 TST, de 28-10-2003 &ndash; S&uacute;mula 146 (Informativos 47 e 48/2003).</font></font> </span></span></p>
+<p style="text-align: justify;">&nbsp;</p>
+<p style="text-align: justify;"><font color="#000000"><font face="Arial"><font style="font-size: 11pt">Fonte: COAD</font></font></font></p>
+                            </div>
+                            
+                        </article>
+                        
+                        
+                    </div>
+                    <div class="col-md-1 hidden-sm"></div>
+                    <div class="col-md-2 col-sm-3">
+                        <aside class="widgets">
+                    <div class="widget list">
+                        <h3>Categorias</h3>
+                        <ul>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Calend%E1rio+de+Obriga%E7%F5es">Calendário de Obrigações</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Direitos+do+Consumidor">Direitos do Consumidor</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Empresarial">Empresarial</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=IRPF">IRPF</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Legisla%E7%E3o">Legislação</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Legisla%E7%E3o+Trabalhista">Legislação Trabalhista</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Previd%EAncia">Previdência</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Receita+Federal">Receita Federal</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Recursos+Humanos">Recursos Humanos</a>
+                            </li>
+ 
+                        </ul>
+                    </div>
+                    <div class="widget list">
+                        <h3>Por mês</h3>
+                        <ul>
+                        
+                            <li>
+                                <a href="/noticias/?mes=8&ano=2021">Agosto&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2021">Maio&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2021">Abril&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2021">Março&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=7&ano=2020">Julho&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2020">Maio&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2020">Abril&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2020">Março&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=10&ano=2019">Outubro&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2019">Setembro&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2019">Março&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2019">Janeiro&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=12&ano=2018">Dezembro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2018">Setembro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=6&ano=2018">Junho&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2018">Abril&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2018">Março&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=2&ano=2018">Fevereiro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2018">Janeiro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=12&ano=2017">Dezembro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=11&ano=2017">Novembro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=10&ano=2017">Outubro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2017">Setembro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=7&ano=2017">Julho&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=6&ano=2017">Junho&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2017">Maio&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2017">Abril&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2017">Março&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=2&ano=2017">Fevereiro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2017">Janeiro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=12&ano=2016">Dezembro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=11&ano=2016">Novembro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=10&ano=2016">Outubro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2016">Setembro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=8&ano=2016">Agosto&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=7&ano=2016">Julho&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=6&ano=2016">Junho&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2016">Maio&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2016">Abril&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2016">Março&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=2&ano=2016">Fevereiro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2016">Janeiro&nbsp;2016</a>
+                            </li>
+ 
+                        </ul>
+                    </div>
+
+                </aside>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+<footer class="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="footer-widget">
+                    <h2>Últimas Notícias</h2>
+                    <div class="widget-content latest-post">
+                        <ul>
+                        
+                            <li>
+                                <h3><a href="?a=noticia&id=295">BEM</a></h3>
+                                <p></p>
+                                <span class="date">26/08/2021</span>
+                            </li>
+                        
+                            <li>
+                                <h3><a href="?a=noticia&id=294">HOME OFFICE PARA GESTANTES</a></h3>
+                                <p></p>
+                                <span class="date">13/05/2021</span>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="footer-widget">
+                    <h2>Contato</h2>
+                    <div class="widget-content">
+                        <address>
+                            Rua Rep&uacute;blica do L&iacute;bano, 61 gr. 1102 <br/>
+                            Centro &ndash; Rio de Janeiro RJ
+                        </address>
+                        <address>
+                            <strong>Telefone: +55 (21) 3203-4348</strong> <br/>
+                            <strong>E-mail: condux@condux.com.br</strong>
+                        </address>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="footer-widget">
+                    <h2>Links</h2>
+                    <ul>    
+                        <li><a href="/home/">Home Page</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/empresa/">A Empresa</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="http://www.condux.com.br/ler.asp?id=1" target="_blank">Tabelas Pr&aacute;ticas</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="http://www.condux.com.br/ler.asp?id=2" target="_blank">Agenda de Obriga&ccedil;&otilde;es</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/noticias/">Not&iacute;cias</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/downloads/">Downloads</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/contato/">Contato</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="footer-info text-right">
+                    <ul class="footer-social">
+                        <li><a href="https://twitter.com/conduxBRA" target="_blank"><i class="entyp-twitter-1"></i></a></li>
+                        <li><a href="https://www.facebook.com/ConduxConsultoria" target="_blank"><i class="entyp-facebook-1"></i></a></li>
+                    </ul>
+                    <p>Copyright &copy; 2016</p>
+                    <p>CONDUX - Todos os Direitos Reservados</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="https://condux.com.br/site/js/vendor/jquery-1.11.0.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery-ui-1.10.3.custom.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.mousewheel.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.mCustomScrollbar.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.selectBoxIt.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.raty.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.flexslider.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.isotope.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.fancybox.pack.js"></script>
+<script src="https://condux.com.br/site/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
+<script src="https://condux.com.br/site/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/bootstrap.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/simpleInstagramFancybox.js"></script>
+<script src="https://condux.com.br/site/js/vendor/fitvids.js"></script>
+<script src="https://condux.com.br/site/js/main.js"></script>
+<script>
+    $('#revolution-shortcode').revolution({
+        delay : 90000,
+        hideThumbs:10,
+        navigationVOffset : -30,
+        navigationType : "none",
+        navigationStyle : "round-old",
+		startheight:700
+    });
+</script>
+<style>
+/*#revolution-shortcode { height: 700px !important }
+#revolution-shortcode > ul > li:nth-child(1) > div.slotholder { height: 700px !important }*/
+</style>
+</body>
+</html>

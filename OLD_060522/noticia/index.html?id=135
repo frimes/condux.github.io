@@ -1,0 +1,690 @@
+<!--
+ * FCKeditor - The text editor for Internet - http://www.fckeditor.net
+ * Copyright (C) 2003-2009 Frederico Caldeira Knabben
+ *
+ * == BEGIN LICENSE ==
+ *
+ * Licensed under the terms of any of the following licenses at your
+ * choice:
+ *
+ *  - GNU General Public License Version 2 or later (the "GPL")
+ *    http://www.gnu.org/licenses/gpl.html
+ *
+ *  - GNU Lesser General Public License Version 2.1 or later (the "LGPL")
+ *    http://www.gnu.org/licenses/lgpl.html
+ *
+ *  - Mozilla Public License Version 1.1 or later (the "MPL")
+ *    http://www.mozilla.org/MPL/MPL-1.1.html
+ *
+ * == END LICENSE ==
+ *
+ * This is the integration file for ASP.
+ *
+ * It defines the FCKeditor class that can be used to create editor
+ * instances in ASP pages on server side.
+-->
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Condux</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, maximum-scale=1, minimum-scale=1">
+    <link rel="icon" type="image/png" href="https://condux.com.br/site/img/favicon.png">
+
+    <link rel="stylesheet" href="https://condux.com.br/site/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/flexslider.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/jquery.selectBoxIt.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/entypo.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/rs-plugin/css/settings.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/jquery.fancybox.css">
+        <link rel="stylesheet" href="https://condux.com.br/site/css/style.css">
+
+    <script src="https://condux.com.br/site/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+	
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-208708250-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-208708250-1');
+</script>
+
+</head>
+<body>
+<div class="main-wrap">
+<header class="navbar navbar-inverse">
+    <div class="normal-color with-slider">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <div id="control-logo-header">
+                                <a class="navbar-brand" href="/home/"><img src="https://condux.com.br/site/content/logo.png" alt="img"/></a>
+                            </div>
+                    </div>
+                </div>
+                <div class="col-sm-9">
+                    <div class="navbar-collapse collapse navbar-right">
+                        <ul class="nav navbar-nav social-nav">
+                            <li><a href="https://twitter.com/conduxBRA" target="_blank"><i class="entyp-twitter-1"></i></a></li>
+                            <li><a href="https://www.facebook.com/ConduxConsultoria" target="_blank"><i class="entyp-facebook-1"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="inverse-color">
+        <div class="container">
+            <div class="row">
+                <div class="navbar-collapse collapse">
+                    <div class="col-sm-12">
+                        <ul class="nav navbar-nav main-nav">
+                            <li id="control-logo-menu">
+                                <a class="navbar-brand" href="/home/"><img src="https://condux.com.br/site/content/logo.png" alt="img"/></a>
+                            </li>
+                            <li>
+                                <a href="/home/">Início</a>
+                            </li>
+                            <li>
+                                <a href="/empresa/">A empresa</a>
+                            </li>
+                            <li>
+                                <a href="/servicos/">Serviços</a>
+                            </li>
+                            <li>
+                                <a href="#">Utilitários</a>
+                                <ul>	
+                                	<li><a href="http://www.condux.com.br/ler.asp?id=1" target="_blank">Tabelas Práticas</a></li>
+                                    <li><a href="http://www.condux.com.br/ler.asp?id=2" target="_blank">Agenda de Obrigações</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="/noticias/">Notícias</a>
+                            </li>
+                            <li>
+                                <a href="/login/">Área do Cliente</a>
+                            </li>
+                            <li>
+                                <a href="/downloads/">Downloads</a>
+                            </li>
+                            <li>
+                                <a href="/contato/">Contato</a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</header>
+
+
+<section class="line top">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="col-md-4 col-sm-5 col-xs-12">
+                    <div class="title">
+                        Notícias
+                        <ul class="current-page">
+                            <li><a href="/home/">Página principal</a></li>
+                            <li>></li>
+                            <li><a href="/noticias/">Noticias</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="posts">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <article class="post ">
+                            <h3 class="uppercase">NOVO SALÁRIO MÍNIMO</h3><h4>Salário Mínimo 2016: R$880</h4>
+                            <ul class="info">
+                                <li>
+                                    <div class="text date">terça-feira, 5 de janeiro de 2016</div>
+                                </li>
+                                <li>
+                                    <i class="entyp-pencil-1"></i>
+                                    <div class="text">Publicado por CONDUX</div>
+                                </li>
+                                
+                                <li>
+                                    <a href="/noticias/?cat=Legisla%E7%E3o+Trabalhista">
+                                        <i class="entyp-list-1"></i>
+                                        <div class="text">Legislação Trabalhista</div>
+                                    </a>
+                                </li>
+                                
+                            </ul>
+                            
+                            <figure>
+                                <img src="https://condux.com.br/site/imgnews/135c.jpg" alt="NOVO SALÁRIO MÍNIMO"/>
+                                
+                            </figure>
+                            
+                            <div class="content">
+                            <p style="text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;">O novo valor do sal&aacute;rio m&iacute;nimo entrou em vigor dia 01/01/2016 (quarta-feira). O valor foi calculado com base no percentual e crescimento do Produto Interno Bruto (PIB) do ano retrasado mais a reposi&ccedil;&atilde;o da infla&ccedil;&atilde;o do ano anterior pelo &Iacute;ndice Nacional de Pre&ccedil;os ao Consumidor (INPC).</span></span></span></p>
+<p style="text-align: center;"><img src="http://minimosalario.com.br/wp-content/uploads/2015/12/evolucao-salario-minimo.png" alt="evolu&ccedil;&atilde;o do sal&aacute;rio m&iacute;nimo" /></p>
+<h3 style="box-sizing: border-box; font-family: &quot;Roboto Slab&quot;; font-weight: normal; line-height: 1.4; color: rgb(34, 34, 34); margin: 0px 0px 12px; font-size: 22px; padding: 0px; border: 0px; font-stretch: inherit; vertical-align: baseline;">&nbsp;</h3>
+<h3 style="box-sizing: border-box; font-family: &quot;Roboto Slab&quot;; font-weight: normal; line-height: 1.4; color: rgb(34, 34, 34); margin: 0px 0px 12px; font-size: 22px; padding: 0px; border: 0px; font-stretch: inherit; vertical-align: baseline; text-align: center;">Tabela com os valores do Sal&aacute;rio M&iacute;nimo por ano</h3>
+<table id="table1" border="1" width="850" cellspacing="1" cellpadding="4" align="center" style="box-sizing: border-box; border-collapse: collapse; border-spacing: 0px; max-width: 100%; font-size: 16px; margin: 0px 0px 25px; padding: 0px; border: 1px solid rgb(228, 228, 228); font-stretch: inherit; line-height: 24px; font-family: Raleway; vertical-align: baseline; width: 759px; color: rgb(68, 68, 68);">
+    <tbody style="box-sizing: border-box; margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; vertical-align: baseline;">
+        <tr style="box-sizing: border-box; margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; vertical-align: baseline;">
+            <td align="center" valign="top" bgcolor="#ffffff" width="90" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;"><span style="box-sizing: border-box; margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: &quot;Times New Roman&quot;; vertical-align: baseline;"><span style="box-sizing: border-box; font-weight: 700; margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; vertical-align: baseline;">VIG&Ecirc;NCIA</span></span></td>
+            <td align="center" valign="top" bgcolor="#ffffff" width="128" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;"><span style="box-sizing: border-box; margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: &quot;Times New Roman&quot;; vertical-align: baseline;"><span style="box-sizing: border-box; font-weight: 700; margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; vertical-align: baseline;">VALOR MENSAL</span></span></td>
+            <td align="center" valign="top" bgcolor="#ffffff" width="134" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;"><span style="box-sizing: border-box; margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: &quot;Times New Roman&quot;; vertical-align: baseline;"><span style="box-sizing: border-box; font-weight: 700; margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; vertical-align: baseline;">VALOR DI&Aacute;RIO</span></span></td>
+            <td align="center" valign="top" bgcolor="#ffffff" width="110" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;"><span style="box-sizing: border-box; margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: &quot;Times New Roman&quot;; vertical-align: baseline;"><span style="box-sizing: border-box; font-weight: 700; margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; vertical-align: baseline;">VALOR HORA</span></span></td>
+            <td align="center" valign="top" bgcolor="#ffffff" width="195" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;"><span style="box-sizing: border-box; margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: &quot;Times New Roman&quot;; vertical-align: baseline;"><span style="box-sizing: border-box; font-weight: 700; margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; vertical-align: baseline;">NORMA LEGAL</span></span></td>
+            <td align="center" valign="top" bgcolor="#ffffff" width="124" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;"><span style="box-sizing: border-box; margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: &quot;Times New Roman&quot;; vertical-align: baseline;"><span style="box-sizing: border-box; font-weight: 700; margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; vertical-align: baseline;">D.O.U.</span></span></td>
+        </tr>
+        <tr style="box-sizing: border-box; margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; vertical-align: baseline;">
+            <td align="center" valign="top" width="90" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">01.01.2016</td>
+            <td align="right" valign="top" width="128" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">R$ 880,00</td>
+            <td align="right" valign="top" width="134" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">R$ 29,33</td>
+            <td align="right" valign="top" width="110" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">R$ 3,66</td>
+            <td align="center" valign="top" width="195" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">Decreto 8.618/2015</td>
+            <td align="center" valign="top" width="124" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">29.12.2015</td>
+        </tr>
+        <tr style="box-sizing: border-box; margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; vertical-align: baseline;">
+            <td align="center" valign="top" width="90" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">01.01.2015</td>
+            <td align="right" valign="top" width="128" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">R$ 788,00</td>
+            <td align="right" valign="top" width="134" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">R$ 26,27</td>
+            <td align="right" valign="top" width="110" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">R$ 3,58</td>
+            <td align="center" valign="top" width="195" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">Decreto 8.381/2014</td>
+            <td align="center" valign="top" width="124" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">29.12.2014</td>
+        </tr>
+        <tr style="box-sizing: border-box; margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; vertical-align: baseline;">
+            <td align="center" valign="top" width="90" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">01.01.2014</td>
+            <td align="right" valign="top" width="128" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">R$ 724,00</td>
+            <td align="right" valign="top" width="134" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">R$ 24,13</td>
+            <td align="right" valign="top" width="110" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">R$ 3,29</td>
+            <td align="center" valign="top" width="195" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">Decreto 8.167/2013</td>
+            <td align="center" valign="top" width="124" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">23.12.2013</td>
+        </tr>
+        <tr style="box-sizing: border-box; margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; vertical-align: baseline;">
+            <td align="center" valign="top" width="90" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">01.01.2013</td>
+            <td align="right" valign="top" width="128" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">R$ 678,00</td>
+            <td align="right" valign="top" width="134" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">R$ 22,60</td>
+            <td align="right" valign="top" width="110" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">R$ 3,08</td>
+            <td align="center" valign="top" width="195" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">Decreto 7.872/2012</td>
+            <td align="center" valign="top" width="124" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">26.12.2012</td>
+        </tr>
+        <tr style="box-sizing: border-box; margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; vertical-align: baseline;">
+            <td align="center" valign="top" width="90" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">01.01.2012</td>
+            <td align="right" valign="top" width="128" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">R$ 622,00</td>
+            <td align="right" valign="top" width="134" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">R$ 20,73</td>
+            <td align="right" valign="top" width="110" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">R$ 2,83</td>
+            <td align="center" valign="top" width="195" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">Decreto 7.655/2011</td>
+            <td align="center" valign="top" width="124" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">26.12.2011</td>
+        </tr>
+        <tr style="box-sizing: border-box; margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; vertical-align: baseline;">
+            <td align="center" valign="top" width="90" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">01.03.2011</td>
+            <td align="right" valign="top" width="128" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">R$ 545,00</td>
+            <td align="right" valign="top" width="134" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">R$ 18,17</td>
+            <td align="right" valign="top" width="110" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">R$ 2,48</td>
+            <td align="center" valign="top" width="195" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">Lei 12.382/2011</td>
+            <td align="center" valign="top" width="124" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">28.02.2011</td>
+        </tr>
+        <tr style="box-sizing: border-box; margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; vertical-align: baseline;">
+            <td align="center" valign="top" width="90" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">01.01.2011</td>
+            <td align="right" valign="top" width="128" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">R$ 540,00</td>
+            <td align="right" valign="top" width="134" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">R$ 18,00</td>
+            <td align="right" valign="top" width="110" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">R$ 2,45</td>
+            <td align="center" valign="top" width="195" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">MP 516/2010</td>
+            <td align="center" valign="top" width="124" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">31.12.2010</td>
+        </tr>
+        <tr style="box-sizing: border-box; margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; vertical-align: baseline;">
+            <td align="center" valign="top" width="90" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">01.01.2010</td>
+            <td align="right" valign="top" width="128" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">R$ 510,00</td>
+            <td align="right" valign="top" width="134" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">R$ 17,00</td>
+            <td align="right" valign="top" width="110" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">R$ 2,32</td>
+            <td align="center" valign="top" width="195" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">Lei 12.255/2010</td>
+            <td align="center" valign="top" width="124" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">16.06.2010</td>
+        </tr>
+        <tr style="box-sizing: border-box; margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; vertical-align: baseline;">
+            <td align="center" valign="top" width="90" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">01.02.2009</td>
+            <td align="right" valign="top" width="128" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">R$ 465,00</td>
+            <td align="right" valign="top" width="134" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">R$ 15,50</td>
+            <td align="right" valign="top" width="110" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">R$ 2,11</td>
+            <td align="center" valign="top" width="195" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">Lei 11.944/2009</td>
+            <td align="center" valign="top" width="124" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">29.05.2009</td>
+        </tr>
+        <tr style="box-sizing: border-box; margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; vertical-align: baseline;">
+            <td align="center" valign="top" width="90" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">01.03.2008</td>
+            <td align="right" valign="top" width="128" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">R$ 415,00</td>
+            <td align="right" valign="top" width="134" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">R$ 13,83</td>
+            <td align="right" valign="top" width="110" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">R$ 1,89</td>
+            <td align="center" valign="top" width="195" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">Lei 11.709/2008</td>
+            <td align="center" valign="top" width="124" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">20.06.2008</td>
+        </tr>
+        <tr style="box-sizing: border-box; margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; vertical-align: baseline;">
+            <td align="center" valign="top" width="90" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">01.04.2007</td>
+            <td align="right" valign="top" width="128" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">R$ 380,00</td>
+            <td align="right" valign="top" width="134" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">R$ 12,67</td>
+            <td align="right" valign="top" width="110" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">R$ 1,73</td>
+            <td align="center" valign="top" width="195" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">Lei 11.498/2007</td>
+            <td align="center" valign="top" width="124" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">29.06.2007</td>
+        </tr>
+        <tr style="box-sizing: border-box; margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; vertical-align: baseline;">
+            <td align="center" valign="top" width="90" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">01.04.2006</td>
+            <td align="right" valign="top" width="128" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">R$ 350,00</td>
+            <td align="right" valign="top" width="134" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">R$ 11,67</td>
+            <td align="right" valign="top" width="110" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">R$ 1,59</td>
+            <td align="center" valign="top" width="195" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">MP 288/2006</td>
+            <td align="center" valign="top" width="124" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">31.03.2006</td>
+        </tr>
+        <tr style="box-sizing: border-box; margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; vertical-align: baseline;">
+            <td align="center" valign="top" width="90" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">01.05.2005</td>
+            <td align="right" valign="top" width="128" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">R$ 300,00</td>
+            <td align="right" valign="top" width="134" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">R$ 10,00</td>
+            <td align="right" valign="top" width="110" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">R$ 1,36</td>
+            <td align="center" valign="top" width="195" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">Lei 11.164/2005</td>
+            <td align="center" valign="top" width="124" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">22.04.2005</td>
+        </tr>
+        <tr style="box-sizing: border-box; margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; vertical-align: baseline;">
+            <td align="center" valign="top" width="90" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;"><span style="box-sizing: border-box; margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: &quot;Times New Roman&quot;; vertical-align: baseline;">01.05.2004</span></td>
+            <td align="right" valign="top" width="128" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">R$&nbsp;<span style="box-sizing: border-box; margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: &quot;Times New Roman&quot;; vertical-align: baseline;">260,00</span></td>
+            <td align="right" valign="top" width="134" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">R$ 8,67</td>
+            <td align="right" valign="top" width="110" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">R$ 1,18</td>
+            <td align="center" valign="top" width="195" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;"><span style="box-sizing: border-box; margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: &quot;Times New Roman&quot;; vertical-align: baseline;">MP 182/2004</span></td>
+            <td align="center" valign="top" width="124" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;"><span style="box-sizing: border-box; margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: &quot;Times New Roman&quot;; vertical-align: baseline;">30.04.2004</span></td>
+        </tr>
+        <tr style="box-sizing: border-box; margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; vertical-align: baseline;">
+            <td align="center" valign="top" width="90" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;"><span style="box-sizing: border-box; margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: &quot;Times New Roman&quot;; vertical-align: baseline;">01.04.2003</span></td>
+            <td align="right" valign="top" width="128" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">R$&nbsp;<span style="box-sizing: border-box; margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: &quot;Times New Roman&quot;; vertical-align: baseline;">240,00</span></td>
+            <td align="right" valign="top" width="134" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">R$ 8,00</td>
+            <td align="right" valign="top" width="110" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">R$ 1,09</td>
+            <td align="center" valign="top" width="195" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;"><span style="box-sizing: border-box; margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: &quot;Times New Roman&quot;; vertical-align: baseline;">MP 116/2003</span></td>
+            <td align="center" valign="top" width="124" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;"><span style="box-sizing: border-box; margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: &quot;Times New Roman&quot;; vertical-align: baseline;">03.04.2003</span></td>
+        </tr>
+        <tr style="box-sizing: border-box; margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; vertical-align: baseline;">
+            <td align="center" valign="top" width="90" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;"><span style="box-sizing: border-box; margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: &quot;Times New Roman&quot;; vertical-align: baseline;">01.04.2002</span></td>
+            <td align="right" valign="top" width="128" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">R$&nbsp;<span style="box-sizing: border-box; margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: &quot;Times New Roman&quot;; vertical-align: baseline;">200,00</span></td>
+            <td align="right" valign="top" width="134" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">R$ 6,67</td>
+            <td align="right" valign="top" width="110" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">R$ 0,91</td>
+            <td align="center" valign="top" width="195" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;"><span style="box-sizing: border-box; margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: &quot;Times New Roman&quot;; vertical-align: baseline;">MP 35/2002</span></td>
+            <td align="center" valign="top" width="124" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;"><span style="box-sizing: border-box; margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: &quot;Times New Roman&quot;; vertical-align: baseline;">28.03.2002</span></td>
+        </tr>
+        <tr style="box-sizing: border-box; margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; vertical-align: baseline;">
+            <td align="center" valign="middle" width="90" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;"><span style="box-sizing: border-box; margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: &quot;Times New Roman&quot;; vertical-align: baseline;">01.04.2001</span></td>
+            <td align="right" valign="middle" width="128" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">R$&nbsp;<span style="box-sizing: border-box; margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: &quot;Times New Roman&quot;; vertical-align: baseline;">180,00</span></td>
+            <td align="right" valign="middle" width="134" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">R$ 6,00</td>
+            <td align="right" valign="middle" width="110" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">R$ 0,82</td>
+            <td align="center" valign="middle" width="195" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;"><span style="box-sizing: border-box; margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: &quot;Times New Roman&quot;; vertical-align: baseline;">MP 2.142/2001 (atual 2.194-5)</span></td>
+            <td align="center" valign="middle" width="124" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;"><span style="box-sizing: border-box; margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: &quot;Times New Roman&quot;; vertical-align: baseline;">30.03.2001</span></td>
+        </tr>
+        <tr style="box-sizing: border-box; margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: inherit; vertical-align: baseline;">
+            <td align="center" valign="top" width="90" height="29" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;"><span style="box-sizing: border-box; margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: &quot;Times New Roman&quot;; vertical-align: baseline;">03.04.2000</span></td>
+            <td align="right" valign="top" width="128" height="29" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">R$&nbsp;<span style="box-sizing: border-box; margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: &quot;Times New Roman&quot;; vertical-align: baseline;">151,00</span></td>
+            <td align="right" valign="top" width="134" height="29" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">R$ 5,03</td>
+            <td align="right" valign="top" width="110" height="29" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;">R$ 0,69</td>
+            <td align="center" valign="top" width="195" height="29" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;"><span style="box-sizing: border-box; margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: &quot;Times New Roman&quot;; vertical-align: baseline;">Lei 9.971/2000</span></td>
+            <td align="center" valign="top" width="124" height="29" style="box-sizing: border-box; padding: 7px 15px; font-family: inherit; font-size: inherit; margin: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; line-height: inherit; vertical-align: baseline;"><span style="box-sizing: border-box; margin: 0px; padding: 0px; border: 0px; font-style: inherit; font-variant: inherit; font-weight: inherit; font-stretch: inherit; font-size: inherit; line-height: inherit; font-family: &quot;Times New Roman&quot;; vertical-align: baseline;">24.03.2000<br />
+            <br />
+            </span></td>
+        </tr>
+    </tbody>
+</table>
+<p style="text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;">&nbsp;Condux Consultoria</span></span></span></p>
+<p>&nbsp;</p>
+                            </div>
+                            
+                        </article>
+                        
+                        
+                    </div>
+                    <div class="col-md-1 hidden-sm"></div>
+                    <div class="col-md-2 col-sm-3">
+                        <aside class="widgets">
+                    <div class="widget list">
+                        <h3>Categorias</h3>
+                        <ul>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Calend%E1rio+de+Obriga%E7%F5es">Calendário de Obrigações</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Direitos+do+Consumidor">Direitos do Consumidor</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Empresarial">Empresarial</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=IRPF">IRPF</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Legisla%E7%E3o">Legislação</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Legisla%E7%E3o+Trabalhista">Legislação Trabalhista</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Previd%EAncia">Previdência</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Receita+Federal">Receita Federal</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Recursos+Humanos">Recursos Humanos</a>
+                            </li>
+ 
+                        </ul>
+                    </div>
+                    <div class="widget list">
+                        <h3>Por mês</h3>
+                        <ul>
+                        
+                            <li>
+                                <a href="/noticias/?mes=8&ano=2021">Agosto&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2021">Maio&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2021">Abril&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2021">Março&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=7&ano=2020">Julho&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2020">Maio&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2020">Abril&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2020">Março&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=10&ano=2019">Outubro&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2019">Setembro&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2019">Março&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2019">Janeiro&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=12&ano=2018">Dezembro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2018">Setembro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=6&ano=2018">Junho&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2018">Abril&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2018">Março&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=2&ano=2018">Fevereiro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2018">Janeiro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=12&ano=2017">Dezembro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=11&ano=2017">Novembro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=10&ano=2017">Outubro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2017">Setembro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=7&ano=2017">Julho&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=6&ano=2017">Junho&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2017">Maio&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2017">Abril&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2017">Março&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=2&ano=2017">Fevereiro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2017">Janeiro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=12&ano=2016">Dezembro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=11&ano=2016">Novembro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=10&ano=2016">Outubro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2016">Setembro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=8&ano=2016">Agosto&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=7&ano=2016">Julho&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=6&ano=2016">Junho&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2016">Maio&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2016">Abril&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2016">Março&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=2&ano=2016">Fevereiro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2016">Janeiro&nbsp;2016</a>
+                            </li>
+ 
+                        </ul>
+                    </div>
+
+                </aside>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+<footer class="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="footer-widget">
+                    <h2>Últimas Notícias</h2>
+                    <div class="widget-content latest-post">
+                        <ul>
+                        
+                            <li>
+                                <h3><a href="?a=noticia&id=295">BEM</a></h3>
+                                <p></p>
+                                <span class="date">26/08/2021</span>
+                            </li>
+                        
+                            <li>
+                                <h3><a href="?a=noticia&id=294">HOME OFFICE PARA GESTANTES</a></h3>
+                                <p></p>
+                                <span class="date">13/05/2021</span>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="footer-widget">
+                    <h2>Contato</h2>
+                    <div class="widget-content">
+                        <address>
+                            Rua Rep&uacute;blica do L&iacute;bano, 61 gr. 1102 <br/>
+                            Centro &ndash; Rio de Janeiro RJ
+                        </address>
+                        <address>
+                            <strong>Telefone: +55 (21) 3203-4348</strong> <br/>
+                            <strong>E-mail: condux@condux.com.br</strong>
+                        </address>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="footer-widget">
+                    <h2>Links</h2>
+                    <ul>    
+                        <li><a href="/home/">Home Page</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/empresa/">A Empresa</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="http://www.condux.com.br/ler.asp?id=1" target="_blank">Tabelas Pr&aacute;ticas</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="http://www.condux.com.br/ler.asp?id=2" target="_blank">Agenda de Obriga&ccedil;&otilde;es</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/noticias/">Not&iacute;cias</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/downloads/">Downloads</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/contato/">Contato</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="footer-info text-right">
+                    <ul class="footer-social">
+                        <li><a href="https://twitter.com/conduxBRA" target="_blank"><i class="entyp-twitter-1"></i></a></li>
+                        <li><a href="https://www.facebook.com/ConduxConsultoria" target="_blank"><i class="entyp-facebook-1"></i></a></li>
+                    </ul>
+                    <p>Copyright &copy; 2016</p>
+                    <p>CONDUX - Todos os Direitos Reservados</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="https://condux.com.br/site/js/vendor/jquery-1.11.0.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery-ui-1.10.3.custom.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.mousewheel.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.mCustomScrollbar.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.selectBoxIt.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.raty.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.flexslider.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.isotope.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.fancybox.pack.js"></script>
+<script src="https://condux.com.br/site/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
+<script src="https://condux.com.br/site/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/bootstrap.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/simpleInstagramFancybox.js"></script>
+<script src="https://condux.com.br/site/js/vendor/fitvids.js"></script>
+<script src="https://condux.com.br/site/js/main.js"></script>
+<script>
+    $('#revolution-shortcode').revolution({
+        delay : 90000,
+        hideThumbs:10,
+        navigationVOffset : -30,
+        navigationType : "none",
+        navigationStyle : "round-old",
+		startheight:700
+    });
+</script>
+<style>
+/*#revolution-shortcode { height: 700px !important }
+#revolution-shortcode > ul > li:nth-child(1) > div.slotholder { height: 700px !important }*/
+</style>
+</body>
+</html>

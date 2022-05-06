@@ -1,0 +1,719 @@
+<!--
+ * FCKeditor - The text editor for Internet - http://www.fckeditor.net
+ * Copyright (C) 2003-2009 Frederico Caldeira Knabben
+ *
+ * == BEGIN LICENSE ==
+ *
+ * Licensed under the terms of any of the following licenses at your
+ * choice:
+ *
+ *  - GNU General Public License Version 2 or later (the "GPL")
+ *    http://www.gnu.org/licenses/gpl.html
+ *
+ *  - GNU Lesser General Public License Version 2.1 or later (the "LGPL")
+ *    http://www.gnu.org/licenses/lgpl.html
+ *
+ *  - Mozilla Public License Version 1.1 or later (the "MPL")
+ *    http://www.mozilla.org/MPL/MPL-1.1.html
+ *
+ * == END LICENSE ==
+ *
+ * This is the integration file for ASP.
+ *
+ * It defines the FCKeditor class that can be used to create editor
+ * instances in ASP pages on server side.
+-->
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Condux</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, maximum-scale=1, minimum-scale=1">
+    <link rel="icon" type="image/png" href="https://condux.com.br/site/img/favicon.png">
+
+    <link rel="stylesheet" href="https://condux.com.br/site/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/flexslider.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/jquery.selectBoxIt.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/entypo.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/rs-plugin/css/settings.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/jquery.fancybox.css">
+        <link rel="stylesheet" href="https://condux.com.br/site/css/style.css">
+
+    <script src="https://condux.com.br/site/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+	
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-208708250-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-208708250-1');
+</script>
+
+</head>
+<body>
+<div class="main-wrap">
+<header class="navbar navbar-inverse">
+    <div class="normal-color with-slider">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <div id="control-logo-header">
+                                <a class="navbar-brand" href="/home/"><img src="https://condux.com.br/site/content/logo.png" alt="img"/></a>
+                            </div>
+                    </div>
+                </div>
+                <div class="col-sm-9">
+                    <div class="navbar-collapse collapse navbar-right">
+                        <ul class="nav navbar-nav social-nav">
+                            <li><a href="https://twitter.com/conduxBRA" target="_blank"><i class="entyp-twitter-1"></i></a></li>
+                            <li><a href="https://www.facebook.com/ConduxConsultoria" target="_blank"><i class="entyp-facebook-1"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="inverse-color">
+        <div class="container">
+            <div class="row">
+                <div class="navbar-collapse collapse">
+                    <div class="col-sm-12">
+                        <ul class="nav navbar-nav main-nav">
+                            <li id="control-logo-menu">
+                                <a class="navbar-brand" href="/home/"><img src="https://condux.com.br/site/content/logo.png" alt="img"/></a>
+                            </li>
+                            <li>
+                                <a href="/home/">Início</a>
+                            </li>
+                            <li>
+                                <a href="/empresa/">A empresa</a>
+                            </li>
+                            <li>
+                                <a href="/servicos/">Serviços</a>
+                            </li>
+                            <li>
+                                <a href="#">Utilitários</a>
+                                <ul>	
+                                	<li><a href="http://www.condux.com.br/ler.asp?id=1" target="_blank">Tabelas Práticas</a></li>
+                                    <li><a href="http://www.condux.com.br/ler.asp?id=2" target="_blank">Agenda de Obrigações</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="/noticias/">Notícias</a>
+                            </li>
+                            <li>
+                                <a href="/login/">Área do Cliente</a>
+                            </li>
+                            <li>
+                                <a href="/downloads/">Downloads</a>
+                            </li>
+                            <li>
+                                <a href="/contato/">Contato</a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</header>
+
+
+<section class="line top">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="col-md-4 col-sm-5 col-xs-12">
+                    <div class="title">
+                        Notícias
+                        <ul class="current-page">
+                            <li><a href="/home/">Página principal</a></li>
+                            <li>></li>
+                            <li><a href="/noticias/">Noticias</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="posts">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <article class="post ">
+                            <h3 class="uppercase">GUIA DO IMPOSTO DE RENDA EM AÇÕES</h3><h4>Saiba como recolher IR sobre seus investimentos em ações</h4>
+                            <ul class="info">
+                                <li>
+                                    <div class="text date">quinta-feira, 14 de julho de 2016</div>
+                                </li>
+                                <li>
+                                    <i class="entyp-pencil-1"></i>
+                                    <div class="text">Publicado por CONDUX</div>
+                                </li>
+                                
+                                <li>
+                                    <a href="/noticias/?cat=IRPF">
+                                        <i class="entyp-list-1"></i>
+                                        <div class="text">IRPF</div>
+                                    </a>
+                                </li>
+                                
+                            </ul>
+                            
+                            <figure>
+                                <img src="https://condux.com.br/site/imgnews/155c.jpg" alt="GUIA DO IMPOSTO DE RENDA EM AÇÕES"/>
+                                
+                            </figure>
+                            
+                            <div class="content">
+                            <p style="box-sizing: border-box; font-size: 14px; margin: 15px 0px; font-family: Flexo, sans-serif; line-height: 28px; text-align: right;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);"><em>Texto de Autoria de Diego Wawrzeniak</em></span></span></span></p>
+<p style="box-sizing: border-box; font-size: 14px; margin: 15px 0px; font-family: Flexo, sans-serif; line-height: 28px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Pelas&nbsp;regras da&nbsp;Receita Federal, qualquer investidor que &ldquo;<i style="box-sizing: border-box;">realizou opera&ccedil;&otilde;es na Bolsas de Valores, de mercadorias, de futuros e assemelhadas&rdquo;</i>, est&aacute;<span style="box-sizing: border-box; font-weight: 700;">&nbsp;obrigado a entregar</span>&nbsp;sua declara&ccedil;&atilde;o anual de imposto de renda e por conta disso, deve calcular e declarar seu imposto de renda em a&ccedil;&otilde;es.</span></span></span></p>
+<p style="box-sizing: border-box; font-size: 14px; margin: 15px 0px; font-family: Flexo, sans-serif; line-height: 28px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Nisso est&atilde;o inclu&iacute;dos todos os investidores, que devem calcular o IR independente de terem lucro ou preju&iacute;zo na bolsa de valores.</span></span></span></p>
+<p style="box-sizing: border-box; font-size: 14px; margin: 15px 0px; font-family: Flexo, sans-serif; line-height: 28px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Al&eacute;m disso, a apura&ccedil;&atilde;o e pagamento do&nbsp;<span style="box-sizing: border-box; font-weight: 700;">imposto de renda em a&ccedil;&otilde;es</span>&nbsp;deve ser feita mensalmente, e esta responsabilidade &eacute; unicamente do pr&oacute;prio investidor.</span></span></span></p>
+<p style="box-sizing: border-box; font-size: 14px; margin: 15px 0px; font-family: Flexo, sans-serif; line-height: 28px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Seja voc&ecirc; um investidor milion&aacute;rio ou algu&eacute;m que acabou de fazer sua primeira opera&ccedil;&atilde;o na bolsa de valores, &eacute; muito importante que tenha um controle pr&oacute;prio para estar seguro se deve pagar o IR. Para isso, voc&ecirc; pode sempre contar com nossa&nbsp;</span></span></span><span style="font-size: 15px;"><a href="https://www.bussoladoinvestidor.com.br/calculadora_de_ir/?utm_source=blog-bdi&amp;utm_medium=banner&amp;utm_campaign=calculadora" style="box-sizing: border-box; color: rgb(0, 159, 227); text-decoration: none; transition: all 0.3s ease-in-out; background-color: transparent;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Calculadora de Imposto de Renda</span></span></a><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">, que faz todos os c&aacute;lculos para voc&ecirc;.</span></span></span></p>
+<p style="box-sizing: border-box; font-size: 14px; margin: 15px 0px; font-family: Flexo, sans-serif; line-height: 28px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Pensando em te ajudar, resolvi escrever este&nbsp;<span style="box-sizing: border-box; font-weight: 700;">Guia do Imposto de Renda em A&ccedil;&otilde;es</span>, onde explico tudo o que voc&ecirc; deve saber para poder: calcular,&nbsp;declarar e&nbsp;pagar seu imposto de renda em a&ccedil;&otilde;es.</span></span></span></p>
+<p style="box-sizing: border-box; font-size: 14px; margin: 15px 0px; font-family: Flexo, sans-serif; line-height: 28px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">(Caso tenha interesse na tributa&ccedil;&atilde;o de fundos imobili&aacute;rios, veja o&nbsp;</span></span></span><span style="font-size: 15px;"><a href="http://blog.bussoladoinvestidor.com.br/imposto-de-renda-em-fundos-imobiliarios/" style="box-sizing: border-box; color: rgb(0, 159, 227); text-decoration: none; transition: all 0.3s ease-in-out; background-color: transparent;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Guia do&nbsp;Imposto de Renda em Fundos Imobili&aacute;rios</span></span></a><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">).</span></span></span></p>
+<p style="box-sizing: border-box; font-size: 14px; margin: 15px 0px; font-family: Flexo, sans-serif; line-height: 28px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Este guia est&aacute; dividido em 4 t&oacute;pico principais:</span></span></span></p>
+<p style="box-sizing: border-box; font-size: 14px; margin: 15px 0px 15px 40px; font-family: Flexo, sans-serif; line-height: 28px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);"><span style="box-sizing: border-box;"><span style="box-sizing: border-box; font-weight: 700;">I. Por que declarar o imposto de renda em a&ccedil;&otilde;es?</span></span></span></span></span></p>
+<p style="box-sizing: border-box; font-size: 14px; margin: 15px 0px 15px 40px; font-family: Flexo, sans-serif; line-height: 28px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);"><span style="box-sizing: border-box;"><span style="box-sizing: border-box; font-weight: 700;">II. Como calcular o imposto de renda em a&ccedil;&otilde;es?</span></span></span></span></span></p>
+<p style="box-sizing: border-box; font-size: 14px; margin: 15px 0px 15px 40px; font-family: Flexo, sans-serif; line-height: 28px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);"><span style="box-sizing: border-box;"><span style="box-sizing: border-box; font-weight: 700;">III. Outras regras importantes para calcular seu IR.</span></span></span></span></span></p>
+<p style="box-sizing: border-box; font-size: 14px; margin: 15px 0px 15px 40px; font-family: Flexo, sans-serif; line-height: 28px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);"><span style="box-sizing: border-box;"><span style="box-sizing: border-box; font-weight: 700;">IV. Como declarar a&ccedil;&otilde;es no imposto de renda?</span></span></span></span></span></p>
+<p style="box-sizing: border-box; font-size: 14px; margin-top: 15px; margin-right: 0px; margin-bottom: 15px; font-family: Flexo, sans-serif; line-height: 28px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Ao terminar de ler este guia, voc&ecirc; entender&aacute; definitivamente como fazer para estar sempre em dia com o Le&atilde;o!</span></span></span></p>
+<p style="box-sizing: border-box; font-size: 14px; margin-top: 15px; margin-right: 0px; margin-bottom: 15px; font-family: Flexo, sans-serif; line-height: 28px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);"><strong>I. Por que declarar imposto de renda em a&ccedil;&otilde;es?</strong></span></span></span></p>
+<p style="box-sizing: border-box; font-size: 14px; margin-top: 15px; margin-right: 0px; margin-bottom: 15px; font-family: Flexo, sans-serif; line-height: 28px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Atualmente muitos investidores ainda n&atilde;o declaram o imposto de renda em a&ccedil;&otilde;es. Se voc&ecirc; est&aacute; entre eles, sinto lhe informar que os dois principais argumentos utilizados &agrave; algum tempo, n&atilde;o funcionam mais:</span></span></span></p>
+<p style="box-sizing: border-box; font-size: 14px; margin-top: 15px; margin-right: 0px; margin-bottom: 15px; font-family: Flexo, sans-serif; line-height: 28px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">a. &ldquo;A Receita Federal n&atilde;o vai perceber que eu devo.&rdquo;</span></span></span></p>
+<p style="box-sizing: border-box; font-size: 14px; margin-top: 15px; margin-right: 0px; margin-bottom: 15px; font-family: Flexo, sans-serif; line-height: 28px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Para come&ccedil;o de conversa, em toda opera&ccedil;&atilde;o que voc&ecirc; faz na bolsa de valores voc&ecirc; paga o IRRF (Imposto de Renda Retido na Fonte). Ele &eacute; uma pequena porcentagem do valor negociado, e serve somente para uma coisa: dedurar para a Receita quanto voc&ecirc; negociou na bolsa de valores.&nbsp;Estes dados s&atilde;o automaticamente vinculados ao seu CPF e ficam no banco de dados da Receita Federal.</span></span></span></p>
+<p style="box-sizing: border-box; font-size: 14px; margin-top: 15px; margin-right: 0px; margin-bottom: 15px; font-family: Flexo, sans-serif; line-height: 28px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Em outras palavras, a Receita sabe exatamente quando e quanto voc&ecirc; negociou, e portanto j&aacute; sabe se voc&ecirc; deve, ou n&atilde;o, entregar a declara&ccedil;&atilde;o anual, assim como pagar o IRPF em a&ccedil;&otilde;es naquele m&ecirc;s.</span></span></span></p>
+<p style="box-sizing: border-box; font-size: 14px; margin-top: 15px; margin-right: 0px; margin-bottom: 15px; font-family: Flexo, sans-serif; line-height: 28px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Todos os anos o n&uacute;mero de investidores na malha fina &eacute; maior, j&aacute; que a Receita tem o prazo de at&eacute; 5 anos para multar quem declarou errado no imposto de renda.</span></span></span></p>
+<p style="box-sizing: border-box; font-size: 14px; margin-top: 15px; margin-right: 0px; margin-bottom: 15px; font-family: Flexo, sans-serif; line-height: 28px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">b. &ldquo;D&aacute; muito trabalho apurar o imposto de renda em a&ccedil;&otilde;es.&rdquo;</span></span></span></p>
+<p style="box-sizing: border-box; font-size: 14px; margin-top: 15px; margin-right: 0px; margin-bottom: 15px; font-family: Flexo, sans-serif; line-height: 28px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Isso voc&ecirc; poderia falar se tivesse que apurar seu Imposto de Renda na m&atilde;o, o que envole calcular pre&ccedil;o m&eacute;dio, separar opera&ccedil;&otilde;es normais de day-trade, etc.</span></span></span></p>
+<p style="box-sizing: border-box; font-size: 14px; margin-top: 15px; margin-right: 0px; margin-bottom: 15px; font-family: Flexo, sans-serif; line-height: 28px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Hoje em dia isso j&aacute; n&atilde;o &eacute; assim!&nbsp;Voc&ecirc; pode utilizar nossa&nbsp;</span></span></span><span style="font-size: 15px;"><span style="color: rgb(0, 0, 0);"><a href="http://www.bussoladoinvestidor.com.br/calculadora_de_ir/" target="_blank" style="box-sizing: border-box; color: rgb(0, 159, 227); text-decoration: none; transition: all 0.3s ease-in-out; background-color: transparent;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Calculadora de IRPF</span></span></a></span><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);"> para apurar tudo em poucos minutos. Ap&oacute;s cadastrar sua corretora e importar suas notas de corretagem, o sistema calcula automaticamente seu imposto devido e j&aacute; gera sua DARF pronta para o pagamento.</span></span></span></p>
+<p style="box-sizing: border-box; font-size: 14px; margin-top: 15px; margin-right: 0px; margin-bottom: 15px; font-family: Flexo, sans-serif; line-height: 28px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Al&eacute;m disso, a Calculadora de IR consolida suas opera&ccedil;&otilde;es em relat&oacute;rios exatamente iguais aos que a Receita pede na declara&ccedil;&atilde;o anual de imposto de renda (IRPF). Assim o &uacute;nico trabalho que voc&ecirc; vai ter &eacute; copiar os valores para sua declara&ccedil;&atilde;o.</span></span></span></p>
+<p style="text-align: justify;">&nbsp;</p>
+<blockquote style="box-sizing: border-box; padding: 0px 0px 0px 50px; margin: 0px 0px 20px; font-size: 17.5px; border: 0px; position: relative; font-style: italic; line-height: 28px; font-family: Flexo, sans-serif; text-align: justify;">
+<p style="box-sizing: border-box; font-size: 1em; margin: 0px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">No fim das contas, cabe &agrave; voc&ecirc; ponderar se vale mais a pena apurar seu imposto de renda sobre a&ccedil;&otilde;es do modo correto, ou correr o risco de&nbsp;<span style="box-sizing: border-box; font-weight: 700;">pagar&nbsp;</span>multas<span style="box-sizing: border-box; font-weight: 700;">&nbsp;&ndash;&nbsp;</span>m&iacute;nimo de R$ 165,74 pelas&nbsp;</span></span></span><span style="font-size: 15px;"><a href="http://blog.bussoladoinvestidor.com.br/novas-regras-irpf-2013/" style="box-sizing: border-box; color: rgb(0, 159, 227); text-decoration: none; transition: all 0.3s ease-in-out; background-color: transparent;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">regras do IRPF 2013</span></span></a><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">&nbsp;-, juros e ter o trabalho dobrado de resolver tudo depois.</span></span></span></p>
+</blockquote>
+<p style="box-sizing: border-box; font-size: 1em; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);"><span style="box-sizing: border-box; font-weight: 700;">II. Como calcular o&nbsp;</span><span style="box-sizing: border-box; font-weight: 700;">imposto de renda em a&ccedil;&otilde;es?</span></span></span></span></p>
+<p style="box-sizing: border-box; font-size: 1em; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);"><br type="_moz" />
+</span></span></span></p>
+<p style="box-sizing: border-box; font-size: 1em; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Se voc&ecirc; j&aacute; se convenceu de que deve declarar o imposto de renda corretamente, vamos ao pr&oacute;ximo passo!</span></span></span></p>
+<p style="box-sizing: border-box; font-size: 1em; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);"><br type="_moz" />
+</span></span></span></p>
+<p style="box-sizing: border-box; font-size: 1em; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Calcular o IR e recolher o imposto de renda devido em a&ccedil;&otilde;es, deve ser uma tarefa mensal de todo investidor. Aqui vou explicar&nbsp;<span style="box-sizing: border-box; font-weight: 700;">como fazer o c&aacute;lculo do IR em 5 etapas</span>, para na pr&oacute;xima parte deste artigo explicar como declarar a&ccedil;&otilde;es no imposto de renda.<span style="box-sizing: border-box; font-weight: 700;">&nbsp;</span></span></span></span></p>
+<p style="box-sizing: border-box; font-size: 1em; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; text-align: justify;">&nbsp;</p>
+<p style="box-sizing: border-box; font-size: 1em; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Caso voc&ecirc; utilize nossa Calculadora de Imposto de Renda, n&atilde;o ser&aacute; necess&aacute;rio se&nbsp;</span></span></span><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">preocupar com isso.&nbsp;</span></span></span><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Nosso sistema ir&aacute; fazer automaticamente todos estes c&aacute;lculos para voc&ecirc;.</span></span></span></p>
+<p style="text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">a. Apurar os resultados de cada opera&ccedil;&atilde;o:</span></span></span></p>
+<p style="text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Ap&oacute;s encerrada uma posi&ccedil;&atilde;o (seja vendida ou comprada) voc&ecirc; dever&aacute; apurar quanto obteve de lucro ou preju&iacute;zo, j&aacute; descontando seus custos operacionais (corretagens e taxas). Para isso voc&ecirc; deve utilizar o conceito de&nbsp;</span></span></span><a href="http://blog.bussoladoinvestidor.com.br/calculo-do-preco-medio-de-acoes/" style="font-size: 15px; font-family: Flexo, sans-serif; line-height: 28px; box-sizing: border-box; color: rgb(0, 159, 227); text-decoration: none; transition: all 0.3s ease-in-out; background-color: transparent;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">pre&ccedil;o m&eacute;dio de compra das a&ccedil;&otilde;es</span></span></a><span style="font-size: 15px; line-height: 28px; font-family: Arial;">&nbsp;</span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px; line-height: 28px; font-family: Arial;">em sua carteira.</span></span></p>
+<p style="text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Ao final desta etapa, voc&ecirc; dever&aacute; ter claro quanto foi o seu resultado em cada uma das opera&ccedil;&otilde;es que realizou durante aquele m&ecirc;s.</span></span></span></p>
+<p style="text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);"><span style="box-sizing: border-box;"><span style="box-sizing: border-box; font-weight: 700;">Aten&ccedil;&atilde;o:</span></span>&nbsp;uma opera&ccedil;&atilde;o encerrada &eacute; aquela em que o investidor j&aacute; desfez sua posi&ccedil;&atilde;o, n&atilde;o importando se a ordem foi compra seguida de venda, ou venda seguida de compra (opera&ccedil;&otilde;es &agrave; termo).</span></span></span></p>
+<p style="text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">b. Separar opera&ccedil;&otilde;es&nbsp;<em style="box-sizing: border-box;">Day Trade</em>&nbsp;e Opera&ccedil;&otilde;es Normais:</span></span></span></p>
+<p style="text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">A Receita definiu uma tributa&ccedil;&atilde;o diferente para o imposto de renda em day trade (compra e venda no mesmo dia) e o imposto de renda em opera&ccedil;&otilde;es normais (compra e venda em datas diferentes).</span></span></span></p>
+<p style="text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Por isso, voc&ecirc; deve separar suas opera&ccedil;&otilde;es nestes dois grupos, e somar os resultados obtidos em cada um destes tipos de opera&ccedil;&otilde;es. Vale lembrar que uma opera&ccedil;&atilde;o &eacute; considerada day trade mesmo quando a venda &eacute; feita antes da compra no mesmo dia.</span></span></span></p>
+<p style="text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Exemplo:</span></span></span></p>
+<p style="text-align: justify; margin-left: 80px;"><span style="font-size: 16px;"><span style="font-weight: 700;">No Dia 09/10:</span></span></p>
+<blockquote style="box-sizing: border-box; padding: 0px 0px 0px 50px; margin: 0px 0px 20px; font-size: 17.5px; border: 0px; position: relative; font-style: italic; line-height: 28px; font-family: Flexo, sans-serif; text-align: justify;">
+<ul style="box-sizing: border-box; margin-top: 0px; margin-bottom: 10px;">
+    <li style="box-sizing: border-box; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">10:30hrs &ndash; Vendi 300 a&ccedil;&otilde;es PETR4</span></span></span></li>
+    <li style="box-sizing: border-box; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">14:40hrs &ndash; Comprei 100 a&ccedil;&otilde;es PETR4</span></span></span></li>
+    <li style="box-sizing: border-box; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">n&atilde;o fiz mais nada no dia</span></span></span></li>
+</ul>
+</blockquote>
+<p style="box-sizing: border-box; font-size: 1em; margin: 0px 0px 0px 80px; text-align: justify;"><em><span style="font-size: 16px;">&nbsp;<span style="font-family: Arial; box-sizing: border-box; font-weight: 700;"><span style="box-sizing: border-box;">Resultado:</span></span></span><span style="font-family: Arial; box-sizing: border-box; font-weight: 700;"><span style="box-sizing: border-box;">&nbsp;</span></span><span style="font-size: 15px;"><span style="font-family: Arial;">100 a&ccedil;&otilde;es foram day trade e 200 a&ccedil;&otilde;es foram opera&ccedil;&atilde;o normal.</span></span></em></p>
+<p style="box-sizing: border-box; font-size: 1em; margin: 0px 0px 0px 80px; text-align: justify;">&nbsp;</p>
+<p style="box-sizing: border-box; font-size: 1em; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);"> </span></span></span><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);"><span style="box-sizing: border-box;"><span style="box-sizing: border-box; font-weight: 700;">Aten&ccedil;&atilde;o:</span></span>&nbsp;quando o resultado &eacute; negativo (preju&iacute;zo) voc&ecirc; n&atilde;o ir&aacute; pagar impostos e dever&aacute; guardar este valor para abate-lo em seus lucros futuros. Veja na pr&oacute;xima etapa:</span></span></span></p>
+<p style="box-sizing: border-box; font-size: 1em; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; text-align: justify;">&nbsp;</p>
+<p style="box-sizing: border-box; font-size: 1em; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">c. Descontar seus Preju&iacute;zos:</span></span></span></p>
+<p style="box-sizing: border-box; font-size: 1em; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; text-align: justify;">&nbsp;</p>
+<p style="box-sizing: border-box; font-size: 1em; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Caso voc&ecirc; tenha preju&iacute;zos acumulados em meses anteriores, voc&ecirc; poder&aacute; deduzi-los de seu lucro atual, de modo que o imposto ser&aacute; cobrado sobre uma base menor. Explicamos em mais detalhes esta etapa no artigo</span></span></span><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></span></span><span style="font-size: 15px;"><a href="http://blog.bussoladoinvestidor.com.br/como-compensar-prejuizo-em-acoes/" style="box-sizing: border-box; color: rgb(0, 159, 227); text-decoration: none; transition: all 0.3s ease-in-out; background-color: transparent;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">como compensar seus preju&iacute;zo em a&ccedil;&otilde;es</span></span></a><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">.</span></span></span></p>
+<p style="box-sizing: border-box; font-size: 1em; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; text-align: justify;">&nbsp;</p>
+<p style="box-sizing: border-box; font-size: 1em; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);"><span style="box-sizing: border-box;"><span style="box-sizing: border-box; font-weight: 700;">Aten&ccedil;&atilde;o:</span></span>&nbsp;o preju&iacute;zo s&oacute; pode ser abatido de opera&ccedil;&otilde;es do mesmo tipo: preju&iacute;zo day trade de lucro day trade e preju&iacute;zo em opera&ccedil;&otilde;es normais de lucros em opera&ccedil;&otilde;es normais.</span></span></span></p>
+<p style="box-sizing: border-box; font-size: 1em; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; text-align: justify;">&nbsp;</p>
+<p style="box-sizing: border-box; font-size: 1em; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Exemplo:</span></span></span></p>
+<p style="box-sizing: border-box; font-size: 1em; margin-top: 0px; margin-right: 0px; margin-bottom: 0px; text-align: justify;">&nbsp;</p>
+<p style="box-sizing: border-box; font-size: 1em; margin: 0px 0px 0px 80px; text-align: justify;"><span style="box-sizing: border-box;"><span style="font-size: 16px;"><span style="box-sizing: border-box; font-weight: 700;">De preju&iacute;zos acumulados, eu tenho:</span></span></span></p>
+<blockquote style="box-sizing: border-box; padding: 0px 0px 0px 50px; margin: 0px 0px 20px; font-size: 17.5px; border: 0px; position: relative; font-style: italic; line-height: 28px; font-family: Flexo, sans-serif; text-align: justify;">
+<ul style="box-sizing: border-box; margin-top: 0px; margin-bottom: 10px;">
+    <li style="box-sizing: border-box; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">R$ 650 em day trade e tive lucro de R$ 150 neste m&ecirc;s</span></span></span></li>
+    <li style="box-sizing: border-box; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">R$ 320 em opera&ccedil;&otilde;es normais e tive lucro de R$ 500 neste m&ecirc;s</span></span></span></li>
+</ul>
+</blockquote>
+<p style="box-sizing: border-box; font-size: 1em; margin: 0px 0px 0px 80px; text-align: justify;"><span style="font-size: 16px;">&nbsp;<span style="font-weight: 700;">E este m&ecirc;s tive lucros de:</span></span></p>
+<blockquote style="box-sizing: border-box; padding: 0px 0px 0px 50px; margin: 0px 0px 20px; font-size: 17.5px; border: 0px; position: relative; font-style: italic; line-height: 28px; font-family: Flexo, sans-serif; text-align: justify;">
+<ul style="box-sizing: border-box; margin-top: 0px; margin-bottom: 10px;">
+    <li style="box-sizing: border-box; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">R$ 150 em day trades</span></span></span></li>
+    <li style="box-sizing: border-box; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">R$ 500 em opera&ccedil;&otilde;es normais</span></span></span></li>
+</ul>
+</blockquote>
+<p style="box-sizing: border-box; font-size: 1em; margin: 0px 0px 0px 80px; text-align: justify;"><span style="font-size: 16px;">&nbsp;<span style="font-weight: 700;">Resultado:</span></span></p>
+<blockquote>
+<ul>
+    <li style="text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">N&atilde;o pagarei imposto de renda sobre o lucro day trade (e ainda sobram R$ 500 a serem compensados)</span></span></span></li>
+    <li style="text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Pagarei imposto de renda somente sobre R$ 180 em opera&ccedil;&otilde;es normais</span></span></span></li>
+</ul>
+</blockquote><blockquote style="box-sizing: border-box; padding: 0px 0px 0px 50px; margin: 0px 0px 20px; font-size: 17.5px; border: 0px; position: relative; font-style: italic; line-height: 28px; font-family: Flexo, sans-serif; text-align: justify;"> </blockquote>
+<h3 style="box-sizing: border-box; font-family: Flexo, sans-serif; font-weight: 500; line-height: 1.1; color: rgb(105, 105, 105); margin: 30px 0px; font-size: 20px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">d. Encontrar o Imposto de Renda devido:</span></span></span></h3>
+<h3 style="box-sizing: border-box; font-family: Flexo, sans-serif; font-weight: 500; line-height: 1.1; color: rgb(105, 105, 105); margin: 30px 0px; font-size: 20px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Sobre o saldo positivo que encontrou em cada tipo de opera&ccedil;&atilde;o, voc&ecirc; dever&aacute; aplicar as al&iacute;quotas vigentes do imposto de renda em a&ccedil;&otilde;es:</span></span></span></h3>
+<blockquote>
+<h3 style="box-sizing: border-box; font-family: Flexo, sans-serif; font-weight: 500; line-height: 1.1; color: rgb(105, 105, 105); margin: 30px 0px; font-size: 20px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;">IR de 20% para Day Trade IR de 15% para Opera&ccedil;&otilde;es Comuns</span></span></span></h3>
+</blockquote>
+<h3 style="box-sizing: border-box; font-family: Flexo, sans-serif; font-weight: 500; line-height: 1.1; color: rgb(105, 105, 105); margin: 30px 0px; font-size: 20px; text-align: justify;"><span style="font-family: Arial, Verdana, sans-serif; font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></span></span><span style="font-family: Arial, Verdana, sans-serif; font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">e. Descontar o IRRF:</span></span></span></h3>
+<h3 style="box-sizing: border-box; font-family: Flexo, sans-serif; font-weight: 500; line-height: 1.1; color: rgb(105, 105, 105); margin: 30px 0px; font-size: 20px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Do valor encontrado na etapa anterior, voc&ecirc; ainda dever&aacute; deduzir o imposto de renda retido na fonte (IRRF) pela sua Corretora de Valores, incluindo os de meses anteriores que ainda n&atilde;o foram abatidos.</span></span></span></h3>
+<h3 style="box-sizing: border-box; font-family: Flexo, sans-serif; font-weight: 500; line-height: 1.1; color: rgb(105, 105, 105); margin: 30px 0px; font-size: 20px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">O resultado j&aacute; ser&aacute; o imposto de renda em a&ccedil;&otilde;es e que voc&ecirc; dever&aacute; recolher, por meio do pagamento da DARF. Voc&ecirc; tem at&eacute; o &uacute;ltimo dia &uacute;til do m&ecirc;s seguinte &nbsp;para recolher o imposto.</span></span></span></h3>
+<h3 style="box-sizing: border-box; font-family: Flexo, sans-serif; font-weight: 500; line-height: 1.1; color: rgb(105, 105, 105); margin: 30px 0px; font-size: 20px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">A Calculadora de IR do B&uacute;ssola do Investidor j&aacute; gera sua DARF preenchida e pronta para pagamento, no entanto voc&ecirc; tamb&eacute;m pode gerar DARFs diretamente no</span></span></span><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></span></span><span style="font-size: 15px;"><a href="http://www.receita.fazenda.gov.br/PessoaFisica/IRPF/2012/pagamento/emissao-darf.htm" style="box-sizing: border-box; color: rgb(0, 159, 227); text-decoration: none; transition: all 0.3s ease-in-out; background-color: transparent;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">site da Receita Federal</span></span></a><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">&nbsp;ap&oacute;s preencher os campos devidos.</span></span></span></h3>
+<h3 style="box-sizing: border-box; font-family: Flexo, sans-serif; font-weight: 500; line-height: 1.1; color: rgb(105, 105, 105); margin: 30px 0px; font-size: 20px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);"><strong>III. Outras regras importantes para calcular o IR</strong></span></span></span></h3>
+<h3 style="box-sizing: border-box; font-family: Flexo, sans-serif; font-weight: 500; line-height: 1.1; color: rgb(105, 105, 105); margin: 30px 0px; font-size: 20px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Agora que voc&ecirc; j&aacute; sabe como fazer o c&aacute;lculo do imposto de renda em a&ccedil;&otilde;es, vou explicar algumas regras que voc&ecirc; deve considerar na hora de apurar seu imposto de renda sobre a&ccedil;&otilde;es:</span></span></span></h3>
+<h3 style="box-sizing: border-box; font-family: Flexo, sans-serif; font-weight: 500; line-height: 1.1; color: rgb(105, 105, 105); margin: 30px 0px; font-size: 20px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);"><strong>a. Insen&ccedil;&atilde;o de Imposto de Renda para Opera&ccedil;&otilde;es Normais</strong></span></span></span></h3>
+<h3 style="box-sizing: border-box; font-family: Flexo, sans-serif; font-weight: 500; line-height: 1.1; color: rgb(105, 105, 105); margin: 30px 0px; font-size: 20px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">No caso das opera&ccedil;&otilde;es normais (compra e venda em datas diferentes), o investidor conta com um incentivo:</span></span></span><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></span></span><span style="font-size: 15px;"><a title="Isen&ccedil;&atilde;o de IR em bolsa de valores: como funciona" href="http://blog.bussoladoinvestidor.com.br/isencao-ir-em-bolsa-de-valores/" style="box-sizing: border-box; color: rgb(0, 159, 227); text-decoration: none; transition: all 0.3s ease-in-out; background-color: transparent;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">isen&ccedil;&atilde;o de IR em bolsa de valores</span></span></a><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">&nbsp;no pagamento de imposto de renda nos meses em que o&nbsp;<span style="box-sizing: border-box; font-weight: 700;">valor total das vendas for abaixo de R$ 20.000</span>.</span></span></span></h3>
+<h3 style="box-sizing: border-box; font-family: Flexo, sans-serif; font-weight: 500; line-height: 1.1; color: rgb(105, 105, 105); margin: 30px 0px; font-size: 20px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Assim, antes de pagar qualquer imposto de renda sobre as opera&ccedil;&otilde;es normais no m&ecirc;s, o investidor deve somar quanto teve de aliena&ccedil;&otilde;es (vendas). Nesta soma devem entrar todas as vendas realizadas no m&ecirc;s, sejam elas opera&ccedil;&otilde;es normais ou&nbsp;<em style="box-sizing: border-box;">day trades</em>.</span></span></span></h3>
+<h3 style="box-sizing: border-box; font-family: Flexo, sans-serif; font-weight: 500; line-height: 1.1; color: rgb(105, 105, 105); margin: 30px 0px; font-size: 20px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Caso tenha vendido menos do que R$20.000 no m&ecirc;s, voc&ecirc; poder&aacute; desconsiderar o valor do IR em a&ccedil;&otilde;es &agrave; ser pago. Caso fique acima, o pagamento ser&aacute; de 15% do lucro l&iacute;quido (descontadas taxas e corretagem).</span></span></span></h3>
+<h3 style="box-sizing: border-box; font-family: Flexo, sans-serif; font-weight: 500; line-height: 1.1; color: rgb(105, 105, 105); margin: 30px 0px; font-size: 20px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Lembre que sua corretora j&aacute; ret&ecirc;m uma parcela de 0,005% do valor das vendas, sinalizando &agrave; Receita que voc&ecirc; deve pagar o restante.</span></span></span></h3>
+<h3 style="box-sizing: border-box; font-family: Flexo, sans-serif; font-weight: 500; line-height: 1.1; color: rgb(105, 105, 105); margin: 30px 0px; font-size: 20px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);"><span style="box-sizing: border-box; font-weight: 700;">b. Bonifica&ccedil;&otilde;es em A&ccedil;&otilde;es</span></span></span></span></h3>
+<h3 style="box-sizing: border-box; font-family: Flexo, sans-serif; font-weight: 500; line-height: 1.1; color: rgb(105, 105, 105); margin: 30px 0px; font-size: 20px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Em rela&ccedil;&atilde;o &agrave; bonifica&ccedil;&otilde;es em a&ccedil;&otilde;es no imposto de renda, estas representam um aumento no capital social da empresa, por meio da incorpora&ccedil;&atilde;o de lucros. &nbsp;Neste caso as a&ccedil;&otilde;es devem ser inclu&iacute;das no seu estoque com o custo de aquisi&ccedil;&atilde;o igual ao valor informado pela empresa.</span></span></span></h3>
+<h3 style="box-sizing: border-box; font-family: Flexo, sans-serif; font-weight: 500; line-height: 1.1; color: rgb(105, 105, 105); margin: 30px 0px; font-size: 20px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Este valor &eacute; o valor do lucro incorporado, dividido pelo n&uacute;mero total de a&ccedil;&otilde;es bonificadas aos acionistas. Valores recebidos como bonifica&ccedil;&otilde;es est&atilde;o isentos de imposto de renda e devem ser declarados como &ldquo;Rendimentos Isentos ou N&atilde;o Tribut&aacute;veis&rdquo; na declara&ccedil;&atilde;o anual como veremos adiante.</span></span></span></h3>
+<h3 style="box-sizing: border-box; font-family: Flexo, sans-serif; font-weight: 500; line-height: 1.1; color: rgb(105, 105, 105); margin: 30px 0px; font-size: 20px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);"><span style="box-sizing: border-box; font-weight: 700;">c. Desdobramentos e Agrupamentos de A&ccedil;&otilde;es</span></span></span></span></h3>
+<h3 style="box-sizing: border-box; font-family: Flexo, sans-serif; font-weight: 500; line-height: 1.1; color: rgb(105, 105, 105); margin: 30px 0px; font-size: 20px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Desdobramentos e agrupamentos s&atilde;o facilmente tratados no imposto de renda. Como o valor total das a&ccedil;&otilde;es sem carteira n&atilde;o &eacute; alterado, n&atilde;o resultando em lucros, tamb&eacute;m n&atilde;o existe a incid&ecirc;ncia de IR.</span></span></span></h3>
+<h3 style="box-sizing: border-box; font-family: Flexo, sans-serif; font-weight: 500; line-height: 1.1; color: rgb(105, 105, 105); margin: 30px 0px; font-size: 20px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">No entanto, &eacute; necess&aacute;rio fazer o ajuste no custo de aquisi&ccedil;&atilde;o destes ativos. Para isso, basta dividir ou multiplicar o pre&ccedil;o pago, pela quantidade de a&ccedil;&otilde;es desmembradas ou agrupadas, respectivamente.</span></span></span></h3>
+<h3 style="box-sizing: border-box; font-family: Flexo, sans-serif; font-weight: 500; line-height: 1.1; color: rgb(105, 105, 105); margin: 30px 0px; font-size: 20px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);"><span style="box-sizing: border-box; font-weight: 700;">d. &nbsp;Dividendos</span></span></span></span></h3>
+<h3 style="box-sizing: border-box; font-family: Flexo, sans-serif; font-weight: 500; line-height: 1.1; color: rgb(105, 105, 105); margin: 30px 0px; font-size: 20px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">No caso de dividendos, o imposto de renda n&atilde;o precisa ser pago. Como o valor j&aacute; representa o lucro l&iacute;quido da empresa pagadora, n&atilde;o faria sentido voc&ecirc; pagar impostos sendo que a empresa j&aacute; o fez.</span></span></span></h3>
+<h3 style="box-sizing: border-box; font-family: Flexo, sans-serif; font-weight: 500; line-height: 1.1; color: rgb(105, 105, 105); margin: 30px 0px; font-size: 20px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);"><span style="box-sizing: border-box; font-weight: 700;">e. Juros sobre Capital Pr&oacute;prio</span></span></span></span></h3>
+<h3 style="box-sizing: border-box; font-family: Flexo, sans-serif; font-weight: 500; line-height: 1.1; color: rgb(105, 105, 105); margin: 30px 0px; font-size: 20px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">No caso de Juros Sobre Capital Pr&oacute;prio (JSCP), o imposto de renda &eacute; retido na fonte, no momento do pagamento. Desta maneira voc&ecirc; n&atilde;o precisar&aacute; pagar o imposto de renda novamente.</span></span></span></h3>
+<h3 style="box-sizing: border-box; font-family: Flexo, sans-serif; font-weight: 500; line-height: 1.1; color: rgb(105, 105, 105); margin: 30px 0px; font-size: 20px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">No entanto, eles devem ser declarados na declara&ccedil;&atilde;o de ajuste anual como &ldquo;Rendimentos Sujeitos &agrave; Tributa&ccedil;&atilde;o Exclusiva/Definitiva&rdquo;, como veremos adiante.</span></span></span></h3>
+<h3 style="box-sizing: border-box; font-family: Flexo, sans-serif; font-weight: 500; line-height: 1.1; color: rgb(105, 105, 105); margin: 30px 0px; font-size: 20px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);"><strong>IV. Como declarar a&ccedil;&otilde;es no imposto de renda?</strong></span></span></span></h3>
+<h3 style="box-sizing: border-box; font-family: Flexo, sans-serif; font-weight: 500; line-height: 1.1; color: rgb(105, 105, 105); margin: 30px 0px; font-size: 20px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Se voc&ecirc; leu tudo at&eacute; aqui est&aacute; de parab&eacute;ns, j&aacute; &eacute; quase um contador de imposto de renda em a&ccedil;&otilde;es! Agora vamos a etapa final, e a mais importante&nbsp;na &eacute;poca da declara&ccedil;&atilde;o anual de imposto de renda (mar&ccedil;o e abril).</span></span></span></h3>
+<h3 style="box-sizing: border-box; font-family: Flexo, sans-serif; font-weight: 500; line-height: 1.1; color: rgb(105, 105, 105); margin: 30px 0px; font-size: 20px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Aqui vou ensinar como declarar a&ccedil;&otilde;es no imposto de renda da maneira correta. Apesar de parecer trabalhoso, se voc&ecirc; seguir da maneira correta n&atilde;o precisar&aacute; se preocupar com a tributa&ccedil;&atilde;o das a&ccedil;&otilde;es. Nos meus exemplos vou utilizar o</span></span></span><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></span></span><span style="font-size: 15px;"><a href="http://www.receita.fazenda.gov.br/PessoaFisica/IRPF/2013/declaracao/download-programas.htm" style="box-sizing: border-box; color: rgb(0, 159, 227); text-decoration: none; transition: all 0.3s ease-in-out; background-color: transparent;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Programa IRPF 2013</span></span></a><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">, que &eacute; a vers&atilde;o mais atual de fazer a declara&ccedil;&atilde;o do IR. E tudo indica que, n&atilde;o devemos ter muitas mudan&ccedil;as nos pr&oacute;ximos anos.</span></span></span></h3>
+<h3 style="box-sizing: border-box; font-family: Flexo, sans-serif; font-weight: 500; line-height: 1.1; color: rgb(105, 105, 105); margin: 30px 0px; font-size: 20px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">a. Como declarar dividendos</span></span></span></h3>
+<h3 style="box-sizing: border-box; font-family: Flexo, sans-serif; font-weight: 500; line-height: 1.1; color: rgb(105, 105, 105); margin: 30px 0px; font-size: 20px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Os dividendos recebidos durante o ano devem ser informados pela empresa que os pagou &agrave; voc&ecirc;. Essas informa&ccedil;&otilde;es s&atilde;o enviadas pelo correio, e voc&ecirc; dever&aacute; recebe-las antes do in&iacute;cio do prazo para entrega da declara&ccedil;&atilde;o anual do IRPF.</span></span></span></h3>
+<h3 style="box-sizing: border-box; font-family: Flexo, sans-serif; font-weight: 500; line-height: 1.1; color: rgb(105, 105, 105); margin: 30px 0px; font-size: 20px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Caso n&atilde;o tenha recebido estas informa&ccedil;&otilde;es de alguma das empresas, entre em contato com a &aacute;rea de RI (Rela&ccedil;&otilde;es com Investidores) e solicite um segunda via do demostrativo. Como dissemos anteriormente, o dividendos j&aacute; foram tributados na empresa e est&atilde;o l&iacute;quidos de impostos. Portanto devem ser declarados na aba &ldquo;<em style="box-sizing: border-box;">Rendimentos Isentos e N&atilde;o Tribut&aacute;veis</em>&ldquo;, assinalada em azul no lado esquerdo da imagem abaixo (clique para ampliar):</span></span></span><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></span></span></h3>
+<p style="text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);"> </span></span></span></p>
+<p style="box-sizing: border-box; font-size: 14px; margin: 15px 0px; font-family: Flexo, sans-serif; line-height: 28px; text-align: justify;"><a class="thumbnail" href="http://blog.bussoladoinvestidor.com.br/wp-content/uploads/2013/03/dividendos_1.jpg" style="box-sizing: border-box; color: rgb(0, 159, 227); text-decoration: none; transition: border 0.2s ease-in-out; display: block; padding: 4px; margin-bottom: 20px; line-height: 1.42857; border: 1px solid rgb(221, 221, 221); border-radius: 4px;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);"><img class="alignnone wp-image-661" src="http://blog.bussoladoinvestidor.com.br/wp-content/uploads/2013/03/dividendos_1.jpg" alt="Como declarar dividendos no imposto de renda" width="887" srcset="http://blog.bussoladoinvestidor.com.br/wp-content/uploads/2013/03/dividendos_1.jpg 1369w, http://blog.bussoladoinvestidor.com.br/wp-content/uploads/2013/03/dividendos_1-300x158.jpg 300w, http://blog.bussoladoinvestidor.com.br/wp-content/uploads/2013/03/dividendos_1-1024x540.jpg 1024w" sizes="(max-width: 887px) 100vw, 887px" style="box-sizing: border-box; border: 0px; vertical-align: middle; height: auto; max-width: 100%; display: block; margin-right: auto; margin-left: auto;" /></span></span></span></a></p>
+<p style="text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Nesta aba existe alinha &ldquo;<em style="box-sizing: border-box;">05. Lucros e dividendos recebidos pelo titular e dependentes</em>&ldquo;, assinalada em azul na figura acima. Clicando no bot&atilde;o da moeda com a seta verde, uma nova janela ir&aacute; se abrir (figura abaixo), onde voc&ecirc; dever&aacute; clicar no bot&atilde;o &ldquo;Novo&rdquo; (n&uacute;mero&nbsp;<span style="box-sizing: border-box; font-weight: 700;">1</span>&nbsp;na imagem), abrindo assim a janela de &ldquo;Rendimentos&rdquo;:</span></span></span></p>
+<p style="text-align: justify;">&nbsp;</p>
+<p style="text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);"> </span></span></span></p>
+<p style="box-sizing: border-box; font-size: 14px; margin: 15px 0px; font-family: Flexo, sans-serif; line-height: 28px; text-align: justify;"><a class="thumbnail" href="http://blog.bussoladoinvestidor.com.br/wp-content/uploads/2013/03/dividendos_2.jpg" style="box-sizing: border-box; color: rgb(0, 159, 227); text-decoration: none; transition: border 0.2s ease-in-out; display: block; padding: 4px; margin-bottom: 20px; line-height: 1.42857; border: 1px solid rgb(221, 221, 221); border-radius: 4px;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);"><img class="alignnone wp-image-660" src="http://blog.bussoladoinvestidor.com.br/wp-content/uploads/2013/03/dividendos_2.jpg" alt="dividendos no imposto de renda" width="840" srcset="http://blog.bussoladoinvestidor.com.br/wp-content/uploads/2013/03/dividendos_2.jpg 1050w, http://blog.bussoladoinvestidor.com.br/wp-content/uploads/2013/03/dividendos_2-300x183.jpg 300w, http://blog.bussoladoinvestidor.com.br/wp-content/uploads/2013/03/dividendos_2-1024x625.jpg 1024w" sizes="(max-width: 840px) 100vw, 840px" style="box-sizing: border-box; border: 0px; vertical-align: middle; height: auto; max-width: 100%; display: block; margin-right: auto; margin-left: auto;" /></span></span></span></a></p>
+<p style="text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Nesta janela, voc&ecirc; dever&aacute; preencher as informa&ccedil;&otilde;es da fonte pagadora dos dividendos (n&uacute;mero&nbsp;<span style="box-sizing: border-box; font-weight: 700;">2</span>&nbsp;na imagem), de acordo com o demostrativo que voc&ecirc; recebeu pelo correio, quem recebeu estes dividendos (titular ou dependente) e qual o valor recebido. Ap&oacute;s isso clique no bot&atilde;o &ldquo;OK&rdquo; (n&uacute;mero&nbsp;<span style="box-sizing: border-box; font-weight: 700;">3</span>&nbsp;na figura).</span></span></span><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></span></span></p>
+<p style="text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Caso tenha outras empresas que lhe pagaram dividendos durante o ano, repita este processo at&eacute; incluir todas elas.</span></span></span></p>
+<p style="text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">b. Como declarar Juros Sobe o Capital Pr&oacute;prio (JSCP)</span></span></span></p>
+<p style="text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Apesar de os juros sobre capital pr&oacute;prio tamb&eacute;m j&aacute; estarem tributados na fonte, o local onde eles devem ser declarado &eacute; outro. Eles devem ser inclu&iacute;do na aba &ldquo;<em style="box-sizing: border-box;">Rendimentos Sujeitos &agrave; Tributa&ccedil;&atilde;o Exclusiva/Definitiva</em>&ldquo;, na linha &ldquo;<em style="box-sizing: border-box;">08. Outros rendimentos recebidos pelo titular (especifique).</em>&rdquo;</span></span></span></p>
+<p style="text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Veja a figura abaixo:</span></span></span></p>
+<p style="text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);"> </span></span></span></p>
+<p style="box-sizing: border-box; font-size: 14px; margin: 15px 0px; font-family: Flexo, sans-serif; line-height: 28px; text-align: justify;"><a class="thumbnail" href="http://blog.bussoladoinvestidor.com.br/wp-content/uploads/2013/03/JCP_1.jpg" style="box-sizing: border-box; color: rgb(0, 159, 227); text-decoration: none; transition: border 0.2s ease-in-out; display: block; padding: 4px; margin-bottom: 20px; line-height: 1.42857; border: 1px solid rgb(221, 221, 221); border-radius: 4px;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);"><img class="alignnone wp-image-665" src="http://blog.bussoladoinvestidor.com.br/wp-content/uploads/2013/03/JCP_1.jpg" alt="juros sobre capital pr&oacute;prio no imposto de renda" width="887" srcset="http://blog.bussoladoinvestidor.com.br/wp-content/uploads/2013/03/JCP_1.jpg 1346w, http://blog.bussoladoinvestidor.com.br/wp-content/uploads/2013/03/JCP_1-300x153.jpg 300w, http://blog.bussoladoinvestidor.com.br/wp-content/uploads/2013/03/JCP_1-1024x522.jpg 1024w" sizes="(max-width: 887px) 100vw, 887px" style="box-sizing: border-box; border: 0px; vertical-align: middle; height: auto; max-width: 100%; display: block; margin-right: auto; margin-left: auto;" /></span></span></span></a></p>
+<p style="text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Clicando no bot&atilde;o da moeda com a seta verde, outra janela &ldquo;Rendimentos&rdquo; ir&aacute; se abrir. Veja a figura abaixo:</span></span></span></p>
+<p style="text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);"> </span></span></span></p>
+<p style="box-sizing: border-box; font-size: 14px; margin: 15px 0px; font-family: Flexo, sans-serif; line-height: 28px; text-align: justify;"><a class="thumbnail" href="http://blog.bussoladoinvestidor.com.br/wp-content/uploads/2013/03/JCP_2.jpg" style="box-sizing: border-box; color: rgb(0, 159, 227); text-decoration: none; transition: border 0.2s ease-in-out; display: block; padding: 4px; margin-bottom: 20px; line-height: 1.42857; border: 1px solid rgb(221, 221, 221); border-radius: 4px;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);"><img class="alignnone wp-image-664" src="http://blog.bussoladoinvestidor.com.br/wp-content/uploads/2013/03/JCP_2.jpg" alt="declarar JCP no imposto de renda" width="887" srcset="http://blog.bussoladoinvestidor.com.br/wp-content/uploads/2013/03/JCP_2.jpg 1055w, http://blog.bussoladoinvestidor.com.br/wp-content/uploads/2013/03/JCP_2-300x176.jpg 300w, http://blog.bussoladoinvestidor.com.br/wp-content/uploads/2013/03/JCP_2-1024x603.jpg 1024w" sizes="(max-width: 887px) 100vw, 887px" style="box-sizing: border-box; border: 0px; vertical-align: middle; height: auto; max-width: 100%; display: block; margin-right: auto; margin-left: auto;" /></span></span></span></a></p>
+<p style="text-align: justify;">&nbsp;<span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Nesta tela voc&ecirc; dever&aacute; informar os valores e as fontes pagadoras. Para isso clique no bot&atilde;o &ldquo;Novo&rdquo; (n&uacute;mero&nbsp;<span style="box-sizing: border-box; font-weight: 700;">1</span>). Na janela que ir&aacute; abrir, preencha o campo &ldquo;Especifica&ccedil;&atilde;o&rdquo; escreva &ldquo;Juros Capital Pr&oacute;prio &ndash;&nbsp;<em style="box-sizing: border-box;">Nome da Empresa Pagadora</em>&nbsp;&ndash; CNPJ:&nbsp;<em style="box-sizing: border-box;">n&uacute;mero do cnpj</em>&rdquo; e o campo &ldquo;Valor&rdquo; (n&uacute;mero&nbsp;<span style="box-sizing: border-box; font-weight: 700;">2</span>). Ap&oacute;s isso clique e &ldquo;OK&rdquo; (n&uacute;mero&nbsp;<span style="box-sizing: border-box; font-weight: 700;">3</span>).</span></span></span></p>
+<p style="text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Caso ainda tenha outras fontes pagadoras, repita o processo. Caso contr&aacute;rio clique no bot&atilde;o &ldquo;OK&rdquo; (n&uacute;mero&nbsp;<span style="box-sizing: border-box; font-weight: 700;">4</span>).</span></span></span></p>
+<p style="text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Os rendimentos provenientes de aluguel de a&ccedil;&otilde;es tamb&eacute;m devem ser informados nesta aba. Veja como fazer o</span></span></span><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);"> </span></span></span><span style="font-size: 15px;"><a title="Aluguel de A&ccedil;&otilde;es e Venda Descoberta no Imposto de Renda" href="http://blog.bussoladoinvestidor.com.br/aluguel-de-acoes-e-venda-descoberta-no-imposto-de-renda/" style="box-sizing: border-box; color: rgb(0, 159, 227); text-decoration: none; transition: all 0.3s ease-in-out; background-color: transparent;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">c&aacute;lculo de IR sobre aluguel de a&ccedil;&otilde;es</span></span></a><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">.</span></span></span></p>
+<p style="text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">c. Como declarar o lucro em a&ccedil;&otilde;es, isento de imposto de renda</span></span></span></p>
+<p style="text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Como expliquei anteriormente, caso voc&ecirc; tenha vendas inferiores a R$ 20.000 no m&ecirc;s, seus lucros de opera&ccedil;&otilde;es normais estar&atilde;o isentos de imposto de renda. No entanto, n&atilde;o confunda isen&ccedil;&atilde;o com n&atilde;o ter que declara-los!</span></span></span></p>
+<p style="text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Voc&ecirc; deve informar quanto foram estes lucros em sua declara&ccedil;&atilde;o anual de IRPF. Como estes rendimentos s&atilde;o isentos, entre novamente na aba &ldquo;<em style="box-sizing: border-box;">Rendimentos Isentos e N&atilde;o Tribut&aacute;veis</em>&rdquo; e clique no bot&atilde;o da moeda na linha &ldquo;<em style="box-sizing: border-box;">18. Ganhos l&iacute;quidos em opera&ccedil;&otilde;es no mercado &agrave; vista de a&ccedil;&otilde;es negociadas em bolsa de valores nas aliena&ccedil;&otilde;es realizadas at&eacute; R$ 20.000, em cada m&ecirc;s, para o conjunto de a&ccedil;&otilde;es&rdquo;</em>.</span></span></span></p>
+<p style="text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Conforme mostrado na imagem abaixo:</span></span></span></p>
+<p style="text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);"> </span></span></span></p>
+<p style="box-sizing: border-box; font-size: 14px; margin: 15px 0px; font-family: Flexo, sans-serif; line-height: 28px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="box-sizing: border-box;"><a class="thumbnail" href="http://blog.bussoladoinvestidor.com.br/wp-content/uploads/2013/03/lucro_isento.jpg" style="box-sizing: border-box; color: rgb(0, 159, 227); text-decoration: none; transition: border 0.2s ease-in-out; display: block; padding: 4px; margin-bottom: 20px; line-height: 1.42857; border: 1px solid rgb(221, 221, 221); border-radius: 4px;"><span style="font-size: 15px;"><span style="font-family: Arial;"><img class="alignnone wp-image-810" src="http://blog.bussoladoinvestidor.com.br/wp-content/uploads/2013/03/lucro_isento.jpg" alt="lucro isento de a&ccedil;&otilde;es no imposto de renda" width="887" srcset="http://blog.bussoladoinvestidor.com.br/wp-content/uploads/2013/03/lucro_isento.jpg 1397w, http://blog.bussoladoinvestidor.com.br/wp-content/uploads/2013/03/lucro_isento-300x146.jpg 300w, http://blog.bussoladoinvestidor.com.br/wp-content/uploads/2013/03/lucro_isento-1024x498.jpg 1024w" sizes="(max-width: 887px) 100vw, 887px" style="box-sizing: border-box; border: 0px; vertical-align: middle; height: auto; max-width: 100%; display: block; margin-right: auto; margin-left: auto;" /></span></span></a></span></span></p>
+<p style="text-align: justify;">&nbsp;<span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);"><span style="box-sizing: border-box;">Ao clicar no bot&atilde;o da moeda, uma nova janela ir&aacute; se abrir, onde voc&ecirc; dever&aacute; clicar no bot&atilde;o &ldquo;Novo&rdquo; (n&uacute;mero&nbsp;<span style="box-sizing: border-box; font-weight: 700;">1</span>):</span></span></span></span><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);"><br />
+</span></span></span></p>
+<p style="text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);"> </span></span></span></p>
+<p style="text-align: justify;"><a class="thumbnail" href="http://blog.bussoladoinvestidor.com.br/wp-content/uploads/2013/03/lucro_isento_22.jpg" style="box-sizing: border-box; color: rgb(0, 159, 227); text-decoration: none; transition: border 0.2s ease-in-out; display: block; padding: 4px; margin-bottom: 20px; line-height: 1.42857; border: 1px solid rgb(221, 221, 221); border-radius: 4px;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);"><img class="alignnone wp-image-672" src="http://blog.bussoladoinvestidor.com.br/wp-content/uploads/2013/03/lucro_isento_22.jpg" alt="lucro de a&ccedil;&otilde;es no imposto de renda" width="887" srcset="http://blog.bussoladoinvestidor.com.br/wp-content/uploads/2013/03/lucro_isento_22.jpg 1010w, http://blog.bussoladoinvestidor.com.br/wp-content/uploads/2013/03/lucro_isento_22-300x177.jpg 300w" sizes="(max-width: 887px) 100vw, 887px" style="box-sizing: border-box; border: 0px; vertical-align: middle; height: auto; max-width: 100%; display: block; margin-right: auto; margin-left: auto;" /></span></span></span></a></p>
+<p style="text-align: justify;">&nbsp;<span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Na janela que ir&aacute; se abrir voc&ecirc; dever&aacute; especificar quem recebeu os lucros isentos (titular ou dependente) e qual foi o valor (n&uacute;mero&nbsp;<span style="box-sizing: border-box; font-weight: 700;">2</span>). E ap&oacute;s isso clicar no &ldquo;OK&rdquo; (n&uacute;mero&nbsp;<span style="box-sizing: border-box; font-weight: 700;">3</span>). Aten&ccedil;&atilde;o: nesta etapa deve ser inclu&iacute;do um novo valor para cada m&ecirc;s em que houveram lucros isentos em a&ccedil;&otilde;es.</span></span></span></p>
+<p style="text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Ap&oacute;s conclu&iacute;do &nbsp;cadastro de todos os meses em que voc&ecirc; obteve lucros isentos na bolsa de valores, clique no bot&atilde;o &ldquo;OK&rdquo; (n&uacute;mero&nbsp;<span style="box-sizing: border-box; font-weight: 700;">4</span>).</span></span></span></p>
+<p style="text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">d. Como declarar lucro em a&ccedil;&otilde;es, tributado no imposto de renda</span></span></span></p>
+<p style="text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Como comentei anteriormente, os lucros na bolsa de valores s&atilde;o tributados quando:</span></span></span></p>
+<ul style="box-sizing: border-box; margin-top: 0px; margin-bottom: 10px; font-family: Flexo, sans-serif; font-size: 14px; line-height: 28px; text-align: justify;">
+    <li style="box-sizing: border-box; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">s&atilde;o opera&ccedil;&otilde;es day-trade, e</span></span></span></li>
+    <li style="box-sizing: border-box; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">quando o investidor vender acima de R$ 20.000 no m&ecirc;s</span></span></span></li>
+</ul>
+<p style="box-sizing: border-box; font-size: 14px; margin: 15px 0px; font-family: Flexo, sans-serif; line-height: 28px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Nestes casos voc&ecirc; deve declarar seus lucros na aba pr&oacute;pria para isso: &ldquo;<em style="box-sizing: border-box;">Opera&ccedil;&otilde;es Comuns / Day-Trade</em>&rdquo; que est&aacute; dentro do menu &ldquo;<em style="box-sizing: border-box;">Renda Vari&aacute;vel</em>&rdquo; no programa do IRPF. Esta aba voc&ecirc; ver&aacute; que existem 5 categorias onde voc&ecirc; pode incluir informa&ccedil;&otilde;es referentes &agrave; opera&ccedil;&otilde;es na bolsa de valores:</span></span></span></p>
+<ul style="box-sizing: border-box; margin-top: 0px; margin-bottom: 10px; font-family: Flexo, sans-serif; font-size: 14px; line-height: 28px; text-align: justify;">
+    <li style="box-sizing: border-box; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);"><span style="box-sizing: border-box;"><span style="box-sizing: border-box; font-weight: 700;">Mercado &agrave; Vista</span></span></span></span></span></li>
+    <li style="box-sizing: border-box; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Mercado Op&ccedil;&otilde;es</span></span></span></li>
+    <li style="box-sizing: border-box; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Mercado Futuro</span></span></span></li>
+    <li style="box-sizing: border-box; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Mercado a Termo</span></span></span></li>
+    <li style="box-sizing: border-box; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Resultados</span></span></span></li>
+    <li style="box-sizing: border-box; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);"><span style="box-sizing: border-box;"><span style="box-sizing: border-box; font-weight: 700;">Consolida&ccedil;&atilde;o do M&ecirc;s</span></span></span></span></span></li>
+</ul>
+<p style="box-sizing: border-box; font-size: 14px; margin: 15px 0px; font-family: Flexo, sans-serif; line-height: 28px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Vamos nos concentrar na abas &ldquo;<em style="box-sizing: border-box;">Mercado &agrave; Vista</em>&rdquo; e &ldquo;<em style="box-sizing: border-box;">Consolida&ccedil;&atilde;o do M&ecirc;s</em>&ldquo;, que s&atilde;o referentes ao imposto de renda em a&ccedil;&otilde;es, o objetivo desta explica&ccedil;&atilde;o. Explicarei as outras abas em outros artigos.&nbsp;Na imagem abaixo voc&ecirc; ver&aacute; que as informa&ccedil;&otilde;es est&atilde;o separadas em &ldquo;<em style="box-sizing: border-box;">Opera&ccedil;&otilde;es Comuns</em>&rdquo; e &ldquo;<em style="box-sizing: border-box;">Day-Trade</em>&ldquo;, al&eacute;m de terem de ser informadas m&ecirc;s a m&ecirc;s (n&uacute;mero&nbsp;<span style="box-sizing: border-box; font-weight: 700;">1</span>).</span></span></span></p>
+<p style="text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);"> </span></span></span></p>
+<p style="box-sizing: border-box; font-size: 14px; margin: 15px 0px; font-family: Flexo, sans-serif; line-height: 28px; text-align: justify;"><a class="thumbnail" href="http://blog.bussoladoinvestidor.com.br/wp-content/uploads/2013/03/lucros_tributados_1.jpg" style="box-sizing: border-box; color: rgb(0, 159, 227); text-decoration: none; transition: border 0.2s ease-in-out; display: block; padding: 4px; margin-bottom: 20px; line-height: 1.42857; border: 1px solid rgb(221, 221, 221); border-radius: 4px;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);"><img class="alignnone wp-image-687" src="http://blog.bussoladoinvestidor.com.br/wp-content/uploads/2013/03/lucros_tributados_1.jpg" alt="como declarar a&ccedil;&otilde;es no ir" width="887" srcset="http://blog.bussoladoinvestidor.com.br/wp-content/uploads/2013/03/lucros_tributados_1.jpg 1365w, http://blog.bussoladoinvestidor.com.br/wp-content/uploads/2013/03/lucros_tributados_1-300x147.jpg 300w, http://blog.bussoladoinvestidor.com.br/wp-content/uploads/2013/03/lucros_tributados_1-1024x504.jpg 1024w" sizes="(max-width: 887px) 100vw, 887px" style="box-sizing: border-box; border: 0px; vertical-align: middle; height: auto; max-width: 100%; display: block; margin-right: auto; margin-left: auto;" /></span></span></span></a></p>
+<p style="text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Na categoria &ldquo;<em style="box-sizing: border-box;">Mercado a Vista</em>&ldquo;, o que realmente nos interessa &eacute; a linha &ldquo;<em style="box-sizing: border-box;">Mercado &agrave; Vista &ndash; a&ccedil;&otilde;es</em>&rdquo; (n&uacute;mero&nbsp;<span style="box-sizing: border-box; font-weight: 700;">2</span>).&nbsp;Nesta linha voc&ecirc; deve informar o seu lucro ou preju&iacute;zo no m&ecirc;s em cada um dos tipos de opera&ccedil;&atilde;o (n&uacute;mero 3). Como expliquei anteriormente, este valor &eacute; de sua &nbsp;responsabilidade calcular, mas caso voc&ecirc; utilize nossa Calculadora de IR, basta copiar esses valores do relat&oacute;rio que a Calculadora gera para voc&ecirc;.</span></span></span></p>
+<p style="text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Em seguida na categoria &ldquo;<em style="box-sizing: border-box;">Consolida&ccedil;&atilde;o do M&ecirc;s</em>&rdquo; (imagem abaixo) voc&ecirc; deve informar quanto j&aacute; pagou de IRRF (Imposto de Renda Retido na Fonte) durante aquele determinado m&ecirc;s, separadamente para day-trade (n&uacute;mero&nbsp;<span style="box-sizing: border-box; font-weight: 700;">1</span>) e opera&ccedil;&otilde;es normais (n&uacute;mero&nbsp;<span style="box-sizing: border-box; font-weight: 700;">2</span>).</span></span></span></p>
+<p style="text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);"> </span></span></span></p>
+<p style="box-sizing: border-box; font-size: 14px; margin: 15px 0px; font-family: Flexo, sans-serif; line-height: 28px; text-align: justify;"><a class="thumbnail" href="http://blog.bussoladoinvestidor.com.br/wp-content/uploads/2013/03/lucros_tributados_2.jpg" style="box-sizing: border-box; color: rgb(0, 159, 227); text-decoration: none; transition: border 0.2s ease-in-out; display: block; padding: 4px; margin-bottom: 20px; line-height: 1.42857; border: 1px solid rgb(221, 221, 221); border-radius: 4px;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);"><img class="alignnone wp-image-686" src="http://blog.bussoladoinvestidor.com.br/wp-content/uploads/2013/03/lucros_tributados_2.jpg" alt="ir em a&ccedil;&otilde;es" width="887" srcset="http://blog.bussoladoinvestidor.com.br/wp-content/uploads/2013/03/lucros_tributados_2.jpg 1371w, http://blog.bussoladoinvestidor.com.br/wp-content/uploads/2013/03/lucros_tributados_2-300x143.jpg 300w, http://blog.bussoladoinvestidor.com.br/wp-content/uploads/2013/03/lucros_tributados_2-1024x489.jpg 1024w" sizes="(max-width: 887px) 100vw, 887px" style="box-sizing: border-box; border: 0px; vertical-align: middle; height: auto; max-width: 100%; display: block; margin-right: auto; margin-left: auto;" /></span></span></span></a></p>
+<p style="text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Estas informa&ccedil;&otilde;es est&atilde;o em suas notas de corretagem. Basta somar cada uma delas, ou copiar os valores j&aacute; calculados no relat&oacute;rio da nossa&nbsp;<span style="box-sizing: border-box; font-weight: 700;">Calculadora de IR</span>. Lembre-se que o IRRF s&oacute; &eacute; cobrado nas opera&ccedil;&otilde;es de venda!</span></span></span></p>
+<p style="text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Al&eacute;m disso, voc&ecirc; ainda deve informar quanto recolheu de imposto no m&ecirc;s por meio do pagamento da DARF (n&uacute;mero&nbsp;<span style="box-sizing: border-box; font-weight: 700;">3</span>).</span></span></span></p>
+<p style="text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Repita estes passos para cada um dos meses e o programa IRRF ir&aacute; calcular automaticamente se voc&ecirc; est&aacute; em dia no IR em a&ccedil;&otilde;es. Caso tenha deixado de recolher algum imposto, voc&ecirc; dever&aacute; gerar uma DARF em atraso diretamente no site da Receita Federal.</span></span></span></p>
+<p style="text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);"><span style="box-sizing: border-box; font-weight: 700;">e. Como declarar preju&iacute;zo em a&ccedil;&otilde;es no imposto de renda</span></span></span></span></p>
+<p style="text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">J&aacute; expliquei anteriormente como utilizar preju&iacute;zo em a&ccedil;&otilde;es para abater seus lucros no imposto de renda. Agora vou explicar como voc&ecirc; deve declarar seus preju&iacute;zos do ano ano anterior para para poder abater em lucros futuros.&nbsp;Lembrando que &eacute; sempre necess&aacute;rio respeitar a separa&ccedil;&atilde;o entre opera&ccedil;&otilde;es normais e day trade.</span></span></span></p>
+<p style="text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Para isso, voc&ecirc; deve preencher o valor do preju&iacute;zo acumulado nos anos anteriores na linha do m&ecirc;s de janeiro (n&uacute;mero&nbsp;<span style="box-sizing: border-box; font-weight: 700;">1</span>) na mesma aba que voc&ecirc; colocou as informa&ccedil;&otilde;es &nbsp;da explica&ccedil;&atilde;o anterior: &ldquo;Opera&ccedil;&otilde;es Comuns / Day-Trade&rdquo;, por&eacute;m agora voc&ecirc; ir&aacute; na categoria &ldquo;Resultados&rdquo;:</span></span></span></p>
+<p style="text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);"> </span></span></span></p>
+<p style="box-sizing: border-box; font-size: 14px; margin: 15px 0px; font-family: Flexo, sans-serif; line-height: 28px; text-align: justify;"><a class="thumbnail" href="http://blog.bussoladoinvestidor.com.br/wp-content/uploads/2013/03/prejuizos.jpg" style="box-sizing: border-box; color: rgb(0, 159, 227); text-decoration: none; transition: border 0.2s ease-in-out; display: block; padding: 4px; margin-bottom: 20px; line-height: 1.42857; border: 1px solid rgb(221, 221, 221); border-radius: 4px;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);"><img class="alignnone wp-image-690" src="http://blog.bussoladoinvestidor.com.br/wp-content/uploads/2013/03/prejuizos.jpg" alt="prejuizo em a&ccedil;&otilde;es no imposto de renda" width="887" srcset="http://blog.bussoladoinvestidor.com.br/wp-content/uploads/2013/03/prejuizos.jpg 1356w, http://blog.bussoladoinvestidor.com.br/wp-content/uploads/2013/03/prejuizos-300x147.jpg 300w, http://blog.bussoladoinvestidor.com.br/wp-content/uploads/2013/03/prejuizos-1024x502.jpg 1024w" sizes="(max-width: 887px) 100vw, 887px" style="box-sizing: border-box; border: 0px; vertical-align: middle; height: auto; max-width: 100%; display: block; margin-right: auto; margin-left: auto;" /></span></span></span></a><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Escreva o valor do preju&iacute;zo acumulado em Opera&ccedil;&otilde;es Comuns e do preju&iacute;zo acumulado em Opera&ccedil;&otilde;es Day-Trade (n&uacute;mero&nbsp;<span style="box-sizing: border-box; font-weight: 700;">2</span>), o programa IRPF far&aacute; os c&aacute;lculos de compensa&ccedil;&atilde;o automaticamente.</span></span></span></p>
+<p style="box-sizing: border-box; font-size: 14px; margin: 15px 0px; font-family: Flexo, sans-serif; line-height: 28px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Agora vamos para a &uacute;ltima etapa de nossa explica&ccedil;&atilde;o de como declarar seu imposto de renda em a&ccedil;&otilde;es do modo correto:</span></span></span></p>
+<p style="box-sizing: border-box; font-size: 14px; margin: 15px 0px; font-family: Flexo, sans-serif; line-height: 28px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">f. Como declarar o saldo investido em a&ccedil;&otilde;es</span></span></span></p>
+<p style="box-sizing: border-box; font-size: 14px; margin: 15px 0px; font-family: Flexo, sans-serif; line-height: 28px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Esta &eacute; a &uacute;ltima etapa para declarar a&ccedil;&otilde;es no imposto de renda, mas n&atilde;o menos importante. Voc&ecirc; deve declarar quanto possu&iacute;a de dinheiro investido em a&ccedil;&otilde;es no &uacute;ltimo dia do ano anterior (31/dezembro). Mais uma vez, a Receita Federal j&aacute; sabe desta informa&ccedil;&atilde;o, portanto qualquer diverg&ecirc;ncia poder&aacute; ser investigada.</span></span></span></p>
+<p style="box-sizing: border-box; font-size: 14px; margin: 15px 0px; font-family: Flexo, sans-serif; line-height: 28px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Nesta etapa o valor a ser declarado &eacute; o total pelo pre&ccedil;o m&eacute;dio de aquisi&ccedil;&atilde;o de sua a&ccedil;&otilde;es, conforme expliquei no t&oacute;pico II-1 deste artigo.</span></span></span></p>
+<p style="box-sizing: border-box; font-size: 14px; margin: 15px 0px; font-family: Flexo, sans-serif; line-height: 28px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Como sua a&ccedil;&otilde;es representam um direito de participa&ccedil;&atilde;o na sociedade de uma empresa, elas devem ser declaradas na aba &ldquo;<em style="box-sizing: border-box;">Bens e Direitos</em>&ldquo;. Caso j&aacute; tenha declarado a&ccedil;&otilde;es da mesma empresa no ano anterior, basta voc&ecirc; clicar sobre a linha correspondente e no bot&atilde;o &ldquo;Editar&rdquo;.</span></span></span></p>
+<p style="box-sizing: border-box; font-size: 14px; margin: 15px 0px; font-family: Flexo, sans-serif; line-height: 28px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Caso ainda n&atilde;o tenha uma linha para a&ccedil;&otilde;es da empresa, clique no bot&atilde;o &ldquo;Novo&rdquo; (n&uacute;mero&nbsp;<span style="box-sizing: border-box; font-weight: 700;">1</span>):</span></span></span></p>
+<p style="text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);"> </span></span></span></p>
+<p style="box-sizing: border-box; font-size: 14px; margin: 15px 0px; font-family: Flexo, sans-serif; line-height: 28px; text-align: justify;"><a class="thumbnail" href="http://blog.bussoladoinvestidor.com.br/wp-content/uploads/2013/03/saldo_acoes_1.jpg" style="box-sizing: border-box; color: rgb(0, 159, 227); text-decoration: none; transition: border 0.2s ease-in-out; display: block; padding: 4px; margin-bottom: 20px; line-height: 1.42857; border: 1px solid rgb(221, 221, 221); border-radius: 4px;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);"><img class="alignnone wp-image-696" src="http://blog.bussoladoinvestidor.com.br/wp-content/uploads/2013/03/saldo_acoes_1.jpg" alt="como declarar imposto de renda em a&ccedil;&otilde;es" width="887" srcset="http://blog.bussoladoinvestidor.com.br/wp-content/uploads/2013/03/saldo_acoes_1.jpg 1432w, http://blog.bussoladoinvestidor.com.br/wp-content/uploads/2013/03/saldo_acoes_1-300x147.jpg 300w, http://blog.bussoladoinvestidor.com.br/wp-content/uploads/2013/03/saldo_acoes_1-1024x501.jpg 1024w" sizes="(max-width: 887px) 100vw, 887px" style="box-sizing: border-box; border: 0px; vertical-align: middle; height: auto; max-width: 100%; display: block; margin-right: auto; margin-left: auto;" /></span></span></span></a></p>
+<p style="text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Ir&aacute; abrir a janela &ldquo;<em style="box-sizing: border-box;">Dados do Bem</em>&rdquo;&nbsp;(imagem abaixo), onde voc&ecirc; dever&aacute; selecionar o c&oacute;digo &ldquo;<em style="box-sizing: border-box;">31 &ndash; A&ccedil;&otilde;es (inclusive as provenientes de linha telef&ocirc;nica</em>)&rdquo; (n&uacute;mero&nbsp;<span style="box-sizing: border-box; font-weight: 700;">1</span>), a Localiza&ccedil;&atilde;o (pa&iacute;s) &ldquo;<em style="box-sizing: border-box;">105 &ndash; Brasil</em>&rdquo; e no campo discrimina&ccedil;&atilde;o voc&ecirc; dever&aacute; escrever: a raz&atilde;o social da empresa &ndash; CNPJ: n&uacute;mero &nbsp;&ndash; &nbsp;Corretoras: &ldquo;nomes das corretoras custodiantes&rdquo; &ndash; Qtde.: &ldquo;n&uacute;mero de a&ccedil;&otilde;es&rdquo;.</span></span></span></p>
+<p style="text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Em seguida digite o custo de aquisi&ccedil;&atilde;o (isto&nbsp;<span style="box-sizing: border-box; font-weight: 700;">inclui despesas operacionais</span>&nbsp;com corretagens e taxas) no campo &ldquo;<em style="box-sizing: border-box;">Situa&ccedil;&atilde;o em 31/12/ 2012</em>&rdquo; (n&uacute;mero&nbsp;<span style="box-sizing: border-box; font-weight: 700;">2</span>)&nbsp;e clique em &ldquo;OK&rdquo; (n&uacute;mero&nbsp;<span style="box-sizing: border-box; font-weight: 700;">3</span>):</span></span></span></p>
+<p style="text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);"> </span></span></span></p>
+<p style="box-sizing: border-box; font-size: 14px; margin: 15px 0px; font-family: Flexo, sans-serif; line-height: 28px; text-align: justify;"><span style="font-size: 15px;"><a class="thumbnail" href="http://blog.bussoladoinvestidor.com.br/wp-content/uploads/2013/03/saldo_acoes_2.jpg" style="box-sizing: border-box; color: rgb(0, 159, 227); text-decoration: none; transition: border 0.2s ease-in-out; display: block; padding: 4px; margin-bottom: 20px; line-height: 1.42857; border: 1px solid rgb(221, 221, 221); border-radius: 4px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);"><img class="alignnone wp-image-695" src="http://blog.bussoladoinvestidor.com.br/wp-content/uploads/2013/03/saldo_acoes_2.jpg" alt="imposto de renda em a&ccedil;&otilde;es" width="887" srcset="http://blog.bussoladoinvestidor.com.br/wp-content/uploads/2013/03/saldo_acoes_2.jpg 1330w, http://blog.bussoladoinvestidor.com.br/wp-content/uploads/2013/03/saldo_acoes_2-300x162.jpg 300w, http://blog.bussoladoinvestidor.com.br/wp-content/uploads/2013/03/saldo_acoes_2-1024x555.jpg 1024w" sizes="(max-width: 887px) 100vw, 887px" style="box-sizing: border-box; border: 0px; vertical-align: middle; height: auto; max-width: 100%; display: block; margin-right: auto; margin-left: auto;" /></span></span></a><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">E &eacute; isso a&iacute; amigo investidor!</span></span></span></p>
+<p style="text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);"> </span></span></span></p>
+<p style="box-sizing: border-box; font-size: 14px; margin: 15px 0px; font-family: Flexo, sans-serif; line-height: 28px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Fonte: Guia do Imposto de Renda na Bolsa</span></span></span></p>
+                            </div>
+                            
+                        </article>
+                        
+                        
+                    </div>
+                    <div class="col-md-1 hidden-sm"></div>
+                    <div class="col-md-2 col-sm-3">
+                        <aside class="widgets">
+                    <div class="widget list">
+                        <h3>Categorias</h3>
+                        <ul>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Calend%E1rio+de+Obriga%E7%F5es">Calendário de Obrigações</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Direitos+do+Consumidor">Direitos do Consumidor</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Empresarial">Empresarial</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=IRPF">IRPF</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Legisla%E7%E3o">Legislação</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Legisla%E7%E3o+Trabalhista">Legislação Trabalhista</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Previd%EAncia">Previdência</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Receita+Federal">Receita Federal</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Recursos+Humanos">Recursos Humanos</a>
+                            </li>
+ 
+                        </ul>
+                    </div>
+                    <div class="widget list">
+                        <h3>Por mês</h3>
+                        <ul>
+                        
+                            <li>
+                                <a href="/noticias/?mes=8&ano=2021">Agosto&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2021">Maio&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2021">Abril&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2021">Março&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=7&ano=2020">Julho&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2020">Maio&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2020">Abril&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2020">Março&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=10&ano=2019">Outubro&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2019">Setembro&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2019">Março&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2019">Janeiro&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=12&ano=2018">Dezembro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2018">Setembro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=6&ano=2018">Junho&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2018">Abril&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2018">Março&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=2&ano=2018">Fevereiro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2018">Janeiro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=12&ano=2017">Dezembro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=11&ano=2017">Novembro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=10&ano=2017">Outubro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2017">Setembro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=7&ano=2017">Julho&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=6&ano=2017">Junho&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2017">Maio&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2017">Abril&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2017">Março&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=2&ano=2017">Fevereiro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2017">Janeiro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=12&ano=2016">Dezembro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=11&ano=2016">Novembro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=10&ano=2016">Outubro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2016">Setembro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=8&ano=2016">Agosto&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=7&ano=2016">Julho&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=6&ano=2016">Junho&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2016">Maio&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2016">Abril&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2016">Março&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=2&ano=2016">Fevereiro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2016">Janeiro&nbsp;2016</a>
+                            </li>
+ 
+                        </ul>
+                    </div>
+
+                </aside>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+<footer class="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="footer-widget">
+                    <h2>Últimas Notícias</h2>
+                    <div class="widget-content latest-post">
+                        <ul>
+                        
+                            <li>
+                                <h3><a href="?a=noticia&id=295">BEM</a></h3>
+                                <p></p>
+                                <span class="date">26/08/2021</span>
+                            </li>
+                        
+                            <li>
+                                <h3><a href="?a=noticia&id=294">HOME OFFICE PARA GESTANTES</a></h3>
+                                <p></p>
+                                <span class="date">13/05/2021</span>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="footer-widget">
+                    <h2>Contato</h2>
+                    <div class="widget-content">
+                        <address>
+                            Rua Rep&uacute;blica do L&iacute;bano, 61 gr. 1102 <br/>
+                            Centro &ndash; Rio de Janeiro RJ
+                        </address>
+                        <address>
+                            <strong>Telefone: +55 (21) 3203-4348</strong> <br/>
+                            <strong>E-mail: condux@condux.com.br</strong>
+                        </address>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="footer-widget">
+                    <h2>Links</h2>
+                    <ul>    
+                        <li><a href="/home/">Home Page</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/empresa/">A Empresa</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="http://www.condux.com.br/ler.asp?id=1" target="_blank">Tabelas Pr&aacute;ticas</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="http://www.condux.com.br/ler.asp?id=2" target="_blank">Agenda de Obriga&ccedil;&otilde;es</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/noticias/">Not&iacute;cias</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/downloads/">Downloads</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/contato/">Contato</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="footer-info text-right">
+                    <ul class="footer-social">
+                        <li><a href="https://twitter.com/conduxBRA" target="_blank"><i class="entyp-twitter-1"></i></a></li>
+                        <li><a href="https://www.facebook.com/ConduxConsultoria" target="_blank"><i class="entyp-facebook-1"></i></a></li>
+                    </ul>
+                    <p>Copyright &copy; 2016</p>
+                    <p>CONDUX - Todos os Direitos Reservados</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="https://condux.com.br/site/js/vendor/jquery-1.11.0.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery-ui-1.10.3.custom.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.mousewheel.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.mCustomScrollbar.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.selectBoxIt.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.raty.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.flexslider.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.isotope.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.fancybox.pack.js"></script>
+<script src="https://condux.com.br/site/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
+<script src="https://condux.com.br/site/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/bootstrap.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/simpleInstagramFancybox.js"></script>
+<script src="https://condux.com.br/site/js/vendor/fitvids.js"></script>
+<script src="https://condux.com.br/site/js/main.js"></script>
+<script>
+    $('#revolution-shortcode').revolution({
+        delay : 90000,
+        hideThumbs:10,
+        navigationVOffset : -30,
+        navigationType : "none",
+        navigationStyle : "round-old",
+		startheight:700
+    });
+</script>
+<style>
+/*#revolution-shortcode { height: 700px !important }
+#revolution-shortcode > ul > li:nth-child(1) > div.slotholder { height: 700px !important }*/
+</style>
+</body>
+</html>

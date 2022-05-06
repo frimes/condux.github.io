@@ -1,0 +1,547 @@
+<!--
+ * FCKeditor - The text editor for Internet - http://www.fckeditor.net
+ * Copyright (C) 2003-2009 Frederico Caldeira Knabben
+ *
+ * == BEGIN LICENSE ==
+ *
+ * Licensed under the terms of any of the following licenses at your
+ * choice:
+ *
+ *  - GNU General Public License Version 2 or later (the "GPL")
+ *    http://www.gnu.org/licenses/gpl.html
+ *
+ *  - GNU Lesser General Public License Version 2.1 or later (the "LGPL")
+ *    http://www.gnu.org/licenses/lgpl.html
+ *
+ *  - Mozilla Public License Version 1.1 or later (the "MPL")
+ *    http://www.mozilla.org/MPL/MPL-1.1.html
+ *
+ * == END LICENSE ==
+ *
+ * This is the integration file for ASP.
+ *
+ * It defines the FCKeditor class that can be used to create editor
+ * instances in ASP pages on server side.
+-->
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Condux</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, maximum-scale=1, minimum-scale=1">
+    <link rel="icon" type="image/png" href="https://condux.com.br/site/img/favicon.png">
+
+    <link rel="stylesheet" href="https://condux.com.br/site/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/flexslider.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/jquery.selectBoxIt.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/entypo.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/rs-plugin/css/settings.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/jquery.fancybox.css">
+        <link rel="stylesheet" href="https://condux.com.br/site/css/style.css">
+
+    <script src="https://condux.com.br/site/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+	
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-208708250-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-208708250-1');
+</script>
+
+</head>
+<body>
+<div class="main-wrap">
+<header class="navbar navbar-inverse">
+    <div class="normal-color with-slider">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <div id="control-logo-header">
+                                <a class="navbar-brand" href="/home/"><img src="https://condux.com.br/site/content/logo.png" alt="img"/></a>
+                            </div>
+                    </div>
+                </div>
+                <div class="col-sm-9">
+                    <div class="navbar-collapse collapse navbar-right">
+                        <ul class="nav navbar-nav social-nav">
+                            <li><a href="https://twitter.com/conduxBRA" target="_blank"><i class="entyp-twitter-1"></i></a></li>
+                            <li><a href="https://www.facebook.com/ConduxConsultoria" target="_blank"><i class="entyp-facebook-1"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="inverse-color">
+        <div class="container">
+            <div class="row">
+                <div class="navbar-collapse collapse">
+                    <div class="col-sm-12">
+                        <ul class="nav navbar-nav main-nav">
+                            <li id="control-logo-menu">
+                                <a class="navbar-brand" href="/home/"><img src="https://condux.com.br/site/content/logo.png" alt="img"/></a>
+                            </li>
+                            <li>
+                                <a href="/home/">Início</a>
+                            </li>
+                            <li>
+                                <a href="/empresa/">A empresa</a>
+                            </li>
+                            <li>
+                                <a href="/servicos/">Serviços</a>
+                            </li>
+                            <li>
+                                <a href="#">Utilitários</a>
+                                <ul>	
+                                	<li><a href="http://www.condux.com.br/ler.asp?id=1" target="_blank">Tabelas Práticas</a></li>
+                                    <li><a href="http://www.condux.com.br/ler.asp?id=2" target="_blank">Agenda de Obrigações</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="/noticias/">Notícias</a>
+                            </li>
+                            <li>
+                                <a href="/login/">Área do Cliente</a>
+                            </li>
+                            <li>
+                                <a href="/downloads/">Downloads</a>
+                            </li>
+                            <li>
+                                <a href="/contato/">Contato</a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</header>
+
+
+<section class="line top">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="col-md-4 col-sm-5 col-xs-12">
+                    <div class="title">
+                        Notícias
+                        <ul class="current-page">
+                            <li><a href="/home/">Página principal</a></li>
+                            <li>></li>
+                            <li><a href="/noticias/">Noticias</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="posts">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <article class="post ">
+                            <h3 class="uppercase">CONTRIBUINTES QUE DESTINARÃO PARTE DO IMPOSTO A PROJETOS SOCIAIS JÁ DEVEM SE PROGRAMAR PARA O IR 2017</h3><h4>Até o final de dezembro, pessoas físicas que fazem a declaração completa podem destinar até 6%</h4>
+                            <ul class="info">
+                                <li>
+                                    <div class="text date">sexta-feira, 9 de dezembro de 2016</div>
+                                </li>
+                                <li>
+                                    <i class="entyp-pencil-1"></i>
+                                    <div class="text">Publicado por CONDUX</div>
+                                </li>
+                                
+                                <li>
+                                    <a href="/noticias/?cat=IRPF">
+                                        <i class="entyp-list-1"></i>
+                                        <div class="text">IRPF</div>
+                                    </a>
+                                </li>
+                                
+                            </ul>
+                            
+                            <figure>
+                                <img src="https://condux.com.br/site/imgnews/186c.jpg" alt="CONTRIBUINTES QUE DESTINARÃO PARTE DO IMPOSTO A PROJETOS SOCIAIS JÁ DEVEM SE PROGRAMAR PARA O IR 2017"/>
+                                
+                            </figure>
+                            
+                            <div class="content">
+                            
+                                <p>
+                                    <strong>
+                                       Até o final de dezembro, pessoas físicas que fazem a declaração completa podem destinar até 6%
+                                    </strong>
+                                </p>
+                            <p class="western" align="justify" style="margin: 0px 0px 0.5cm; padding: 13px 0px 0px; color: rgb(94, 94, 94); font-family: &quot;Open Sans&quot;; font-size: 13px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">O per&iacute;odo de entrega da declara&ccedil;&atilde;o do&nbsp;</span></span></span><span style="font-size: 15px;"><a class="classtermo" href="http://www.contabeis.com.br/termos-contabeis/imposto_de_renda" style="color: rgb(52, 142, 157); text-decoration: none; outline: 0px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Imposto de Renda</span></span></a><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">&nbsp;2017 come&ccedil;a somente em mar&ccedil;o do ano que vem, mas para os contribuintes que desejarem destinar parte do IR a projetos sociais j&aacute; est&aacute; na hora de pensar no assunto. Isso porque o prazo para fazer a destina&ccedil;&atilde;o vai at&eacute; o &uacute;ltimo dia &uacute;til do ano de 2016 (30 de dezembro).</span></span></span></p>
+<p class="western" align="justify" style="margin: 0px 0px 0.5cm; padding: 13px 0px 0px; color: rgb(94, 94, 94); font-family: &quot;Open Sans&quot;; font-size: 13px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">De acordo com o Conselho Regional de&nbsp;</span></span></span><span style="font-size: 15px;"><a class="classtermo" href="http://www.contabeis.com.br/termos-contabeis/contabilidade" style="color: rgb(52, 142, 157); text-decoration: none; outline: 0px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Contabilidade</span></span></a><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">&nbsp;do Estado de S&atilde;o Paulo (CRCSP), &oacute;rg&atilde;o apoiador e disseminador dessas informa&ccedil;&otilde;es, fazer a destina&ccedil;&atilde;o significa que, em vez de o imposto ser recolhido pelo Governo Federal, os recursos ser&atilde;o enviados para institui&ccedil;&otilde;es de assist&ecirc;ncia social. O valor destinado &eacute; devolvido ao contribuinte como aumento na restitui&ccedil;&atilde;o do imposto ou na redu&ccedil;&atilde;o do imposto a pagar.</span></span></span></p>
+<p class="western" align="justify" style="margin: 0px 0px 0.5cm; padding: 13px 0px 0px; color: rgb(94, 94, 94); font-family: &quot;Open Sans&quot;; font-size: 13px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Para as pessoas f&iacute;sicas que preenchem a declara&ccedil;&atilde;o completa, existe a possibilidade de destinar at&eacute; 6% do&nbsp;</span></span></span><span style="font-size: 15px;"><a class="classtermo" href="http://www.contabeis.com.br/termos-contabeis/imposto_de_renda" style="color: rgb(52, 142, 157); text-decoration: none; outline: 0px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Imposto de Renda</span></span></a><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">&nbsp;devido aos fundos municipais, estadual ou nacional de apoio &agrave; crian&ccedil;a e ao adolescente, como o Fundo da Inf&acirc;ncia e Adolesc&ecirc;ncia (FIA-SP) ou Fundo Municipal dos Direitos da Crian&ccedil;a e do Adolescente (Fumcad) e ao Fundo do Idoso ou a outros programas sociais voltados para atendimento a esses p&uacute;blicos.</span></span></span></p>
+<p class="western" align="justify" style="margin: 0px 0px 0.5cm; padding: 13px 0px 0px; color: rgb(94, 94, 94); font-family: &quot;Open Sans&quot;; font-size: 13px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">A porcentagem permitida para as pessoas jur&iacute;dicas, tributadas pelo&nbsp;</span></span></span><span style="font-size: 15px;"><a class="classtermo" href="http://www.contabeis.com.br/termos-contabeis/lucro_real" style="color: rgb(52, 142, 157); text-decoration: none; outline: 0px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Lucro Real,</span></span></a><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">&nbsp;&eacute; de 1% do&nbsp;</span></span></span><span style="font-size: 15px;"><a class="classtermo" href="http://www.contabeis.com.br/termos-contabeis/imposto_de_renda" style="color: rgb(52, 142, 157); text-decoration: none; outline: 0px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Imposto de Renda</span></span></a><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">&nbsp;devido.</span></span></span></p>
+<p class="western" align="justify" style="margin: 0px 0px 0.5cm; padding: 13px 0px 0px; color: rgb(94, 94, 94); font-family: &quot;Open Sans&quot;; font-size: 13px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">O CRC/SP lembra a import&acirc;ncia de o contribuinte, pessoa f&iacute;sica ou jur&iacute;dica, contar com o apoio de um profissional da&nbsp;</span></span></span><span style="font-size: 15px;"><span style="color: rgb(52, 142, 157); outline: 0px; font-family: Arial;"><span style="color: rgb(0, 0, 0);">contabilidade&nbsp;</span></span><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">para orient&aacute;-lo quanto aos valores e as melhores e mais seguras formas de praticar essa boa a&ccedil;&atilde;o.</span></span></span></p>
+<p class="western" align="justify" style="margin: 0px 0px 0.5cm; padding: 13px 0px 0px; color: rgb(94, 94, 94); font-family: &quot;Open Sans&quot;; font-size: 13px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Al&eacute;m disso, ainda segundo o CRC/SP, antes de destinar, o profissional da&nbsp;</span></span></span><span style="font-size: 15px;"><a class="classtermo" href="http://www.contabeis.com.br/termos-contabeis/contabilidade" style="color: rgb(52, 142, 157); text-decoration: none; outline: 0px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">contabilidade</span></span></a><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">&nbsp;ajudar&aacute; o contribuinte a analisar se o Fundo que receber&aacute; o recurso est&aacute; regular perante a Receita Federal e pode ainda explicar para o contribuinte que a destina&ccedil;&atilde;o n&atilde;o causa nenhum transtorno e n&atilde;o leva &agrave;&nbsp;</span></span></span><a class="classtermo" href="http://www.contabeis.com.br/termos-contabeis/malha_fina" style="color: rgb(52, 142, 157); text-decoration: none; outline: 0px;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">malha fina.</span></span></span></a></p>
+<p class="western" align="left" style="margin: 0px 0px 0.5cm; padding: 13px 0px 0px; color: rgb(94, 94, 94); font-family: &quot;Open Sans&quot;; font-size: 13px;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);"><span style="font-weight: 700;">Potencial de arrecada&ccedil;&atilde;o</span><br />
+O conselheiro e coordenador da Comiss&atilde;o CRC/SP Social, Adriano Gilioli, explica que, analisando as informa&ccedil;&otilde;es da Receita Federal do Brasil, no pa&iacute;s, aproximadamente 1 bilh&atilde;o de reais em&nbsp;</span></span></span><span style="font-size: 15px;"><a class="classtermo" href="http://www.contabeis.com.br/termos-contabeis/imposto_de_renda" style="color: rgb(52, 142, 157); text-decoration: none; outline: 0px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Imposto de Renda</span></span></a><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">&nbsp;das pessoas jur&iacute;dicas e 4 bilh&otilde;es das pessoas f&iacute;sicas poderiam ser destinados a Fundos espec&iacute;ficos. Esses valores s&atilde;o o potencial de capta&ccedil;&atilde;o do pa&iacute;s, diz Adriano.</span></span></span></p>
+<p class="western" align="left" style="margin: 0px 0px 0.5cm; padding: 13px 0px 0px; color: rgb(94, 94, 94); font-family: &quot;Open Sans&quot;; font-size: 13px;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);"><span style="font-weight: 700;">O voluntariado na&nbsp;</span></span></span></span><span style="font-size: 15px;"><span style="font-weight: 700;"><a class="classtermo" href="http://www.contabeis.com.br/termos-contabeis/contabilidade" style="color: rgb(52, 142, 157); text-decoration: none; outline: 0px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Contabilidade</span></span></a></span><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);"><span style="font-weight: 700;">&nbsp;</span><br />
+O Sistema CFC/CRC&rsquo;s (Conselho Federal de Contabilidade/Conselhos Regionais de&nbsp;</span></span></span><span style="font-size: 15px;"><a class="classtermo" href="http://www.contabeis.com.br/termos-contabeis/contabilidade" style="color: rgb(52, 142, 157); text-decoration: none; outline: 0px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Contabilidade)</span></span></a><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">&nbsp;conta com o Programa do Voluntariado da Classe Cont&aacute;bil (PVCC) que incentiva a&ccedil;&otilde;es volunt&aacute;rias por parte dos profissionais da&nbsp;</span></span></span><span style="font-size: 15px;"><a class="classtermo" href="http://www.contabeis.com.br/termos-contabeis/contabilidade" style="color: rgb(52, 142, 157); text-decoration: none; outline: 0px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">contabilidade</span></span></a><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">&nbsp;existente hoje em todo o pa&iacute;s. No Estado de S&atilde;o Paulo, temos mais de dois mil profissionais inscritos no programa. Qualquer profissional registrado, em seu respectivo estado, pode se cadastrar no PVCC e contribuir para melhorias na sociedade, prestando atendimento a projetos sociais e entidades do Terceiro Setor. &nbsp;</span></span></span></p>
+<p class="western" align="left" style="margin: 0px 0px 0.5cm; padding: 13px 0px 0px; color: rgb(94, 94, 94); font-family: &quot;Open Sans&quot;; font-size: 13px;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);"><span style="font-weight: 700;">Sobre os Fundos&nbsp;</span><br />
+Os Fundos municipais ou estaduais t&ecirc;m o objetivo de captar recursos e destin&aacute;-los especificamente para o financiamento de programas, projetos e a&ccedil;&otilde;es que visam &agrave; promo&ccedil;&atilde;o e a defesa dos direitos da crian&ccedil;a e do adolescente e suas respectivas fam&iacute;lias na regi&atilde;o onde o Fundo est&aacute; localizado.</span></span></span></p>
+<p class="western" align="justify" style="margin: 0px; padding: 13px 0px 0px; color: rgb(94, 94, 94); font-family: &quot;Open Sans&quot;; font-size: 13px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">As verbas dos fundos s&atilde;o oriundas das pr&oacute;prias prefeituras, de destina&ccedil;&otilde;es do&nbsp;</span></span></span><span style="font-size: 15px;"><a class="classtermo" href="http://www.contabeis.com.br/termos-contabeis/imposto_de_renda" style="color: rgb(52, 142, 157); text-decoration: none; outline: 0px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Imposto de Renda</span></span></a><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">&nbsp;&ndash; que &eacute; de onde vem a maior receita &ndash;, de esferas estaduais ou da Uni&atilde;o.</span></span></span></p>
+<p class="western" align="justify" style="margin: 0px; padding: 13px 0px 0px; color: rgb(94, 94, 94); font-family: &quot;Open Sans&quot;; font-size: 13px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Fonte: Portal Cont&aacute;beis</span></span></span></p>
+<p>&nbsp;</p>
+                            </div>
+                            
+                        </article>
+                        
+                        
+                    </div>
+                    <div class="col-md-1 hidden-sm"></div>
+                    <div class="col-md-2 col-sm-3">
+                        <aside class="widgets">
+                    <div class="widget list">
+                        <h3>Categorias</h3>
+                        <ul>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Calend%E1rio+de+Obriga%E7%F5es">Calendário de Obrigações</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Direitos+do+Consumidor">Direitos do Consumidor</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Empresarial">Empresarial</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=IRPF">IRPF</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Legisla%E7%E3o">Legislação</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Legisla%E7%E3o+Trabalhista">Legislação Trabalhista</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Previd%EAncia">Previdência</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Receita+Federal">Receita Federal</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Recursos+Humanos">Recursos Humanos</a>
+                            </li>
+ 
+                        </ul>
+                    </div>
+                    <div class="widget list">
+                        <h3>Por mês</h3>
+                        <ul>
+                        
+                            <li>
+                                <a href="/noticias/?mes=8&ano=2021">Agosto&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2021">Maio&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2021">Abril&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2021">Março&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=7&ano=2020">Julho&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2020">Maio&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2020">Abril&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2020">Março&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=10&ano=2019">Outubro&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2019">Setembro&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2019">Março&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2019">Janeiro&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=12&ano=2018">Dezembro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2018">Setembro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=6&ano=2018">Junho&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2018">Abril&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2018">Março&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=2&ano=2018">Fevereiro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2018">Janeiro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=12&ano=2017">Dezembro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=11&ano=2017">Novembro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=10&ano=2017">Outubro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2017">Setembro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=7&ano=2017">Julho&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=6&ano=2017">Junho&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2017">Maio&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2017">Abril&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2017">Março&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=2&ano=2017">Fevereiro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2017">Janeiro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=12&ano=2016">Dezembro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=11&ano=2016">Novembro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=10&ano=2016">Outubro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2016">Setembro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=8&ano=2016">Agosto&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=7&ano=2016">Julho&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=6&ano=2016">Junho&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2016">Maio&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2016">Abril&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2016">Março&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=2&ano=2016">Fevereiro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2016">Janeiro&nbsp;2016</a>
+                            </li>
+ 
+                        </ul>
+                    </div>
+
+                </aside>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+<footer class="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="footer-widget">
+                    <h2>Últimas Notícias</h2>
+                    <div class="widget-content latest-post">
+                        <ul>
+                        
+                            <li>
+                                <h3><a href="?a=noticia&id=295">BEM</a></h3>
+                                <p></p>
+                                <span class="date">26/08/2021</span>
+                            </li>
+                        
+                            <li>
+                                <h3><a href="?a=noticia&id=294">HOME OFFICE PARA GESTANTES</a></h3>
+                                <p></p>
+                                <span class="date">13/05/2021</span>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="footer-widget">
+                    <h2>Contato</h2>
+                    <div class="widget-content">
+                        <address>
+                            Rua Rep&uacute;blica do L&iacute;bano, 61 gr. 1102 <br/>
+                            Centro &ndash; Rio de Janeiro RJ
+                        </address>
+                        <address>
+                            <strong>Telefone: +55 (21) 3203-4348</strong> <br/>
+                            <strong>E-mail: condux@condux.com.br</strong>
+                        </address>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="footer-widget">
+                    <h2>Links</h2>
+                    <ul>    
+                        <li><a href="/home/">Home Page</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/empresa/">A Empresa</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="http://www.condux.com.br/ler.asp?id=1" target="_blank">Tabelas Pr&aacute;ticas</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="http://www.condux.com.br/ler.asp?id=2" target="_blank">Agenda de Obriga&ccedil;&otilde;es</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/noticias/">Not&iacute;cias</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/downloads/">Downloads</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/contato/">Contato</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="footer-info text-right">
+                    <ul class="footer-social">
+                        <li><a href="https://twitter.com/conduxBRA" target="_blank"><i class="entyp-twitter-1"></i></a></li>
+                        <li><a href="https://www.facebook.com/ConduxConsultoria" target="_blank"><i class="entyp-facebook-1"></i></a></li>
+                    </ul>
+                    <p>Copyright &copy; 2016</p>
+                    <p>CONDUX - Todos os Direitos Reservados</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="https://condux.com.br/site/js/vendor/jquery-1.11.0.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery-ui-1.10.3.custom.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.mousewheel.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.mCustomScrollbar.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.selectBoxIt.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.raty.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.flexslider.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.isotope.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.fancybox.pack.js"></script>
+<script src="https://condux.com.br/site/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
+<script src="https://condux.com.br/site/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/bootstrap.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/simpleInstagramFancybox.js"></script>
+<script src="https://condux.com.br/site/js/vendor/fitvids.js"></script>
+<script src="https://condux.com.br/site/js/main.js"></script>
+<script>
+    $('#revolution-shortcode').revolution({
+        delay : 90000,
+        hideThumbs:10,
+        navigationVOffset : -30,
+        navigationType : "none",
+        navigationStyle : "round-old",
+		startheight:700
+    });
+</script>
+<style>
+/*#revolution-shortcode { height: 700px !important }
+#revolution-shortcode > ul > li:nth-child(1) > div.slotholder { height: 700px !important }*/
+</style>
+</body>
+</html>

@@ -1,0 +1,619 @@
+<!--
+ * FCKeditor - The text editor for Internet - http://www.fckeditor.net
+ * Copyright (C) 2003-2009 Frederico Caldeira Knabben
+ *
+ * == BEGIN LICENSE ==
+ *
+ * Licensed under the terms of any of the following licenses at your
+ * choice:
+ *
+ *  - GNU General Public License Version 2 or later (the "GPL")
+ *    http://www.gnu.org/licenses/gpl.html
+ *
+ *  - GNU Lesser General Public License Version 2.1 or later (the "LGPL")
+ *    http://www.gnu.org/licenses/lgpl.html
+ *
+ *  - Mozilla Public License Version 1.1 or later (the "MPL")
+ *    http://www.mozilla.org/MPL/MPL-1.1.html
+ *
+ * == END LICENSE ==
+ *
+ * This is the integration file for ASP.
+ *
+ * It defines the FCKeditor class that can be used to create editor
+ * instances in ASP pages on server side.
+-->
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Condux</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, maximum-scale=1, minimum-scale=1">
+    <link rel="icon" type="image/png" href="https://condux.com.br/site/img/favicon.png">
+
+    <link rel="stylesheet" href="https://condux.com.br/site/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/flexslider.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/jquery.selectBoxIt.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/entypo.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/rs-plugin/css/settings.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/jquery.fancybox.css">
+        <link rel="stylesheet" href="https://condux.com.br/site/css/style.css">
+
+    <script src="https://condux.com.br/site/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+	
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-208708250-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-208708250-1');
+</script>
+
+</head>
+<body>
+<div class="main-wrap">
+<header class="navbar navbar-inverse">
+    <div class="normal-color with-slider">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <div id="control-logo-header">
+                                <a class="navbar-brand" href="/home/"><img src="https://condux.com.br/site/content/logo.png" alt="img"/></a>
+                            </div>
+                    </div>
+                </div>
+                <div class="col-sm-9">
+                    <div class="navbar-collapse collapse navbar-right">
+                        <ul class="nav navbar-nav social-nav">
+                            <li><a href="https://twitter.com/conduxBRA" target="_blank"><i class="entyp-twitter-1"></i></a></li>
+                            <li><a href="https://www.facebook.com/ConduxConsultoria" target="_blank"><i class="entyp-facebook-1"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="inverse-color">
+        <div class="container">
+            <div class="row">
+                <div class="navbar-collapse collapse">
+                    <div class="col-sm-12">
+                        <ul class="nav navbar-nav main-nav">
+                            <li id="control-logo-menu">
+                                <a class="navbar-brand" href="/home/"><img src="https://condux.com.br/site/content/logo.png" alt="img"/></a>
+                            </li>
+                            <li>
+                                <a href="/home/">Início</a>
+                            </li>
+                            <li>
+                                <a href="/empresa/">A empresa</a>
+                            </li>
+                            <li>
+                                <a href="/servicos/">Serviços</a>
+                            </li>
+                            <li>
+                                <a href="#">Utilitários</a>
+                                <ul>	
+                                	<li><a href="http://www.condux.com.br/ler.asp?id=1" target="_blank">Tabelas Práticas</a></li>
+                                    <li><a href="http://www.condux.com.br/ler.asp?id=2" target="_blank">Agenda de Obrigações</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="/noticias/">Notícias</a>
+                            </li>
+                            <li>
+                                <a href="/login/">Área do Cliente</a>
+                            </li>
+                            <li>
+                                <a href="/downloads/">Downloads</a>
+                            </li>
+                            <li>
+                                <a href="/contato/">Contato</a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</header>
+
+
+<section class="line top">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="col-md-4 col-sm-5 col-xs-12">
+                    <div class="title">
+                        Notícias
+                        <ul class="current-page">
+                            <li><a href="/home/">Página principal</a></li>
+                            <li>></li>
+                            <li><a href="/noticias/">Noticias</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="posts">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <article class="post ">
+                            <h3 class="uppercase">TABELA INSS E SALÁRIO FAMÍLIA 2019</h3><h4>Fixados os valores da Tabela do INSS e do Salário-Família para 2019</h4>
+                            <ul class="info">
+                                <li>
+                                    <div class="text date">quarta-feira, 16 de janeiro de 2019</div>
+                                </li>
+                                <li>
+                                    <i class="entyp-pencil-1"></i>
+                                    <div class="text">Publicado por CONDUX</div>
+                                </li>
+                                
+                                <li>
+                                    <a href="/noticias/?cat=Legisla%E7%E3o">
+                                        <i class="entyp-list-1"></i>
+                                        <div class="text">Legislação</div>
+                                    </a>
+                                </li>
+                                
+                            </ul>
+                            
+                            <figure>
+                                <img src="https://condux.com.br/site/imgnews/258c.jpg" alt="TABELA INSS E SALÁRIO FAMÍLIA 2019"/>
+                                
+                            </figure>
+                            
+                            <div class="content">
+                            
+                                <p>
+                                    <strong>
+                                       Fixados os valores da Tabela do INSS e do Salário-Família para 2019
+                                    </strong>
+                                </p>
+                            <p style="color: rgb(34, 34, 34); font-family: &quot;Trebuchet MS&quot;; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;">A&nbsp;</span></span><span style="font-size: small;"><a href="http://coalink.coad.com.br/cl/PEx1R/CXZ/45c7/ICQuqhbKwaB/BL7c/C5uEb5vkdwZ/1/" target="_blank" data-saferedirecturl="https://www.google.com/url?q=http://coalink.coad.com.br/cl/PEx1R/CXZ/45c7/ICQuqhbKwaB/BL7c/C5uEb5vkdwZ/1/&amp;source=gmail&amp;ust=1547742543682000&amp;usg=AFQjCNGvf6bigBoIan1HHOa2K202_pam2w" saprocessedanchor="true" style="color: rgb(17, 85, 204);"><span style="font-size: 15px;"><span style="font-family: Arial;">Portaria 9 ME</span></span></a><span style="font-size: 15px;"><span style="font-family: Arial;">, de 15-1-2019, publicada no Di&aacute;rio Oficial de hoje, 16-1, dentre outras normas, reajusta, com efeitos a partir de 1-1-2019, os benef&iacute;cios pagos pelo INSS - Instituto Nacional do Seguro Social, bem como altera os valores da Tabela de Sal&aacute;rio de Contribui&ccedil;&atilde;o aplic&aacute;veis aos segurados empregados, inclusive os dom&eacute;sticos, e aos trabalhadores avulsos.<br />
+<br />
+Tamb&eacute;m foram reajustadas as multas por infra&ccedil;&atilde;o ao&nbsp;</span></span><a href="http://coalink.coad.com.br/cl/PEx1R/CXZ/45c7/ICQuqhbKwaB/BL7c/N8wqI2oQ83x/1/" target="_blank" data-saferedirecturl="https://www.google.com/url?q=http://coalink.coad.com.br/cl/PEx1R/CXZ/45c7/ICQuqhbKwaB/BL7c/N8wqI2oQ83x/1/&amp;source=gmail&amp;ust=1547742543682000&amp;usg=AFQjCNHa46ca-42fSuSRIPf_APR5JL5fZA" saprocessedanchor="true" style="color: rgb(17, 85, 204);"><span style="font-size: 15px;"><span style="font-family: Arial;">RPS - Regulamento da Previd&ecirc;ncia Social</span></span></a></span><span style="font-size: 15px;"><span style="font-family: Arial;">&nbsp;e os valores das cotas do Sal&aacute;rio-Fam&iacute;lia.<br />
+<br />
+A Tabela de Sal&aacute;rio de Contribui&ccedil;&atilde;o, a ser aplicada a partir de 1-1-2019, &eacute; a seguinte:</span></span></p>
+<table cellspacing="0" cellpadding="0" border="1" style="color: rgb(34, 34, 34); font-family: &quot;Trebuchet MS&quot;; font-size: 12px; text-align: justify;" width="630" height="70" align="center">
+    <tbody>
+        <tr>
+            <td width="384" style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif; margin: 0px;">
+            <p align="center">&nbsp;</p>
+            <span style="font-size: 15px;"><span style="font-family: Arial;">
+            <p align="center"><strong>Sal&aacute;rio de Contribui&ccedil;&atilde;o<br />
+            (R$)</strong></p>
+            </span></span></td>
+            <td width="205" style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif; margin: 0px;">
+            <p align="center">&nbsp;</p>
+            <span style="font-size: 15px;"><span style="font-family: Arial;">
+            <p align="center"><strong>Al&iacute;quota para fins de Recolhimento ao INSS (%)</strong></p>
+            </span></span></td>
+        </tr>
+        <tr>
+            <td width="384" style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif; margin: 0px;">
+            <p align="center"><span style="font-size: 15px;"><span style="font-family: Arial;">At&eacute; 1.751,81</span></span></p>
+            </td>
+            <td width="205" style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif; margin: 0px;">
+            <p align="center"><span style="font-size: 15px;"><span style="font-family: Arial;">8</span></span></p>
+            </td>
+        </tr>
+        <tr>
+            <td width="384" style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif; margin: 0px;">
+            <p align="center"><span style="font-size: 15px;"><span style="font-family: Arial;">De 1.751,82 at&eacute; 2.919,72</span></span></p>
+            </td>
+            <td width="205" style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif; margin: 0px;">
+            <p align="center"><span style="font-size: 15px;"><span style="font-family: Arial;">9</span></span></p>
+            </td>
+        </tr>
+        <tr>
+            <td width="384" style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif; margin: 0px;">
+            <p align="center"><span style="font-size: 15px;"><span style="font-family: Arial;">De 2.919,73 at&eacute; 5.839,45</span></span></p>
+            </td>
+            <td width="205" style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif; margin: 0px;">
+            <p align="center"><span style="font-size: 15px;"><span style="font-family: Arial;">11</span></span></p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p style="color: rgb(34, 34, 34); font-family: &quot;Trebuchet MS&quot;; text-align: justify;">&nbsp;</p>
+<p style="color: rgb(34, 34, 34); font-family: &quot;Trebuchet MS&quot;; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;">A partir de 1-1-2019, o valor da quota do Sal&aacute;rio-Fam&iacute;lia por filho ou equiparado de qualquer condi&ccedil;&atilde;o, at&eacute; 14 anos de idade, ou inv&aacute;lido de qualquer idade, &eacute; de:</span></span></p>
+<table cellspacing="0" cellpadding="0" border="1" style="color: rgb(34, 34, 34); font-family: &quot;Trebuchet MS&quot;; font-size: 12px; text-align: justify;" width="630" height="56" align="center">
+    <tbody>
+        <tr>
+            <td width="384" style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif; margin: 0px;">
+            <p align="center">&nbsp;</p>
+            <span style="font-size: 15px;"><span style="font-family: Arial;">
+            <p align="center"><strong>Remunera&ccedil;&atilde;o Mensal<br />
+            (R$)</strong></p>
+            </span></span></td>
+            <td width="205" style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif; margin: 0px;">
+            <p align="center">&nbsp;</p>
+            <span style="font-size: 15px;"><span style="font-family: Arial;">
+            <p align="center"><strong>Valor da Quota<br />
+            (R$)</strong></p>
+            </span></span></td>
+        </tr>
+        <tr>
+            <td width="384" style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif; margin: 0px;">
+            <p align="center"><span style="font-size: 15px;"><span style="font-family: Arial;">N&atilde;o superior a 907,77</span></span></p>
+            </td>
+            <td width="205" style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif; margin: 0px;">
+            <p align="center"><span style="font-size: 15px;"><span style="font-family: Arial;">46,54</span></span></p>
+            </td>
+        </tr>
+        <tr>
+            <td width="384" style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif; margin: 0px;">
+            <p align="center"><span style="font-size: 15px;"><span style="font-family: Arial;">Superior a 907,77 e igual ou inferior a 1.364,43</span></span></p>
+            </td>
+            <td width="205" style="font-family: Roboto, RobotoDraft, Helvetica, Arial, sans-serif; margin: 0px;">
+            <p align="center"><span style="font-size: 15px;"><span style="font-family: Arial;">32,80</span></span></p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<p style="color: rgb(34, 34, 34); font-family: &quot;Trebuchet MS&quot;; text-align: justify;">&nbsp;</p>
+<p style="color: rgb(34, 34, 34); font-family: &quot;Trebuchet MS&quot;; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;">A Portaria 9 ME/2019 revoga a&nbsp;</span></span><span style="font-size: small;"><a href="http://coalink.coad.com.br/cl/PEx1R/CXZ/45c7/ICQuqhbKwaB/BL7c/OzkQXLyFfqG/1/" target="_blank" data-saferedirecturl="https://www.google.com/url?q=http://coalink.coad.com.br/cl/PEx1R/CXZ/45c7/ICQuqhbKwaB/BL7c/OzkQXLyFfqG/1/&amp;source=gmail&amp;ust=1547742543682000&amp;usg=AFQjCNFEMlB3FvMMrg_KrFxazO2VlRyt1g" saprocessedanchor="true" style="color: rgb(17, 85, 204);"><span style="font-size: 15px;"><span style="font-family: Arial;">Portaria 15 MF</span></span></a></span><span style="font-size: 15px;"><span style="font-family: Arial;">, de 16-1-2018. </span></span></p>
+<p style="color: rgb(34, 34, 34); font-family: &quot;Trebuchet MS&quot;; text-align: justify;">&nbsp;</p>
+<p style="color: rgb(34, 34, 34); font-family: &quot;Trebuchet MS&quot;; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;">Fonte: COAD</span></span></p>
+<p><span style="font-size: 15px;"><span style="font-family: Arial;">&nbsp;</span></span></p>
+                            </div>
+                            
+                        </article>
+                        
+                        
+                    </div>
+                    <div class="col-md-1 hidden-sm"></div>
+                    <div class="col-md-2 col-sm-3">
+                        <aside class="widgets">
+                    <div class="widget list">
+                        <h3>Categorias</h3>
+                        <ul>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Calend%E1rio+de+Obriga%E7%F5es">Calendário de Obrigações</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Direitos+do+Consumidor">Direitos do Consumidor</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Empresarial">Empresarial</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=IRPF">IRPF</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Legisla%E7%E3o">Legislação</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Legisla%E7%E3o+Trabalhista">Legislação Trabalhista</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Previd%EAncia">Previdência</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Receita+Federal">Receita Federal</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Recursos+Humanos">Recursos Humanos</a>
+                            </li>
+ 
+                        </ul>
+                    </div>
+                    <div class="widget list">
+                        <h3>Por mês</h3>
+                        <ul>
+                        
+                            <li>
+                                <a href="/noticias/?mes=8&ano=2021">Agosto&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2021">Maio&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2021">Abril&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2021">Março&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=7&ano=2020">Julho&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2020">Maio&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2020">Abril&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2020">Março&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=10&ano=2019">Outubro&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2019">Setembro&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2019">Março&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2019">Janeiro&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=12&ano=2018">Dezembro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2018">Setembro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=6&ano=2018">Junho&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2018">Abril&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2018">Março&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=2&ano=2018">Fevereiro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2018">Janeiro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=12&ano=2017">Dezembro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=11&ano=2017">Novembro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=10&ano=2017">Outubro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2017">Setembro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=7&ano=2017">Julho&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=6&ano=2017">Junho&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2017">Maio&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2017">Abril&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2017">Março&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=2&ano=2017">Fevereiro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2017">Janeiro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=12&ano=2016">Dezembro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=11&ano=2016">Novembro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=10&ano=2016">Outubro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2016">Setembro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=8&ano=2016">Agosto&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=7&ano=2016">Julho&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=6&ano=2016">Junho&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2016">Maio&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2016">Abril&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2016">Março&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=2&ano=2016">Fevereiro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2016">Janeiro&nbsp;2016</a>
+                            </li>
+ 
+                        </ul>
+                    </div>
+
+                </aside>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+<footer class="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="footer-widget">
+                    <h2>Últimas Notícias</h2>
+                    <div class="widget-content latest-post">
+                        <ul>
+                        
+                            <li>
+                                <h3><a href="?a=noticia&id=295">BEM</a></h3>
+                                <p></p>
+                                <span class="date">26/08/2021</span>
+                            </li>
+                        
+                            <li>
+                                <h3><a href="?a=noticia&id=294">HOME OFFICE PARA GESTANTES</a></h3>
+                                <p></p>
+                                <span class="date">13/05/2021</span>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="footer-widget">
+                    <h2>Contato</h2>
+                    <div class="widget-content">
+                        <address>
+                            Rua Rep&uacute;blica do L&iacute;bano, 61 gr. 1102 <br/>
+                            Centro &ndash; Rio de Janeiro RJ
+                        </address>
+                        <address>
+                            <strong>Telefone: +55 (21) 3203-4348</strong> <br/>
+                            <strong>E-mail: condux@condux.com.br</strong>
+                        </address>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="footer-widget">
+                    <h2>Links</h2>
+                    <ul>    
+                        <li><a href="/home/">Home Page</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/empresa/">A Empresa</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="http://www.condux.com.br/ler.asp?id=1" target="_blank">Tabelas Pr&aacute;ticas</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="http://www.condux.com.br/ler.asp?id=2" target="_blank">Agenda de Obriga&ccedil;&otilde;es</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/noticias/">Not&iacute;cias</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/downloads/">Downloads</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/contato/">Contato</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="footer-info text-right">
+                    <ul class="footer-social">
+                        <li><a href="https://twitter.com/conduxBRA" target="_blank"><i class="entyp-twitter-1"></i></a></li>
+                        <li><a href="https://www.facebook.com/ConduxConsultoria" target="_blank"><i class="entyp-facebook-1"></i></a></li>
+                    </ul>
+                    <p>Copyright &copy; 2016</p>
+                    <p>CONDUX - Todos os Direitos Reservados</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="https://condux.com.br/site/js/vendor/jquery-1.11.0.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery-ui-1.10.3.custom.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.mousewheel.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.mCustomScrollbar.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.selectBoxIt.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.raty.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.flexslider.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.isotope.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.fancybox.pack.js"></script>
+<script src="https://condux.com.br/site/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
+<script src="https://condux.com.br/site/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/bootstrap.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/simpleInstagramFancybox.js"></script>
+<script src="https://condux.com.br/site/js/vendor/fitvids.js"></script>
+<script src="https://condux.com.br/site/js/main.js"></script>
+<script>
+    $('#revolution-shortcode').revolution({
+        delay : 90000,
+        hideThumbs:10,
+        navigationVOffset : -30,
+        navigationType : "none",
+        navigationStyle : "round-old",
+		startheight:700
+    });
+</script>
+<style>
+/*#revolution-shortcode { height: 700px !important }
+#revolution-shortcode > ul > li:nth-child(1) > div.slotholder { height: 700px !important }*/
+</style>
+</body>
+</html>

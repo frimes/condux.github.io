@@ -1,0 +1,609 @@
+<!--
+ * FCKeditor - The text editor for Internet - http://www.fckeditor.net
+ * Copyright (C) 2003-2009 Frederico Caldeira Knabben
+ *
+ * == BEGIN LICENSE ==
+ *
+ * Licensed under the terms of any of the following licenses at your
+ * choice:
+ *
+ *  - GNU General Public License Version 2 or later (the "GPL")
+ *    http://www.gnu.org/licenses/gpl.html
+ *
+ *  - GNU Lesser General Public License Version 2.1 or later (the "LGPL")
+ *    http://www.gnu.org/licenses/lgpl.html
+ *
+ *  - Mozilla Public License Version 1.1 or later (the "MPL")
+ *    http://www.mozilla.org/MPL/MPL-1.1.html
+ *
+ * == END LICENSE ==
+ *
+ * This is the integration file for ASP.
+ *
+ * It defines the FCKeditor class that can be used to create editor
+ * instances in ASP pages on server side.
+-->
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Condux</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, maximum-scale=1, minimum-scale=1">
+    <link rel="icon" type="image/png" href="https://condux.com.br/site/img/favicon.png">
+
+    <link rel="stylesheet" href="https://condux.com.br/site/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/flexslider.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/jquery.selectBoxIt.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/entypo.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/rs-plugin/css/settings.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/jquery.fancybox.css">
+        <link rel="stylesheet" href="https://condux.com.br/site/css/style.css">
+
+    <script src="https://condux.com.br/site/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+	
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-208708250-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-208708250-1');
+</script>
+
+</head>
+<body>
+<div class="main-wrap">
+<header class="navbar navbar-inverse">
+    <div class="normal-color with-slider">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <div id="control-logo-header">
+                                <a class="navbar-brand" href="/home/"><img src="https://condux.com.br/site/content/logo.png" alt="img"/></a>
+                            </div>
+                    </div>
+                </div>
+                <div class="col-sm-9">
+                    <div class="navbar-collapse collapse navbar-right">
+                        <ul class="nav navbar-nav social-nav">
+                            <li><a href="https://twitter.com/conduxBRA" target="_blank"><i class="entyp-twitter-1"></i></a></li>
+                            <li><a href="https://www.facebook.com/ConduxConsultoria" target="_blank"><i class="entyp-facebook-1"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="inverse-color">
+        <div class="container">
+            <div class="row">
+                <div class="navbar-collapse collapse">
+                    <div class="col-sm-12">
+                        <ul class="nav navbar-nav main-nav">
+                            <li id="control-logo-menu">
+                                <a class="navbar-brand" href="/home/"><img src="https://condux.com.br/site/content/logo.png" alt="img"/></a>
+                            </li>
+                            <li>
+                                <a href="/home/">Início</a>
+                            </li>
+                            <li>
+                                <a href="/empresa/">A empresa</a>
+                            </li>
+                            <li>
+                                <a href="/servicos/">Serviços</a>
+                            </li>
+                            <li>
+                                <a href="#">Utilitários</a>
+                                <ul>	
+                                	<li><a href="http://www.condux.com.br/ler.asp?id=1" target="_blank">Tabelas Práticas</a></li>
+                                    <li><a href="http://www.condux.com.br/ler.asp?id=2" target="_blank">Agenda de Obrigações</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="/noticias/">Notícias</a>
+                            </li>
+                            <li>
+                                <a href="/login/">Área do Cliente</a>
+                            </li>
+                            <li>
+                                <a href="/downloads/">Downloads</a>
+                            </li>
+                            <li>
+                                <a href="/contato/">Contato</a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</header>
+
+
+<section class="line top">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="col-md-4 col-sm-5 col-xs-12">
+                    <div class="title">
+                        Notícias
+                        <ul class="current-page">
+                            <li><a href="/home/">Página principal</a></li>
+                            <li>></li>
+                            <li><a href="/noticias/">Noticias</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="posts">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <article class="post ">
+                            <h3 class="uppercase">PREVIDÊNCIA PRIVADA: VALE A PENA?</h3><h4>Antes de tomar qualquer decisão, confira esse artigo!</h4>
+                            <ul class="info">
+                                <li>
+                                    <div class="text date">terça-feira, 4 de outubro de 2016</div>
+                                </li>
+                                <li>
+                                    <i class="entyp-pencil-1"></i>
+                                    <div class="text">Publicado por CONDUX</div>
+                                </li>
+                                
+                                <li>
+                                    <a href="/noticias/?cat=Previd%EAncia">
+                                        <i class="entyp-list-1"></i>
+                                        <div class="text">Previdência</div>
+                                    </a>
+                                </li>
+                                
+                            </ul>
+                            
+                            <figure>
+                                <img src="https://condux.com.br/site/imgnews/171c.jpg" alt="PREVIDÊNCIA PRIVADA: VALE A PENA?"/>
+                                
+                            </figure>
+                            
+                            <div class="content">
+                            <p style="text-align: justify;">&nbsp;</p>
+<h2 style="box-sizing: border-box; font-family: Roboto, sans-serif; color: rgb(17, 17, 17); font-weight: 400; margin: 30px 0px 20px; font-size: 27px; line-height: 38px; text-align: justify;">O que &eacute; previd&ecirc;ncia privada?</h2>
+<p style="box-sizing: border-box; font-family: Verdana, Geneva, sans-serif; font-size: 17px; line-height: 29px; margin-top: 0px; margin-bottom: 26px; color: rgb(34, 34, 34); text-align: justify;">Na teoria, previd&ecirc;ncia privada &eacute; um plano de aposentadoria complementar &agrave; previd&ecirc;ncia social ligada ao INSS. &Eacute; um &ldquo;plano de aposentadoria&rdquo; que voc&ecirc; faz para suplementar o que o governo te oferece.</p>
+<p style="box-sizing: border-box; font-family: Verdana, Geneva, sans-serif; font-size: 17px; line-height: 29px; margin-top: 0px; margin-bottom: 26px; color: rgb(34, 34, 34); text-align: justify;">Na pr&aacute;tica, &eacute; muito semelhante a investir em um fundo de investimento, mas com algumas regras diferentes (tributa&ccedil;&atilde;o, taxas, modalidades).</p>
+<p style="box-sizing: border-box; font-family: Verdana, Geneva, sans-serif; font-size: 17px; line-height: 29px; margin-top: 0px; margin-bottom: 26px; color: rgb(34, 34, 34); text-align: justify;">A grande popularidade deste produto &eacute; alinhada com a ideia de que ningu&eacute;m em s&atilde; consci&ecirc;ncia confia a sua aposentadoria ao planejamento do governo. Sobretudo no Brasil.</p>
+<h2 style="box-sizing: border-box; font-family: Roboto, sans-serif; color: rgb(17, 17, 17); font-weight: 400; margin: 30px 0px 20px; font-size: 27px; line-height: 38px; text-align: justify;">Quando que a previd&ecirc;ncia privada vale a pena?</h2>
+<p style="box-sizing: border-box; font-family: Verdana, Geneva, sans-serif; font-size: 17px; line-height: 29px; margin-top: 0px; margin-bottom: 26px; color: rgb(34, 34, 34); text-align: justify;">J&aacute; vou ser r&aacute;pido e sincero: a previd&ecirc;ncia privada costuma n&atilde;o valer a pena para a grande maioria dos casos.</p>
+<p style="box-sizing: border-box; font-family: Verdana, Geneva, sans-serif; font-size: 17px; line-height: 29px; margin-top: 0px; margin-bottom: 26px; color: rgb(34, 34, 34); text-align: justify;">Mas &eacute; mentira falar que ela &eacute; sempre pior. H&aacute; 3 casos espec&iacute;ficos em que ela pode valer a pena, talvez voc&ecirc; se enquadre em um deles:</p>
+<p style="box-sizing: border-box; font-family: Verdana, Geneva, sans-serif; font-size: 17px; line-height: 29px; margin-top: 0px; margin-bottom: 26px; color: rgb(34, 34, 34); text-align: justify;"><strong style="box-sizing: border-box;">1 &ndash; Previd&ecirc;ncia privada com contribui&ccedil;&atilde;o a mais da empresa</strong></p>
+<p style="box-sizing: border-box; font-family: Verdana, Geneva, sans-serif; font-size: 17px; line-height: 29px; margin-top: 0px; margin-bottom: 26px; color: rgb(34, 34, 34); text-align: justify;">Muitas empresas possuem um plano de previd&ecirc;ncia especial, no qual elas contribuem com algum valor al&eacute;m do que voc&ecirc; contribui. Exemplo: o dobro da aplica&ccedil;&atilde;o (para cada R$ 1 investido, a empresa acrescenta mais R$ 1).</p>
+<p style="box-sizing: border-box; font-family: Verdana, Geneva, sans-serif; font-size: 17px; line-height: 29px; margin-top: 0px; margin-bottom: 26px; color: rgb(34, 34, 34); text-align: justify;">Neste caso, muito provavelmente a previd&ecirc;ncia &eacute; uma boa op&ccedil;&atilde;o, desde que voc&ecirc; contribua somente at&eacute; o valor que a empresa se prop&otilde;em a contribuir a mais.</p>
+<p style="box-sizing: border-box; font-family: Verdana, Geneva, sans-serif; font-size: 17px; line-height: 29px; margin-top: 0px; margin-bottom: 26px; color: rgb(34, 34, 34); text-align: justify;">Mas &eacute; sempre v&aacute;lido saber claramente quais as condi&ccedil;&otilde;es para manter este tipo de benef&iacute;cio, que as vezes s&atilde;o os de trabalhar a vida inteira e se aposentar pela mesma empresa.</p>
+<p style="box-sizing: border-box; font-family: Verdana, Geneva, sans-serif; font-size: 17px; line-height: 29px; margin-top: 0px; margin-bottom: 26px; color: rgb(34, 34, 34); text-align: justify;"><strong style="box-sizing: border-box;">2 &ndash; Planejamento sucess&oacute;rio (transmiss&atilde;o de heran&ccedil;a)</strong></p>
+<p style="box-sizing: border-box; font-family: Verdana, Geneva, sans-serif; font-size: 17px; line-height: 29px; margin-top: 0px; margin-bottom: 26px; color: rgb(34, 34, 34); text-align: justify;">A previd&ecirc;ncia privada pode fazer sentido para quem est&aacute; fazendo um planejamento sucess&oacute;rio, isto &eacute;, para quem est&aacute; poupando para os herdeiros, e n&atilde;o para si pr&oacute;prio.</p>
+<p style="box-sizing: border-box; font-family: Verdana, Geneva, sans-serif; font-size: 17px; line-height: 29px; margin-top: 0px; margin-bottom: 26px; color: rgb(34, 34, 34); text-align: justify;">Mas lembre-se: ela &eacute; uma pequena parte deste planejamento.</p>
+<p style="box-sizing: border-box; font-family: Verdana, Geneva, sans-serif; font-size: 17px; line-height: 29px; margin-top: 0px; margin-bottom: 26px; color: rgb(34, 34, 34); text-align: justify;">Explico.</p>
+<p style="box-sizing: border-box; font-family: Verdana, Geneva, sans-serif; font-size: 17px; line-height: 29px; margin-top: 0px; margin-bottom: 26px; color: rgb(34, 34, 34); text-align: justify;">Ap&oacute;s um &oacute;bito, o dinheiro que est&aacute; na previd&ecirc;ncia privada n&atilde;o passa por invent&aacute;rio e, pelo menos por enquanto, n&atilde;o possui cobran&ccedil;a de ITCMD (o imposto cobrado na hora de transmitir heran&ccedil;a aos herdeiros). Por este motivo &eacute; interessante manter uma parcela pequena de seu patrim&ocirc;nio na previd&ecirc;ncia exatamente para pagar o ITCMD (hoje 4% em S&atilde;o Paulo) do restante do patrim&ocirc;nio que ser&aacute; tributado. Isto porque, se os herdeiros n&atilde;o puderem pagar este imposto, o invent&aacute;rio n&atilde;o &eacute; liberado para eles.</p>
+<p style="box-sizing: border-box; font-family: Verdana, Geneva, sans-serif; font-size: 17px; line-height: 29px; margin-top: 0px; margin-bottom: 26px; color: rgb(34, 34, 34); text-align: justify;">N&atilde;o entendeu ainda? Bom, n&atilde;o &eacute; t&atilde;o simples mesmo. Por isso que &eacute; recomend&aacute;vel consultar um especialista no planejamento sucess&oacute;rio, que far&aacute; esta conta para voc&ecirc;. Minha sugest&atilde;o &eacute; que, se voc&ecirc; n&atilde;o entendeu, &eacute; porque voc&ecirc; n&atilde;o se enquadra neste caso.</p>
+<p style="box-sizing: border-box; font-family: Verdana, Geneva, sans-serif; font-size: 17px; line-height: 29px; margin-top: 0px; margin-bottom: 26px; color: rgb(34, 34, 34); text-align: justify;">&Eacute; v&aacute;lido lembrar tamb&eacute;m que, somente com uma previd&ecirc;ncia privada, voc&ecirc; pode apontar algu&eacute;m escondido como benefici&aacute;rio direto, como uma amante, amigo, cachorro e etc. Mesmo assim n&atilde;o &eacute; 100% garantido, pois se seus herdeiros se sentirem lesados, eles poder&atilde;o contestar na justi&ccedil;a esta &ldquo;estrat&eacute;gia&rdquo;.</p>
+<p style="box-sizing: border-box; font-family: Verdana, Geneva, sans-serif; font-size: 17px; line-height: 29px; margin-top: 0px; margin-bottom: 26px; color: rgb(34, 34, 34); text-align: justify;"><strong style="box-sizing: border-box;">3 &ndash; Quem faz a declara&ccedil;&atilde;o de IR completa, opta por PGBL e contribui com at&eacute; 12% da renda</strong></p>
+<p style="box-sizing: border-box; font-family: Verdana, Geneva, sans-serif; font-size: 17px; line-height: 29px; margin-top: 0px; margin-bottom: 26px; color: rgb(34, 34, 34); text-align: justify;">Um dos argumentos mais utilizados pelos vendedores de previd&ecirc;ncia privada (ex.: seu gerente do banco) &eacute; falar que a modalidade PGBL tem um benef&iacute;cio fiscal. Este benef&iacute;cio consiste em poder descontar parte do imposto se voc&ecirc; investir at&eacute; 12% de sua renda.</p>
+<p style="box-sizing: border-box; font-family: Verdana, Geneva, sans-serif; font-size: 17px; line-height: 29px; margin-top: 0px; margin-bottom: 26px; color: rgb(34, 34, 34); text-align: justify;">Na verdade, este &ldquo;desconto&rdquo; &eacute; um&nbsp;<strong style="box-sizing: border-box;">diferimento</strong>, e n&atilde;o uma isen&ccedil;&atilde;o ou desconto de verdade.</p>
+<p style="box-sizing: border-box; font-family: Verdana, Geneva, sans-serif; font-size: 17px; line-height: 29px; margin-top: 0px; margin-bottom: 26px; color: rgb(34, 34, 34); text-align: justify;">Em poucas palavras, diferimento significa adiar o pagamento do imposto, o que pode ser algo bom.</p>
+<p style="box-sizing: border-box; font-family: Verdana, Geneva, sans-serif; font-size: 17px; line-height: 29px; margin-top: 0px; margin-bottom: 26px; color: rgb(34, 34, 34); text-align: justify;">Imagine voc&ecirc;, com 30 anos de idade e mil gastos e presta&ccedil;&otilde;es, ter a possibilidade de adiar o pagamento de uma parte do seu imposto de renda para quando voc&ecirc; for aposentado.</p>
+<p style="box-sizing: border-box; font-family: Verdana, Geneva, sans-serif; font-size: 17px; line-height: 29px; margin-top: 0px; margin-bottom: 26px; color: rgb(34, 34, 34); text-align: justify;">N&atilde;o parece ruim, certo?</p>
+<p style="box-sizing: border-box; font-family: Verdana, Geneva, sans-serif; font-size: 17px; line-height: 29px; margin-top: 0px; margin-bottom: 26px; color: rgb(34, 34, 34); text-align: justify;">Mas lembre-se, &eacute; preciso seguir 4 regras para este &ldquo;adiamento&rdquo; de imposto valer a pena:</p>
+<ol style="box-sizing: border-box; padding: 0px; color: rgb(34, 34, 34); font-family: Verdana, Geneva, sans-serif; font-size: 17px;">
+    <li style="box-sizing: border-box; line-height: 29px; margin-left: 21px; text-align: justify;">Fazer a declara&ccedil;&atilde;o de IR&nbsp;<strong style="box-sizing: border-box;">completa</strong>&nbsp;(para grande parte das pessoas a dedu&ccedil;&atilde;o &eacute; maior com a declara&ccedil;&atilde;o simples)</li>
+    <li style="box-sizing: border-box; line-height: 29px; margin-left: 21px; text-align: justify;">Optar pelo PGBL</li>
+    <li style="box-sizing: border-box; line-height: 29px; margin-left: 21px; text-align: justify;">Contribuir com no m&aacute;ximo 12% da renda</li>
+    <li style="box-sizing: border-box; line-height: 29px; margin-left: 21px; text-align: justify;">Ter o prazo de 10 anos no m&iacute;nimo</li>
+</ol>
+<h2 style="box-sizing: border-box; font-family: Roboto, sans-serif; color: rgb(17, 17, 17); font-weight: 400; margin: 30px 0px 20px; font-size: 27px; line-height: 38px; text-align: justify;">Ok, e quando que a previd&ecirc;ncia privada N&Atilde;O vale a pena?</h2>
+<p style="box-sizing: border-box; font-family: Verdana, Geneva, sans-serif; font-size: 17px; line-height: 29px; margin-top: 0px; margin-bottom: 26px; color: rgb(34, 34, 34); text-align: justify;">Os casos que falei antes s&atilde;o exce&ccedil;&otilde;es &agrave; regra.</p>
+<p style="box-sizing: border-box; font-family: Verdana, Geneva, sans-serif; font-size: 17px; line-height: 29px; margin-top: 0px; margin-bottom: 26px; color: rgb(34, 34, 34); text-align: justify;">A previd&ecirc;ncia privada&nbsp;<strong style="box-sizing: border-box;">n&atilde;o vale a pena</strong>&nbsp;financeiramente para praticamente&nbsp;<strong style="box-sizing: border-box;">TODOS</strong>&nbsp;os outros casos.</p>
+<p style="box-sizing: border-box; font-family: Verdana, Geneva, sans-serif; font-size: 17px; line-height: 29px; margin-top: 0px; margin-bottom: 26px; color: rgb(34, 34, 34); text-align: justify;">Vamos enumerar alguns casos que n&atilde;o valem a pena para voc&ecirc; se identificar. Normalmente n&atilde;o vale a pena se:</p>
+<ul style="box-sizing: border-box; padding: 0px; margin-bottom: 26px; color: rgb(34, 34, 34); font-family: Verdana, Geneva, sans-serif; font-size: 17px;">
+    <li style="box-sizing: border-box; line-height: 29px; margin-left: 21px; text-align: justify;">&Eacute; de algum banco grande (isso inclui o banco no qual voc&ecirc; &eacute; correntista)</li>
+    <li style="box-sizing: border-box; line-height: 29px; margin-left: 21px; text-align: justify;">Foi feita para os filhos (ex.: pagar estudos do filho)</li>
+    <li style="box-sizing: border-box; line-height: 29px; margin-left: 21px; text-align: justify;">&Eacute; um planejamento para aposentadoria</li>
+    <li style="box-sizing: border-box; line-height: 29px; margin-left: 21px; text-align: justify;">&Eacute; um planejamento para guardar dinheiro para algum objetivo</li>
+    <li style="box-sizing: border-box; line-height: 29px; margin-left: 21px; text-align: justify;">&Eacute; da sua empresa e ela n&atilde;o contribui a mais</li>
+    <li style="box-sizing: border-box; line-height: 29px; margin-left: 21px; text-align: justify;">&Eacute; 100% do seu planejamento sucess&oacute;rio (e n&atilde;o uma pequena parte)</li>
+    <li style="box-sizing: border-box; line-height: 29px; margin-left: 21px; text-align: justify;">&Eacute; um investimento (pelo menos voc&ecirc; acha que &eacute;)</li>
+    <li style="box-sizing: border-box; line-height: 29px; margin-left: 21px; text-align: justify;">Tem PGBL e faz declara&ccedil;&atilde;o de IR simplificada</li>
+    <li style="box-sizing: border-box; line-height: 29px; margin-left: 21px; text-align: justify;">Pensa em resgatar no curto/m&eacute;dio prazo (menos de 10 anos)</li>
+    <li style="box-sizing: border-box; line-height: 29px; margin-left: 21px; text-align: justify;">Pensa que a Receita Federal n&atilde;o vai achar recursos n&atilde;o declarados</li>
+    <li style="box-sizing: border-box; line-height: 29px; margin-left: 21px; text-align: justify;">Qualquer outro caso diferente dos 3 que mencionei antes</li>
+</ul>
+<p style="box-sizing: border-box; font-family: Verdana, Geneva, sans-serif; font-size: 17px; line-height: 29px; margin-top: 0px; margin-bottom: 26px; color: rgb(34, 34, 34); text-align: justify;">Se identificou? Pois &eacute;, provavelmente previd&ecirc;ncia privada&nbsp;<strong style="box-sizing: border-box;">n&atilde;o &eacute; para voc&ecirc;</strong>. N&atilde;o se identificou nem nesses itens, nem nas exce&ccedil;&otilde;es que citei antes? Ent&atilde;o acho que tamb&eacute;m n&atilde;o vale a pena.</p>
+<p style="box-sizing: border-box; font-family: Verdana, Geneva, sans-serif; font-size: 17px; line-height: 29px; margin-top: 0px; margin-bottom: 26px; color: rgb(34, 34, 34); text-align: justify;">Mas &eacute; bom saber o porqu&ecirc; de n&atilde;o valer a pena.</p>
+<h2 style="box-sizing: border-box; font-family: Roboto, sans-serif; color: rgb(17, 17, 17); font-weight: 400; margin: 30px 0px 20px; font-size: 27px; line-height: 38px; text-align: justify;">Taxas e mais taxas</h2>
+<p style="box-sizing: border-box; font-family: Verdana, Geneva, sans-serif; font-size: 17px; line-height: 29px; margin-top: 0px; margin-bottom: 26px; color: rgb(34, 34, 34); text-align: justify;">Al&eacute;m da taxa de administra&ccedil;&atilde;o, que &eacute; similar a cobrada em fundos de investimentos (e pode ser abusiva), a previd&ecirc;ncia privada pode ter tamb&eacute;m as seguintes taxas:</p>
+<ol style="box-sizing: border-box; padding: 0px; color: rgb(34, 34, 34); font-family: Verdana, Geneva, sans-serif; font-size: 17px;">
+    <li style="box-sizing: border-box; line-height: 29px; margin-left: 21px; text-align: justify;"><strong style="box-sizing: border-box;">Taxa de Sa&iacute;da</strong>: cobrada no momento do resgate. Como se resgatar o seu pr&oacute;prio dinheiro fosse errado e voc&ecirc; estivesse pagando uma multa para fazer isso. Rid&iacute;culo.</li>
+    <li style="box-sizing: border-box; line-height: 29px; margin-left: 21px; text-align: justify;"><strong style="box-sizing: border-box;">Taxa de Carregamento</strong>: cobrada no momento da aplica&ccedil;&atilde;o. Um exemplo f&aacute;cil &eacute; que, se a taxa de carregamento for 1% e voc&ecirc; aplicar R$ 1.000, apenas R$ 990 ser&atilde;o realmente aplicados e R$ 10 ser&atilde;o cobrados como taxa de carregamento. Em outras palavras, voc&ecirc; j&aacute; come&ccedil;a com 1% de rendimento negativo.</li>
+</ol>
+<p style="box-sizing: border-box; font-family: Verdana, Geneva, sans-serif; font-size: 17px; line-height: 29px; margin-top: 0px; margin-bottom: 26px; color: rgb(34, 34, 34); text-align: justify;">N&atilde;o s&atilde;o todos os planos que cobram isso, mas &eacute; preciso estar atento porque estas taxas reduzem muito o retorno.</p>
+<h2 style="box-sizing: border-box; font-family: Roboto, sans-serif; color: rgb(17, 17, 17); font-weight: 400; margin: 30px 0px 20px; font-size: 27px; line-height: 38px; text-align: justify;">Rentabilidade baixa: a vil&atilde;</h2>
+<p style="box-sizing: border-box; font-family: Verdana, Geneva, sans-serif; font-size: 17px; line-height: 29px; margin-top: 0px; margin-bottom: 26px; color: rgb(34, 34, 34); text-align: justify;">Este &eacute; o principal motivo da previd&ecirc;ncia privada n&atilde;o valer a pena. Ela nada mais &eacute; que um ve&iacute;culo ineficiente para poupar dinheiro. Toda a vantagem tribut&aacute;ria que poderia ter, fica com os bancos.</p>
+<p style="box-sizing: border-box; font-family: Verdana, Geneva, sans-serif; font-size: 17px; line-height: 29px; margin-top: 0px; margin-bottom: 26px; color: rgb(34, 34, 34); text-align: justify;">Normalmente a rentabilidade de produtos de previd&ecirc;ncia privada oferecidos para voc&ecirc; &eacute; bem menor que de outros produtos dispon&iacute;veis no mercado.</p>
+<p style="box-sizing: border-box; font-family: Verdana, Geneva, sans-serif; font-size: 17px; line-height: 29px; margin-top: 0px; margin-bottom: 26px; color: rgb(34, 34, 34); text-align: justify;">E h&aacute; diversos motivos para este baixo rendimento, como por exemplo uma taxa de administra&ccedil;&atilde;o muito alta. Mas o principal motivo &eacute; o mais impressionante: o contribuinte do plano simplesmente&nbsp;<strong style="box-sizing: border-box;">n&atilde;o presta aten&ccedil;&atilde;o</strong>&nbsp;na rentabilidade!</p>
+<p style="box-sizing: border-box; font-family: Verdana, Geneva, sans-serif; font-size: 17px; line-height: 29px; margin-top: 0px; margin-bottom: 26px; color: rgb(34, 34, 34); text-align: justify;">Em previd&ecirc;ncias oferecidas por empresas &eacute; bem interessante tamb&eacute;m (tenho in&uacute;meros exemplos de amigos que vieram me perguntar se a previd&ecirc;ncia da empresa dele valia a pena).</p>
+<p style="box-sizing: border-box; font-family: Verdana, Geneva, sans-serif; font-size: 17px; line-height: 29px; margin-top: 0px; margin-bottom: 26px; color: rgb(34, 34, 34); text-align: justify;">Nelas, muitas vezes os planos s&atilde;o vendidos apenas pelo perfil: conservador, moderado e agressivo. Se vende tamb&eacute;m v&aacute;rias proje&ccedil;&otilde;es lindas de crescimento de patrim&ocirc;nio, renda vital&iacute;cia e etc, mas nunca se fala em n&uacute;meros reais de rendimento, ou se acompanha a rentabilidade!</p>
+<p style="box-sizing: border-box; font-family: Verdana, Geneva, sans-serif; font-size: 17px; line-height: 29px; margin-top: 0px; margin-bottom: 26px; color: rgb(34, 34, 34); text-align: justify;">O ensinamento que fica disso &eacute;: saiba o rendimento do seu fundo de previd&ecirc;ncia. Procure. Compare. Como tudo, h&aacute; produtos bons e ruins. Mas no caso de previd&ecirc;ncia, &eacute; dif&iacute;cil achar o bom.&nbsp;Uma compara&ccedil;&atilde;o r&aacute;pida com o CDI j&aacute; &eacute; suficiente para voc&ecirc; descartar in&uacute;meros planos de previd&ecirc;ncia.</p>
+<p style="box-sizing: border-box; font-family: Verdana, Geneva, sans-serif; font-size: 17px; line-height: 29px; margin-top: 0px; margin-bottom: 26px; color: rgb(34, 34, 34); text-align: justify;">A dica inicial &eacute; fugir de bancos grandes, como em qualquer investimento, e tratar a previd&ecirc;ncia como voc&ecirc; trata um investimento normal. Outra dica &eacute; buscar previd&ecirc;ncias de gestores independentes, que normalmente est&atilde;o com interesses alinhados com os investidores.</p>
+<p style="box-sizing: border-box; font-family: Verdana, Geneva, sans-serif; font-size: 17px; line-height: 29px; margin-top: 0px; margin-bottom: 26px; color: rgb(34, 34, 34); text-align: justify;">E fica aqui um desafio: Se o leitor encontrar um fundo de previd&ecirc;ncia de um banco grande com rentabilidade maior que 100% do CDI na m&eacute;dia de v&aacute;rios anos, poste aqui para provar que eu estou errado.</p>
+<h2 style="box-sizing: border-box; font-family: Roboto, sans-serif; color: rgb(17, 17, 17); font-weight: 400; margin: 30px 0px 20px; font-size: 27px; line-height: 38px; text-align: justify;">Ent&atilde;o devo ou n&atilde;o devo investir em previd&ecirc;ncia privada?</h2>
+<p style="box-sizing: border-box; font-family: Verdana, Geneva, sans-serif; font-size: 17px; line-height: 29px; margin-top: 0px; margin-bottom: 26px; color: rgb(34, 34, 34); text-align: justify;">A resposta curta &eacute;:&nbsp;<strong style="box-sizing: border-box;">N&atilde;o</strong>.</p>
+<p style="box-sizing: border-box; font-family: Verdana, Geneva, sans-serif; font-size: 17px; line-height: 29px; margin-top: 0px; margin-bottom: 26px; color: rgb(34, 34, 34); text-align: justify;">Se voc&ecirc; n&atilde;o se enquadra nas exce&ccedil;&otilde;es que eu falei, a previd&ecirc;ncia sempre ser&aacute; pior que um bom fundo de investimento, ou at&eacute; mesmo um t&iacute;tulo de renda fixa.</p>
+<h2 style="box-sizing: border-box; font-family: Roboto, sans-serif; color: rgb(17, 17, 17); font-weight: 400; margin: 30px 0px 20px; font-size: 27px; line-height: 38px; text-align: justify;">Ent&atilde;o eu devo resgatar tudo?</h2>
+<p style="box-sizing: border-box; font-family: Verdana, Geneva, sans-serif; font-size: 17px; line-height: 29px; margin-top: 0px; margin-bottom: 26px; color: rgb(34, 34, 34); text-align: justify;">Calma. Se voc&ecirc; j&aacute; tem algum investimento em previd&ecirc;ncia privada, a resposta n&atilde;o &eacute; t&atilde;o &oacute;bvia assim, &eacute; preciso fazer as contas antes.</p>
+<p style="box-sizing: border-box; font-family: Verdana, Geneva, sans-serif; font-size: 17px; line-height: 29px; margin-top: 0px; margin-bottom: 26px; color: rgb(34, 34, 34); text-align: justify;">Mas j&aacute; te adianto: provavelmente voc&ecirc; perder&aacute; muito dinheiro resgatando tudo o que j&aacute; tem. Isso por causa de altas al&iacute;quotas de imposto de renda (para prazos curtos de resgate) e taxas de sa&iacute;da que podem existir.</p>
+<p style="box-sizing: border-box; font-family: Verdana, Geneva, sans-serif; font-size: 17px; line-height: 29px; margin-top: 0px; margin-bottom: 26px; color: rgb(34, 34, 34); text-align: justify;">O recomendado a fazer na grande maioria dos casos &eacute; efetuar a portabilidade para um fundo de previd&ecirc;ncia melhor.&nbsp;<strong style="box-sizing: border-box;">E obviamente n&atilde;o fazer mais contribui&ccedil;&otilde;es no plano.</strong></p>
+<h2 style="box-sizing: border-box; font-family: Roboto, sans-serif; color: rgb(17, 17, 17); font-weight: 400; margin: 30px 0px 20px; font-size: 27px; line-height: 38px; text-align: justify;">Portabilidade de previd&ecirc;ncia privada</h2>
+<p style="box-sizing: border-box; font-family: Verdana, Geneva, sans-serif; font-size: 17px; line-height: 29px; margin-top: 0px; margin-bottom: 26px; color: rgb(34, 34, 34); text-align: justify;">Hoje &eacute; poss&iacute;vel transferir os recursos entre previd&ecirc;ncias privadas sem pagar taxas de sa&iacute;da ou impostos. Desta forma voc&ecirc; pode migrar para um plano de previd&ecirc;ncia melhor, para resgatar somente quando sua al&iacute;quota de IR for menor.</p>
+<p style="box-sizing: border-box; font-family: Verdana, Geneva, sans-serif; font-size: 17px; line-height: 29px; margin-top: 0px; margin-bottom: 26px; color: rgb(34, 34, 34); text-align: justify;">Para isto, basta seguir as regras abaixo:</p>
+<ul style="box-sizing: border-box; padding: 0px; margin-bottom: 26px; color: rgb(34, 34, 34); font-family: Verdana, Geneva, sans-serif; font-size: 17px;">
+    <li style="box-sizing: border-box; line-height: 29px; margin-left: 21px; text-align: justify;">N&atilde;o &eacute; poss&iacute;vel mudar a modalidade: somente de PGBL para PGBL e de VGBL para VGBL</li>
+    <li style="box-sizing: border-box; line-height: 29px; margin-left: 21px; text-align: justify;">O pedido s&oacute; pode ser feito ap&oacute;s 60 dias da aplica&ccedil;&atilde;o</li>
+</ul>
+<p style="box-sizing: border-box; font-family: Verdana, Geneva, sans-serif; font-size: 17px; line-height: 29px; margin-top: 0px; margin-bottom: 26px; color: rgb(34, 34, 34); text-align: justify;">Ap&oacute;s o pedido, a portabilidade deve ser feita em at&eacute; 5 dias, sen&atilde;o h&aacute; multas para a institui&ccedil;&atilde;o. O que ou&ccedil;o de muitas pessoas &eacute; que costuma levar cerca de 30 dias, pois os bancos ficam enrolando com a esperan&ccedil;a de que o cliente esque&ccedil;a (&Eacute; s&eacute;rio!). Se ocorrer com voc&ecirc;, n&atilde;o tenha d&uacute;vidas: cobre do gerente, e se estourar o prazo, reclame com os &oacute;rg&atilde;os de fiscaliza&ccedil;&atilde;o!</p>
+<p style="box-sizing: border-box; font-family: Verdana, Geneva, sans-serif; font-size: 17px; line-height: 29px; margin-top: 0px; margin-bottom: 26px; color: rgb(34, 34, 34); text-align: justify;"><span style="font-size: 15px;">Fonte: Blog do Investidor</span></p>
+                            </div>
+                            
+                        </article>
+                        
+                        
+                    </div>
+                    <div class="col-md-1 hidden-sm"></div>
+                    <div class="col-md-2 col-sm-3">
+                        <aside class="widgets">
+                    <div class="widget list">
+                        <h3>Categorias</h3>
+                        <ul>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Calend%E1rio+de+Obriga%E7%F5es">Calendário de Obrigações</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Direitos+do+Consumidor">Direitos do Consumidor</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Empresarial">Empresarial</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=IRPF">IRPF</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Legisla%E7%E3o">Legislação</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Legisla%E7%E3o+Trabalhista">Legislação Trabalhista</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Previd%EAncia">Previdência</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Receita+Federal">Receita Federal</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Recursos+Humanos">Recursos Humanos</a>
+                            </li>
+ 
+                        </ul>
+                    </div>
+                    <div class="widget list">
+                        <h3>Por mês</h3>
+                        <ul>
+                        
+                            <li>
+                                <a href="/noticias/?mes=8&ano=2021">Agosto&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2021">Maio&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2021">Abril&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2021">Março&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=7&ano=2020">Julho&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2020">Maio&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2020">Abril&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2020">Março&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=10&ano=2019">Outubro&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2019">Setembro&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2019">Março&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2019">Janeiro&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=12&ano=2018">Dezembro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2018">Setembro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=6&ano=2018">Junho&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2018">Abril&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2018">Março&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=2&ano=2018">Fevereiro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2018">Janeiro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=12&ano=2017">Dezembro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=11&ano=2017">Novembro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=10&ano=2017">Outubro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2017">Setembro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=7&ano=2017">Julho&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=6&ano=2017">Junho&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2017">Maio&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2017">Abril&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2017">Março&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=2&ano=2017">Fevereiro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2017">Janeiro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=12&ano=2016">Dezembro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=11&ano=2016">Novembro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=10&ano=2016">Outubro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2016">Setembro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=8&ano=2016">Agosto&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=7&ano=2016">Julho&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=6&ano=2016">Junho&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2016">Maio&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2016">Abril&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2016">Março&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=2&ano=2016">Fevereiro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2016">Janeiro&nbsp;2016</a>
+                            </li>
+ 
+                        </ul>
+                    </div>
+
+                </aside>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+<footer class="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="footer-widget">
+                    <h2>Últimas Notícias</h2>
+                    <div class="widget-content latest-post">
+                        <ul>
+                        
+                            <li>
+                                <h3><a href="?a=noticia&id=295">BEM</a></h3>
+                                <p></p>
+                                <span class="date">26/08/2021</span>
+                            </li>
+                        
+                            <li>
+                                <h3><a href="?a=noticia&id=294">HOME OFFICE PARA GESTANTES</a></h3>
+                                <p></p>
+                                <span class="date">13/05/2021</span>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="footer-widget">
+                    <h2>Contato</h2>
+                    <div class="widget-content">
+                        <address>
+                            Rua Rep&uacute;blica do L&iacute;bano, 61 gr. 1102 <br/>
+                            Centro &ndash; Rio de Janeiro RJ
+                        </address>
+                        <address>
+                            <strong>Telefone: +55 (21) 3203-4348</strong> <br/>
+                            <strong>E-mail: condux@condux.com.br</strong>
+                        </address>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="footer-widget">
+                    <h2>Links</h2>
+                    <ul>    
+                        <li><a href="/home/">Home Page</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/empresa/">A Empresa</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="http://www.condux.com.br/ler.asp?id=1" target="_blank">Tabelas Pr&aacute;ticas</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="http://www.condux.com.br/ler.asp?id=2" target="_blank">Agenda de Obriga&ccedil;&otilde;es</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/noticias/">Not&iacute;cias</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/downloads/">Downloads</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/contato/">Contato</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="footer-info text-right">
+                    <ul class="footer-social">
+                        <li><a href="https://twitter.com/conduxBRA" target="_blank"><i class="entyp-twitter-1"></i></a></li>
+                        <li><a href="https://www.facebook.com/ConduxConsultoria" target="_blank"><i class="entyp-facebook-1"></i></a></li>
+                    </ul>
+                    <p>Copyright &copy; 2016</p>
+                    <p>CONDUX - Todos os Direitos Reservados</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="https://condux.com.br/site/js/vendor/jquery-1.11.0.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery-ui-1.10.3.custom.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.mousewheel.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.mCustomScrollbar.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.selectBoxIt.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.raty.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.flexslider.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.isotope.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.fancybox.pack.js"></script>
+<script src="https://condux.com.br/site/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
+<script src="https://condux.com.br/site/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/bootstrap.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/simpleInstagramFancybox.js"></script>
+<script src="https://condux.com.br/site/js/vendor/fitvids.js"></script>
+<script src="https://condux.com.br/site/js/main.js"></script>
+<script>
+    $('#revolution-shortcode').revolution({
+        delay : 90000,
+        hideThumbs:10,
+        navigationVOffset : -30,
+        navigationType : "none",
+        navigationStyle : "round-old",
+		startheight:700
+    });
+</script>
+<style>
+/*#revolution-shortcode { height: 700px !important }
+#revolution-shortcode > ul > li:nth-child(1) > div.slotholder { height: 700px !important }*/
+</style>
+</body>
+</html>

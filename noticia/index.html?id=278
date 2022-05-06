@@ -1,0 +1,563 @@
+<!--
+ * FCKeditor - The text editor for Internet - http://www.fckeditor.net
+ * Copyright (C) 2003-2009 Frederico Caldeira Knabben
+ *
+ * == BEGIN LICENSE ==
+ *
+ * Licensed under the terms of any of the following licenses at your
+ * choice:
+ *
+ *  - GNU General Public License Version 2 or later (the "GPL")
+ *    http://www.gnu.org/licenses/gpl.html
+ *
+ *  - GNU Lesser General Public License Version 2.1 or later (the "LGPL")
+ *    http://www.gnu.org/licenses/lgpl.html
+ *
+ *  - Mozilla Public License Version 1.1 or later (the "MPL")
+ *    http://www.mozilla.org/MPL/MPL-1.1.html
+ *
+ * == END LICENSE ==
+ *
+ * This is the integration file for ASP.
+ *
+ * It defines the FCKeditor class that can be used to create editor
+ * instances in ASP pages on server side.
+-->
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Condux</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, maximum-scale=1, minimum-scale=1">
+    <link rel="icon" type="image/png" href="https://condux.com.br/site/img/favicon.png">
+
+    <link rel="stylesheet" href="https://condux.com.br/site/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/flexslider.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/jquery.selectBoxIt.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/entypo.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/rs-plugin/css/settings.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/jquery.fancybox.css">
+        <link rel="stylesheet" href="https://condux.com.br/site/css/style.css">
+
+    <script src="https://condux.com.br/site/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+	
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-208708250-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-208708250-1');
+</script>
+
+</head>
+<body>
+<div class="main-wrap">
+<header class="navbar navbar-inverse">
+    <div class="normal-color with-slider">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <div id="control-logo-header">
+                                <a class="navbar-brand" href="/home/"><img src="https://condux.com.br/site/content/logo.png" alt="img"/></a>
+                            </div>
+                    </div>
+                </div>
+                <div class="col-sm-9">
+                    <div class="navbar-collapse collapse navbar-right">
+                        <ul class="nav navbar-nav social-nav">
+                            <li><a href="https://twitter.com/conduxBRA" target="_blank"><i class="entyp-twitter-1"></i></a></li>
+                            <li><a href="https://www.facebook.com/ConduxConsultoria" target="_blank"><i class="entyp-facebook-1"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="inverse-color">
+        <div class="container">
+            <div class="row">
+                <div class="navbar-collapse collapse">
+                    <div class="col-sm-12">
+                        <ul class="nav navbar-nav main-nav">
+                            <li id="control-logo-menu">
+                                <a class="navbar-brand" href="/home/"><img src="https://condux.com.br/site/content/logo.png" alt="img"/></a>
+                            </li>
+                            <li>
+                                <a href="/home/">Início</a>
+                            </li>
+                            <li>
+                                <a href="/empresa/">A empresa</a>
+                            </li>
+                            <li>
+                                <a href="/servicos/">Serviços</a>
+                            </li>
+                            <li>
+                                <a href="#">Utilitários</a>
+                                <ul>	
+                                	<li><a href="http://www.condux.com.br/ler.asp?id=1" target="_blank">Tabelas Práticas</a></li>
+                                    <li><a href="http://www.condux.com.br/ler.asp?id=2" target="_blank">Agenda de Obrigações</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="/noticias/">Notícias</a>
+                            </li>
+                            <li>
+                                <a href="/login/">Área do Cliente</a>
+                            </li>
+                            <li>
+                                <a href="/downloads/">Downloads</a>
+                            </li>
+                            <li>
+                                <a href="/contato/">Contato</a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</header>
+
+
+<section class="line top">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="col-md-4 col-sm-5 col-xs-12">
+                    <div class="title">
+                        Notícias
+                        <ul class="current-page">
+                            <li><a href="/home/">Página principal</a></li>
+                            <li>></li>
+                            <li><a href="/noticias/">Noticias</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="posts">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <article class="post ">
+                            <h3 class="uppercase">CPF</h3><h4>Receita libera inscrição sem custo e por e-mail</h4>
+                            <ul class="info">
+                                <li>
+                                    <div class="text date">terça-feira, 14 de abril de 2020</div>
+                                </li>
+                                <li>
+                                    <i class="entyp-pencil-1"></i>
+                                    <div class="text">Publicado por CONDUX</div>
+                                </li>
+                                
+                                <li>
+                                    <a href="/noticias/?cat=Receita+Federal">
+                                        <i class="entyp-list-1"></i>
+                                        <div class="text">Receita Federal</div>
+                                    </a>
+                                </li>
+                                
+                            </ul>
+                            
+                            <figure>
+                                <img src="https://condux.com.br/site/imgnews/278c.jpg" alt="CPF"/>
+                                
+                            </figure>
+                            
+                            <div class="content">
+                            
+                                <p>
+                                    <strong>
+                                       Medida da Receita permite que pessoas possam solicitar inscrição do CPF por e-mail e sem custo.
+                                    </strong>
+                                </p>
+                            <div itemprop="articleBody" style="outline: none; margin: 0px; padding: 0px; color: rgb(64, 64, 64); font-family: Barlow; font-size: 18px; letter-spacing: 0.18px;">
+<p style="outline: none; margin: 0px; padding: 0px; text-align: justify;"><span style="font-family: Arial;">A Receita Federal anunciou nesta segunda-feira, 13, que passar&aacute; a receber novas inscri&ccedil;&otilde;es para o Cadastro de Pessoas F&iacute;sicas, o CPF, por e-mail.</span></p>
+<p style="outline: none; margin: 0px; padding: 15px 0px 0px; text-align: justify;"><span style="font-family: Arial;">A medida entra em vigor nesta ter&ccedil;a, 14, e a emiss&atilde;o ser&aacute; gratuita. Antes, a requisi&ccedil;&atilde;o do CPF custava R$ 7.</span></p>
+<h3 style="outline: none; margin: 30px 0px 0px; padding: 0px 0px 8px; font-size: 22px; font-weight: normal; display: inline-block; position: relative; line-height: 23px; border-bottom: 3px dotted rgb(238, 238, 238);"><span style="font-family: Arial;"><strong style="outline: none;">Aux&iacute;lio emergencial</strong></span></h3>
+<p style="outline: none; margin: 0px; padding: 15px 0px 0px; text-align: justify;"><span style="font-family: Arial;">A inten&ccedil;&atilde;o, segundo a Receita, &eacute; facilitar o acesso de fam&iacute;lias ao aux&iacute;lio-emergencial de R$ 600, que ser&aacute; pago durante tr&ecirc;s meses em meio &agrave; pandemia do novo&nbsp;coronav&iacute;rus.</span></p>
+<p style="outline: none; margin: 0px; padding: 15px 0px 0px; text-align: justify;"><span style="font-family: Arial;">Al&eacute;m de profissionais informais e microempreendedores, o benef&iacute;cio tamb&eacute;m vale para m&atilde;es e pais chefes de fam&iacute;lia que se encaixem nos crit&eacute;rios da lei. Para isso, no entanto, &eacute; preciso cadastrar o CPF de todos os filhos, de qualquer idade.</span></p>
+<p style="outline: none; margin: 0px; padding: 15px 0px 0px; text-align: justify;"><span style="font-family: Arial;">Por isso, desde a semana passada, fam&iacute;lias com crian&ccedil;as pequenas e sem o documento vinham enfrentando dificuldade para concluir o cadastro. At&eacute; agora, a inscri&ccedil;&atilde;o virtual para um CPF s&oacute; valia para pessoas entre 16 e 25 anos com t&iacute;tulo de eleitor regular.</span></p>
+<h3 style="outline: none; margin: 30px 0px 0px; padding: 0px 0px 8px; font-size: 22px; font-weight: normal; display: inline-block; position: relative; line-height: 23px; border-bottom: 3px dotted rgb(238, 238, 238);"><span style="font-family: Arial;"><strong style="outline: none;">CPF</strong></span></h3>
+<p style="outline: none; margin: 0px; padding: 15px 0px 0px; text-align: justify;"><span style="font-family: Arial;">A inscri&ccedil;&atilde;o poder&aacute; ser feita por e-mail, mas o endere&ccedil;o para envio depende do estado onde a fam&iacute;lia reside. Confira a lista:</span></p>
+<p style="outline: none; margin: 0px; padding: 15px 0px 0px; text-align: justify;"><span style="font-family: Arial;">- Distrito Federal, Goi&aacute;s, Mato Grosso, Mato Grosso do Sul e Tocantins:&nbsp;</span><a href="mailto:atendimentorfb.01@rfb.gov.br" style="outline: none; text-decoration-line: none; color: rgb(52, 142, 157); font-weight: 700; background: none; line-height: inherit; padding: inherit; float: inherit; transition: all 0.5s ease 0s;"><span style="font-family: Arial;">atendimentorfb.01@rfb.gov.br</span></a><span style="font-family: Arial;"><br style="outline: none;" />
+- Acre, Amazonas, Amap&aacute;, Par&aacute;, Rond&ocirc;nia e Roraima:&nbsp;</span><a href="mailto:atendimentorfb.02@rfb.gov.br" style="outline: none; text-decoration-line: none; color: rgb(52, 142, 157); font-weight: 700; background: none; line-height: inherit; padding: inherit; float: inherit; transition: all 0.5s ease 0s;"><span style="font-family: Arial;">atendimentorfb.02@rfb.gov.br</span></a><span style="font-family: Arial;"><br style="outline: none;" />
+- Cear&aacute;, Maranh&atilde;o e Piau&iacute;:&nbsp;</span><a href="mailto:atendimentorfb.03@rfb.gov.br" style="outline: none; text-decoration-line: none; color: rgb(52, 142, 157); font-weight: 700; background: none; line-height: inherit; padding: inherit; float: inherit; transition: all 0.5s ease 0s;"><span style="font-family: Arial;">atendimentorfb.03@rfb.gov.br</span></a><span style="font-family: Arial;"><br style="outline: none;" />
+- Alagoas, Para&iacute;ba, Pernambuco e Rio Grande do Norte:&nbsp;</span><a href="mailto:atendimentorfb.04@rfb.gov.br" style="outline: none; text-decoration-line: none; color: rgb(52, 142, 157); font-weight: 700; background: none; line-height: inherit; padding: inherit; float: inherit; transition: all 0.5s ease 0s;"><span style="font-family: Arial;">atendimentorfb.04@rfb.gov.br</span></a><span style="font-family: Arial;"><br style="outline: none;" />
+- Bahia e Sergipe:&nbsp;</span><a href="mailto:atendimentorfb.05@rfb.gov.br" style="outline: none; text-decoration-line: none; color: rgb(52, 142, 157); font-weight: 700; background: none; line-height: inherit; padding: inherit; float: inherit; transition: all 0.5s ease 0s;"><span style="font-family: Arial;">atendimentorfb.05@rfb.gov.br</span></a><span style="font-family: Arial;"><br style="outline: none;" />
+- Minas Gerais:&nbsp;</span><a href="mailto:atendimentorfb.06@rfb.gov.br" style="outline: none; text-decoration-line: none; color: rgb(52, 142, 157); font-weight: 700; background: none; line-height: inherit; padding: inherit; float: inherit; transition: all 0.5s ease 0s;"><span style="font-family: Arial;">atendimentorfb.06@rfb.gov.br</span></a><span style="font-family: Arial;"><br style="outline: none;" />
+- Esp&iacute;rito Santo e Rio de Janeiro:&nbsp;</span><a href="mailto:atendimentorfb.07@rfb.gov.br" style="outline: none; text-decoration-line: none; color: rgb(52, 142, 157); font-weight: 700; background: none; line-height: inherit; padding: inherit; float: inherit; transition: all 0.5s ease 0s;"><span style="font-family: Arial;">atendimentorfb.07@rfb.gov.br</span></a><span style="font-family: Arial;"><br style="outline: none;" />
+- S&atilde;o Paulo:&nbsp;</span><a href="mailto:atendimentorfb.08@rfb.gov.br" style="outline: none; text-decoration-line: none; color: rgb(52, 142, 157); font-weight: 700; background: none; line-height: inherit; padding: inherit; float: inherit; transition: all 0.5s ease 0s;"><span style="font-family: Arial;">atendimentorfb.08@rfb.gov.br</span></a><span style="font-family: Arial;"><br style="outline: none;" />
+- Paran&aacute; e Santa Catarina:&nbsp;</span><a href="mailto:atendimentorfb.09@rfb.gov.br" style="outline: none; text-decoration-line: none; color: rgb(52, 142, 157); font-weight: 700; background: none; line-height: inherit; padding: inherit; float: inherit; transition: all 0.5s ease 0s;"><span style="font-family: Arial;">atendimentorfb.09@rfb.gov.br</span></a><span style="font-family: Arial;"><br style="outline: none;" />
+- Rio Grande do Sul:&nbsp;</span><a href="mailto:atendimentorfb.10@rfb.gov.br" style="outline: none; text-decoration-line: none; color: rgb(52, 142, 157); font-weight: 700; background: none; line-height: inherit; padding: inherit; float: inherit; transition: all 0.5s ease 0s;"><span style="font-family: Arial;">atendimentorfb.10@rfb.gov.br</span></a></p>
+<h3 style="outline: none; margin: 30px 0px 0px; padding: 0px 0px 8px; font-size: 22px; font-weight: normal; display: inline-block; position: relative; line-height: 23px; border-bottom: 3px dotted rgb(238, 238, 238);"><span style="font-family: Arial;"><strong style="outline: none;">Inscri&ccedil;&atilde;o CPF</strong></span></h3>
+<p style="outline: none; margin: 0px; padding: 15px 0px 0px; text-align: justify;"><span style="font-family: Arial;">Para a inscri&ccedil;&atilde;o, ser&aacute; preciso enviar os seguintes documentos:</span></p>
+<p style="outline: none; margin: 0px; padding: 15px 0px 0px; text-align: justify;"><span style="font-family: Arial;">- Identifica&ccedil;&atilde;o; Para maiores de 16 anos, &eacute; preciso enviar o RG atualizado, ou o RG desatualizado com a certid&atilde;o de casamento ou nascimento. Para menores de 16 anos, &eacute; preciso anexar o RG ou certid&atilde;o de nascimento do menor, al&eacute;m do RG do respons&aacute;vel.<br style="outline: none;" />
+Quando for o caso, o tutor ou guardi&atilde;o judicial precisa anexar o termo de tutela ou guarda.<br style="outline: none;" />
+Em todos esses casos, tamb&eacute;m ser&atilde;o aceitos carteira de trabalho&nbsp;</span><a class="classtermo" href="https://www.contabeis.com.br/trabalhista/carteira_de_trabalho/" style="outline: none; color: rgb(52, 142, 157); text-decoration-line: none; font-weight: 700; background: none; line-height: inherit; padding: inherit; float: inherit; transition: all 0.5s ease 0s;"><span style="font-family: Arial;">,</span></a><span style="font-family: Arial;">&nbsp;passaporte ou qualquer outro documento oficial em que constem naturalidade, filia&ccedil;&atilde;o e data de nascimento.<br style="outline: none;" />
+- T&iacute;tulo de eleitor (facultativo);<br style="outline: none;" />
+- Comprovante de endere&ccedil;o;.<br style="outline: none;" />
+- Foto de rosto (selfie) do novo inscrito ou do respons&aacute;vel. Nessa foto, a pessoa deve aparecer segurando o documento de identidade aberto (frente e verso). A imagem precisa registrar a fotografia e o n&uacute;mero do documento, de forma leg&iacute;vel. A medida tem o objetivo de evitar fraudes. </span></p>
+<p style="outline: none; margin: 0px; padding: 15px 0px 0px; text-align: justify;"><span style="font-family: Arial;">Fonte: Site Cont&aacute;beis</span></p>
+<div>&nbsp;</div>
+</div>
+<p>&nbsp;</p>
+                            </div>
+                            
+                        </article>
+                        
+                        
+                    </div>
+                    <div class="col-md-1 hidden-sm"></div>
+                    <div class="col-md-2 col-sm-3">
+                        <aside class="widgets">
+                    <div class="widget list">
+                        <h3>Categorias</h3>
+                        <ul>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Calend%E1rio+de+Obriga%E7%F5es">Calendário de Obrigações</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Direitos+do+Consumidor">Direitos do Consumidor</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Empresarial">Empresarial</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=IRPF">IRPF</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Legisla%E7%E3o">Legislação</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Legisla%E7%E3o+Trabalhista">Legislação Trabalhista</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Previd%EAncia">Previdência</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Receita+Federal">Receita Federal</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Recursos+Humanos">Recursos Humanos</a>
+                            </li>
+ 
+                        </ul>
+                    </div>
+                    <div class="widget list">
+                        <h3>Por mês</h3>
+                        <ul>
+                        
+                            <li>
+                                <a href="/noticias/?mes=8&ano=2021">Agosto&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2021">Maio&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2021">Abril&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2021">Março&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=7&ano=2020">Julho&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2020">Maio&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2020">Abril&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2020">Março&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=10&ano=2019">Outubro&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2019">Setembro&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2019">Março&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2019">Janeiro&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=12&ano=2018">Dezembro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2018">Setembro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=6&ano=2018">Junho&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2018">Abril&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2018">Março&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=2&ano=2018">Fevereiro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2018">Janeiro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=12&ano=2017">Dezembro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=11&ano=2017">Novembro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=10&ano=2017">Outubro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2017">Setembro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=7&ano=2017">Julho&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=6&ano=2017">Junho&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2017">Maio&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2017">Abril&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2017">Março&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=2&ano=2017">Fevereiro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2017">Janeiro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=12&ano=2016">Dezembro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=11&ano=2016">Novembro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=10&ano=2016">Outubro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2016">Setembro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=8&ano=2016">Agosto&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=7&ano=2016">Julho&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=6&ano=2016">Junho&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2016">Maio&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2016">Abril&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2016">Março&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=2&ano=2016">Fevereiro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2016">Janeiro&nbsp;2016</a>
+                            </li>
+ 
+                        </ul>
+                    </div>
+
+                </aside>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+<footer class="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="footer-widget">
+                    <h2>Últimas Notícias</h2>
+                    <div class="widget-content latest-post">
+                        <ul>
+                        
+                            <li>
+                                <h3><a href="?a=noticia&id=295">BEM</a></h3>
+                                <p></p>
+                                <span class="date">26/08/2021</span>
+                            </li>
+                        
+                            <li>
+                                <h3><a href="?a=noticia&id=294">HOME OFFICE PARA GESTANTES</a></h3>
+                                <p></p>
+                                <span class="date">13/05/2021</span>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="footer-widget">
+                    <h2>Contato</h2>
+                    <div class="widget-content">
+                        <address>
+                            Rua Rep&uacute;blica do L&iacute;bano, 61 gr. 1102 <br/>
+                            Centro &ndash; Rio de Janeiro RJ
+                        </address>
+                        <address>
+                            <strong>Telefone: +55 (21) 3203-4348</strong> <br/>
+                            <strong>E-mail: condux@condux.com.br</strong>
+                        </address>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="footer-widget">
+                    <h2>Links</h2>
+                    <ul>    
+                        <li><a href="/home/">Home Page</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/empresa/">A Empresa</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="http://www.condux.com.br/ler.asp?id=1" target="_blank">Tabelas Pr&aacute;ticas</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="http://www.condux.com.br/ler.asp?id=2" target="_blank">Agenda de Obriga&ccedil;&otilde;es</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/noticias/">Not&iacute;cias</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/downloads/">Downloads</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/contato/">Contato</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="footer-info text-right">
+                    <ul class="footer-social">
+                        <li><a href="https://twitter.com/conduxBRA" target="_blank"><i class="entyp-twitter-1"></i></a></li>
+                        <li><a href="https://www.facebook.com/ConduxConsultoria" target="_blank"><i class="entyp-facebook-1"></i></a></li>
+                    </ul>
+                    <p>Copyright &copy; 2016</p>
+                    <p>CONDUX - Todos os Direitos Reservados</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="https://condux.com.br/site/js/vendor/jquery-1.11.0.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery-ui-1.10.3.custom.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.mousewheel.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.mCustomScrollbar.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.selectBoxIt.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.raty.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.flexslider.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.isotope.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.fancybox.pack.js"></script>
+<script src="https://condux.com.br/site/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
+<script src="https://condux.com.br/site/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/bootstrap.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/simpleInstagramFancybox.js"></script>
+<script src="https://condux.com.br/site/js/vendor/fitvids.js"></script>
+<script src="https://condux.com.br/site/js/main.js"></script>
+<script>
+    $('#revolution-shortcode').revolution({
+        delay : 90000,
+        hideThumbs:10,
+        navigationVOffset : -30,
+        navigationType : "none",
+        navigationStyle : "round-old",
+		startheight:700
+    });
+</script>
+<style>
+/*#revolution-shortcode { height: 700px !important }
+#revolution-shortcode > ul > li:nth-child(1) > div.slotholder { height: 700px !important }*/
+</style>
+</body>
+</html>

@@ -1,0 +1,593 @@
+<!--
+ * FCKeditor - The text editor for Internet - http://www.fckeditor.net
+ * Copyright (C) 2003-2009 Frederico Caldeira Knabben
+ *
+ * == BEGIN LICENSE ==
+ *
+ * Licensed under the terms of any of the following licenses at your
+ * choice:
+ *
+ *  - GNU General Public License Version 2 or later (the "GPL")
+ *    http://www.gnu.org/licenses/gpl.html
+ *
+ *  - GNU Lesser General Public License Version 2.1 or later (the "LGPL")
+ *    http://www.gnu.org/licenses/lgpl.html
+ *
+ *  - Mozilla Public License Version 1.1 or later (the "MPL")
+ *    http://www.mozilla.org/MPL/MPL-1.1.html
+ *
+ * == END LICENSE ==
+ *
+ * This is the integration file for ASP.
+ *
+ * It defines the FCKeditor class that can be used to create editor
+ * instances in ASP pages on server side.
+-->
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Condux</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, maximum-scale=1, minimum-scale=1">
+    <link rel="icon" type="image/png" href="https://condux.com.br/site/img/favicon.png">
+
+    <link rel="stylesheet" href="https://condux.com.br/site/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/flexslider.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/jquery.selectBoxIt.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/entypo.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/rs-plugin/css/settings.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/jquery.fancybox.css">
+        <link rel="stylesheet" href="https://condux.com.br/site/css/style.css">
+
+    <script src="https://condux.com.br/site/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+	
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-208708250-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-208708250-1');
+</script>
+
+</head>
+<body>
+<div class="main-wrap">
+<header class="navbar navbar-inverse">
+    <div class="normal-color with-slider">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <div id="control-logo-header">
+                                <a class="navbar-brand" href="/home/"><img src="https://condux.com.br/site/content/logo.png" alt="img"/></a>
+                            </div>
+                    </div>
+                </div>
+                <div class="col-sm-9">
+                    <div class="navbar-collapse collapse navbar-right">
+                        <ul class="nav navbar-nav social-nav">
+                            <li><a href="https://twitter.com/conduxBRA" target="_blank"><i class="entyp-twitter-1"></i></a></li>
+                            <li><a href="https://www.facebook.com/ConduxConsultoria" target="_blank"><i class="entyp-facebook-1"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="inverse-color">
+        <div class="container">
+            <div class="row">
+                <div class="navbar-collapse collapse">
+                    <div class="col-sm-12">
+                        <ul class="nav navbar-nav main-nav">
+                            <li id="control-logo-menu">
+                                <a class="navbar-brand" href="/home/"><img src="https://condux.com.br/site/content/logo.png" alt="img"/></a>
+                            </li>
+                            <li>
+                                <a href="/home/">Início</a>
+                            </li>
+                            <li>
+                                <a href="/empresa/">A empresa</a>
+                            </li>
+                            <li>
+                                <a href="/servicos/">Serviços</a>
+                            </li>
+                            <li>
+                                <a href="#">Utilitários</a>
+                                <ul>	
+                                	<li><a href="http://www.condux.com.br/ler.asp?id=1" target="_blank">Tabelas Práticas</a></li>
+                                    <li><a href="http://www.condux.com.br/ler.asp?id=2" target="_blank">Agenda de Obrigações</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="/noticias/">Notícias</a>
+                            </li>
+                            <li>
+                                <a href="/login/">Área do Cliente</a>
+                            </li>
+                            <li>
+                                <a href="/downloads/">Downloads</a>
+                            </li>
+                            <li>
+                                <a href="/contato/">Contato</a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</header>
+
+
+<section class="line top">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="col-md-4 col-sm-5 col-xs-12">
+                    <div class="title">
+                        Notícias
+                        <ul class="current-page">
+                            <li><a href="/home/">Página principal</a></li>
+                            <li>></li>
+                            <li><a href="/noticias/">Noticias</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="posts">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <article class="post ">
+                            <h3 class="uppercase">PRORROGAÇÕES</h3><h4>9 tributos, impostos e contribuições que foram alterados devido a COVID-19</h4>
+                            <ul class="info">
+                                <li>
+                                    <div class="text date">quarta-feira, 15 de abril de 2020</div>
+                                </li>
+                                <li>
+                                    <i class="entyp-pencil-1"></i>
+                                    <div class="text">Publicado por CONDUX</div>
+                                </li>
+                                
+                                <li>
+                                    <a href="/noticias/?cat=Receita+Federal">
+                                        <i class="entyp-list-1"></i>
+                                        <div class="text">Receita Federal</div>
+                                    </a>
+                                </li>
+                                
+                            </ul>
+                            
+                            <figure>
+                                <img src="https://condux.com.br/site/imgnews/281c.jpg" alt="PRORROGAÇÕES"/>
+                                
+                            </figure>
+                            
+                            <div class="content">
+                            
+                                <p>
+                                    <strong>
+                                       O Governo anunciou nove medidas para prorrogar ou reduzir tributos como forma de amenizar a crise do Coronavírus; Veja quais são.
+                                    </strong>
+                                </p>
+                            <div itemprop="articleBody" style="outline: none; margin: 0px; padding: 0px; color: rgb(64, 64, 64); font-family: Barlow; font-size: 18px; letter-spacing: 0.18px;">
+<p style="outline: none; margin: 0px; padding: 0px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 16px;"><span style="font-family: Arial;">O governo anunciou uma s&eacute;rie de medidas tribut&aacute;rias que prorroga ou reduz o valor a ser recolhido aos cofres p&uacute;blicos e tamb&eacute;m os prazos de pagamento ou entrega de declara&ccedil;&otilde;es.</span></span></span></p>
+<p style="outline: none; margin: 0px; padding: 15px 0px 0px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 16px;"><span style="font-family: Arial;">As mudan&ccedil;as atingem e beneficiam n&atilde;o s&oacute; empresas, mas tamb&eacute;m pequenos neg&oacute;cios, microempreendedores individuais, empregadores de trabalhadores dom&eacute;sticos e pessoas f&iacute;sicas.</span></span></span></p>
+<p style="outline: none; margin: 0px; padding: 15px 0px 0px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 16px;"><span style="font-family: Arial;">O conjunto de medidas inclui:</span></span></span></p>
+<p style="outline: none; margin: 0px; padding: 15px 0px 0px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 16px;"><span style="font-family: Arial;">- Prorroga&ccedil;&atilde;o do pagamento dos tributos do Simples Nacional<br style="outline: none;" />
+- Adiamento e parcelamento do&nbsp;</span></span></span><span style="color: rgb(0, 0, 0);"><a class="classtermo" href="https://www.contabeis.com.br/trabalhista/fgts/" style="outline: none; color: rgb(52, 142, 157); text-decoration-line: none; font-weight: 700; background: none; line-height: inherit; padding: inherit; float: inherit; transition: all 0.5s ease 0s;"><span style="font-size: 16px;"><span style="font-family: Arial;">FGTS</span></span></a><span style="font-size: 16px;"><span style="font-family: Arial;">&nbsp;dos trabalhadores<br style="outline: none;" />
+- Adiamento do&nbsp;</span></span></span><span style="color: rgb(0, 0, 0);"><a class="classtermo" href="https://www.contabeis.com.br/tributario/pis/" style="outline: none; color: rgb(52, 142, 157); text-decoration-line: none; font-weight: 700; background: none; line-height: inherit; padding: inherit; float: inherit; transition: all 0.5s ease 0s;"><span style="font-size: 16px;"><span style="font-family: Arial;">PIS,</span></span></a><span style="font-size: 16px;"><span style="font-family: Arial;">&nbsp;Pasep,&nbsp;</span></span></span><span style="color: rgb(0, 0, 0);"><a class="classtermo" href="https://www.contabeis.com.br/tributario/cofins/" style="outline: none; color: rgb(52, 142, 157); text-decoration-line: none; font-weight: 700; background: none; line-height: inherit; padding: inherit; float: inherit; transition: all 0.5s ease 0s;"><span style="font-size: 16px;"><span style="font-family: Arial;">Cofins</span></span></a><span style="font-size: 16px;"><span style="font-family: Arial;">&nbsp;e da contribui&ccedil;&atilde;o previdenci&aacute;ria<br style="outline: none;" />
+- Redu&ccedil;&atilde;o da contribui&ccedil;&atilde;o obrigat&oacute;ria ao Sistema S<br style="outline: none;" />
+- Redu&ccedil;&atilde;o do IOF sobre opera&ccedil;&otilde;es de cr&eacute;dito<br style="outline: none;" />
+- Prorroga&ccedil;&atilde;o do prazo de entrega da declara&ccedil;&atilde;o do Imposto de Renda<br style="outline: none;" />
+- Redu&ccedil;&atilde;o de IPI de produtos m&eacute;dico-hospitalares<br style="outline: none;" />
+- Redu&ccedil;&atilde;o de imposto de importa&ccedil;&atilde;o de produtos m&eacute;dico-hospitalares<br style="outline: none;" />
+- Prorroga&ccedil;&atilde;o da validade de certid&otilde;es de d&eacute;bitos e cr&eacute;ditos tribut&aacute;rios</span></span></span></p>
+<p style="outline: none; margin: 0px; padding: 15px 0px 0px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 16px;"><span style="font-family: Arial;"><strong style="outline: none;">1. Simples Nacional</strong></span></span></span></p>
+<p style="outline: none; margin: 0px; padding: 15px 0px 0px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 16px;"><span style="font-family: Arial;">O governo prorrogou, por 6 meses, o prazo para pagamento dos tributos federais no &acirc;mbito do&nbsp;</span></span></span><span style="color: rgb(0, 0, 0);"><a class="classtermo" href="https://www.contabeis.com.br/tributario/simples_nacional/" style="outline: none; color: rgb(52, 142, 157); text-decoration-line: none; font-weight: 700; background: none; line-height: inherit; padding: inherit; float: inherit; transition: all 0.5s ease 0s;"><span style="font-size: 16px;"><span style="font-family: Arial;">Simples Nacional,</span></span></a><span style="font-size: 16px;"><span style="font-family: Arial;">&nbsp;relativos aos per&iacute;odos de mar&ccedil;o, abril e maio. A medida vale para pequenas empresas e tamb&eacute;m se aplica aos Microempreendedores Individuais (MEIs). Assim:</span></span></span></p>
+<p style="outline: none; margin: 0px; padding: 15px 0px 0px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 16px;"><span style="font-family: Arial;">- a apura&ccedil;&atilde;o mar&ccedil;o, que seria paga em 20 de abril, fica com vencimento para 20 de outubro;<br style="outline: none;" />
+- a apura&ccedil;&atilde;o de abril, que seria paga em 20 de maio, fica com vencimento para 20 de novembro;<br style="outline: none;" />
+- a apura&ccedil;&atilde;o de maio, que seria paga em 22 de junho, fica com vencimento para 21 de dezembro.</span></span></span></p>
+<p style="outline: none; margin: 0px; padding: 15px 0px 0px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 16px;"><span style="font-family: Arial;">J&aacute; os tributos estaduais e municipais&nbsp;</span></span></span><span style="color: rgb(0, 0, 0);"><a class="classtermo" href="https://www.contabeis.com.br/tributario/icms/" style="outline: none; color: rgb(52, 142, 157); text-decoration-line: none; font-weight: 700; background: none; line-height: inherit; padding: inherit; float: inherit; transition: all 0.5s ease 0s;"><span style="font-size: 16px;"><span style="font-family: Arial;">(ICMS</span></span></a><span style="font-size: 16px;"><span style="font-family: Arial;">&nbsp;e ISS) do Simples foram prorrogados por 90 dias, ficando assim:</span></span></span></p>
+<p style="outline: none; margin: 0px; padding: 15px 0px 0px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 16px;"><span style="font-family: Arial;">- a apura&ccedil;&atilde;o mar&ccedil;o, que seria paga em 20 de abril, fica com vencimento para 20 de julho;<br style="outline: none;" />
+- a apura&ccedil;&atilde;o de abril, que seria paga em 20 de maio, fica com vencimento para 20 de agosto;<br style="outline: none;" />
+- a apura&ccedil;&atilde;o de maio, que seria paga em 22 de junho, fica com vencimento para 21 de setembro.</span></span></span></p>
+<p style="outline: none; margin: 0px; padding: 15px 0px 0px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 16px;"><span style="font-family: Arial;">Foi prorrogado tamb&eacute;m o prazo de apresenta&ccedil;&atilde;o da Declara&ccedil;&atilde;o de Informa&ccedil;&otilde;es Socioecon&ocirc;micas e Fiscais (Defis) para as empresas do&nbsp;</span></span></span><span style="color: rgb(0, 0, 0);"><a class="classtermo" href="https://www.contabeis.com.br/tributario/simples_nacional/" style="outline: none; color: rgb(52, 142, 157); text-decoration-line: none; font-weight: 700; background: none; line-height: inherit; padding: inherit; float: inherit; transition: all 0.5s ease 0s;"><span style="font-size: 16px;"><span style="font-family: Arial;">Simples Nacional</span></span></a><span style="font-size: 16px;"><span style="font-family: Arial;">&nbsp;e da Declara&ccedil;&atilde;o Anual Simplificada para o Microempreendedor Individual (DASN-Simei), referentes ao ano calend&aacute;rio de 2019. O prazo agora se estender&aacute; at&eacute; o dia 30 de junho.</span></span></span></p>
+<p style="outline: none; margin: 0px; padding: 15px 0px 0px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 16px;"><span style="font-family: Arial;"><strong style="outline: none;">2. FGTS</strong></span></span></span></p>
+<p style="outline: none; margin: 0px; padding: 15px 0px 0px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 16px;"><span style="font-family: Arial;">Foi autorizado o adiamento e pagamento parcelado do dep&oacute;sito do Fundo de Garantia por Tempo de Servi&ccedil;o&nbsp;</span></span></span><span style="color: rgb(0, 0, 0);"><a class="classtermo" href="https://www.contabeis.com.br/trabalhista/fgts/" style="outline: none; color: rgb(52, 142, 157); text-decoration-line: none; font-weight: 700; background: none; line-height: inherit; padding: inherit; float: inherit; transition: all 0.5s ease 0s;"><span style="font-size: 16px;"><span style="font-family: Arial;">(FGTS)</span></span></a><span style="font-size: 16px;"><span style="font-family: Arial;">&nbsp;dos trabalhadores. O pagamento poder&aacute; ser feito s&oacute; a partir de julho, em 6 parcelas fixas.</span></span></span></p>
+<p style="outline: none; margin: 0px; padding: 15px 0px 0px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 16px;"><span style="font-family: Arial;">Todos os empregadores, inclusive o empregador de trabalhador dom&eacute;stico, poder&atilde;o se beneficiar da medida. Funcionar&aacute; assim:</span></span></span></p>
+<p style="outline: none; margin: 0px; padding: 15px 0px 0px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 16px;"><span style="font-family: Arial;">- fica suspensa a obrigatoriedade do recolhimento referente aos per&iacute;odos de mar&ccedil;o, abril e maio, com vencimento em abril, maio e junho;</span></span></span></p>
+<p style="outline: none; margin: 0px; padding: 15px 0px 0px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 16px;"><span style="font-family: Arial;">Para ter direito ao benef&iacute;cio, o empregador &eacute; obrigado a declarar as informa&ccedil;&otilde;es no&nbsp;</span></span></span><span style="color: rgb(0, 0, 0);"><a class="classtermo" href="https://www.contabeis.com.br/trabalhista/esocial/" style="outline: none; color: rgb(52, 142, 157); text-decoration-line: none; font-weight: 700; background: none; line-height: inherit; padding: inherit; float: inherit; transition: all 0.5s ease 0s;"><span style="font-size: 16px;"><span style="font-family: Arial;">eSocial</span></span></a><span style="font-size: 16px;"><span style="font-family: Arial;">&nbsp;at&eacute; o dia 7 de cada m&ecirc;s e a emitir a guia de recolhimento do Documento de Arrecada&ccedil;&atilde;o (DAE);</span></span></span></p>
+<p style="outline: none; margin: 0px; padding: 15px 0px 0px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 16px;"><span style="font-family: Arial;">- o recolhimento do&nbsp;</span></span></span><span style="color: rgb(0, 0, 0);"><a class="classtermo" href="https://www.contabeis.com.br/trabalhista/fgts/" style="outline: none; color: rgb(52, 142, 157); text-decoration-line: none; font-weight: 700; background: none; line-height: inherit; padding: inherit; float: inherit; transition: all 0.5s ease 0s;"><span style="font-size: 16px;"><span style="font-family: Arial;">FGTS</span></span></a><span style="font-size: 16px;"><span style="font-family: Arial;">&nbsp;poder&aacute; ser feito em 6 parcelas fixas com vencimento no dia 7 de cada m&ecirc;s, com in&iacute;cio em julho e fim em dezembro.</span></span></span></p>
+<p style="outline: none; margin: 0px; padding: 15px 0px 0px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 16px;"><span style="font-family: Arial;"><strong style="outline: none;">3.&nbsp;</strong></span></span></span><strong style="outline: none;"><span style="color: rgb(0, 0, 0);"><a class="classtermo" href="https://www.contabeis.com.br/tributario/pis/" style="outline: none; color: rgb(52, 142, 157); text-decoration-line: none; background: none; line-height: inherit; padding: inherit; float: inherit; transition: all 0.5s ease 0s;"><span style="font-size: 16px;"><span style="font-family: Arial;">PIS,</span></span></a><span style="font-size: 16px;"><span style="font-family: Arial;">&nbsp;Pasep,&nbsp;</span></span></span></strong><span style="color: rgb(0, 0, 0);"><strong style="outline: none;"><a class="classtermo" href="https://www.contabeis.com.br/tributario/cofins/" style="outline: none; color: rgb(52, 142, 157); text-decoration-line: none; background: none; line-height: inherit; padding: inherit; float: inherit; transition: all 0.5s ease 0s;"><span style="font-size: 16px;"><span style="font-family: Arial;">Cofins</span></span></a></strong><span style="font-size: 16px;"><span style="font-family: Arial;"><strong style="outline: none;">&nbsp;e da contribui&ccedil;&atilde;o previdenci&aacute;ria</strong></span></span></span></p>
+<p style="outline: none; margin: 0px; padding: 15px 0px 0px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 16px;"><span style="font-family: Arial;">O governo adiou o pagamento do&nbsp;</span></span></span><span style="color: rgb(0, 0, 0);"><a class="classtermo" href="https://www.contabeis.com.br/tributario/pis/" style="outline: none; color: rgb(52, 142, 157); text-decoration-line: none; font-weight: 700; background: none; line-height: inherit; padding: inherit; float: inherit; transition: all 0.5s ease 0s;"><span style="font-size: 16px;"><span style="font-family: Arial;">PIS,</span></span></a><span style="font-size: 16px;"><span style="font-family: Arial;">&nbsp;Pasep,&nbsp;</span></span></span><span style="color: rgb(0, 0, 0);"><a class="classtermo" href="https://www.contabeis.com.br/tributario/cofins/" style="outline: none; color: rgb(52, 142, 157); text-decoration-line: none; font-weight: 700; background: none; line-height: inherit; padding: inherit; float: inherit; transition: all 0.5s ease 0s;"><span style="font-size: 16px;"><span style="font-family: Arial;">Cofins</span></span></a><span style="font-size: 16px;"><span style="font-family: Arial;">&nbsp;e tamb&eacute;m da contribui&ccedil;&atilde;o previdenci&aacute;ria patronal de empresas e empregadores de trabalhadores dom&eacute;sticos. O vencimento de abril e maio, relativo &agrave;s compet&ecirc;ncias de mar&ccedil;o e abril, passou para agosto e outubro.</span></span></span></p>
+<p style="outline: none; margin: 0px; padding: 15px 0px 0px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 16px;"><span style="font-family: Arial;">O governo estima que s&atilde;o R$ 80 bilh&otilde;es que ficar&atilde;o no caixa dessas empresas com esta posterga&ccedil;&atilde;o.</span></span></span></p>
+<p style="outline: none; margin: 0px; padding: 15px 0px 0px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 16px;"><span style="font-family: Arial;"><strong style="outline: none;">4. Sistema S</strong></span></span></span></p>
+<p style="outline: none; margin: 0px; padding: 15px 0px 0px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 16px;"><span style="font-family: Arial;">As contribui&ccedil;&otilde;es obrigat&oacute;rias das empresas ao Sistema S ser&atilde;o reduzidas em 50% por 3 meses. A estimativa &eacute; que as empresas deixem de pagar R$ 2,2 bilh&otilde;es no per&iacute;odo. Ser&atilde;o afetadas pela medida as seguintes institui&ccedil;&otilde;es: Senai, Sesi, Sesc, Sest, Sescoop, Senac, Senat e Senar.</span></span></span></p>
+<p style="outline: none; margin: 0px; padding: 15px 0px 0px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 16px;"><span style="font-family: Arial;">Os percentuais de contribui&ccedil;&atilde;o, que at&eacute; ent&atilde;o variavam de 0,2% a 2,5%, passam a ser os seguintes:</span></span></span></p>
+<p style="outline: none; margin: 0px; padding: 15px 0px 0px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 16px;"><span style="font-family: Arial;">Sescoop: 1,25%<br style="outline: none;" />
+Sesi, Sesc e Sest: 0,75%<br style="outline: none;" />
+Senac, Senai e Senat: 0,5%<br style="outline: none;" />
+Senar: 1,25% a contribui&ccedil;&atilde;o incidente sobre a folha de pagamento; 0,125% da contribui&ccedil;&atilde;o incidente sobre a receita da comercializa&ccedil;&atilde;o da produ&ccedil;&atilde;o rural devida pelo produtor rural pessoa jur&iacute;dica e pela agroind&uacute;stria; e 0,1% da contribui&ccedil;&atilde;o incidente sobre a receita da comercializa&ccedil;&atilde;o da produ&ccedil;&atilde;o rural devida pelo produtor rural pessoa f&iacute;sica e segurado especial&nbsp;</span></span></span></p>
+<p style="outline: none; margin: 0px; padding: 15px 0px 0px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 16px;"><span style="font-family: Arial;"><strong style="outline: none;">5. IOF</strong></span></span></span></p>
+<p style="outline: none; margin: 0px; padding: 15px 0px 0px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 16px;"><span style="font-family: Arial;">O governo tamb&eacute;m reduziu a zero &ndash; por 90 dias &ndash; a cobran&ccedil;a do Imposto sobre Opera&ccedil;&otilde;es Financeiras (IOF) sobre opera&ccedil;&otilde;es de cr&eacute;dito. A al&iacute;quota era de 3% ao ano.</span></span></span></p>
+<p style="outline: none; margin: 0px; padding: 15px 0px 0px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 16px;"><span style="font-family: Arial;">O benef&iacute;cio vale para as opera&ccedil;&otilde;es de cr&eacute;dito contratadas entre 3 de abril e 3 de julho. Com a medida, o governo deixar&aacute; de arrecadar R$ 7 milh&otilde;es, segundo estimativa da Receita Federal.</span></span></span></p>
+<p style="outline: none; margin: 0px; padding: 15px 0px 0px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 16px;"><span style="font-family: Arial;"><strong style="outline: none;">6. Imposto de Renda</strong></span></span></span></p>
+<p style="outline: none; margin: 0px; padding: 15px 0px 0px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 16px;"><span style="font-family: Arial;">Em raz&atilde;o da pandemia, a Receita Federal prorrogou o prazo de entrega da declara&ccedil;&atilde;o de&nbsp;</span></span></span><span style="color: rgb(0, 0, 0);"><a class="classtermo" href="https://www.contabeis.com.br/tributario/imposto_de_renda/" style="outline: none; color: rgb(52, 142, 157); text-decoration-line: none; font-weight: 700; background: none; line-height: inherit; padding: inherit; float: inherit; transition: all 0.5s ease 0s;"><span style="font-size: 16px;"><span style="font-family: Arial;">Imposto de Renda</span></span></a><span style="font-size: 16px;"><span style="font-family: Arial;">&nbsp;da Pessoa F&iacute;sica&nbsp;</span></span></span><span style="color: rgb(0, 0, 0);"><a class="classtermo" href="https://www.contabeis.com.br/tributario/irpf/" style="outline: none; color: rgb(52, 142, 157); text-decoration-line: none; font-weight: 700; background: none; line-height: inherit; padding: inherit; float: inherit; transition: all 0.5s ease 0s;"><span style="font-size: 16px;"><span style="font-family: Arial;">(IRPF)</span></span></a><span style="font-size: 16px;"><span style="font-family: Arial;">&nbsp;por 60 dias. O prazo final passou de 30 de abril para 30 de junho.</span></span></span></p>
+<p style="outline: none; margin: 0px; padding: 15px 0px 0px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 16px;"><span style="font-family: Arial;">Tamb&eacute;m foi prorrogado para o dia 30 de junho o prazo para a apresenta&ccedil;&atilde;o da Declara&ccedil;&atilde;o Final de Esp&oacute;lio e da Declara&ccedil;&atilde;o de Sa&iacute;da Definitiva do Pa&iacute;s para estrangeiros ou brasileiros que moram no exterior.</span></span></span></p>
+<p style="outline: none; margin: 0px; padding: 15px 0px 0px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 16px;"><span style="font-family: Arial;"><strong style="outline: none;">7. IPI</strong></span></span></span></p>
+<p style="outline: none; margin: 0px; padding: 15px 0px 0px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 16px;"><span style="font-family: Arial;">Decreto do governo federal zerou at&eacute; 30 de setembro as al&iacute;quotas do Imposto sobre Produtos Industrializados (IPI) de artigos de laborat&oacute;rio ou de farm&aacute;cia, luvas, term&ocirc;metros cl&iacute;nicos e outros produtos utilizados na preven&ccedil;&atilde;o e tratamento do&nbsp;</span></span></span><a class="classtermo" href="https://www.contabeis.com.br/economia/coronavirus/" style="outline: none; color: rgb(52, 142, 157); text-decoration-line: none; font-weight: 700; background: none; line-height: inherit; padding: inherit; float: inherit; transition: all 0.5s ease 0s;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 16px;"><span style="font-family: Arial;">coronav&iacute;rus.</span></span></span></a></p>
+<p style="outline: none; margin: 0px; padding: 15px 0px 0px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 16px;"><span style="font-family: Arial;">A ren&uacute;ncia fiscal decorrente desta medida &eacute; estimada em R$ 26,6 milh&otilde;es.</span></span></span></p>
+<p style="outline: none; margin: 0px; padding: 15px 0px 0px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 16px;"><span style="font-family: Arial;"><strong style="outline: none;">8. Imposto de importa&ccedil;&atilde;o</strong></span></span></span></p>
+<p style="outline: none; margin: 0px; padding: 15px 0px 0px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 16px;"><span style="font-family: Arial;">O governo federal zerou tarifas de importa&ccedil;&atilde;o de produtos farmac&ecirc;uticos e equipamentos m&eacute;dico-hospitalares utilizados no combate ao novo&nbsp;</span></span></span><span style="color: rgb(0, 0, 0);"><a class="classtermo" href="https://www.contabeis.com.br/economia/coronavirus/" style="outline: none; color: rgb(52, 142, 157); text-decoration-line: none; font-weight: 700; background: none; line-height: inherit; padding: inherit; float: inherit; transition: all 0.5s ease 0s;"><span style="font-size: 16px;"><span style="font-family: Arial;">coronav&iacute;rus.</span></span></a><span style="font-size: 16px;"><span style="font-family: Arial;">&nbsp;O per&iacute;odo com al&iacute;quotas zeradas vai at&eacute; 30 de setembro.</span></span></span></p>
+<p style="outline: none; margin: 0px; padding: 15px 0px 0px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 16px;"><span style="font-family: Arial;">Conforme o Minist&eacute;rio da Economia, 61 itens ficam com a tarifa de importa&ccedil;&atilde;o zerada.</span></span></span></p>
+<p style="outline: none; margin: 0px; padding: 15px 0px 0px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 16px;"><span style="font-family: Arial;">A lista abrange itens que tinham tarifas de importa&ccedil;&atilde;o de at&eacute; 35%, incluindo kits para testes de&nbsp;</span></span></span><span style="color: rgb(0, 0, 0);"><a class="classtermo" href="https://www.contabeis.com.br/economia/coronavirus/" style="outline: none; color: rgb(52, 142, 157); text-decoration-line: none; font-weight: 700; background: none; line-height: inherit; padding: inherit; float: inherit; transition: all 0.5s ease 0s;"><span style="font-size: 16px;"><span style="font-family: Arial;">coronav&iacute;rus,</span></span></a><span style="font-size: 16px;"><span style="font-family: Arial;">&nbsp;luvas de prote&ccedil;&atilde;o, term&ocirc;metros e agulhas, equipamentos de intuba&ccedil;&atilde;o e aparelhos de respira&ccedil;&atilde;o artificial (ventiladores).</span></span></span></p>
+<p style="outline: none; margin: 0px; padding: 15px 0px 0px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 16px;"><span style="font-family: Arial;"><strong style="outline: none;">9. Certid&otilde;es de d&eacute;bitos e cr&eacute;ditos tribut&aacute;rios</strong></span></span></span></p>
+<p style="outline: none; margin: 0px; padding: 15px 0px 0px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 16px;"><span style="font-family: Arial;">Foi anunciada tamb&eacute;m a prorroga&ccedil;&atilde;o por 90 dias do prazo de validade das Certid&otilde;es Negativas de D&eacute;bitos (CND) e das Certid&otilde;es Positivas com Efeitos de Negativas (CNEND) j&aacute; emitidas, ambas relativas &agrave; Cr&eacute;ditos Tribut&aacute;rios federais e &agrave; Divida Ativa da Uni&atilde;o.</span></span></span></p>
+<p style="outline: none; margin: 0px; padding: 15px 0px 0px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 16px;"><span style="font-family: Arial;">Essas duas certid&otilde;es s&atilde;o necess&aacute;rias para que as pessoas jur&iacute;dicas exer&ccedil;am uma s&eacute;rie de atividades, como, por exemplo, participar de licita&ccedil;&otilde;es ou obter financiamentos. </span></span></span></p>
+<p style="outline: none; margin: 0px; padding: 15px 0px 0px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 16px;"><span style="font-family: Arial;">Fonte: Site Cont&aacute;beis</span></span></span></p>
+<p style="outline: none; margin: 0px; padding: 15px 0px 0px; text-align: justify;"><span style="color: rgb(0, 0, 0);"><br />
+</span></p>
+<div>&nbsp;</div>
+</div>
+<p>&nbsp;</p>
+                            </div>
+                            
+                        </article>
+                        
+                        
+                    </div>
+                    <div class="col-md-1 hidden-sm"></div>
+                    <div class="col-md-2 col-sm-3">
+                        <aside class="widgets">
+                    <div class="widget list">
+                        <h3>Categorias</h3>
+                        <ul>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Calend%E1rio+de+Obriga%E7%F5es">Calendário de Obrigações</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Direitos+do+Consumidor">Direitos do Consumidor</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Empresarial">Empresarial</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=IRPF">IRPF</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Legisla%E7%E3o">Legislação</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Legisla%E7%E3o+Trabalhista">Legislação Trabalhista</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Previd%EAncia">Previdência</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Receita+Federal">Receita Federal</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Recursos+Humanos">Recursos Humanos</a>
+                            </li>
+ 
+                        </ul>
+                    </div>
+                    <div class="widget list">
+                        <h3>Por mês</h3>
+                        <ul>
+                        
+                            <li>
+                                <a href="/noticias/?mes=8&ano=2021">Agosto&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2021">Maio&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2021">Abril&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2021">Março&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=7&ano=2020">Julho&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2020">Maio&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2020">Abril&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2020">Março&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=10&ano=2019">Outubro&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2019">Setembro&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2019">Março&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2019">Janeiro&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=12&ano=2018">Dezembro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2018">Setembro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=6&ano=2018">Junho&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2018">Abril&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2018">Março&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=2&ano=2018">Fevereiro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2018">Janeiro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=12&ano=2017">Dezembro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=11&ano=2017">Novembro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=10&ano=2017">Outubro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2017">Setembro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=7&ano=2017">Julho&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=6&ano=2017">Junho&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2017">Maio&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2017">Abril&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2017">Março&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=2&ano=2017">Fevereiro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2017">Janeiro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=12&ano=2016">Dezembro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=11&ano=2016">Novembro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=10&ano=2016">Outubro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2016">Setembro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=8&ano=2016">Agosto&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=7&ano=2016">Julho&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=6&ano=2016">Junho&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2016">Maio&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2016">Abril&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2016">Março&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=2&ano=2016">Fevereiro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2016">Janeiro&nbsp;2016</a>
+                            </li>
+ 
+                        </ul>
+                    </div>
+
+                </aside>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+<footer class="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="footer-widget">
+                    <h2>Últimas Notícias</h2>
+                    <div class="widget-content latest-post">
+                        <ul>
+                        
+                            <li>
+                                <h3><a href="?a=noticia&id=295">BEM</a></h3>
+                                <p></p>
+                                <span class="date">26/08/2021</span>
+                            </li>
+                        
+                            <li>
+                                <h3><a href="?a=noticia&id=294">HOME OFFICE PARA GESTANTES</a></h3>
+                                <p></p>
+                                <span class="date">13/05/2021</span>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="footer-widget">
+                    <h2>Contato</h2>
+                    <div class="widget-content">
+                        <address>
+                            Rua Rep&uacute;blica do L&iacute;bano, 61 gr. 1102 <br/>
+                            Centro &ndash; Rio de Janeiro RJ
+                        </address>
+                        <address>
+                            <strong>Telefone: +55 (21) 3203-4348</strong> <br/>
+                            <strong>E-mail: condux@condux.com.br</strong>
+                        </address>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="footer-widget">
+                    <h2>Links</h2>
+                    <ul>    
+                        <li><a href="/home/">Home Page</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/empresa/">A Empresa</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="http://www.condux.com.br/ler.asp?id=1" target="_blank">Tabelas Pr&aacute;ticas</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="http://www.condux.com.br/ler.asp?id=2" target="_blank">Agenda de Obriga&ccedil;&otilde;es</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/noticias/">Not&iacute;cias</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/downloads/">Downloads</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/contato/">Contato</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="footer-info text-right">
+                    <ul class="footer-social">
+                        <li><a href="https://twitter.com/conduxBRA" target="_blank"><i class="entyp-twitter-1"></i></a></li>
+                        <li><a href="https://www.facebook.com/ConduxConsultoria" target="_blank"><i class="entyp-facebook-1"></i></a></li>
+                    </ul>
+                    <p>Copyright &copy; 2016</p>
+                    <p>CONDUX - Todos os Direitos Reservados</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="https://condux.com.br/site/js/vendor/jquery-1.11.0.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery-ui-1.10.3.custom.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.mousewheel.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.mCustomScrollbar.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.selectBoxIt.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.raty.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.flexslider.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.isotope.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.fancybox.pack.js"></script>
+<script src="https://condux.com.br/site/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
+<script src="https://condux.com.br/site/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/bootstrap.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/simpleInstagramFancybox.js"></script>
+<script src="https://condux.com.br/site/js/vendor/fitvids.js"></script>
+<script src="https://condux.com.br/site/js/main.js"></script>
+<script>
+    $('#revolution-shortcode').revolution({
+        delay : 90000,
+        hideThumbs:10,
+        navigationVOffset : -30,
+        navigationType : "none",
+        navigationStyle : "round-old",
+		startheight:700
+    });
+</script>
+<style>
+/*#revolution-shortcode { height: 700px !important }
+#revolution-shortcode > ul > li:nth-child(1) > div.slotholder { height: 700px !important }*/
+</style>
+</body>
+</html>

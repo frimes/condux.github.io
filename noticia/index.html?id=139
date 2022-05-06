@@ -1,0 +1,554 @@
+<!--
+ * FCKeditor - The text editor for Internet - http://www.fckeditor.net
+ * Copyright (C) 2003-2009 Frederico Caldeira Knabben
+ *
+ * == BEGIN LICENSE ==
+ *
+ * Licensed under the terms of any of the following licenses at your
+ * choice:
+ *
+ *  - GNU General Public License Version 2 or later (the "GPL")
+ *    http://www.gnu.org/licenses/gpl.html
+ *
+ *  - GNU Lesser General Public License Version 2.1 or later (the "LGPL")
+ *    http://www.gnu.org/licenses/lgpl.html
+ *
+ *  - Mozilla Public License Version 1.1 or later (the "MPL")
+ *    http://www.mozilla.org/MPL/MPL-1.1.html
+ *
+ * == END LICENSE ==
+ *
+ * This is the integration file for ASP.
+ *
+ * It defines the FCKeditor class that can be used to create editor
+ * instances in ASP pages on server side.
+-->
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Condux</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, maximum-scale=1, minimum-scale=1">
+    <link rel="icon" type="image/png" href="https://condux.com.br/site/img/favicon.png">
+
+    <link rel="stylesheet" href="https://condux.com.br/site/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/flexslider.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/jquery.selectBoxIt.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/entypo.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/rs-plugin/css/settings.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/jquery.fancybox.css">
+        <link rel="stylesheet" href="https://condux.com.br/site/css/style.css">
+
+    <script src="https://condux.com.br/site/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+	
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-208708250-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-208708250-1');
+</script>
+
+</head>
+<body>
+<div class="main-wrap">
+<header class="navbar navbar-inverse">
+    <div class="normal-color with-slider">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <div id="control-logo-header">
+                                <a class="navbar-brand" href="/home/"><img src="https://condux.com.br/site/content/logo.png" alt="img"/></a>
+                            </div>
+                    </div>
+                </div>
+                <div class="col-sm-9">
+                    <div class="navbar-collapse collapse navbar-right">
+                        <ul class="nav navbar-nav social-nav">
+                            <li><a href="https://twitter.com/conduxBRA" target="_blank"><i class="entyp-twitter-1"></i></a></li>
+                            <li><a href="https://www.facebook.com/ConduxConsultoria" target="_blank"><i class="entyp-facebook-1"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="inverse-color">
+        <div class="container">
+            <div class="row">
+                <div class="navbar-collapse collapse">
+                    <div class="col-sm-12">
+                        <ul class="nav navbar-nav main-nav">
+                            <li id="control-logo-menu">
+                                <a class="navbar-brand" href="/home/"><img src="https://condux.com.br/site/content/logo.png" alt="img"/></a>
+                            </li>
+                            <li>
+                                <a href="/home/">Início</a>
+                            </li>
+                            <li>
+                                <a href="/empresa/">A empresa</a>
+                            </li>
+                            <li>
+                                <a href="/servicos/">Serviços</a>
+                            </li>
+                            <li>
+                                <a href="#">Utilitários</a>
+                                <ul>	
+                                	<li><a href="http://www.condux.com.br/ler.asp?id=1" target="_blank">Tabelas Práticas</a></li>
+                                    <li><a href="http://www.condux.com.br/ler.asp?id=2" target="_blank">Agenda de Obrigações</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="/noticias/">Notícias</a>
+                            </li>
+                            <li>
+                                <a href="/login/">Área do Cliente</a>
+                            </li>
+                            <li>
+                                <a href="/downloads/">Downloads</a>
+                            </li>
+                            <li>
+                                <a href="/contato/">Contato</a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</header>
+
+
+<section class="line top">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="col-md-4 col-sm-5 col-xs-12">
+                    <div class="title">
+                        Notícias
+                        <ul class="current-page">
+                            <li><a href="/home/">Página principal</a></li>
+                            <li>></li>
+                            <li><a href="/noticias/">Noticias</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="posts">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <article class="post ">
+                            <h3 class="uppercase">OS 7 ERROS MAIS COMUNS AO PREENCHER A DECLARAÇÃO DO IR</h3><h4>Veja os deslizes mais comuns e evite-os.</h4>
+                            <ul class="info">
+                                <li>
+                                    <div class="text date">quarta-feira, 9 de março de 2016</div>
+                                </li>
+                                <li>
+                                    <i class="entyp-pencil-1"></i>
+                                    <div class="text">Publicado por CONDUX</div>
+                                </li>
+                                
+                                <li>
+                                    <a href="/noticias/?cat=IRPF">
+                                        <i class="entyp-list-1"></i>
+                                        <div class="text">IRPF</div>
+                                    </a>
+                                </li>
+                                
+                            </ul>
+                            
+                            <figure>
+                                <img src="https://condux.com.br/site/imgnews/139c.jpg" alt="OS 7 ERROS MAIS COMUNS AO PREENCHER A DECLARAÇÃO DO IR"/>
+                                
+                            </figure>
+                            
+                            <div class="content">
+                            <p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px;">&nbsp;<span style="box-sizing: border-box; font-weight: 700; color: rgb(32, 32, 32);">1 - ERRO NA DIGITA&Ccedil;&Atilde;O DE VALORES</span></p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px;">Um dos erros mais cometidos, principalmente para aquelas pessoas que usam programas ou aplicativos em ingl&ecirc;s e est&atilde;o habituadas a usar o ponto para separar a quantia inteira dos centavos.</p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px;">Se digitarmos o ponto no lugar da v&iacute;rgula para inserir os centavos no programa do Imposto de Renda da Pessoa F&iacute;sica (IRPF), o valor ser&aacute; multiplicado por 100 e a Receita Federal, quando efetuar o cruzamento das informa&ccedil;&otilde;es, encontrar&aacute; diverg&ecirc;ncia de valores e colocar&aacute; a declara&ccedil;&atilde;o em procedimento de malha fina.</p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px;"><span style="box-sizing: border-box; font-weight: 700; color: rgb(32, 32, 32);">2- FALTA DE INFORMA&Ccedil;&Atilde;O DE RENDIMENTOS</span></p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px;">Esta &eacute; outra ocorr&ecirc;ncia bastante comum para quem tem mais de uma fonte de rendimentos ou sacou valores do seu plano de previd&ecirc;ncia privada.</p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px;">Quem tem uma &uacute;nica fonte de renda, que &eacute; a maioria dos contribuintes, n&atilde;o comete esse erro. Por&eacute;m, imagine um m&eacute;dico que d&aacute; plant&atilde;o em v&aacute;rios hospitais. Se ele n&atilde;o tiver um controle rigoroso de todos os plant&otilde;es que trabalhou durante o ano, a possibilidade de que algum desses hospitais fique de fora da declara&ccedil;&atilde;o &eacute; bastante grande.</p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px;">O mesmo vale para quem tem uma &uacute;nica fonte de renda, como o trabalhador assalariado que, num determinado m&ecirc;s do ano, precisou tirar uma parte do dinheiro que estava guardando num plano de previd&ecirc;ncia privada para se socorrer numa emerg&ecirc;ncia financeira.</p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px;">Esse valor que sacou &eacute; rendimento tribut&aacute;vel e dever&aacute; ser informado como tal na declara&ccedil;&atilde;o do IR. Esses dois casos s&atilde;o mais exemplos que fazem a declara&ccedil;&atilde;o cair em procedimento de malha fina.</p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px;"><span style="box-sizing: border-box; font-weight: 700; color: rgb(32, 32, 32);">3 - DEIXAR DE SEPARAR AS DESPESAS COMUNS POR DEPENDENTE</span></p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px;">Os rendimentos quanto &agrave;s despesas que devem ser declaradas ter&atilde;o os seus valores informados separadamente para cada dependente.</p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px;">Vamos pegar, por exemplo, um plano de assist&ecirc;ncia m&eacute;dica de um contribuinte que pague mensalmente esse plano para ele, sua esposa e seus dois filhos.</p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px;">Vamos tamb&eacute;m considerar que a esposa e os filhos sejam seus dependentes na declara&ccedil;&atilde;o de imposto de renda. Como esse contribuinte &eacute; o titular do plano, ele acha normal informar o valor total pago com as mensalidades apenas em seu nome.</p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px;">E isso levar&aacute; a Receita Federal a anular essa despesa, pois a operadora do plano de sa&uacute;de &eacute; obrigada a informar os valores recebidos individualmente por participante do plano para a Receita Federal.</p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px;">Para que isso n&atilde;o aconte&ccedil;a, &eacute; necess&aacute;rio que o contribuinte pe&ccedil;a &agrave; operadora do plano os valores individuais pagos por participante, caso essa j&aacute; n&atilde;o o tenha fornecido dessa forma.</p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px;"><span style="box-sizing: border-box; font-weight: 700; color: rgb(32, 32, 32);">4- DEIXAR DE INFORMAR RENDIMENTOS DO DEPENDENTE</span></p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px;">Outra ocorr&ecirc;ncia frequente &eacute; a omiss&atilde;o de renda de dependente. Um pai ou m&atilde;e que tenha um filho como dependente na sua declara&ccedil;&atilde;o de IR, dificilmente esquece de lan&ccedil;ar as despesas dedut&iacute;veis que teve com esse filho. Por&eacute;m, se esse filho j&aacute; trabalha e, por estar em in&iacute;cio de carreira, seu sal&aacute;rio &eacute; muito baixo, acha que n&atilde;o precisa informar o rendimento do filho, porque est&aacute; abaixo do valor m&iacute;nimo que deve ser declarado.</p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px;">Esse valor m&iacute;nimo s&oacute; vale para quem tem uma &uacute;nica fonte de renda, pois, quando somamos os rendimentos, o valor m&iacute;nimo ser&aacute; ultrapassado e sua informa&ccedil;&atilde;o se torna obrigat&oacute;ria.</p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px;"><span style="box-sizing: border-box; font-weight: 700; color: rgb(32, 32, 32);">5- APROVEITAR COMO DEDUT&Iacute;VEL AS DOA&Ccedil;&Otilde;ES EFETUADAS A ENTIDADES BENEFICENTES</span></p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px;">Somente s&atilde;o dedut&iacute;veis do imposto de renda as doa&ccedil;&otilde;es efetuadas diretamente aos fundos controlados pelos Conselhos Municipais, Estaduais e Nacional dos Direitos da Crian&ccedil;a e do Adolescente e, a partir de 2011, do Idoso tamb&eacute;m.</p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px;"><span style="box-sizing: border-box; font-weight: 700; color: rgb(32, 32, 32);">6- DEIXAR DE INFORMAR RENDIMENTOS DE PENS&Atilde;O ALIMENT&Iacute;CIA</span></p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px;">Isso &eacute; mais comum do que imaginamos, principalmente para &agrave;quelas pessoas rec&eacute;m-separadas, que eram dependentes do ex-c&ocirc;njuge na declara&ccedil;&atilde;o de imposto de renda e que come&ccedil;aram a receber pens&atilde;o aliment&iacute;cia.</p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px;">Como esse rendimento &eacute; originado de parte do rendimento de outra pessoa f&iacute;sica e seu recebimento ocorre sem maiores formalidades no dia-a-dia, &eacute; comum a pessoa que recebeu n&atilde;o entregar sua declara&ccedil;&atilde;o &agrave; Receita Federal achando que est&aacute; isenta.</p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px;">Outro equ&iacute;voco &eacute; preencher e entregar a declara&ccedil;&atilde;o sem lan&ccedil;ar esses valores por se tratar de rendimentos dos filhos menores que ficaram sob sua guarda. Por se tratar de despesa dedut&iacute;vel para quem paga, esses valores s&atilde;o um dos primeiros que s&atilde;o cruzados pela Receita Federal.</p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px;"><span style="box-sizing: border-box; font-weight: 700; color: rgb(32, 32, 32);">7- DECLARAR DESPESA M&Eacute;DICA DE PARENTE QUE N&Atilde;O &Eacute; DEPENDENTE</span></p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px;">Muitas vezes o contribuinte arca com despesas m&eacute;dicas dos pais, de filhos com mais de 24 anos, de irm&atilde;os ou de qualquer outro parente que n&atilde;o seja seu dependente.</p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px;">O contribuinte acha que, como ele pagou por esses gastos, pode lan&ccedil;ar esses valores na sua declara&ccedil;&atilde;o de IR. Nossa legisla&ccedil;&atilde;o s&oacute; permite deduzir as despesas do contribuinte com ele mesmo e com seus dependentes constantes na declara&ccedil;&atilde;o.</p>
+<p style="box-sizing: border-box; margin: 0px; padding-bottom: 20px; line-height: 21px; color: rgb(51, 51, 51); font-family: &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif; font-size: 14px;">Fonte: http://contadores.cnt.br/</p>
+<p>&nbsp;</p>
+                            </div>
+                            
+                        </article>
+                        
+                        
+                    </div>
+                    <div class="col-md-1 hidden-sm"></div>
+                    <div class="col-md-2 col-sm-3">
+                        <aside class="widgets">
+                    <div class="widget list">
+                        <h3>Categorias</h3>
+                        <ul>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Calend%E1rio+de+Obriga%E7%F5es">Calendário de Obrigações</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Direitos+do+Consumidor">Direitos do Consumidor</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Empresarial">Empresarial</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=IRPF">IRPF</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Legisla%E7%E3o">Legislação</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Legisla%E7%E3o+Trabalhista">Legislação Trabalhista</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Previd%EAncia">Previdência</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Receita+Federal">Receita Federal</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Recursos+Humanos">Recursos Humanos</a>
+                            </li>
+ 
+                        </ul>
+                    </div>
+                    <div class="widget list">
+                        <h3>Por mês</h3>
+                        <ul>
+                        
+                            <li>
+                                <a href="/noticias/?mes=8&ano=2021">Agosto&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2021">Maio&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2021">Abril&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2021">Março&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=7&ano=2020">Julho&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2020">Maio&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2020">Abril&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2020">Março&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=10&ano=2019">Outubro&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2019">Setembro&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2019">Março&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2019">Janeiro&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=12&ano=2018">Dezembro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2018">Setembro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=6&ano=2018">Junho&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2018">Abril&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2018">Março&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=2&ano=2018">Fevereiro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2018">Janeiro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=12&ano=2017">Dezembro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=11&ano=2017">Novembro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=10&ano=2017">Outubro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2017">Setembro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=7&ano=2017">Julho&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=6&ano=2017">Junho&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2017">Maio&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2017">Abril&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2017">Março&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=2&ano=2017">Fevereiro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2017">Janeiro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=12&ano=2016">Dezembro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=11&ano=2016">Novembro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=10&ano=2016">Outubro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2016">Setembro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=8&ano=2016">Agosto&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=7&ano=2016">Julho&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=6&ano=2016">Junho&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2016">Maio&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2016">Abril&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2016">Março&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=2&ano=2016">Fevereiro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2016">Janeiro&nbsp;2016</a>
+                            </li>
+ 
+                        </ul>
+                    </div>
+
+                </aside>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+<footer class="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="footer-widget">
+                    <h2>Últimas Notícias</h2>
+                    <div class="widget-content latest-post">
+                        <ul>
+                        
+                            <li>
+                                <h3><a href="?a=noticia&id=295">BEM</a></h3>
+                                <p></p>
+                                <span class="date">26/08/2021</span>
+                            </li>
+                        
+                            <li>
+                                <h3><a href="?a=noticia&id=294">HOME OFFICE PARA GESTANTES</a></h3>
+                                <p></p>
+                                <span class="date">13/05/2021</span>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="footer-widget">
+                    <h2>Contato</h2>
+                    <div class="widget-content">
+                        <address>
+                            Rua Rep&uacute;blica do L&iacute;bano, 61 gr. 1102 <br/>
+                            Centro &ndash; Rio de Janeiro RJ
+                        </address>
+                        <address>
+                            <strong>Telefone: +55 (21) 3203-4348</strong> <br/>
+                            <strong>E-mail: condux@condux.com.br</strong>
+                        </address>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="footer-widget">
+                    <h2>Links</h2>
+                    <ul>    
+                        <li><a href="/home/">Home Page</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/empresa/">A Empresa</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="http://www.condux.com.br/ler.asp?id=1" target="_blank">Tabelas Pr&aacute;ticas</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="http://www.condux.com.br/ler.asp?id=2" target="_blank">Agenda de Obriga&ccedil;&otilde;es</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/noticias/">Not&iacute;cias</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/downloads/">Downloads</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/contato/">Contato</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="footer-info text-right">
+                    <ul class="footer-social">
+                        <li><a href="https://twitter.com/conduxBRA" target="_blank"><i class="entyp-twitter-1"></i></a></li>
+                        <li><a href="https://www.facebook.com/ConduxConsultoria" target="_blank"><i class="entyp-facebook-1"></i></a></li>
+                    </ul>
+                    <p>Copyright &copy; 2016</p>
+                    <p>CONDUX - Todos os Direitos Reservados</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="https://condux.com.br/site/js/vendor/jquery-1.11.0.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery-ui-1.10.3.custom.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.mousewheel.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.mCustomScrollbar.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.selectBoxIt.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.raty.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.flexslider.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.isotope.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.fancybox.pack.js"></script>
+<script src="https://condux.com.br/site/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
+<script src="https://condux.com.br/site/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/bootstrap.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/simpleInstagramFancybox.js"></script>
+<script src="https://condux.com.br/site/js/vendor/fitvids.js"></script>
+<script src="https://condux.com.br/site/js/main.js"></script>
+<script>
+    $('#revolution-shortcode').revolution({
+        delay : 90000,
+        hideThumbs:10,
+        navigationVOffset : -30,
+        navigationType : "none",
+        navigationStyle : "round-old",
+		startheight:700
+    });
+</script>
+<style>
+/*#revolution-shortcode { height: 700px !important }
+#revolution-shortcode > ul > li:nth-child(1) > div.slotholder { height: 700px !important }*/
+</style>
+</body>
+</html>

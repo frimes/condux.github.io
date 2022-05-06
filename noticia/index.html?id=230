@@ -1,0 +1,816 @@
+<!--
+ * FCKeditor - The text editor for Internet - http://www.fckeditor.net
+ * Copyright (C) 2003-2009 Frederico Caldeira Knabben
+ *
+ * == BEGIN LICENSE ==
+ *
+ * Licensed under the terms of any of the following licenses at your
+ * choice:
+ *
+ *  - GNU General Public License Version 2 or later (the "GPL")
+ *    http://www.gnu.org/licenses/gpl.html
+ *
+ *  - GNU Lesser General Public License Version 2.1 or later (the "LGPL")
+ *    http://www.gnu.org/licenses/lgpl.html
+ *
+ *  - Mozilla Public License Version 1.1 or later (the "MPL")
+ *    http://www.mozilla.org/MPL/MPL-1.1.html
+ *
+ * == END LICENSE ==
+ *
+ * This is the integration file for ASP.
+ *
+ * It defines the FCKeditor class that can be used to create editor
+ * instances in ASP pages on server side.
+-->
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Condux</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, maximum-scale=1, minimum-scale=1">
+    <link rel="icon" type="image/png" href="https://condux.com.br/site/img/favicon.png">
+
+    <link rel="stylesheet" href="https://condux.com.br/site/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/flexslider.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/jquery.selectBoxIt.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/entypo.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/rs-plugin/css/settings.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/jquery.fancybox.css">
+        <link rel="stylesheet" href="https://condux.com.br/site/css/style.css">
+
+    <script src="https://condux.com.br/site/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+	
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-208708250-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-208708250-1');
+</script>
+
+</head>
+<body>
+<div class="main-wrap">
+<header class="navbar navbar-inverse">
+    <div class="normal-color with-slider">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <div id="control-logo-header">
+                                <a class="navbar-brand" href="/home/"><img src="https://condux.com.br/site/content/logo.png" alt="img"/></a>
+                            </div>
+                    </div>
+                </div>
+                <div class="col-sm-9">
+                    <div class="navbar-collapse collapse navbar-right">
+                        <ul class="nav navbar-nav social-nav">
+                            <li><a href="https://twitter.com/conduxBRA" target="_blank"><i class="entyp-twitter-1"></i></a></li>
+                            <li><a href="https://www.facebook.com/ConduxConsultoria" target="_blank"><i class="entyp-facebook-1"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="inverse-color">
+        <div class="container">
+            <div class="row">
+                <div class="navbar-collapse collapse">
+                    <div class="col-sm-12">
+                        <ul class="nav navbar-nav main-nav">
+                            <li id="control-logo-menu">
+                                <a class="navbar-brand" href="/home/"><img src="https://condux.com.br/site/content/logo.png" alt="img"/></a>
+                            </li>
+                            <li>
+                                <a href="/home/">Início</a>
+                            </li>
+                            <li>
+                                <a href="/empresa/">A empresa</a>
+                            </li>
+                            <li>
+                                <a href="/servicos/">Serviços</a>
+                            </li>
+                            <li>
+                                <a href="#">Utilitários</a>
+                                <ul>	
+                                	<li><a href="http://www.condux.com.br/ler.asp?id=1" target="_blank">Tabelas Práticas</a></li>
+                                    <li><a href="http://www.condux.com.br/ler.asp?id=2" target="_blank">Agenda de Obrigações</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="/noticias/">Notícias</a>
+                            </li>
+                            <li>
+                                <a href="/login/">Área do Cliente</a>
+                            </li>
+                            <li>
+                                <a href="/downloads/">Downloads</a>
+                            </li>
+                            <li>
+                                <a href="/contato/">Contato</a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</header>
+
+
+<section class="line top">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="col-md-4 col-sm-5 col-xs-12">
+                    <div class="title">
+                        Notícias
+                        <ul class="current-page">
+                            <li><a href="/home/">Página principal</a></li>
+                            <li>></li>
+                            <li><a href="/noticias/">Noticias</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="posts">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <article class="post ">
+                            <h3 class="uppercase">POR QUANTO TEMPO DEVO GUARDAR DOCUMENTOS?</h3><h4>Saiba dos prazos de validade!</h4>
+                            <ul class="info">
+                                <li>
+                                    <div class="text date">quarta-feira, 1 de novembro de 2017</div>
+                                </li>
+                                <li>
+                                    <i class="entyp-pencil-1"></i>
+                                    <div class="text">Publicado por CONDUX</div>
+                                </li>
+                                
+                                <li>
+                                    <a href="/noticias/?cat=Legisla%E7%E3o">
+                                        <i class="entyp-list-1"></i>
+                                        <div class="text">Legislação</div>
+                                    </a>
+                                </li>
+                                
+                            </ul>
+                            
+                            <figure>
+                                <img src="https://condux.com.br/site/imgnews/230c.jpg" alt="POR QUANTO TEMPO DEVO GUARDAR DOCUMENTOS?"/>
+                                
+                            </figure>
+                            
+                            <div class="content">
+                            
+                                <p>
+                                    <strong>
+                                       Saiba dos prazos de validade!
+                                    </strong>
+                                </p>
+                            <table xmlns="http://www.w3.org/1999/xhtml" cellspacing="0" cellpadding="0" dir="ltr" border="1" style="table-layout: fixed; font-size: 10pt; font-family: arial, sans, sans-serif; width: 0px; border-collapse: collapse; border: none;">
+    <colgroup><col width="160" /><col width="160" /><col width="150" /><col width="200" /></colgroup>
+    <tbody>
+        <tr style="height: 21px;">
+            <td rowspan="1" colspan="4" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;1. TABELA DE GUARDA DE DOCUMENTOS DE PESSOA F&Iacute;SICA - VIDA FINANCEIRA&quot;}" style="font-family: Arial; border: 1px solid rgb(0, 0, 0); overflow: hidden; padding: 2px 3px; vertical-align: top; font-weight: bold; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">1. TABELA DE GUARDA DE DOCUMENTOS DE PESSOA F&Iacute;SICA - VIDA FINANCEIRA</span></span></td>
+        </tr>
+        <tr style="height: 21px;">
+            <td rowspan="1" colspan="4" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;1.1 PAGAMENTO DE TRIBUTOS&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; font-weight: bold; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">1.1 PAGAMENTO DE TRIBUTOS</span></span></td>
+        </tr>
+        <tr style="height: 21px;">
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Documento&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; font-weight: bold; word-wrap: break-word; text-align: center;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Documento</span></span></td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Prazo de Guarda&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; font-weight: bold; word-wrap: break-word; text-align: center;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Prazo de Guarda</span></span></td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Prazo de Precau&ccedil;&atilde;o&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; font-weight: bold; word-wrap: break-word; text-align: center;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Prazo de Precau&ccedil;&atilde;o</span></span></td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Observa&ccedil;&otilde;es&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; font-weight: bold; word-wrap: break-word; text-align: center;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Observa&ccedil;&otilde;es</span></span></td>
+        </tr>
+        <tr style="height: 21px;">
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;1.1.1 Imposto de Renda de Pessoa F&iacute;sica (IRPF) e seu respectivo DARF&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">1.1.1 Imposto de Renda de Pessoa F&iacute;sica (<span style="font-weight: bold;">IRPF</span>) e seu respectivo DARF</span></span></td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;5 anos, contados a partir do exerc&iacute;cio seguinte &agrave;quele em que o lan&ccedil;amento poderia ter sido efetuado.&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-weight: bold;">5 anos</span>, contados a partir do exerc&iacute;cio seguinte &agrave;quele em que o lan&ccedil;amento poderia ter sido efetuado.</span></span></td>
+            <td style="border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top;">&nbsp;</td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Os comprovantes devem ser mantidos durante os 5 anos subsequentes ao da respectiva declara&ccedil;&atilde;o, ou seja, 6 anos (C&oacute;digo Tribut&aacute;rio Nacional, Lei 5.172/66, Art. 173, I). O mesmo prazo aplica-se aos comprovantes utilizados na Declara&ccedil;&atilde;o do Imposto de Renda&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Os comprovantes devem ser mantidos durante os 5 anos subsequentes ao da respectiva declara&ccedil;&atilde;o, ou seja, 6 anos&nbsp;<span style="font-weight: bold;">(C&oacute;digo Tribut&aacute;rio Nacional, Lei 5.172/66, Art. 173, I).</span>&nbsp;O mesmo prazo aplica-se aos comprovantes utilizados na Declara&ccedil;&atilde;o do Imposto de Renda</span></span></td>
+        </tr>
+        <tr style="height: 21px;">
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;1.1.2 Imposto Predial e Territorial Urbano (IPTU) e seu respectivo DARM&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">1.1.2 Imposto Predial e Territorial Urbano (<span style="font-weight: bold;">IPTU</span>) e seu respectivo DARM</span></span></td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;5 anos, contados a partir do exerc&iacute;cio seguinte &agrave;quele em que o lan&ccedil;amento poderia ter sido efetuado.&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-weight: bold;">5 anos</span>, contados a partir do exerc&iacute;cio seguinte &agrave;quele em que o lan&ccedil;amento poderia ter sido efetuado.</span></span></td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;10 anos&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">10 anos</span></span></td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Os comprovantes devem ser mantidos durante os 5 anos subsequentes ao da respectiva declara&ccedil;&atilde;o, ou seja, 6 anos (C&oacute;digo Tribut&aacute;rio Nacional, Lei 5.172/66, Art. 173, I). Depois deste prazo, a d&iacute;vida prescreve e a Prefeitura n&atilde;o pode mais cobr&aacute;-la, por&eacute;m, para efeito de comprova&ccedil;&atilde;o de prorpiedade, &eacute; necess&aacute;rio manter o comprovante por 10 anos.&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: bottom; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Os comprovantes devem ser mantidos durante os 5 anos subsequentes ao da respectiva declara&ccedil;&atilde;o, ou seja, 6 anos&nbsp;<span style="font-weight: bold;">(C&oacute;digo Tribut&aacute;rio Nacional, Lei 5.172/66, Art. 173, I).</span>Depois deste prazo, a d&iacute;vida prescreve e a Prefeitura n&atilde;o pode mais cobr&aacute;-la, por&eacute;m, para efeito de comprova&ccedil;&atilde;o de prorpiedade, &eacute; necess&aacute;rio manter o comprovante por 10 anos.</span></span></td>
+        </tr>
+        <tr style="height: 21px;">
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;1.1.3 Imposto sobre Propriedade de Ve&iacute;culos Automotores (IPVA)&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">1.1.3 Imposto sobre Propriedade de Ve&iacute;culos Automotores (<span style="font-weight: bold;">IPVA</span>)</span></span></td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;5 anos, contados a partir do exerc&iacute;cio seguinte &agrave;quele em que o lan&ccedil;amento poderia ter sido efetuado.&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-weight: bold;">5 anos</span>, contados a partir do exerc&iacute;cio seguinte &agrave;quele em que o lan&ccedil;amento poderia ter sido efetuado.</span></span></td>
+            <td style="border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top;">&nbsp;</td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Os comprovantes devem ser mantidos durante os 5 anos subsequentes ao da respectiva declara&ccedil;&atilde;o, ou seja, 6 anos (C&oacute;digo Tribut&aacute;rio Nacional, Lei 5.172/66, Art. 173, I). Na transfer&ecirc;ncia do ve&iacute;culo, o comprador dele solicitar os &uacute;ltimos quatro anos, para evitar fraudes, uma vez que o vendedor pode apresentar o &uacute;ltimo pagamento, sem que os anteriores estejam pagos.&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: bottom; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Os comprovantes devem ser mantidos durante os 5 anos subsequentes ao da respectiva declara&ccedil;&atilde;o, ou seja, 6 anos&nbsp;<span style="font-weight: bold;">(C&oacute;digo Tribut&aacute;rio Nacional, Lei 5.172/66, Art. 173, I).</span>&nbsp;Na transfer&ecirc;ncia do ve&iacute;culo, o comprador dele solicitar os &uacute;ltimos quatro anos, para evitar fraudes, uma vez que o vendedor pode apresentar o &uacute;ltimo pagamento, sem que os anteriores estejam pagos.</span></span></td>
+        </tr>
+        <tr style="height: 21px;">
+            <td rowspan="1" colspan="4" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;1.2 PAGAMENTO DE CONTAS DE CONSUMO (&Aacute;GUA, LUZ, TELEFONE)&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; font-weight: bold; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">1.2 PAGAMENTO DE CONTAS DE CONSUMO (&Aacute;GUA, LUZ, TELEFONE)</span></span></td>
+        </tr>
+        <tr style="height: 21px;">
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Documento&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; font-weight: bold; word-wrap: break-word; text-align: center;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Documento</span></span></td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Prazo de Guarda&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; font-weight: bold; word-wrap: break-word; text-align: center;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Prazo de Guarda</span></span></td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Prazo de Precau&ccedil;&atilde;o&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; font-weight: bold; word-wrap: break-word; text-align: center;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Prazo de Precau&ccedil;&atilde;o</span></span></td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Observa&ccedil;&otilde;es&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; font-weight: bold; word-wrap: break-word; text-align: center;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Observa&ccedil;&otilde;es</span></span></td>
+        </tr>
+        <tr style="height: 21px;">
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;1.2.1 Comprovante de pagamento de conta de &aacute;gua, luz, telefone (incluvise o celular)&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">1.2.1 Comprovante de pagamento de conta de&nbsp;<span style="font-weight: bold;">&aacute;gua, luz, telefone&nbsp;</span>(incluvise o celular)</span></span></td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;90 dias&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; font-weight: bold; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">90 dias</span></span></td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;2 anos&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">2 anos</span></span></td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Por sua natureza, o prazo &eacute; definido pelo C&oacute;digo de Defesa do Consumidor, Lei 8.078/90, Art. 26, II. Em caso de necessidade de questionamento de valores de tributos, seguir o C&oacute;digo Trabut&aacute;rio Nacional, Lei 5.172/66, Art. 173, I. Manter as contas tamb&eacute;m serve como garantia de manuten&ccedil;&atilde;o dos servi&ccedil;os. Caso o fornecedor alegue que uma conta antiga n&atilde;o tenha sido paga e o consumidor n&atilde;o disponha mais de comprovante, poder&aacute; pedir para que o fornecedor prove que a conta n&atilde;o foi paga. A comprova&ccedil;&atilde;o tamb&eacute;m pode ser feita por extrato banc&aacute;rio, em caso de d&eacute;bito autom&aacute;tico.&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Por sua natureza, o prazo &eacute; definido pelo C&oacute;digo de Defesa do Consumidor,&nbsp;<span style="font-weight: bold;">Lei 8.078/90, Art. 26, II</span>. Em caso de necessidade de questionamento de valores de tributos, seguir o C&oacute;digo Trabut&aacute;rio Nacional,&nbsp;<span style="font-weight: bold;">Lei 5.172/66, Art. 173, I.</span>&nbsp;Manter as contas tamb&eacute;m serve como garantia de manuten&ccedil;&atilde;o dos servi&ccedil;os. Caso o fornecedor alegue que uma conta antiga n&atilde;o tenha sido paga e o consumidor n&atilde;o disponha mais de comprovante, poder&aacute; pedir para que o fornecedor prove que a conta n&atilde;o foi paga. A comprova&ccedil;&atilde;o tamb&eacute;m pode ser feita por extrato banc&aacute;rio, em caso de d&eacute;bito autom&aacute;tico.</span></span></td>
+        </tr>
+        <tr style="height: 21px;">
+            <td rowspan="1" colspan="4" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;1.3 PAGAMENTO DE ALUGUEL E CONDOM&Iacute;NIO&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; font-weight: bold; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">1.3 PAGAMENTO DE ALUGUEL E CONDOM&Iacute;NIO</span></span></td>
+        </tr>
+        <tr style="height: 21px;">
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Documento&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; font-weight: bold; word-wrap: break-word; text-align: center;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Documento</span></span></td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Prazo de Guarda&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; font-weight: bold; word-wrap: break-word; text-align: center;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Prazo de Guarda</span></span></td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Prazo de Precau&ccedil;&atilde;o&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; font-weight: bold; word-wrap: break-word; text-align: center;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Prazo de Precau&ccedil;&atilde;o</span></span></td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Observa&ccedil;&otilde;es&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; font-weight: bold; word-wrap: break-word; text-align: center;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Observa&ccedil;&otilde;es</span></span></td>
+        </tr>
+        <tr style="height: 21px;">
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;1.3.1 Recibo de pagamento de Aluguel&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">1.3.1 Recibo de pagamento de&nbsp;<span style="font-weight: bold;">Aluguel</span></span></span></td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;3 anos&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; font-weight: bold; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">3 anos</span></span></td>
+            <td style="border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top;">&nbsp;</td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Ver C&oacute;digo Civil, Lei 10.406/02, Art. 206, &sect; 3&ordm;, I.&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: bottom; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Ver C&oacute;digo Civil,&nbsp;<span style="font-weight: bold;">Lei 10.406/02, Art. 206, &sect; 3&ordm;, I.</span></span></span></td>
+        </tr>
+        <tr style="height: 21px;">
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;1.3.2 Recibo de pagamento de Condom&iacute;nio&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">1.3.2 Recibo de pagamento de&nbsp;<span style="font-weight: bold;">Condom&iacute;nio</span></span></span></td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;5 anos&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; font-weight: bold; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">5 anos</span></span></td>
+            <td style="border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top;">&nbsp;</td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Ver C&oacute;digo Civil, Lei 10.406/02, Art. 206, &sect; 5&ordm;, I. &Eacute; poss&iacute;vel solicitar &agrave; administradora do condom&iacute;nio, periodicamente, uma declara&ccedil;&atilde;o de que n&atilde;o existem d&eacute;bitos pendentes. Assim, &eacute; mantido apenas um documento arquivado.&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Ver C&oacute;digo Civil,&nbsp;<span style="font-weight: bold;">Lei 10.406/02, Art. 206, &sect; 5&ordm;, I.&nbsp;</span>&Eacute; poss&iacute;vel solicitar &agrave; administradora do condom&iacute;nio, periodicamente, uma declara&ccedil;&atilde;o de que n&atilde;o existem d&eacute;bitos pendentes. Assim, &eacute; mantido apenas um documento arquivado.</span></span></td>
+        </tr>
+        <tr style="height: 21px;">
+            <td rowspan="1" colspan="4" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;1.4 COMPRA (IM&Oacute;VEIS, BENS DUR&Aacute;VEIS E N&Atilde;O-DUR&Aacute;VEIS)&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; font-weight: bold; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">1.4 COMPRA (IM&Oacute;VEIS, BENS DUR&Aacute;VEIS E N&Atilde;O-DUR&Aacute;VEIS)</span></span></td>
+        </tr>
+        <tr style="height: 21px;">
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Documento&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; font-weight: bold; word-wrap: break-word; text-align: center;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Documento</span></span></td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Prazo de Guarda&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; font-weight: bold; word-wrap: break-word; text-align: center;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Prazo de Guarda</span></span></td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Prazo de Precau&ccedil;&atilde;o&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; font-weight: bold; word-wrap: break-word; text-align: center;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Prazo de Precau&ccedil;&atilde;o</span></span></td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Observa&ccedil;&otilde;es&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; font-weight: bold; word-wrap: break-word; text-align: center;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Observa&ccedil;&otilde;es</span></span></td>
+        </tr>
+        <tr style="height: 21px;">
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;1.4.1 Recibo dos pagamentos das parcelas de im&oacute;vel&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">1.4.1 Recibo dos pagamentos das&nbsp;<span style="font-weight: bold;">parcelas de im&oacute;vel</span></span></span></td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;At&eacute; que seja feito o registro da escritura no Cart&oacute;rio de Registros de Im&oacute;veis.&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; font-weight: bold; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">At&eacute; que seja feito o registro da escritura no Cart&oacute;rio de Registros de Im&oacute;veis.</span></span></td>
+            <td style="border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top;">&nbsp;</td>
+            <td style="border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top;">&nbsp;</td>
+        </tr>
+        <tr style="height: 21px;">
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;1.4.2 Nota Fiscal de compra de bem dur&aacute;vel&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">1.4.2 Nota Fiscal de&nbsp;<span style="font-weight: bold;">compra de bem dur&aacute;vel</span></span></span></td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Prazo de Garantia&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Prazo de Garantia</span></span></td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Vida &uacute;til do produto&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Vida &uacute;til do produto</span></span></td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Ainda que o prazo de garantia dado pelo fabricante tenha se esgotado, alguns defeitos que n&atilde;o ocorrem pelo desgaste natural do bem podem surgir ap&oacute;s a garantia, o chamado \&quot;v&iacute;cio oculto\&quot;. Exemplo disso &eacute; o \&quot;recall\&quot; de autom&oacute;veis. Ver C&oacute;digo de Defesa do Consumidor, Lei 8.078/90, Art. 26, &sect; 3&ordm;.&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Ainda que o prazo de garantia dado pelo fabricante tenha se esgotado, alguns defeitos que n&atilde;o ocorrem pelo desgaste natural do bem podem surgir ap&oacute;s a garantia, o chamado &quot;v&iacute;cio oculto&quot;. Exemplo disso &eacute; o &quot;recall&quot; de autom&oacute;veis. Ver&nbsp;<span style="font-weight: bold;">C&oacute;digo de Defesa do Consumidor, Lei 8.078/90, Art. 26, &sect; 3&ordm;.</span></span></span></td>
+        </tr>
+        <tr style="height: 21px;">
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;1.4.3 Nota fiscal de produtos e servi&ccedil;os n&atilde;o dur&aacute;veis&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">1.4.3 Nota fiscal de&nbsp;<span style="font-weight: bold;">produtos e servi&ccedil;os n&atilde;o dur&aacute;veis</span></span></span></td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;30 dias&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; font-weight: bold; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">30 dias</span></span></td>
+            <td style="border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top;">&nbsp;</td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Os alimentos s&atilde;o exemplo desta categoria, e a nota deve ser preservada pelo prazo de garantia legal de 30 dias (C&oacute;digo de Defesa do Consumidor, Lei 8.078/90, Art. 26, I).&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Os alimentos s&atilde;o exemplo desta categoria, e a nota deve ser preservada pelo prazo de garantia legal de 30 dias&nbsp;<span style="font-weight: bold;">(C&oacute;digo de Defesa do Consumidor, Lei 8.078/90, Art. 26, I).</span></span></span></td>
+        </tr>
+        <tr style="height: 21px;">
+            <td rowspan="1" colspan="4" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;1.5 SERVI&Ccedil;OS BANC&Aacute;RIOS E FINANCEIROS&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; font-weight: bold; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">1.5 SERVI&Ccedil;OS BANC&Aacute;RIOS E FINANCEIROS</span></span></td>
+        </tr>
+        <tr style="height: 21px;">
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Documento&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; font-weight: bold; word-wrap: break-word; text-align: center;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Documento</span></span></td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Prazo de Guarda&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; font-weight: bold; word-wrap: break-word; text-align: center;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Prazo de Guarda</span></span></td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Prazo de Precau&ccedil;&atilde;o&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; font-weight: bold; word-wrap: break-word; text-align: center;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Prazo de Precau&ccedil;&atilde;o</span></span></td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Observa&ccedil;&otilde;es&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; font-weight: bold; word-wrap: break-word; text-align: center;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Observa&ccedil;&otilde;es</span></span></td>
+        </tr>
+        <tr style="height: 21px;">
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;1.5.1 Comprovante de Dep&oacute;sito Banc&aacute;rio&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">1.5.1 Comprovante de&nbsp;<span style="font-weight: bold;">Dep&oacute;sito Banc&aacute;rio</span></span></span></td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;N&atilde;o especificado&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; font-weight: bold; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">N&atilde;o especificado</span></span></td>
+            <td style="border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top;">&nbsp;</td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Deve-se guardar at&eacute; a comprova&ccedil;&atilde;o do cr&eacute;dito em conta. &quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Deve-se guardar at&eacute; a comprova&ccedil;&atilde;o do cr&eacute;dito em conta.</span></span></td>
+        </tr>
+        <tr style="height: 21px;">
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;1.5.2 Extrato Banc&aacute;rio&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">1.5.2&nbsp;<span style="font-weight: bold;">Extrato Banc&aacute;rio</span></span></span></td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;5 anos&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; font-weight: bold; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">5 anos</span></span></td>
+            <td style="border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top;">&nbsp;</td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Para comprova&ccedil;&atilde;o de pagamentos diversos (cf. CC, CTN); de sal&aacute;rios, na falta de holerite (cf. CLT); de movimenta&ccedil;&atilde;o financeira (f&iacute;sico, por exemplo).&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Para comprova&ccedil;&atilde;o de pagamentos diversos&nbsp;<span style="font-weight: bold;">(cf. CC, CTN)</span>; de sal&aacute;rios, na falta de holerite&nbsp;<span style="font-weight: bold;">(cf. CLT)</span>; de movimenta&ccedil;&atilde;o financeira (f&iacute;sico, por exemplo).</span></span></td>
+        </tr>
+        <tr style="height: 21px;">
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;1.5.3 Fatura de Cart&atilde;o de Cr&eacute;dito&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">1.5.3 Fatura de&nbsp;<span style="font-weight: bold;">Cart&atilde;o de Cr&eacute;dito</span></span></span></td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;3 anos, se ouver parcelmaneto, com rela&ccedil;&atilde;o &agrave; discuss&atilde;o dos juros aplicados.&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; font-weight: bold; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">3 anos<span style="font-weight: normal;">, se ouver parcelmaneto, com rela&ccedil;&atilde;o &agrave; discuss&atilde;o dos juros aplicados.</span></span></span></td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;5 anos,com rela&ccedil;&atilde;o a eventuais cobran&ccedil;as&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">5 anos,com rela&ccedil;&atilde;o a eventuais cobran&ccedil;as</span></span></td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Para faturas de cart&atilde;o de cr&eacute;dito n&atilde;o h&aacute; determina&ccedil;&atilde;o legal. A Associa&ccedil;&atilde;o Nacional dos Usu&aacute;rios de Cart&atilde;o de Cr&eacute;dito recomenda que elas sejam mantidas pelo m&iacute;nimo de um ano, por cautela, para que o consumidor se previna contra eventuais lan&ccedil;amentos indevidos e/ou cobran&ccedil;a em duplicidade por parte das administradoras de cart&otilde;es de cr&eacute;dito. &Eacute; importante ressaltar que a pretens&atilde;o de cobran&ccedil;a de d&iacute;vidas l&iacute;quidas constantes de instrumento p&uacute;blico ou particular (que seria o caso dos cart&otilde;es, pois o consumidor assina um contrato) prescreve em 5 anos (C&oacute;digo Civil, Lei 10.406/02, Art. 206).&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Para faturas de cart&atilde;o de cr&eacute;dito n&atilde;o h&aacute; determina&ccedil;&atilde;o legal. A Associa&ccedil;&atilde;o Nacional dos Usu&aacute;rios de Cart&atilde;o de Cr&eacute;dito recomenda que elas sejam mantidas pelo m&iacute;nimo de um ano, por cautela, para que o consumidor se previna contra eventuais lan&ccedil;amentos indevidos e/ou cobran&ccedil;a em duplicidade por parte das administradoras de cart&otilde;es de cr&eacute;dito. &Eacute; importante ressaltar que a pretens&atilde;o de cobran&ccedil;a de d&iacute;vidas l&iacute;quidas constantes de instrumento p&uacute;blico ou particular (que seria o caso dos cart&otilde;es, pois o consumidor assina um contrato) prescreve em 5 anos&nbsp;<span style="font-weight: bold;">(C&oacute;digo Civil, Lei 10.406/02, Art. 206).</span></span></span></td>
+        </tr>
+        <tr style="height: 21px;">
+            <td rowspan="1" colspan="4" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;1.6 CONTAS E RECIBOS GERAIS&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; font-weight: bold; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">1.6 CONTAS E RECIBOS GERAIS</span></span></td>
+        </tr>
+        <tr style="height: 21px;">
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Documento&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; font-weight: bold; word-wrap: break-word; text-align: center;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Documento</span></span></td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Prazo de Guarda&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; font-weight: bold; word-wrap: break-word; text-align: center;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Prazo de Guarda</span></span></td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Prazo de Precau&ccedil;&atilde;o&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; font-weight: bold; word-wrap: break-word; text-align: center;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Prazo de Precau&ccedil;&atilde;o</span></span></td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Observa&ccedil;&otilde;es&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; font-weight: bold; word-wrap: break-word; text-align: center;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Observa&ccedil;&otilde;es</span></span></td>
+        </tr>
+        <tr style="height: 21px;">
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;1.6.1 Carn&ecirc; e/ou comprovante de pagamento de Cons&oacute;rcio&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">1.6.1 Carn&ecirc; e/ou comprovante de pagamento de&nbsp;<span style="font-weight: bold;">Cons&oacute;rcio</span></span></span></td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;At&eacute; a entrega da carta de libera&ccedil;&atilde;o da aliena&ccedil;&atilde;o fiduci&aacute;ria&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; font-weight: bold; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">At&eacute; a entrega da carta de libera&ccedil;&atilde;o da aliena&ccedil;&atilde;o fiduci&aacute;ria</span></span></td>
+            <td style="border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top;">&nbsp;</td>
+            <td style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; word-wrap: break-word;">&nbsp;</td>
+        </tr>
+        <tr style="height: 21px;">
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;1.6.2 Comprovante de pagamento de Mensalidades Escolares&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">1.6.2 Comprovante de pagamento de&nbsp;<span style="font-weight: bold;">Mensalidades Escolares</span></span></span></td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;5 anos&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; font-weight: bold; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">5 anos</span></span></td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Guardar de prefer&ecirc;ncia at&eacute; o t&eacute;rmino do curso, ap&oacute;s receber o certificado ou diploma&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Guardar de prefer&ecirc;ncia at&eacute; o t&eacute;rmino do curso, ap&oacute;s receber o certificado ou diploma</span></span></td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Obedece ao prazo previsto no C&oacute;digo Civil, Lei 10.406/02, Art. 206, &sect; 5&ordm;, I. Quando utilizado para efeito de abatimento em Imposto de Renda, dever&aacute; ser arquivado por 6 anos, juntamente &agrave; Declara&ccedil;&atilde;o.&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Obedece ao prazo previsto no&nbsp;<span style="font-weight: bold;">C&oacute;digo Civil, Lei 10.406/02, Art. 206, &sect; 5&ordm;, I.&nbsp;</span>Quando utilizado para efeito de&nbsp;<span style="font-weight: bold;">abatimento em Imposto de Renda</span>, dever&aacute; ser arquivado por 6 anos, juntamente &agrave; Declara&ccedil;&atilde;o.</span></span></td>
+        </tr>
+        <tr style="height: 21px;">
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;1.6.3 Comprovante de pagamento de Conv&ecirc;nio M&eacute;dico&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">1.6.3 Comprovante de pagamento de<span style="font-weight: bold;">Conv&ecirc;nio M&eacute;dico</span></span></span></td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;5 anos&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; font-weight: bold; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">5 anos</span></span></td>
+            <td style="border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top;">&nbsp;</td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Obedece ao prazo previsto no C&oacute;digo Civil, Lei 10.406/02, Art. 206, &sect; 5&ordm;, I. Quando utilizado para efeito de abatimento em Imposto de Renda, dever&aacute; ser arquivado por 6 anos, juntamente &agrave; Declara&ccedil;&atilde;o.&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Obedece ao prazo previsto no&nbsp;<span style="font-weight: bold;">C&oacute;digo Civil, Lei 10.406/02, Art. 206, &sect; 5&ordm;, I.&nbsp;</span>Quando utilizado para efeito de&nbsp;<span style="font-weight: bold;">abatimento em Imposto de Renda</span>, dever&aacute; ser arquivado por 6 anos, juntamente &agrave; Declara&ccedil;&atilde;o.</span></span></td>
+        </tr>
+        <tr style="height: 21px;">
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;1.6.4 Comprovante de Pagamento de TV por Assinatura&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">1.6.4 Comprovante de Pagamento de&nbsp;<span style="font-weight: bold;">TV por Assinatura</span></span></span></td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;5 anos&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; font-weight: bold; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">5 anos</span></span></td>
+            <td style="border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top;">&nbsp;</td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Obedece ao prazo previsto no C&oacute;digo Civil, Lei 10.406/02, Art. 206, &sect; 5&ordm;, I. &quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Obedece ao prazo previsto no&nbsp;<span style="font-weight: bold;">C&oacute;digo Civil, Lei 10.406/02, Art. 206, &sect; 5&ordm;, I.</span></span></span></td>
+        </tr>
+        <tr style="height: 21px;">
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;1.6.5 Comprovante de Pagamento de Honor&aacute;rios de Profissionais Liberais&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">1.6.5 Comprovante de Pagamento de&nbsp;<span style="font-weight: bold;">Honor&aacute;rios de Profissionais Liberais</span></span></span></td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;5 anos ap&oacute;s a conclus&atilde;o dos servi&ccedil;os, ou ap&oacute;s cesse&ccedil;&atilde;o do contrato ou mandato&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-weight: bold;">5 anos</span>&nbsp;ap&oacute;s a conclus&atilde;o dos servi&ccedil;os, ou ap&oacute;s cesse&ccedil;&atilde;o do contrato ou mandato</span></span></td>
+            <td style="border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top;">&nbsp;</td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Obedece ao prazo previsto no C&oacute;digo Civil, Lei 10.406/02, Art. 206, &sect; 5&ordm;, I. &quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Obedece ao prazo previsto no&nbsp;<span style="font-weight: bold;">C&oacute;digo Civil, Lei 10.406/02, Art. 206, &sect; 5&ordm;, I.</span></span></span></td>
+        </tr>
+        <tr style="height: 21px;">
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;1.6.6 Comprovante de Hospodagem&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">1.6.6 Comprovante de&nbsp;<span style="font-weight: bold;">Hospodagem</span></span></span></td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;1 ano&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; font-weight: bold; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">1 ano</span></span></td>
+            <td style="border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top;">&nbsp;</td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Cobran&ccedil;as referentes &agrave; hospegem e alimenta&ccedil;&atilde;o em hot&eacute;is obedecem ao prazo previsto no C&oacute;digo Civil, Lei 10.406/02, Art. 206, &sect; 1&ordm;, I. &quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; font-weight: bold; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-weight: normal;">Cobran&ccedil;as referentes &agrave; hospegem e alimenta&ccedil;&atilde;o em hot&eacute;is obedecem ao prazo previsto no&nbsp;</span>C&oacute;digo Civil, Lei 10.406/02, Art. 206, &sect; 1&ordm;, I.</span></span></td>
+        </tr>
+        <tr style="height: 21px;">
+            <td rowspan="1" colspan="4" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;2. VIDA TRABALHISTA&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; font-weight: bold; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">2. VIDA TRABALHISTA</span></span></td>
+        </tr>
+        <tr style="height: 21px;">
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Documento&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; font-weight: bold; word-wrap: break-word; text-align: center;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Documento</span></span></td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Prazo de Guarda&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; font-weight: bold; word-wrap: break-word; text-align: center;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Prazo de Guarda</span></span></td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Prazo de Precau&ccedil;&atilde;o&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; font-weight: bold; word-wrap: break-word; text-align: center;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Prazo de Precau&ccedil;&atilde;o</span></span></td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Observa&ccedil;&otilde;es&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; font-weight: bold; word-wrap: break-word; text-align: center;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Observa&ccedil;&otilde;es</span></span></td>
+        </tr>
+        <tr style="height: 21px;">
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;2.1 Cart&atilde;o do Programa de Integra&ccedil;&atilde;o Social (PIS)&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">2.1 Cart&atilde;o do Programa de Integra&ccedil;&atilde;o Social&nbsp;<span style="font-weight: bold;">(PIS)</span></span></span></td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Permanente&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; font-weight: bold; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Permanente</span></span></td>
+            <td style="border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top;">&nbsp;</td>
+            <td style="border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top;">&nbsp;</td>
+        </tr>
+        <tr style="height: 21px;">
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;2.2 Carteira de Trabalho e Previd&ecirc;ncia Social (CTPS)&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">2.2 Carteira de Trabalho e Previd&ecirc;ncia Social&nbsp;<span style="font-weight: bold;">(CTPS)</span></span></span></td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Permanente&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; font-weight: bold; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Permanente</span></span></td>
+            <td style="border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top;">&nbsp;</td>
+            <td style="border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top;">&nbsp;</td>
+        </tr>
+        <tr style="height: 21px;">
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;2.3 Extrato da conta vinculada do Fundo de Garantia por Tempo de Servi&ccedil;o (FGTS)&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">2.3 Extrato da conta vinculada do Fundo de Garantia por Tempo de Servi&ccedil;o&nbsp;<span style="font-weight: bold;">(FGTS)</span></span></span></td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;2 meses&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; font-weight: bold; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">2 meses</span></span></td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;O trabalhador pode conferir a regularidade dos dep&oacute;sitos em sua conta vinculada atrav&eacute;s de extrato enviado &agrave; sua casa de 2 em 2 meses. Caso n&atilde;o esteja recebendo o extrato, o trabalhador dever&aacute; informar seu endere&ccedil;o completo em uma ag&ecirc;ncia da CAIXA ou pela Internet, no site www.caixa.gov.br&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">O trabalhador pode conferir a regularidade dos dep&oacute;sitos em sua conta vinculada atrav&eacute;s de extrato enviado &agrave; sua casa de 2 em 2 meses. Caso n&atilde;o esteja recebendo o extrato, o trabalhador dever&aacute; informar seu endere&ccedil;o completo em uma ag&ecirc;ncia da CAIXA ou pela Internet, no site www.caixa.gov.br</span></span></td>
+            <td style="border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top;">&nbsp;</td>
+        </tr>
+        <tr style="height: 21px;">
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;2.4 Holerite/Recibo de Pagamento de Sal&aacute;rio&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">2.4 Holerite/Recibo de&nbsp;<span style="font-weight: bold;">Pagamento de Sal&aacute;rio</span></span></span></td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Aposentadoria&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; font-weight: bold; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Aposentadoria</span></span></td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Guardar at&eacute; a autoriza&ccedil;&atilde;o de concess&atilde;o do benef&iacute;cio, para fazer prova de tempo de servi&ccedil;o e de contribui&ccedil;&atilde;o&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Guardar at&eacute; a autoriza&ccedil;&atilde;o de concess&atilde;o do benef&iacute;cio, para fazer prova de tempo de servi&ccedil;o e de contribui&ccedil;&atilde;o</span></span></td>
+            <td style="border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top;">&nbsp;</td>
+        </tr>
+        <tr style="height: 21px;">
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;2.5 Guia de recolhimento previdenci&aacute;rio como aut&ocirc;nomo&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">2.5 Guia de recolhimento previdenci&aacute;rio como&nbsp;<span style="font-weight: bold;">aut&ocirc;nomo</span></span></span></td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Aposentadoria&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; font-weight: bold; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Aposentadoria</span></span></td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Guardar at&eacute; a autoriza&ccedil;&atilde;o de concess&atilde;o do benef&iacute;cio, para fazer prova de tempo de servi&ccedil;o e de contribui&ccedil;&atilde;o&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Guardar at&eacute; a autoriza&ccedil;&atilde;o de concess&atilde;o do benef&iacute;cio, para fazer prova de tempo de servi&ccedil;o e de contribui&ccedil;&atilde;o</span></span></td>
+            <td style="border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top;">&nbsp;</td>
+        </tr>
+        <tr style="height: 21px;">
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;2.6 Termo de Rescis&atilde;o de Contrato de Trabalho (TRCT)&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">2.6 Termo de Rescis&atilde;o de Contrato de Trabalho&nbsp;<span style="font-weight: bold;">(TRCT)</span></span></span></td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Aposentadoria&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; font-weight: bold; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Aposentadoria</span></span></td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Guardar at&eacute; a autoriza&ccedil;&atilde;o de concess&atilde;o do benef&iacute;cio, para fazer prova de tempo de servi&ccedil;o e de contribui&ccedil;&atilde;o&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Guardar at&eacute; a autoriza&ccedil;&atilde;o de concess&atilde;o do benef&iacute;cio, para fazer prova de tempo de servi&ccedil;o e de contribui&ccedil;&atilde;o</span></span></td>
+            <td style="border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top;">&nbsp;</td>
+        </tr>
+        <tr style="height: 21px;">
+            <td rowspan="1" colspan="4" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;3. PATRIM&Ocirc;NIO&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; font-weight: bold; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">3. PATRIM&Ocirc;NIO</span></span></td>
+        </tr>
+        <tr style="height: 21px;">
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Documento&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; font-weight: bold; word-wrap: break-word; text-align: center;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Documento</span></span></td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Prazo de Guarda&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; font-weight: bold; word-wrap: break-word; text-align: center;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Prazo de Guarda</span></span></td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Prazo de Precau&ccedil;&atilde;o&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; font-weight: bold; word-wrap: break-word; text-align: center;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Prazo de Precau&ccedil;&atilde;o</span></span></td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Observa&ccedil;&otilde;es&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; font-weight: bold; word-wrap: break-word; text-align: center;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Observa&ccedil;&otilde;es</span></span></td>
+        </tr>
+        <tr style="height: 21px;">
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;3.1 Escritura de Im&oacute;vel&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">3.1&nbsp;<span style="font-weight: bold;">Escritura de Im&oacute;vel</span></span></span></td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Permanente&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; font-weight: bold; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Permanente</span></span></td>
+            <td style="border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top;">&nbsp;</td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Comprova o direito de propriedade do bem. Em caso de venda, deve ser transferido ao novo propriet&aacute;rio.&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Comprova o direito de propriedade do bem. Em caso de venda, deve ser transferido ao novo propriet&aacute;rio.</span></span></td>
+        </tr>
+        <tr style="height: 21px;">
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;3.2 Certificado de Registro e Licenciamento Anual (CRLV)&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">3.2 Certificado de Registro e Licenciamento Anual&nbsp;<span style="font-weight: bold;">(CRLV)</span></span></span></td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;1 ano&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; font-weight: bold; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">1 ano</span></span></td>
+            <td style="border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top;">&nbsp;</td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Documento de porte obrigat&oacute;rio para o condutor do ve&iacute;culo, sob pena de multa e apreens&atilde;o deste (C&oacute;digo de Tr&acirc;nsito Brasileiro, Lei 9.503/97, Art. 230, V). Pode ser substitu&iacute;do por uma c&oacute;pia autenticada pela reparti&ccedil;&atilde;o de tr&acirc;nsito competente.&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Documento de porte obrigat&oacute;rio para o condutor do ve&iacute;culo, sob pena de multa e apreens&atilde;o deste&nbsp;<span style="font-weight: bold;">(C&oacute;digo de Tr&acirc;nsito Brasileiro, Lei 9.503/97, Art. 230, V).</span>&nbsp;Pode ser substitu&iacute;do por uma c&oacute;pia autenticada pela reparti&ccedil;&atilde;o de tr&acirc;nsito competente.</span></span></td>
+        </tr>
+        <tr style="height: 21px;">
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;3.3 Ap&oacute;lice de Seguro (de vida, de resid&ecirc;ncia, de sa&uacute;de, de ve&iacute;culo, etc).&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">3.3&nbsp;<span style="font-weight: bold;">Ap&oacute;lice de Seguro&nbsp;</span>(de vida, de resid&ecirc;ncia, de sa&uacute;de, de ve&iacute;culo, etc).</span></span></td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;1 ano, ap&oacute;s o final da vig&ecirc;ncia&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; font-weight: bold; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">1 ano<span style="font-weight: normal;">, ap&oacute;s o final da vig&ecirc;ncia</span></span></span></td>
+            <td style="border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top;">&nbsp;</td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;O prazo pe contado a partir da data de cita&ccedil;&atilde;o pelo terceiro prejudicado ou da indeniza&ccedil;&atilde;o feita a este, no caso de responsabilidade civil, ou do fato gerador da pretens&atilde;o, nos demais casos. Ver C&oacute;digo Civil, Lei 10.406/02, Art. 206, &sect; 1&ordm;, II.&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">O prazo pe contado a partir da data de cita&ccedil;&atilde;o pelo terceiro prejudicado ou da indeniza&ccedil;&atilde;o feita a este, no caso de responsabilidade civil, ou do fato gerador da pretens&atilde;o, nos demais casos. Ver&nbsp;<span style="font-weight: bold;">C&oacute;digo Civil, Lei 10.406/02, Art. 206, &sect; 1&ordm;, II.</span></span></span></td>
+        </tr>
+        <tr style="height: 21px;">
+            <td rowspan="1" colspan="4" data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;4. CIDADANIA&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; font-weight: bold; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">4. CIDADANIA</span></span></td>
+        </tr>
+        <tr style="height: 21px;">
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Documento&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; font-weight: bold; word-wrap: break-word; text-align: center;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Documento</span></span></td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Prazo de Guarda&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; font-weight: bold; word-wrap: break-word; text-align: center;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Prazo de Guarda</span></span></td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Prazo de Precau&ccedil;&atilde;o&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; font-weight: bold; word-wrap: break-word; text-align: center;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Prazo de Precau&ccedil;&atilde;o</span></span></td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Observa&ccedil;&otilde;es&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; font-weight: bold; word-wrap: break-word; text-align: center;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Observa&ccedil;&otilde;es</span></span></td>
+        </tr>
+        <tr style="height: 21px;">
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Permanente&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; font-weight: bold; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Permanente</span></span></td>
+            <td style="border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top;">&nbsp;</td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Se o titular deixar de votar ou justificar por tr&ecirc;s vota&ccedil;&otilde;es consecutivas, o t&iacute;tulo ser&aacute; cancelado. Cada turno &eacute; considerado uma vota&ccedil;&atilde;o.&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Se o titular deixar de votar ou justificar por tr&ecirc;s vota&ccedil;&otilde;es consecutivas, o t&iacute;tulo ser&aacute; cancelado. Cada turno &eacute; considerado uma vota&ccedil;&atilde;o.</span></span></td>
+            <td style="border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top;">&nbsp;</td>
+        </tr>
+        <tr style="height: 21px;">
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;4.2 Comprovante de Vota&ccedil;&atilde;o&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">4.2&nbsp;<span style="font-weight: bold;">Comprovante de Vota&ccedil;&atilde;o</span></span></span></td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Manter os comprovantes dos &uacute;ltimos sufr&aacute;gios (inclusive dos turnos, se houver)&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Manter os comprovantes&nbsp;<span style="font-weight: bold;">dos &uacute;ltimos sufr&aacute;gios&nbsp;</span>(inclusive dos turnos, se houver)</span></span></td>
+            <td style="border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top;">&nbsp;</td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Em caso de perda dos comprovantes, &eacute; poss&iacute;vel solicitar a qualquer Cart&oacute;rio Eleitoral uma Certid&atilde;o de Quita&ccedil;&atilde;o Eleitoral, que ser&aacute; emitida na hora, devido ao acesso direto ao Cadastro Geral de Eleitores. Para os eleitores inscritos no Estado de S&atilde;o Paulo, a requisi&ccedil;&atilde;o pode ser feita atrav&eacute;s da internet, no site www.tre-sp.jus.br&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Em caso de perda dos comprovantes, &eacute; poss&iacute;vel solicitar a qualquer Cart&oacute;rio Eleitoral uma Certid&atilde;o de Quita&ccedil;&atilde;o Eleitoral, que ser&aacute; emitida na hora, devido ao acesso direto ao Cadastro Geral de Eleitores. Para os eleitores inscritos no Estado de S&atilde;o Paulo, a requisi&ccedil;&atilde;o pode ser feita atrav&eacute;s da internet, no site www.tre-sp.jus.br</span></span></td>
+        </tr>
+        <tr style="height: 21px;">
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;4.3 Certid&atilde;o de Nascimento&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">4.3&nbsp;<span style="font-weight: bold;">Certid&atilde;o de Nascimento</span></span></span></td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Permanente&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; font-weight: bold; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Permanente</span></span></td>
+            <td style="border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top;">&nbsp;</td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Possui validade at&eacute; a certid&atilde;o de casamento&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Possui validade at&eacute; a certid&atilde;o de casamento</span></span></td>
+        </tr>
+        <tr style="height: 21px;">
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;4.4 Certid&atilde;o de Casamento&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">4.4&nbsp;<span style="font-weight: bold;">Certid&atilde;o de Casamento</span></span></span></td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Permanente&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; font-weight: bold; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Permanente</span></span></td>
+            <td style="border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top;">&nbsp;</td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Possui validade at&eacute; a certid&atilde;o de &oacute;bito&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Possui validade at&eacute; a certid&atilde;o de &oacute;bito</span></span></td>
+        </tr>
+        <tr style="height: 21px;">
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;4.5 Certid&atilde;o de &oacute;bito&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">4.5&nbsp;<span style="font-weight: bold;">Certid&atilde;o de &oacute;bito</span></span></span></td>
+            <td data-sheets-value="{&quot;1&quot;:2,&quot;2&quot;:&quot;Permanente&quot;}" style="font-family: Arial; border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top; font-weight: bold; word-wrap: break-word;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Permanente</span></span></td>
+            <td style="border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top;">&nbsp;</td>
+            <td style="border-width: 1px; border-style: solid; border-color: rgb(204, 204, 204) rgb(0, 0, 0) rgb(0, 0, 0) rgb(204, 204, 204); border-image: initial; overflow: hidden; padding: 2px 3px; vertical-align: top;">&nbsp;</td>
+        </tr>
+    </tbody>
+</table>
+<p><span style="color: rgb(0, 0, 0);"><br type="_moz" />
+</span></p>
+<p><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;">Condux Consultoria</span></span></span></p>
+                            </div>
+                            
+                        </article>
+                        
+                        
+                    </div>
+                    <div class="col-md-1 hidden-sm"></div>
+                    <div class="col-md-2 col-sm-3">
+                        <aside class="widgets">
+                    <div class="widget list">
+                        <h3>Categorias</h3>
+                        <ul>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Calend%E1rio+de+Obriga%E7%F5es">Calendário de Obrigações</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Direitos+do+Consumidor">Direitos do Consumidor</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Empresarial">Empresarial</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=IRPF">IRPF</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Legisla%E7%E3o">Legislação</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Legisla%E7%E3o+Trabalhista">Legislação Trabalhista</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Previd%EAncia">Previdência</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Receita+Federal">Receita Federal</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Recursos+Humanos">Recursos Humanos</a>
+                            </li>
+ 
+                        </ul>
+                    </div>
+                    <div class="widget list">
+                        <h3>Por mês</h3>
+                        <ul>
+                        
+                            <li>
+                                <a href="/noticias/?mes=8&ano=2021">Agosto&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2021">Maio&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2021">Abril&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2021">Março&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=7&ano=2020">Julho&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2020">Maio&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2020">Abril&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2020">Março&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=10&ano=2019">Outubro&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2019">Setembro&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2019">Março&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2019">Janeiro&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=12&ano=2018">Dezembro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2018">Setembro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=6&ano=2018">Junho&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2018">Abril&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2018">Março&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=2&ano=2018">Fevereiro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2018">Janeiro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=12&ano=2017">Dezembro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=11&ano=2017">Novembro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=10&ano=2017">Outubro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2017">Setembro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=7&ano=2017">Julho&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=6&ano=2017">Junho&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2017">Maio&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2017">Abril&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2017">Março&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=2&ano=2017">Fevereiro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2017">Janeiro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=12&ano=2016">Dezembro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=11&ano=2016">Novembro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=10&ano=2016">Outubro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2016">Setembro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=8&ano=2016">Agosto&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=7&ano=2016">Julho&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=6&ano=2016">Junho&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2016">Maio&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2016">Abril&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2016">Março&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=2&ano=2016">Fevereiro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2016">Janeiro&nbsp;2016</a>
+                            </li>
+ 
+                        </ul>
+                    </div>
+
+                </aside>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+<footer class="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="footer-widget">
+                    <h2>Últimas Notícias</h2>
+                    <div class="widget-content latest-post">
+                        <ul>
+                        
+                            <li>
+                                <h3><a href="?a=noticia&id=295">BEM</a></h3>
+                                <p></p>
+                                <span class="date">26/08/2021</span>
+                            </li>
+                        
+                            <li>
+                                <h3><a href="?a=noticia&id=294">HOME OFFICE PARA GESTANTES</a></h3>
+                                <p></p>
+                                <span class="date">13/05/2021</span>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="footer-widget">
+                    <h2>Contato</h2>
+                    <div class="widget-content">
+                        <address>
+                            Rua Rep&uacute;blica do L&iacute;bano, 61 gr. 1102 <br/>
+                            Centro &ndash; Rio de Janeiro RJ
+                        </address>
+                        <address>
+                            <strong>Telefone: +55 (21) 3203-4348</strong> <br/>
+                            <strong>E-mail: condux@condux.com.br</strong>
+                        </address>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="footer-widget">
+                    <h2>Links</h2>
+                    <ul>    
+                        <li><a href="/home/">Home Page</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/empresa/">A Empresa</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="http://www.condux.com.br/ler.asp?id=1" target="_blank">Tabelas Pr&aacute;ticas</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="http://www.condux.com.br/ler.asp?id=2" target="_blank">Agenda de Obriga&ccedil;&otilde;es</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/noticias/">Not&iacute;cias</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/downloads/">Downloads</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/contato/">Contato</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="footer-info text-right">
+                    <ul class="footer-social">
+                        <li><a href="https://twitter.com/conduxBRA" target="_blank"><i class="entyp-twitter-1"></i></a></li>
+                        <li><a href="https://www.facebook.com/ConduxConsultoria" target="_blank"><i class="entyp-facebook-1"></i></a></li>
+                    </ul>
+                    <p>Copyright &copy; 2016</p>
+                    <p>CONDUX - Todos os Direitos Reservados</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="https://condux.com.br/site/js/vendor/jquery-1.11.0.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery-ui-1.10.3.custom.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.mousewheel.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.mCustomScrollbar.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.selectBoxIt.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.raty.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.flexslider.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.isotope.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.fancybox.pack.js"></script>
+<script src="https://condux.com.br/site/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
+<script src="https://condux.com.br/site/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/bootstrap.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/simpleInstagramFancybox.js"></script>
+<script src="https://condux.com.br/site/js/vendor/fitvids.js"></script>
+<script src="https://condux.com.br/site/js/main.js"></script>
+<script>
+    $('#revolution-shortcode').revolution({
+        delay : 90000,
+        hideThumbs:10,
+        navigationVOffset : -30,
+        navigationType : "none",
+        navigationStyle : "round-old",
+		startheight:700
+    });
+</script>
+<style>
+/*#revolution-shortcode { height: 700px !important }
+#revolution-shortcode > ul > li:nth-child(1) > div.slotholder { height: 700px !important }*/
+</style>
+</body>
+</html>

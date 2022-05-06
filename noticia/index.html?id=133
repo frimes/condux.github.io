@@ -1,0 +1,546 @@
+<!--
+ * FCKeditor - The text editor for Internet - http://www.fckeditor.net
+ * Copyright (C) 2003-2009 Frederico Caldeira Knabben
+ *
+ * == BEGIN LICENSE ==
+ *
+ * Licensed under the terms of any of the following licenses at your
+ * choice:
+ *
+ *  - GNU General Public License Version 2 or later (the "GPL")
+ *    http://www.gnu.org/licenses/gpl.html
+ *
+ *  - GNU Lesser General Public License Version 2.1 or later (the "LGPL")
+ *    http://www.gnu.org/licenses/lgpl.html
+ *
+ *  - Mozilla Public License Version 1.1 or later (the "MPL")
+ *    http://www.mozilla.org/MPL/MPL-1.1.html
+ *
+ * == END LICENSE ==
+ *
+ * This is the integration file for ASP.
+ *
+ * It defines the FCKeditor class that can be used to create editor
+ * instances in ASP pages on server side.
+-->
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Condux</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, maximum-scale=1, minimum-scale=1">
+    <link rel="icon" type="image/png" href="https://condux.com.br/site/img/favicon.png">
+
+    <link rel="stylesheet" href="https://condux.com.br/site/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/flexslider.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/jquery.selectBoxIt.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/entypo.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/rs-plugin/css/settings.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/jquery.fancybox.css">
+        <link rel="stylesheet" href="https://condux.com.br/site/css/style.css">
+
+    <script src="https://condux.com.br/site/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+	
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-208708250-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-208708250-1');
+</script>
+
+</head>
+<body>
+<div class="main-wrap">
+<header class="navbar navbar-inverse">
+    <div class="normal-color with-slider">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <div id="control-logo-header">
+                                <a class="navbar-brand" href="/home/"><img src="https://condux.com.br/site/content/logo.png" alt="img"/></a>
+                            </div>
+                    </div>
+                </div>
+                <div class="col-sm-9">
+                    <div class="navbar-collapse collapse navbar-right">
+                        <ul class="nav navbar-nav social-nav">
+                            <li><a href="https://twitter.com/conduxBRA" target="_blank"><i class="entyp-twitter-1"></i></a></li>
+                            <li><a href="https://www.facebook.com/ConduxConsultoria" target="_blank"><i class="entyp-facebook-1"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="inverse-color">
+        <div class="container">
+            <div class="row">
+                <div class="navbar-collapse collapse">
+                    <div class="col-sm-12">
+                        <ul class="nav navbar-nav main-nav">
+                            <li id="control-logo-menu">
+                                <a class="navbar-brand" href="/home/"><img src="https://condux.com.br/site/content/logo.png" alt="img"/></a>
+                            </li>
+                            <li>
+                                <a href="/home/">Início</a>
+                            </li>
+                            <li>
+                                <a href="/empresa/">A empresa</a>
+                            </li>
+                            <li>
+                                <a href="/servicos/">Serviços</a>
+                            </li>
+                            <li>
+                                <a href="#">Utilitários</a>
+                                <ul>	
+                                	<li><a href="http://www.condux.com.br/ler.asp?id=1" target="_blank">Tabelas Práticas</a></li>
+                                    <li><a href="http://www.condux.com.br/ler.asp?id=2" target="_blank">Agenda de Obrigações</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="/noticias/">Notícias</a>
+                            </li>
+                            <li>
+                                <a href="/login/">Área do Cliente</a>
+                            </li>
+                            <li>
+                                <a href="/downloads/">Downloads</a>
+                            </li>
+                            <li>
+                                <a href="/contato/">Contato</a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</header>
+
+
+<section class="line top">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="col-md-4 col-sm-5 col-xs-12">
+                    <div class="title">
+                        Notícias
+                        <ul class="current-page">
+                            <li><a href="/home/">Página principal</a></li>
+                            <li>></li>
+                            <li><a href="/noticias/">Noticias</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="posts">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <article class="post ">
+                            <h3 class="uppercase">PISO SALARIAL DAS DOMÉSTICAS DO RIO DE JANEIRO 2016</h3><h4>O novo valor do salário regional para a categoria será de R$ 1.052,34.</h4>
+                            <ul class="info">
+                                <li>
+                                    <div class="text date">segunda-feira, 16 de maio de 2016</div>
+                                </li>
+                                <li>
+                                    <i class="entyp-pencil-1"></i>
+                                    <div class="text">Publicado por CONDUX</div>
+                                </li>
+                                
+                                <li>
+                                    <a href="/noticias/?cat=Legisla%E7%E3o+Trabalhista">
+                                        <i class="entyp-list-1"></i>
+                                        <div class="text">Legislação Trabalhista</div>
+                                    </a>
+                                </li>
+                                
+                            </ul>
+                            
+                            <figure>
+                                <img src="https://condux.com.br/site/imgnews/133c.jpg" alt="PISO SALARIAL DAS DOMÉSTICAS DO RIO DE JANEIRO 2016"/>
+                                
+                            </figure>
+                            
+                            <div class="content">
+                            <h1 class="western" style="box-sizing: border-box; font-size: 32px; margin: 20px 0px 10px; font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-weight: normal; line-height: 34px; color: rgb(163, 163, 163); text-align: justify;"><font color="#1a1919" style="box-sizing: border-box;"><font face="Arial, sans-serif" style="box-sizing: border-box;"><font style="box-sizing: border-box; font-size: 12pt;">O piso salarial dos empregados dom&eacute;sticos do Rio de Janeiro foi sancionado pela lei 7267/2016 no dia 27 de abril, pelo governador em exerc&iacute;cio Francisco Dornelles. O reajuste &eacute; de 10,37% em rela&ccedil;&atilde;o ao sal&aacute;rio que vigorou em 2015.</font></font></font></h1>
+<h1 class="western" style="box-sizing: border-box; font-size: 32px; margin: 20px 0px 10px; font-family: &quot;Open Sans&quot;, Arial, sans-serif; font-weight: normal; line-height: 34px; color: rgb(163, 163, 163);">
+<p style="box-sizing: border-box; margin: 0px 0px 30px; text-align: justify;"><font color="#1a1919" style="box-sizing: border-box;"><font face="Arial, sans-serif" style="box-sizing: border-box;"><font style="box-sizing: border-box; font-size: 12pt;">No ano passado, o sal&aacute;rio-m&iacute;nimo para os trabalhadores dom&eacute;sticos que atuavam no estado, era de R$ 953,47, o que significa que na pr&aacute;tica houve um aumento de R$ 98,87. O novo valor representa ainda uma diferen&ccedil;a de R$172,34 em compara&ccedil;&atilde;o com o novo sal&aacute;rio-m&iacute;nimo federal, que foi fixado em janeiro no valor de R$880,00.</font></font></font></p>
+<p style="box-sizing: border-box; margin: 0px 0px 30px; text-align: justify;"><font color="#1a1919" style="box-sizing: border-box;"><font face="Arial, sans-serif" style="box-sizing: border-box;"><font style="box-sizing: border-box; font-size: 12pt;">Apesar de a san&ccedil;&atilde;o ter</font></font><font face="Arial, sans-serif" style="box-sizing: border-box;"><font style="box-sizing: border-box; font-size: 12pt;">&nbsp;acontecido apenas em abril, o novo sal&aacute;rio foi retroativo &agrave; 1&ordm; de janeiro de 2016, o que significa que os empregadores tiveram de pagar as diferen&ccedil;as geradas. O pagamento dos retroativos foi calculado com base na diferen&ccedil;a entre o piso de 2015 (R$ 953,47) e o valor aprovado para 2016 (R$ 1.052,34). Desta forma, cada m&ecirc;s retroativo teve uma diferen&ccedil;a de R$ 98,87, relativa ao reajuste salarial.</font></font></font></p>
+<p style="box-sizing: border-box; margin: 0px 0px 30px; text-align: justify;"><font color="#1a1919" style="box-sizing: border-box;"><font face="Arial, sans-serif" style="box-sizing: border-box;"><font style="box-sizing: border-box; font-size: 12pt;">T</font></font><font face="Arial, sans-serif" style="box-sizing: border-box;"><font style="box-sizing: border-box; font-size: 12pt;">odos os empregadores que residem no Rio de Janeiro e pagam atualmente um sal&aacute;rio inferior a R$1.052,34 para trabalhadores que tenham jornadas de 44 horas semanais devem ajustar o sal&aacute;rio ao valor do piso. Estima-se que, dos 156.664 empregadores dom&eacute;sticos do estado do Rio de Janeiro que empregam 197.399 empregados com a carteira de trabalho assinada, pelo menos uns 120.000 esteja nesta situa&ccedil;&atilde;o.</font></font></font></p>
+<p style="box-sizing: border-box; margin: 0px 0px 30px; text-align: justify;"><font color="#1a1919" style="box-sizing: border-box;"><font face="Arial, sans-serif" style="box-sizing: border-box;"><font style="box-sizing: border-box; font-size: 12pt;">Quem tem empregados contratados para trabalhar em jornada parcial ou por escala pode pagar o valor proporcional utilizando o piso como base de c&aacute;lculo. Esta regra vale para quem tem trabalhadores com carga semanal de at&eacute; 25 horas de trabalho. Para chegar a estes valores, o empregador deve considerar o valor do piso R$1.052,34 como base para encontrar o valor da hora semanal trabalhada do emprego, a f&oacute;rmula para este caso &eacute;:&nbsp;</font></font></font><font color="#1a1919" style="box-sizing: border-box;"><font face="Arial, sans-serif" style="box-sizing: border-box;"><font style="box-sizing: border-box; font-size: 12pt;">1.</font></font></font><font color="#1a1919" style="box-sizing: border-box;"><font face="Arial, sans-serif" style="box-sizing: border-box;"><font style="box-sizing: border-box; font-size: 12pt;">052,34/44 (quantidade de horas semanais da jornada integral de trabalho) = R$23,91.</font></font></font></p>
+<p style="box-sizing: border-box; margin: 0px 0px 30px; text-align: justify;"><font color="#1a1919" style="box-sizing: border-box;"><font face="Arial, sans-serif" style="box-sizing: border-box;"><font style="box-sizing: border-box; font-size: 12pt;">O valor encontrado para a hora semanal trabalhada, neste caso R$23,91, dever&aacute; ser multiplicado pela quantidade de horas semanais da jornada,&nbsp;</font></font></font><font color="#1a1919" style="box-sizing: border-box;"><font face="Arial, sans-serif" style="box-sizing: border-box;"><font style="box-sizing: border-box; font-size: 12pt;">neste exemplo s&atilde;o 25 horas. Sendo assim, o sal&aacute;rio proporcional para este empregado, adotando como base o piso do Rio de Janeiro de 2016, seria de R$597,92.</font></font></font></p>
+<p style="box-sizing: border-box; margin: 0px 0px 30px; text-align: justify;"><font color="#1a1919" style="box-sizing: border-box;"><font face="Arial, sans-serif" style="box-sizing: border-box;"><font style="box-sizing: border-box; font-size: 12pt;">Vale lembrar que nenhum empregador no Rio de Janeiro poder&aacute; adotar o sal&aacute;rio-m&iacute;nimo federal (R$880,00) como sal&aacute;rio para jornada de 44 horas semanais e nem como base de c&aacute;lculo para jornadas parciais. Isto, porque prevalece para o estado o pagamento do piso regional, que neste caso, &eacute; maior do que o federal.</font></font></font></p>
+<p style="box-sizing: border-box; margin: 0px 0px 30px; text-align: justify;"><font color="#1a1919" style="box-sizing: border-box;"><font face="Arial, sans-serif" style="box-sizing: border-box;"><font style="box-sizing: border-box; font-size: 12pt;">Para emitir o DAE (Documento de Arrecada&ccedil;&atilde;o no eSocial) com o novo sal&aacute;rio, os empregadores precisam fazer a atualiza&ccedil;&atilde;o dentro do seu cadastro no site do eSocial.</font></font></font></p>
+<p style="box-sizing: border-box; margin: 0px 0px 30px; text-align: justify;"><font color="#1a1919" style="box-sizing: border-box;"><font face="Arial, sans-serif" style="box-sizing: border-box;"><font style="box-sizing: border-box; font-size: 12pt;">O empregador deve manter a Carteira de Trabalho da dom&eacute;stica sempre atualizada, acompanhando inclusive os reajustes salarias. Na CTPS do</font></font></font><font color="#1a1919" style="box-sizing: border-box;"><font face="Arial, sans-serif" style="box-sizing: border-box;"><font style="box-sizing: border-box; font-size: 12pt;">trabalhor</font></font></font><font color="#1a1919" style="box-sizing: border-box;"><font face="Arial, sans-serif" style="box-sizing: border-box;"><font style="box-sizing: border-box; font-size: 12pt;">, procure a p&aacute;gina &ldquo;Altera&ccedil;&otilde;es de Sal&aacute;rio&rdquo; e siga os seguintes passos:</font></font></font></p>
+<p style="box-sizing: border-box; margin: 0px 0px 30px; text-align: justify;"><font color="#1a1919" style="box-sizing: border-box;"><font face="Arial, sans-serif" style="box-sizing: border-box;"><font style="box-sizing: border-box; font-size: 12pt;">1- Insira na data de aumento o dia 01/04/2016</font></font></font></p>
+<p style="box-sizing: border-box; margin: 0px 0px 30px; text-align: justify;"><font color="#1a1919" style="box-sizing: border-box;"><font face="Arial, sans-serif" style="box-sizing: border-box;"><font style="box-sizing: border-box; font-size: 12pt;">2- No campo que se destina ao valor, escreva o novo piso (R$1.052,34).</font></font></font></p>
+<p style="box-sizing: border-box; margin: 0px 0px 30px; text-align: justify;"><font color="#1a1919" style="box-sizing: border-box;"><font face="Arial, sans-serif" style="box-sizing: border-box;"><font style="box-sizing: border-box; font-size: 12pt;">3- Como motivo de altera&ccedil;&atilde;o informe: &ldquo;altera&ccedil;&atilde;o de piso&nbsp;</font></font></font><font color="#1a1919" style="box-sizing: border-box;"><font face="Arial, sans-serif" style="box-sizing: border-box;"><font style="box-sizing: border-box; font-size: 12pt;">salarial estadual</font></font></font><font color="#1a1919" style="box-sizing: border-box;"><font face="Arial, sans-serif" style="box-sizing: border-box;"><font style="box-sizing: border-box; font-size: 12pt;">&nbsp;retroativo &agrave; 1</font></font></font><font color="#1a1919" style="box-sizing: border-box;"><font face="Arial, sans-serif" style="box-sizing: border-box;"><font style="box-sizing: border-box; font-size: 12pt;">&ordm; de janeiro de 2016.&rdquo;</font></font></font></p>
+<p style="box-sizing: border-box; margin: 0px 0px 30px; text-align: justify;"><font color="#1a1919" style="box-sizing: border-box;"><font face="Arial, sans-serif" style="box-sizing: border-box;"><font style="box-sizing: border-box; font-size: 12pt;">4- Na p&aacute;gina &ldquo;Anota&ccedil;&otilde;es Gerais&rdquo; da CTPS informe que o reajuste salarial foi feito em abril, sendo retroativo a janeiro de 2016.</font></font><br />
+</font></p>
+<p style="box-sizing: border-box; margin: 0px 0px 30px; text-align: justify;"><img src="https://www.domesticalegal.com.br/wp-content/uploads/2016/04/carteira-1.png" alt="" /></p>
+<p style="box-sizing: border-box; margin: 0px 0px 30px; text-align: justify;"><img src="https://www.domesticalegal.com.br/wp-content/uploads/2016/04/carteira-2.png" alt="" /></p>
+</h1>
+<p style="text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;">Condux Consultoria</span></span></p>
+<p>&nbsp;</p>
+                            </div>
+                            
+                        </article>
+                        
+                        
+                    </div>
+                    <div class="col-md-1 hidden-sm"></div>
+                    <div class="col-md-2 col-sm-3">
+                        <aside class="widgets">
+                    <div class="widget list">
+                        <h3>Categorias</h3>
+                        <ul>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Calend%E1rio+de+Obriga%E7%F5es">Calendário de Obrigações</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Direitos+do+Consumidor">Direitos do Consumidor</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Empresarial">Empresarial</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=IRPF">IRPF</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Legisla%E7%E3o">Legislação</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Legisla%E7%E3o+Trabalhista">Legislação Trabalhista</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Previd%EAncia">Previdência</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Receita+Federal">Receita Federal</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Recursos+Humanos">Recursos Humanos</a>
+                            </li>
+ 
+                        </ul>
+                    </div>
+                    <div class="widget list">
+                        <h3>Por mês</h3>
+                        <ul>
+                        
+                            <li>
+                                <a href="/noticias/?mes=8&ano=2021">Agosto&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2021">Maio&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2021">Abril&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2021">Março&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=7&ano=2020">Julho&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2020">Maio&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2020">Abril&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2020">Março&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=10&ano=2019">Outubro&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2019">Setembro&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2019">Março&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2019">Janeiro&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=12&ano=2018">Dezembro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2018">Setembro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=6&ano=2018">Junho&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2018">Abril&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2018">Março&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=2&ano=2018">Fevereiro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2018">Janeiro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=12&ano=2017">Dezembro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=11&ano=2017">Novembro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=10&ano=2017">Outubro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2017">Setembro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=7&ano=2017">Julho&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=6&ano=2017">Junho&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2017">Maio&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2017">Abril&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2017">Março&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=2&ano=2017">Fevereiro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2017">Janeiro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=12&ano=2016">Dezembro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=11&ano=2016">Novembro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=10&ano=2016">Outubro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2016">Setembro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=8&ano=2016">Agosto&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=7&ano=2016">Julho&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=6&ano=2016">Junho&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2016">Maio&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2016">Abril&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2016">Março&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=2&ano=2016">Fevereiro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2016">Janeiro&nbsp;2016</a>
+                            </li>
+ 
+                        </ul>
+                    </div>
+
+                </aside>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+<footer class="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="footer-widget">
+                    <h2>Últimas Notícias</h2>
+                    <div class="widget-content latest-post">
+                        <ul>
+                        
+                            <li>
+                                <h3><a href="?a=noticia&id=295">BEM</a></h3>
+                                <p></p>
+                                <span class="date">26/08/2021</span>
+                            </li>
+                        
+                            <li>
+                                <h3><a href="?a=noticia&id=294">HOME OFFICE PARA GESTANTES</a></h3>
+                                <p></p>
+                                <span class="date">13/05/2021</span>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="footer-widget">
+                    <h2>Contato</h2>
+                    <div class="widget-content">
+                        <address>
+                            Rua Rep&uacute;blica do L&iacute;bano, 61 gr. 1102 <br/>
+                            Centro &ndash; Rio de Janeiro RJ
+                        </address>
+                        <address>
+                            <strong>Telefone: +55 (21) 3203-4348</strong> <br/>
+                            <strong>E-mail: condux@condux.com.br</strong>
+                        </address>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="footer-widget">
+                    <h2>Links</h2>
+                    <ul>    
+                        <li><a href="/home/">Home Page</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/empresa/">A Empresa</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="http://www.condux.com.br/ler.asp?id=1" target="_blank">Tabelas Pr&aacute;ticas</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="http://www.condux.com.br/ler.asp?id=2" target="_blank">Agenda de Obriga&ccedil;&otilde;es</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/noticias/">Not&iacute;cias</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/downloads/">Downloads</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/contato/">Contato</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="footer-info text-right">
+                    <ul class="footer-social">
+                        <li><a href="https://twitter.com/conduxBRA" target="_blank"><i class="entyp-twitter-1"></i></a></li>
+                        <li><a href="https://www.facebook.com/ConduxConsultoria" target="_blank"><i class="entyp-facebook-1"></i></a></li>
+                    </ul>
+                    <p>Copyright &copy; 2016</p>
+                    <p>CONDUX - Todos os Direitos Reservados</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="https://condux.com.br/site/js/vendor/jquery-1.11.0.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery-ui-1.10.3.custom.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.mousewheel.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.mCustomScrollbar.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.selectBoxIt.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.raty.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.flexslider.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.isotope.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.fancybox.pack.js"></script>
+<script src="https://condux.com.br/site/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
+<script src="https://condux.com.br/site/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/bootstrap.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/simpleInstagramFancybox.js"></script>
+<script src="https://condux.com.br/site/js/vendor/fitvids.js"></script>
+<script src="https://condux.com.br/site/js/main.js"></script>
+<script>
+    $('#revolution-shortcode').revolution({
+        delay : 90000,
+        hideThumbs:10,
+        navigationVOffset : -30,
+        navigationType : "none",
+        navigationStyle : "round-old",
+		startheight:700
+    });
+</script>
+<style>
+/*#revolution-shortcode { height: 700px !important }
+#revolution-shortcode > ul > li:nth-child(1) > div.slotholder { height: 700px !important }*/
+</style>
+</body>
+</html>

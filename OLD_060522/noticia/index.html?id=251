@@ -1,0 +1,559 @@
+<!--
+ * FCKeditor - The text editor for Internet - http://www.fckeditor.net
+ * Copyright (C) 2003-2009 Frederico Caldeira Knabben
+ *
+ * == BEGIN LICENSE ==
+ *
+ * Licensed under the terms of any of the following licenses at your
+ * choice:
+ *
+ *  - GNU General Public License Version 2 or later (the "GPL")
+ *    http://www.gnu.org/licenses/gpl.html
+ *
+ *  - GNU Lesser General Public License Version 2.1 or later (the "LGPL")
+ *    http://www.gnu.org/licenses/lgpl.html
+ *
+ *  - Mozilla Public License Version 1.1 or later (the "MPL")
+ *    http://www.mozilla.org/MPL/MPL-1.1.html
+ *
+ * == END LICENSE ==
+ *
+ * This is the integration file for ASP.
+ *
+ * It defines the FCKeditor class that can be used to create editor
+ * instances in ASP pages on server side.
+-->
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Condux</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, maximum-scale=1, minimum-scale=1">
+    <link rel="icon" type="image/png" href="https://condux.com.br/site/img/favicon.png">
+
+    <link rel="stylesheet" href="https://condux.com.br/site/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/flexslider.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/jquery.selectBoxIt.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/entypo.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/rs-plugin/css/settings.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/jquery.fancybox.css">
+        <link rel="stylesheet" href="https://condux.com.br/site/css/style.css">
+
+    <script src="https://condux.com.br/site/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+	
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-208708250-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-208708250-1');
+</script>
+
+</head>
+<body>
+<div class="main-wrap">
+<header class="navbar navbar-inverse">
+    <div class="normal-color with-slider">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <div id="control-logo-header">
+                                <a class="navbar-brand" href="/home/"><img src="https://condux.com.br/site/content/logo.png" alt="img"/></a>
+                            </div>
+                    </div>
+                </div>
+                <div class="col-sm-9">
+                    <div class="navbar-collapse collapse navbar-right">
+                        <ul class="nav navbar-nav social-nav">
+                            <li><a href="https://twitter.com/conduxBRA" target="_blank"><i class="entyp-twitter-1"></i></a></li>
+                            <li><a href="https://www.facebook.com/ConduxConsultoria" target="_blank"><i class="entyp-facebook-1"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="inverse-color">
+        <div class="container">
+            <div class="row">
+                <div class="navbar-collapse collapse">
+                    <div class="col-sm-12">
+                        <ul class="nav navbar-nav main-nav">
+                            <li id="control-logo-menu">
+                                <a class="navbar-brand" href="/home/"><img src="https://condux.com.br/site/content/logo.png" alt="img"/></a>
+                            </li>
+                            <li>
+                                <a href="/home/">Início</a>
+                            </li>
+                            <li>
+                                <a href="/empresa/">A empresa</a>
+                            </li>
+                            <li>
+                                <a href="/servicos/">Serviços</a>
+                            </li>
+                            <li>
+                                <a href="#">Utilitários</a>
+                                <ul>	
+                                	<li><a href="http://www.condux.com.br/ler.asp?id=1" target="_blank">Tabelas Práticas</a></li>
+                                    <li><a href="http://www.condux.com.br/ler.asp?id=2" target="_blank">Agenda de Obrigações</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="/noticias/">Notícias</a>
+                            </li>
+                            <li>
+                                <a href="/login/">Área do Cliente</a>
+                            </li>
+                            <li>
+                                <a href="/downloads/">Downloads</a>
+                            </li>
+                            <li>
+                                <a href="/contato/">Contato</a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</header>
+
+
+<section class="line top">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="col-md-4 col-sm-5 col-xs-12">
+                    <div class="title">
+                        Notícias
+                        <ul class="current-page">
+                            <li><a href="/home/">Página principal</a></li>
+                            <li>></li>
+                            <li><a href="/noticias/">Noticias</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="posts">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <article class="post ">
+                            <h3 class="uppercase">APOSENTADORIA SEM IDA AO INSS JÁ ESTÁ DISPONÍVEL PARA 1 MILHÃO</h3><h4>Trabalhadores podem requisitar benefício diretamente às empresas, sindicatos, entidades e prefeituras</h4>
+                            <ul class="info">
+                                <li>
+                                    <div class="text date">quinta-feira, 20 de setembro de 2018</div>
+                                </li>
+                                <li>
+                                    <i class="entyp-pencil-1"></i>
+                                    <div class="text">Publicado por CONDUX</div>
+                                </li>
+                                
+                            </ul>
+                            
+                            <figure>
+                                <img src="https://condux.com.br/site/imgnews/251c.jpg" alt="APOSENTADORIA SEM IDA AO INSS JÁ ESTÁ DISPONÍVEL PARA 1 MILHÃO"/>
+                                
+                            </figure>
+                            
+                            <div class="content">
+                            
+                                <p>
+                                    <strong>
+                                       Trabalhadores podem requisitar benefício diretamente às empresas, sindicatos, entidades e prefeituras
+                                    </strong>
+                                </p>
+                            <p style="margin: 0px; padding: 15px 0px 0px; color: rgb(75, 90, 93); font-family: Signika; font-size: 15px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Um ano ap&oacute;s o in&iacute;cio do programa do&nbsp;</span></span></span><span style="font-size: 15px;"><a class="classtermo" href="https://www.contabeis.com.br/termos-contabeis/inss" style="text-decoration-line: none; outline: none; color: rgb(52, 142, 157);"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">INSS</span></span></a><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">&nbsp;que autoriza institui&ccedil;&otilde;es p&uacute;blicas e privadas a receberem pedidos de benef&iacute;cios no Estado de S&atilde;o Paulo, cerca de 1 milh&atilde;o de potenciais benefici&aacute;rios podem requisitar&nbsp;</span></span></span><span style="font-size: 15px;"><a class="classtermo" href="https://www.contabeis.com.br/termos-contabeis/aposentadoria" style="text-decoration-line: none; outline: none; color: rgb(52, 142, 157);"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">aposentadorias</span></span></a><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">&nbsp;diretamente &agrave;s empresas em que trabalham, sindicatos e entidades aos quais s&atilde;o associados e prefeituras.&nbsp;&nbsp;</span></span></span></p>
+<p style="margin: 0px; padding: 15px 0px 0px; color: rgb(75, 90, 93); font-family: Signika; font-size: 15px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Os acordos de coopera&ccedil;&atilde;o t&eacute;cnica com entidades fazem parte do&nbsp;</span></span></span><span style="font-size: 15px;"><a class="classtermo" href="https://www.contabeis.com.br/termos-contabeis/inss" style="text-decoration-line: none; outline: none; color: rgb(52, 142, 157);"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">INSS</span></span></a><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">&nbsp;Digital, como &eacute; chamada a estrat&eacute;gia de moderniza&ccedil;&atilde;o do &oacute;rg&atilde;o. &nbsp;<br />
+<br />
+Na pr&aacute;tica, os documentos dos segurados s&atilde;o enviados pela internet ao instituto. &Eacute; quase a mesma tecnologia que permite a requisi&ccedil;&atilde;o de benef&iacute;cios pelo site meu&nbsp;</span></span></span><span style="font-size: 15px;"><a class="classtermo" href="https://www.contabeis.com.br/termos-contabeis/inss" style="text-decoration-line: none; outline: none; color: rgb(52, 142, 157);"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">.inss.</span></span></a><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">&nbsp;gov.br, tamb&eacute;m parte do&nbsp;</span></span></span><span style="font-size: 15px;"><a class="classtermo" href="https://www.contabeis.com.br/termos-contabeis/inss" style="text-decoration-line: none; outline: none; color: rgb(52, 142, 157);"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">INSS</span></span></a><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">&nbsp;Digital. &nbsp;<br />
+<br />
+O atendimento a dist&acirc;ncia permitido pela digitaliza&ccedil;&atilde;o &eacute; declaradamente a principal aposta do&nbsp;</span></span></span><span style="font-size: 15px;"><a class="classtermo" href="https://www.contabeis.com.br/termos-contabeis/inss" style="text-decoration-line: none; outline: none; color: rgb(52, 142, 157);"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">INSS</span></span></a><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">&nbsp;para melhorar o servi&ccedil;o &agrave; popula&ccedil;&atilde;o. &nbsp;<br />
+<br />
+Os segurados, por&eacute;m, preferem ir &agrave;s ag&ecirc;ncias: na capital paulista, s&oacute; 20% dos usu&aacute;rios agendam o atendimento por site ou telefone antes de ir a um posto previdenci&aacute;rio. &nbsp;<br />
+<br />
+Os crit&eacute;rios para acesso a servi&ccedil;os previdenci&aacute;rios em entidades que possuam acordos com o&nbsp;</span></span></span><span style="font-size: 15px;"><a class="classtermo" href="https://www.contabeis.com.br/termos-contabeis/inss" style="text-decoration-line: none; outline: none; color: rgb(52, 142, 157);"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">INSS</span></span></a><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">&nbsp;podem estar condicionados &agrave; comprova&ccedil;&atilde;o de v&iacute;nculo com a institui&ccedil;&atilde;o conveniada, como o registro de funcion&aacute;rio na empresa ou filia&ccedil;&atilde;o ao sindicato. Em geral, o atendimento &eacute; estendido aos dependentes. &nbsp;<br />
+<br />
+Para o atendimento nas prefeituras, &eacute; preciso morar no munic&iacute;pio. &nbsp;<br />
+<br />
+Desde o lan&ccedil;amento do programa, por&eacute;m, o resultado est&aacute; longe de atingir a meta de 45 dias para receber&nbsp;</span></span></span><span style="font-size: 15px;"><a class="classtermo" href="https://www.contabeis.com.br/termos-contabeis/aposentadoria" style="text-decoration-line: none; outline: none; color: rgb(52, 142, 157);"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">aposentadorias</span></span></a><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">&nbsp;por tempo de contribui&ccedil;&atilde;o, devida a trabalhadores que completam o per&iacute;odo de recolhimentos de 30 anos, se mulher, e 35 anos, se homem. &nbsp;<br />
+<br />
+Hoje, esse benef&iacute;cio demora, no estado, pouco mais de tr&ecirc;s meses (105 dias, em m&eacute;dia) para ser liberado. O n&uacute;mero est&aacute; significativamente abaixo dos cerca de cinco meses (165 dias) de espera registrados em 2017. &nbsp;<br />
+<br />
+O tempo m&eacute;dio inclui o intervalo entre o agendamento do pedido do benef&iacute;cio at&eacute; o dia em que foi ele confirmado. &nbsp;<br />
+<br />
+Os prazos foram fornecidos pela assessoria de imprensa do&nbsp;</span></span></span><span style="font-size: 15px;"><a class="classtermo" href="https://www.contabeis.com.br/termos-contabeis/inss" style="text-decoration-line: none; outline: none; color: rgb(52, 142, 157);"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">INSS</span></span></a><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">&nbsp;em S&atilde;o Paulo. A reportagem tamb&eacute;m obteve, por meio da Lei de Acesso &agrave; Informa&ccedil;&atilde;o, a espera mensal nas ag&ecirc;ncias paulistas. &nbsp;<br />
+<br />
+Em 15 das 23 ger&ecirc;ncias executivas do &oacute;rg&atilde;o no estado, o tempo m&eacute;dio passa de 100 dias. Na capital paulista, h&aacute; quatro ger&ecirc;ncias -a menor espera fica na norte, que inclui Caieiras, na Grande SP. Nessa, o prazo passou de 5 meses em outubro, que foi o m&ecirc;s com a maior espera no per&iacute;odo. Em maio, melhor m&ecirc;s, registrou m&eacute;dia de 82 dias. &nbsp;<br />
+<br />
+Na capital paulista, a ag&ecirc;ncia centro, na rua Xavier de Toledo, tem longa espera: de 177 dias, em seu pior m&ecirc;s, e de 100, no de melhor resultado. &nbsp;<br />
+<br />
+Entre as ger&ecirc;ncias do Estado, a maior espera no per&iacute;odo de agosto de 2017 a julho de 2018 est&aacute; na ger&ecirc;ncia de S&atilde;o Jos&eacute; dos Campos (97 km de S&atilde;o Paulo): 142 dias. &nbsp;<br />
+<br />
+J&aacute; a regi&atilde;o em que os segurados esperaram menos foi a da ger&ecirc;ncia de S&atilde;o Bernardo do Campo, no ABC, 80 dias. Outra diferen&ccedil;a entre as duas regi&otilde;es &eacute; o n&uacute;mero de ag&ecirc;ncias -a &uacute;ltima tem quatro, enquanto a primeira atende seis. &nbsp;<br />
+<br />
+O&nbsp;</span></span></span><span style="font-size: 15px;"><a class="classtermo" href="https://www.contabeis.com.br/termos-contabeis/inss" style="text-decoration-line: none; outline: none; color: rgb(52, 142, 157);"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">INSS</span></span></a><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">&nbsp;informou que alguns munic&iacute;pios registram tempos m&eacute;dios de espera muito altos devido a casos espec&iacute;ficos e pontuais. Um exemplo citado &eacute; a espera de 912 dias em Aparecida (180 km de SP) em julho deste ano. &nbsp;<br />
+<br />
+Segundo o&nbsp;</span></span></span><span style="font-size: 15px;"><a class="classtermo" href="https://www.contabeis.com.br/termos-contabeis/inss" style="text-decoration-line: none; outline: none; color: rgb(52, 142, 157);"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">INSS,</span></span></a><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">&nbsp;a espera foi &quot;turbinada&quot; por processos de concess&atilde;o que tiveram recursos e, por isso, tramitavam desde 2014 e 2017. Em outra situa&ccedil;&atilde;o, em Batatais (352 km de SP), um segurado agendou o benef&iacute;cio em agosto de 2017, foi atendido em fevereiro de 2018 e s&oacute; teve a concess&atilde;o em julho do mesmo ano.</span></span></span></p>
+<p style="margin: 0px; padding: 15px 0px 0px; color: rgb(75, 90, 93); font-family: Signika; font-size: 15px; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="color: rgb(0, 0, 0);">Fonte: acidade on</span></span></span></p>
+<p>&nbsp;</p>
+                            </div>
+                            
+                        </article>
+                        
+                        
+                    </div>
+                    <div class="col-md-1 hidden-sm"></div>
+                    <div class="col-md-2 col-sm-3">
+                        <aside class="widgets">
+                    <div class="widget list">
+                        <h3>Categorias</h3>
+                        <ul>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Calend%E1rio+de+Obriga%E7%F5es">Calendário de Obrigações</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Direitos+do+Consumidor">Direitos do Consumidor</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Empresarial">Empresarial</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=IRPF">IRPF</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Legisla%E7%E3o">Legislação</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Legisla%E7%E3o+Trabalhista">Legislação Trabalhista</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Previd%EAncia">Previdência</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Receita+Federal">Receita Federal</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Recursos+Humanos">Recursos Humanos</a>
+                            </li>
+ 
+                        </ul>
+                    </div>
+                    <div class="widget list">
+                        <h3>Por mês</h3>
+                        <ul>
+                        
+                            <li>
+                                <a href="/noticias/?mes=8&ano=2021">Agosto&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2021">Maio&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2021">Abril&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2021">Março&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=7&ano=2020">Julho&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2020">Maio&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2020">Abril&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2020">Março&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=10&ano=2019">Outubro&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2019">Setembro&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2019">Março&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2019">Janeiro&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=12&ano=2018">Dezembro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2018">Setembro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=6&ano=2018">Junho&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2018">Abril&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2018">Março&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=2&ano=2018">Fevereiro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2018">Janeiro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=12&ano=2017">Dezembro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=11&ano=2017">Novembro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=10&ano=2017">Outubro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2017">Setembro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=7&ano=2017">Julho&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=6&ano=2017">Junho&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2017">Maio&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2017">Abril&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2017">Março&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=2&ano=2017">Fevereiro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2017">Janeiro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=12&ano=2016">Dezembro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=11&ano=2016">Novembro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=10&ano=2016">Outubro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2016">Setembro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=8&ano=2016">Agosto&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=7&ano=2016">Julho&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=6&ano=2016">Junho&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2016">Maio&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2016">Abril&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2016">Março&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=2&ano=2016">Fevereiro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2016">Janeiro&nbsp;2016</a>
+                            </li>
+ 
+                        </ul>
+                    </div>
+
+                </aside>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+<footer class="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="footer-widget">
+                    <h2>Últimas Notícias</h2>
+                    <div class="widget-content latest-post">
+                        <ul>
+                        
+                            <li>
+                                <h3><a href="?a=noticia&id=295">BEM</a></h3>
+                                <p></p>
+                                <span class="date">26/08/2021</span>
+                            </li>
+                        
+                            <li>
+                                <h3><a href="?a=noticia&id=294">HOME OFFICE PARA GESTANTES</a></h3>
+                                <p></p>
+                                <span class="date">13/05/2021</span>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="footer-widget">
+                    <h2>Contato</h2>
+                    <div class="widget-content">
+                        <address>
+                            Rua Rep&uacute;blica do L&iacute;bano, 61 gr. 1102 <br/>
+                            Centro &ndash; Rio de Janeiro RJ
+                        </address>
+                        <address>
+                            <strong>Telefone: +55 (21) 3203-4348</strong> <br/>
+                            <strong>E-mail: condux@condux.com.br</strong>
+                        </address>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="footer-widget">
+                    <h2>Links</h2>
+                    <ul>    
+                        <li><a href="/home/">Home Page</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/empresa/">A Empresa</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="http://www.condux.com.br/ler.asp?id=1" target="_blank">Tabelas Pr&aacute;ticas</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="http://www.condux.com.br/ler.asp?id=2" target="_blank">Agenda de Obriga&ccedil;&otilde;es</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/noticias/">Not&iacute;cias</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/downloads/">Downloads</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/contato/">Contato</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="footer-info text-right">
+                    <ul class="footer-social">
+                        <li><a href="https://twitter.com/conduxBRA" target="_blank"><i class="entyp-twitter-1"></i></a></li>
+                        <li><a href="https://www.facebook.com/ConduxConsultoria" target="_blank"><i class="entyp-facebook-1"></i></a></li>
+                    </ul>
+                    <p>Copyright &copy; 2016</p>
+                    <p>CONDUX - Todos os Direitos Reservados</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="https://condux.com.br/site/js/vendor/jquery-1.11.0.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery-ui-1.10.3.custom.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.mousewheel.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.mCustomScrollbar.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.selectBoxIt.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.raty.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.flexslider.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.isotope.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.fancybox.pack.js"></script>
+<script src="https://condux.com.br/site/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
+<script src="https://condux.com.br/site/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/bootstrap.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/simpleInstagramFancybox.js"></script>
+<script src="https://condux.com.br/site/js/vendor/fitvids.js"></script>
+<script src="https://condux.com.br/site/js/main.js"></script>
+<script>
+    $('#revolution-shortcode').revolution({
+        delay : 90000,
+        hideThumbs:10,
+        navigationVOffset : -30,
+        navigationType : "none",
+        navigationStyle : "round-old",
+		startheight:700
+    });
+</script>
+<style>
+/*#revolution-shortcode { height: 700px !important }
+#revolution-shortcode > ul > li:nth-child(1) > div.slotholder { height: 700px !important }*/
+</style>
+</body>
+</html>

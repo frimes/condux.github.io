@@ -1,0 +1,927 @@
+<!--
+ * FCKeditor - The text editor for Internet - http://www.fckeditor.net
+ * Copyright (C) 2003-2009 Frederico Caldeira Knabben
+ *
+ * == BEGIN LICENSE ==
+ *
+ * Licensed under the terms of any of the following licenses at your
+ * choice:
+ *
+ *  - GNU General Public License Version 2 or later (the "GPL")
+ *    http://www.gnu.org/licenses/gpl.html
+ *
+ *  - GNU Lesser General Public License Version 2.1 or later (the "LGPL")
+ *    http://www.gnu.org/licenses/lgpl.html
+ *
+ *  - Mozilla Public License Version 1.1 or later (the "MPL")
+ *    http://www.mozilla.org/MPL/MPL-1.1.html
+ *
+ * == END LICENSE ==
+ *
+ * This is the integration file for ASP.
+ *
+ * It defines the FCKeditor class that can be used to create editor
+ * instances in ASP pages on server side.
+-->
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Condux</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, maximum-scale=1, minimum-scale=1">
+    <link rel="icon" type="image/png" href="https://condux.com.br/site/img/favicon.png">
+
+    <link rel="stylesheet" href="https://condux.com.br/site/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/flexslider.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/jquery.selectBoxIt.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/entypo.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/rs-plugin/css/settings.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/jquery.fancybox.css">
+        <link rel="stylesheet" href="https://condux.com.br/site/css/style.css">
+
+    <script src="https://condux.com.br/site/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+	
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-208708250-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-208708250-1');
+</script>
+
+</head>
+<body>
+<div class="main-wrap">
+<header class="navbar navbar-inverse">
+    <div class="normal-color with-slider">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <div id="control-logo-header">
+                                <a class="navbar-brand" href="/home/"><img src="https://condux.com.br/site/content/logo.png" alt="img"/></a>
+                            </div>
+                    </div>
+                </div>
+                <div class="col-sm-9">
+                    <div class="navbar-collapse collapse navbar-right">
+                        <ul class="nav navbar-nav social-nav">
+                            <li><a href="https://twitter.com/conduxBRA" target="_blank"><i class="entyp-twitter-1"></i></a></li>
+                            <li><a href="https://www.facebook.com/ConduxConsultoria" target="_blank"><i class="entyp-facebook-1"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="inverse-color">
+        <div class="container">
+            <div class="row">
+                <div class="navbar-collapse collapse">
+                    <div class="col-sm-12">
+                        <ul class="nav navbar-nav main-nav">
+                            <li id="control-logo-menu">
+                                <a class="navbar-brand" href="/home/"><img src="https://condux.com.br/site/content/logo.png" alt="img"/></a>
+                            </li>
+                            <li>
+                                <a href="/home/">Início</a>
+                            </li>
+                            <li>
+                                <a href="/empresa/">A empresa</a>
+                            </li>
+                            <li>
+                                <a href="/servicos/">Serviços</a>
+                            </li>
+                            <li>
+                                <a href="#">Utilitários</a>
+                                <ul>	
+                                	<li><a href="http://www.condux.com.br/ler.asp?id=1" target="_blank">Tabelas Práticas</a></li>
+                                    <li><a href="http://www.condux.com.br/ler.asp?id=2" target="_blank">Agenda de Obrigações</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="/noticias/">Notícias</a>
+                            </li>
+                            <li>
+                                <a href="/login/">Área do Cliente</a>
+                            </li>
+                            <li>
+                                <a href="/downloads/">Downloads</a>
+                            </li>
+                            <li>
+                                <a href="/contato/">Contato</a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</header>
+
+
+<section class="line top">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="col-md-4 col-sm-5 col-xs-12">
+                    <div class="title">
+                        Notícias
+                        <ul class="current-page">
+                            <li><a href="/home/">Página principal</a></li>
+                            <li>></li>
+                            <li><a href="/noticias/">Noticias</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="posts">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <article class="post ">
+                            <h3 class="uppercase">IPVA 2019</h3><h4>Os proprietários dos veículos já podem emitir o documento de arrecadação pela internet</h4>
+                            <ul class="info">
+                                <li>
+                                    <div class="text date">segunda-feira, 14 de janeiro de 2019</div>
+                                </li>
+                                <li>
+                                    <i class="entyp-pencil-1"></i>
+                                    <div class="text">Publicado por CONDUX</div>
+                                </li>
+                                
+                            </ul>
+                            
+                            <figure>
+                                <img src="https://condux.com.br/site/imgnews/257c.jpg" alt="IPVA 2019"/>
+                                
+                            </figure>
+                            
+                            <div class="content">
+                            
+                                <p>
+                                    <strong>
+                                       Os proprietários dos veículos já podem emitir o documento de arrecadação pela internet
+                                    </strong>
+                                </p>
+                            <p style="text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="text-align: justify;">O tributo poder&aacute; ser quitado em cota &uacute;nica, com desconto de 3%. Outra op&ccedil;&atilde;o &eacute; parcelar a quantia integral em 3 parcelas. O pagamento da Guia de Regulariza&ccedil;&atilde;o de D&eacute;bitos (GRD) dever&aacute; ser efetuado em dinheiro e poder&aacute; ser realizado em qualquer ag&ecirc;ncia banc&aacute;ria.</span><br style="color: rgb(102, 102, 102); font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: small; text-align: justify;" />
+<br style="color: rgb(102, 102, 102); font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: small; text-align: justify;" />
+</span></span></span><span style="color: rgb(0, 0, 0);"><a href="https://www.ib7.bradesco.com.br/ibpfdetranrj/debitoVeiculoRJLoader.do" target="_blank" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: small; text-align: justify;"><span style="font-size: 15px;"><span style="font-family: Arial;">Clique aqui</span></span></a><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="text-align: justify;">, a partir de 11-1-2019, para imprimir as guias para pagamento do IPVA/2019.</span><br style="color: rgb(102, 102, 102); font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: small; text-align: justify;" />
+<br style="color: rgb(102, 102, 102); font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: small; text-align: justify;" />
+<span style="text-align: justify;">O IPVA &eacute; calculado aplicando-se as al&iacute;quotas (4% para carros flex; 2% para motos e 1,5% para carros movidos a GNV) sobre os valores venais, ou seja, os valores de mercado dos ve&iacute;culos calculados pela Funda&ccedil;&atilde;o Instituto de Pesquisas Econ&ocirc;micas (Fipe). Com base nesses valores, o imposto em 2019 ser&aacute;, na m&eacute;dia geral, 3,23% mais barato do que em 2018. No caso dos autom&oacute;veis, a redu&ccedil;&atilde;o m&eacute;dia ser&aacute; de 3,13%.</span><br style="color: rgb(102, 102, 102); font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: small; text-align: justify;" />
+<br style="color: rgb(102, 102, 102); font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: small; text-align: justify;" />
+<span style="text-align: justify;">O primeiro vencimento, para os ve&iacute;culos com final de placa n&uacute;mero 0, ser&aacute; no dia 21 de janeiro, tanto para o pagamento da primeira parcela, quanto para a quita&ccedil;&atilde;o integral do imposto. J&aacute; para os ve&iacute;culos com final de placa 9, o vencimento inicial ser&aacute; no dia 1&ordm; de fevereiro.</span><br style="color: rgb(102, 102, 102); font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: small; text-align: justify;" />
+<br style="color: rgb(102, 102, 102); font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: small; text-align: justify;" />
+<span style="text-align: justify;">Confira, abaixo, o calend&aacute;rio de vencimento do IPVA/2019 para ve&iacute;culos automotores usados:</span></span></span></span></p>
+<p style="text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;"><br type="_moz" />
+</span></span></span></p>
+<p style="text-align: center;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;"><span style="text-align: center;">CALEND&Aacute;RIO DE VENCIMENTOS DO IPVA/2019 PARA VE&Iacute;CULOS AUTOMOTORES TERRESTRES USADOS</span><br style="color: rgb(102, 102, 102); font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: small; text-align: center;" />
+<span style="text-align: center;">PAGAMENTO EM COTA &Uacute;NICA OU EM 3 PARCELAS</span></span></span></span></p>
+<p style="text-align: center;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;"><br type="_moz" />
+</span></span></span></p>
+<table border="0" cellspacing="1" cellpadding="4" style="color: rgb(0, 0, 0); font-family: &quot;Times New Roman&quot;;" width="454" align="center">
+    <tbody>
+        <tr>
+            <td rowspan="2" width="90" style="border-top: 1pt inset rgb(0, 0, 0); border-bottom: 1pt inset rgb(0, 0, 0); border-left: 1pt inset rgb(0, 0, 0); border-right: none; padding: 0.1cm 0cm 0.1cm 0.1cm;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;">&nbsp;</p>
+            <span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;">Final de Placa</span></span></p>
+            </span></span><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;">&nbsp;</p>
+            <span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;"><br />
+            </span></span></span></td>
+            <td colspan="3" width="343" style="border-width: 1pt; border-style: inset; border-color: rgb(0, 0, 0); padding: 0.1cm;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;"><strong>Vencimentos</strong></span></span></span></p>
+            </td>
+        </tr>
+        <tr>
+            <td width="133" style="border-top: none; border-bottom: 1pt inset rgb(0, 0, 0); border-left: 1pt inset rgb(0, 0, 0); border-right: none; padding: 0cm 0cm 0.1cm 0.1cm;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;"><br type="_moz" />
+            </span></span></span></p>
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;">&nbsp;</p>
+            <span style="font-size: 15px;"><span style="font-family: Arial;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);"><strong>Cota &Uacute;nica ou 1&ordf; parcela</strong></span></p>
+            </span><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;"><br />
+            </span></span></span></td>
+            <td width="95" style="border-top: none; border-bottom: 1pt inset rgb(0, 0, 0); border-left: 1pt inset rgb(0, 0, 0); border-right: none; padding: 0cm 0cm 0.1cm 0.1cm;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;"><br type="_moz" />
+            </span></span></span></p>
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;">&nbsp;</p>
+            <span style="font-size: 15px;"><span style="font-family: Arial;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);"><strong>2&ordf; parcela</strong></span></p>
+            </span><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;"><br />
+            </span></span></span></td>
+            <td width="97" style="border-top: none; border-bottom: 1pt inset rgb(0, 0, 0); border-left: 1pt inset rgb(0, 0, 0); border-right: 1pt inset rgb(0, 0, 0); padding: 0cm 0.1cm 0.1cm;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;"><br type="_moz" />
+            </span></span></span></p>
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;">&nbsp;</p>
+            <span style="font-size: 15px;"><span style="font-family: Arial;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);"><strong>3&ordf; parcela</strong></span></p>
+            </span><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;"><br />
+            </span></span></span></td>
+        </tr>
+        <tr>
+            <td width="90" style="border-top: none; border-bottom: 1pt inset rgb(0, 0, 0); border-left: 1pt inset rgb(0, 0, 0); border-right: none; padding: 0cm 0cm 0.1cm 0.1cm;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;">&nbsp;</p>
+            <span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;">0</span></span></p>
+            </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">                          </span></span><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-family: Arial;"><br />
+            </span></span></span></td>
+            <td width="133" style="border-top: none; border-bottom: 1pt inset rgb(0, 0, 0); border-left: 1pt inset rgb(0, 0, 0); border-right: none; padding: 0cm 0cm 0.1cm 0.1cm;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-size: 15px;">             </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;">21/jan</span></span></p>
+            </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">                          </span></span><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-family: Arial;"><br />
+            </span></span></span></td>
+            <td width="95" style="border-top: none; border-bottom: 1pt inset rgb(0, 0, 0); border-left: 1pt inset rgb(0, 0, 0); border-right: none; padding: 0cm 0cm 0.1cm 0.1cm;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-size: 15px;">             </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;">20/fev</span></span></p>
+            </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">                          </span></span><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-family: Arial;"><br />
+            </span></span></span></td>
+            <td width="97" style="border-top: none; border-bottom: 1pt inset rgb(0, 0, 0); border-left: 1pt inset rgb(0, 0, 0); border-right: 1pt inset rgb(0, 0, 0); padding: 0cm 0.1cm 0.1cm;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-size: 15px;">             </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;">22/mar</span></span></p>
+            </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">                          </span></span><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-family: Arial;"><br />
+            </span></span></span></td>
+        </tr>
+        <tr>
+            <td width="90" style="border-top: none; border-bottom: 1pt inset rgb(0, 0, 0); border-left: 1pt inset rgb(0, 0, 0); border-right: none; padding: 0cm 0cm 0.1cm 0.1cm;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-size: 15px;">             </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;">1</span></span></p>
+            </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">                          </span></span><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-family: Arial;"><br />
+            </span></span></span></td>
+            <td width="133" style="border-top: none; border-bottom: 1pt inset rgb(0, 0, 0); border-left: 1pt inset rgb(0, 0, 0); border-right: none; padding: 0cm 0cm 0.1cm 0.1cm;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-size: 15px;">             </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;">22/jan</span></span></p>
+            </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">                          </span></span><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-family: Arial;"><br />
+            </span></span></span></td>
+            <td width="95" style="border-top: none; border-bottom: 1pt inset rgb(0, 0, 0); border-left: 1pt inset rgb(0, 0, 0); border-right: none; padding: 0cm 0cm 0.1cm 0.1cm;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-size: 15px;">             </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;">21/fev</span></span></p>
+            </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">                          </span></span><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-family: Arial;"><br />
+            </span></span></span></td>
+            <td width="97" style="border-top: none; border-bottom: 1pt inset rgb(0, 0, 0); border-left: 1pt inset rgb(0, 0, 0); border-right: 1pt inset rgb(0, 0, 0); padding: 0cm 0.1cm 0.1cm;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-size: 15px;">             </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;">25/mar</span></span></p>
+            </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">                          </span></span><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-family: Arial;"><br />
+            </span></span></span></td>
+        </tr>
+        <tr>
+            <td width="90" style="border-top: none; border-bottom: 1pt inset rgb(0, 0, 0); border-left: 1pt inset rgb(0, 0, 0); border-right: none; padding: 0cm 0cm 0.1cm 0.1cm;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-size: 15px;">             </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;">2</span></span></p>
+            </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">                          </span></span><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-family: Arial;"><br />
+            </span></span></span></td>
+            <td width="133" style="border-top: none; border-bottom: 1pt inset rgb(0, 0, 0); border-left: 1pt inset rgb(0, 0, 0); border-right: none; padding: 0cm 0cm 0.1cm 0.1cm;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-size: 15px;">             </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;">23/jan</span></span></p>
+            </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">                          </span></span><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-family: Arial;"><br />
+            </span></span></span></td>
+            <td width="95" style="border-top: none; border-bottom: 1pt inset rgb(0, 0, 0); border-left: 1pt inset rgb(0, 0, 0); border-right: none; padding: 0cm 0cm 0.1cm 0.1cm;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-size: 15px;">             </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;">22/fev</span></span></p>
+            </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">                          </span></span><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-family: Arial;"><br />
+            </span></span></span></td>
+            <td width="97" style="border-top: none; border-bottom: 1pt inset rgb(0, 0, 0); border-left: 1pt inset rgb(0, 0, 0); border-right: 1pt inset rgb(0, 0, 0); padding: 0cm 0.1cm 0.1cm;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-size: 15px;">             </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;">26/mar</span></span></p>
+            </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">                          </span></span><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-family: Arial;"><br />
+            </span></span></span></td>
+        </tr>
+        <tr>
+            <td width="90" style="border-top: none; border-bottom: 1pt inset rgb(0, 0, 0); border-left: 1pt inset rgb(0, 0, 0); border-right: none; padding: 0cm 0cm 0.1cm 0.1cm;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-size: 15px;">             </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;">3</span></span></p>
+            </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">                          </span></span><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-family: Arial;"><br />
+            </span></span></span></td>
+            <td width="133" style="border-top: none; border-bottom: 1pt inset rgb(0, 0, 0); border-left: 1pt inset rgb(0, 0, 0); border-right: none; padding: 0cm 0cm 0.1cm 0.1cm;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-size: 15px;">             </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;">24/jan</span></span></p>
+            </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">                          </span></span><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-family: Arial;"><br />
+            </span></span></span></td>
+            <td width="95" style="border-top: none; border-bottom: 1pt inset rgb(0, 0, 0); border-left: 1pt inset rgb(0, 0, 0); border-right: none; padding: 0cm 0cm 0.1cm 0.1cm;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-size: 15px;">             </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;">25/fev</span></span></p>
+            </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">                          </span></span><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-family: Arial;"><br />
+            </span></span></span></td>
+            <td width="97" style="border-top: none; border-bottom: 1pt inset rgb(0, 0, 0); border-left: 1pt inset rgb(0, 0, 0); border-right: 1pt inset rgb(0, 0, 0); padding: 0cm 0.1cm 0.1cm;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-size: 15px;">             </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;">27/mar</span></span></p>
+            </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">                          </span></span><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-family: Arial;"><br />
+            </span></span></span></td>
+        </tr>
+        <tr>
+            <td width="90" style="border-top: none; border-bottom: 1pt inset rgb(0, 0, 0); border-left: 1pt inset rgb(0, 0, 0); border-right: none; padding: 0cm 0cm 0.1cm 0.1cm;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-size: 15px;">             </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;">4</span></span></p>
+            </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">                          </span></span><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-family: Arial;"><br />
+            </span></span></span></td>
+            <td width="133" style="border-top: none; border-bottom: 1pt inset rgb(0, 0, 0); border-left: 1pt inset rgb(0, 0, 0); border-right: none; padding: 0cm 0cm 0.1cm 0.1cm;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-size: 15px;">             </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;">25/jan</span></span></p>
+            </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">                          </span></span><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-family: Arial;"><br />
+            </span></span></span></td>
+            <td width="95" style="border-top: none; border-bottom: 1pt inset rgb(0, 0, 0); border-left: 1pt inset rgb(0, 0, 0); border-right: none; padding: 0cm 0cm 0.1cm 0.1cm;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-size: 15px;">             </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;">26/fev</span></span></p>
+            </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">                          </span></span><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-family: Arial;"><br />
+            </span></span></span></td>
+            <td width="97" style="border-top: none; border-bottom: 1pt inset rgb(0, 0, 0); border-left: 1pt inset rgb(0, 0, 0); border-right: 1pt inset rgb(0, 0, 0); padding: 0cm 0.1cm 0.1cm;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-size: 15px;">             </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;">28/mar</span></span></p>
+            </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">                          </span></span><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-family: Arial;"><br />
+            </span></span></span></td>
+        </tr>
+        <tr>
+            <td width="90" style="border-top: none; border-bottom: 1pt inset rgb(0, 0, 0); border-left: 1pt inset rgb(0, 0, 0); border-right: none; padding: 0cm 0cm 0.1cm 0.1cm;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-size: 15px;">             </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;">5</span></span></p>
+            </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">                          </span></span><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-family: Arial;"><br />
+            </span></span></span></td>
+            <td width="133" style="border-top: none; border-bottom: 1pt inset rgb(0, 0, 0); border-left: 1pt inset rgb(0, 0, 0); border-right: none; padding: 0cm 0cm 0.1cm 0.1cm;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-size: 15px;">             </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;">28/jan</span></span></p>
+            </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">                          </span></span><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-family: Arial;"><br />
+            </span></span></span></td>
+            <td width="95" style="border-top: none; border-bottom: 1pt inset rgb(0, 0, 0); border-left: 1pt inset rgb(0, 0, 0); border-right: none; padding: 0cm 0cm 0.1cm 0.1cm;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-size: 15px;">             </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;">27/fev</span></span></p>
+            </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">                          </span></span><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-family: Arial;"><br />
+            </span></span></span></td>
+            <td width="97" style="border-top: none; border-bottom: 1pt inset rgb(0, 0, 0); border-left: 1pt inset rgb(0, 0, 0); border-right: 1pt inset rgb(0, 0, 0); padding: 0cm 0.1cm 0.1cm;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-size: 15px;">             </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;">29/mar</span></span></p>
+            </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">                          </span></span><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-family: Arial;"><br />
+            </span></span></span></td>
+        </tr>
+        <tr>
+            <td width="90" style="border-top: none; border-bottom: 1pt inset rgb(0, 0, 0); border-left: 1pt inset rgb(0, 0, 0); border-right: none; padding: 0cm 0cm 0.1cm 0.1cm;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-size: 15px;">             </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;">6</span></span></p>
+            </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">                          </span></span><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-family: Arial;"><br />
+            </span></span></span></td>
+            <td width="133" style="border-top: none; border-bottom: 1pt inset rgb(0, 0, 0); border-left: 1pt inset rgb(0, 0, 0); border-right: none; padding: 0cm 0cm 0.1cm 0.1cm;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-size: 15px;">             </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;">29/jan</span></span></p>
+            </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">                          </span></span><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-family: Arial;"><br />
+            </span></span></span></td>
+            <td width="95" style="border-top: none; border-bottom: 1pt inset rgb(0, 0, 0); border-left: 1pt inset rgb(0, 0, 0); border-right: none; padding: 0cm 0cm 0.1cm 0.1cm;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-size: 15px;">             </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;">28/fev</span></span></p>
+            </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">                          </span></span><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-family: Arial;"><br />
+            </span></span></span></td>
+            <td width="97" style="border-top: none; border-bottom: 1pt inset rgb(0, 0, 0); border-left: 1pt inset rgb(0, 0, 0); border-right: 1pt inset rgb(0, 0, 0); padding: 0cm 0.1cm 0.1cm;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-size: 15px;">             </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;">01/abr</span></span></p>
+            </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">                          </span></span><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-family: Arial;"><br />
+            </span></span></span></td>
+        </tr>
+        <tr>
+            <td width="90" style="border-top: none; border-bottom: 1pt inset rgb(0, 0, 0); border-left: 1pt inset rgb(0, 0, 0); border-right: none; padding: 0cm 0cm 0.1cm 0.1cm;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-size: 15px;">             </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;">7</span></span></p>
+            </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">                          </span></span><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-family: Arial;"><br />
+            </span></span></span></td>
+            <td width="133" style="border-top: none; border-bottom: 1pt inset rgb(0, 0, 0); border-left: 1pt inset rgb(0, 0, 0); border-right: none; padding: 0cm 0cm 0.1cm 0.1cm;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-size: 15px;">             </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;">30/jan</span></span></p>
+            </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">                          </span></span><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-family: Arial;"><br />
+            </span></span></span></td>
+            <td width="95" style="border-top: none; border-bottom: 1pt inset rgb(0, 0, 0); border-left: 1pt inset rgb(0, 0, 0); border-right: none; padding: 0cm 0cm 0.1cm 0.1cm;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-size: 15px;">             </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;">01/mar</span></span></p>
+            </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">                          </span></span><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-family: Arial;"><br />
+            </span></span></span></td>
+            <td width="97" style="border-top: none; border-bottom: 1pt inset rgb(0, 0, 0); border-left: 1pt inset rgb(0, 0, 0); border-right: 1pt inset rgb(0, 0, 0); padding: 0cm 0.1cm 0.1cm;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-size: 15px;">             </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;">02/abr</span></span></p>
+            </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">                          </span></span><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-family: Arial;"><br />
+            </span></span></span></td>
+        </tr>
+        <tr>
+            <td width="90" style="border-top: none; border-bottom: 1pt inset rgb(0, 0, 0); border-left: 1pt inset rgb(0, 0, 0); border-right: none; padding: 0cm 0cm 0.1cm 0.1cm;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-size: 15px;">             </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;">8</span></span></p>
+            </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">                          </span></span><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-family: Arial;"><br />
+            </span></span></span></td>
+            <td width="133" style="border-top: none; border-bottom: 1pt inset rgb(0, 0, 0); border-left: 1pt inset rgb(0, 0, 0); border-right: none; padding: 0cm 0cm 0.1cm 0.1cm;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-size: 15px;">             </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;">31/jan</span></span></p>
+            </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">                          </span></span><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-family: Arial;"><br />
+            </span></span></span></td>
+            <td width="95" style="border-top: none; border-bottom: 1pt inset rgb(0, 0, 0); border-left: 1pt inset rgb(0, 0, 0); border-right: none; padding: 0cm 0cm 0.1cm 0.1cm;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-size: 15px;">             </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;">07/mar</span></span></p>
+            </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">                          </span></span><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-family: Arial;"><br />
+            </span></span></span></td>
+            <td width="97" style="border-top: none; border-bottom: 1pt inset rgb(0, 0, 0); border-left: 1pt inset rgb(0, 0, 0); border-right: 1pt inset rgb(0, 0, 0); padding: 0cm 0.1cm 0.1cm;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-size: 15px;">             </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;">08/abr</span></span></p>
+            </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">                          </span></span><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-family: Arial;"><br />
+            </span></span></span></td>
+        </tr>
+        <tr>
+            <td width="90" style="border-top: none; border-bottom: 1pt inset rgb(0, 0, 0); border-left: 1pt inset rgb(0, 0, 0); border-right: none; padding: 0cm 0cm 0.1cm 0.1cm;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-size: 15px;">             </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;">9</span></span></p>
+            </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">                          </span></span><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-family: Arial;"><br />
+            </span></span></span></td>
+            <td width="133" style="border-top: none; border-bottom: 1pt inset rgb(0, 0, 0); border-left: 1pt inset rgb(0, 0, 0); border-right: none; padding: 0cm 0cm 0.1cm 0.1cm;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-size: 15px;">             </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;">01/fev</span></span></p>
+            </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">                          </span></span><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-family: Arial;"><br />
+            </span></span></span></td>
+            <td width="95" style="border-top: none; border-bottom: 1pt inset rgb(0, 0, 0); border-left: 1pt inset rgb(0, 0, 0); border-right: none; padding: 0cm 0cm 0.1cm 0.1cm;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-size: 15px;">             </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;">08/mar</span></span></p>
+            </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">                          </span></span><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-family: Arial;"><br />
+            </span></span></span></td>
+            <td width="97" style="border-top: none; border-bottom: 1pt inset rgb(0, 0, 0); border-left: 1pt inset rgb(0, 0, 0); border-right: 1pt inset rgb(0, 0, 0); padding: 0cm 0.1cm 0.1cm;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);">&nbsp;</span></p>
+            <span style="color: rgb(0, 0, 0);">             <span style="font-size: 15px;">             </span></span><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;"><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;">09/abr</span></span></p>
+            </span></span><span style="font-size: 15px;">
+            <p align="CENTER" style="font-family: &quot;Trebuchet MS&quot;, Arial, Helvetica, sans-serif; font-size: 15px; color: rgb(102, 102, 102); padding: 0px 0px 20px; margin: 0px;">&nbsp;</p>
+            <span style="color: rgb(0, 0, 0);"><span style="font-family: Arial;"><br />
+            </span></span></span></td>
+        </tr>
+    </tbody>
+</table>
+<p>&nbsp;</p>
+<p><span style="color: rgb(0, 0, 0);"><span style="font-family: Arial; font-size: 15px; text-align: justify;">Fonte: COAD</span></span></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+                            </div>
+                            
+                        </article>
+                        
+                        
+                    </div>
+                    <div class="col-md-1 hidden-sm"></div>
+                    <div class="col-md-2 col-sm-3">
+                        <aside class="widgets">
+                    <div class="widget list">
+                        <h3>Categorias</h3>
+                        <ul>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Calend%E1rio+de+Obriga%E7%F5es">Calendário de Obrigações</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Direitos+do+Consumidor">Direitos do Consumidor</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Empresarial">Empresarial</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=IRPF">IRPF</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Legisla%E7%E3o">Legislação</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Legisla%E7%E3o+Trabalhista">Legislação Trabalhista</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Previd%EAncia">Previdência</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Receita+Federal">Receita Federal</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Recursos+Humanos">Recursos Humanos</a>
+                            </li>
+ 
+                        </ul>
+                    </div>
+                    <div class="widget list">
+                        <h3>Por mês</h3>
+                        <ul>
+                        
+                            <li>
+                                <a href="/noticias/?mes=8&ano=2021">Agosto&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2021">Maio&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2021">Abril&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2021">Março&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=7&ano=2020">Julho&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2020">Maio&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2020">Abril&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2020">Março&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=10&ano=2019">Outubro&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2019">Setembro&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2019">Março&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2019">Janeiro&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=12&ano=2018">Dezembro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2018">Setembro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=6&ano=2018">Junho&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2018">Abril&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2018">Março&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=2&ano=2018">Fevereiro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2018">Janeiro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=12&ano=2017">Dezembro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=11&ano=2017">Novembro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=10&ano=2017">Outubro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2017">Setembro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=7&ano=2017">Julho&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=6&ano=2017">Junho&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2017">Maio&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2017">Abril&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2017">Março&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=2&ano=2017">Fevereiro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2017">Janeiro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=12&ano=2016">Dezembro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=11&ano=2016">Novembro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=10&ano=2016">Outubro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2016">Setembro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=8&ano=2016">Agosto&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=7&ano=2016">Julho&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=6&ano=2016">Junho&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2016">Maio&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2016">Abril&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2016">Março&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=2&ano=2016">Fevereiro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2016">Janeiro&nbsp;2016</a>
+                            </li>
+ 
+                        </ul>
+                    </div>
+
+                </aside>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+<footer class="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="footer-widget">
+                    <h2>Últimas Notícias</h2>
+                    <div class="widget-content latest-post">
+                        <ul>
+                        
+                            <li>
+                                <h3><a href="?a=noticia&id=295">BEM</a></h3>
+                                <p></p>
+                                <span class="date">26/08/2021</span>
+                            </li>
+                        
+                            <li>
+                                <h3><a href="?a=noticia&id=294">HOME OFFICE PARA GESTANTES</a></h3>
+                                <p></p>
+                                <span class="date">13/05/2021</span>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="footer-widget">
+                    <h2>Contato</h2>
+                    <div class="widget-content">
+                        <address>
+                            Rua Rep&uacute;blica do L&iacute;bano, 61 gr. 1102 <br/>
+                            Centro &ndash; Rio de Janeiro RJ
+                        </address>
+                        <address>
+                            <strong>Telefone: +55 (21) 3203-4348</strong> <br/>
+                            <strong>E-mail: condux@condux.com.br</strong>
+                        </address>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="footer-widget">
+                    <h2>Links</h2>
+                    <ul>    
+                        <li><a href="/home/">Home Page</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/empresa/">A Empresa</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="http://www.condux.com.br/ler.asp?id=1" target="_blank">Tabelas Pr&aacute;ticas</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="http://www.condux.com.br/ler.asp?id=2" target="_blank">Agenda de Obriga&ccedil;&otilde;es</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/noticias/">Not&iacute;cias</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/downloads/">Downloads</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/contato/">Contato</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="footer-info text-right">
+                    <ul class="footer-social">
+                        <li><a href="https://twitter.com/conduxBRA" target="_blank"><i class="entyp-twitter-1"></i></a></li>
+                        <li><a href="https://www.facebook.com/ConduxConsultoria" target="_blank"><i class="entyp-facebook-1"></i></a></li>
+                    </ul>
+                    <p>Copyright &copy; 2016</p>
+                    <p>CONDUX - Todos os Direitos Reservados</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="https://condux.com.br/site/js/vendor/jquery-1.11.0.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery-ui-1.10.3.custom.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.mousewheel.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.mCustomScrollbar.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.selectBoxIt.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.raty.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.flexslider.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.isotope.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.fancybox.pack.js"></script>
+<script src="https://condux.com.br/site/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
+<script src="https://condux.com.br/site/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/bootstrap.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/simpleInstagramFancybox.js"></script>
+<script src="https://condux.com.br/site/js/vendor/fitvids.js"></script>
+<script src="https://condux.com.br/site/js/main.js"></script>
+<script>
+    $('#revolution-shortcode').revolution({
+        delay : 90000,
+        hideThumbs:10,
+        navigationVOffset : -30,
+        navigationType : "none",
+        navigationStyle : "round-old",
+		startheight:700
+    });
+</script>
+<style>
+/*#revolution-shortcode { height: 700px !important }
+#revolution-shortcode > ul > li:nth-child(1) > div.slotholder { height: 700px !important }*/
+</style>
+</body>
+</html>

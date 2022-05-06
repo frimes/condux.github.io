@@ -1,0 +1,566 @@
+<!--
+ * FCKeditor - The text editor for Internet - http://www.fckeditor.net
+ * Copyright (C) 2003-2009 Frederico Caldeira Knabben
+ *
+ * == BEGIN LICENSE ==
+ *
+ * Licensed under the terms of any of the following licenses at your
+ * choice:
+ *
+ *  - GNU General Public License Version 2 or later (the "GPL")
+ *    http://www.gnu.org/licenses/gpl.html
+ *
+ *  - GNU Lesser General Public License Version 2.1 or later (the "LGPL")
+ *    http://www.gnu.org/licenses/lgpl.html
+ *
+ *  - Mozilla Public License Version 1.1 or later (the "MPL")
+ *    http://www.mozilla.org/MPL/MPL-1.1.html
+ *
+ * == END LICENSE ==
+ *
+ * This is the integration file for ASP.
+ *
+ * It defines the FCKeditor class that can be used to create editor
+ * instances in ASP pages on server side.
+-->
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Condux</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, maximum-scale=1, minimum-scale=1">
+    <link rel="icon" type="image/png" href="https://condux.com.br/site/img/favicon.png">
+
+    <link rel="stylesheet" href="https://condux.com.br/site/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/flexslider.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/jquery.selectBoxIt.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/entypo.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/rs-plugin/css/settings.css">
+    <link rel="stylesheet" href="https://condux.com.br/site/css/jquery.fancybox.css">
+        <link rel="stylesheet" href="https://condux.com.br/site/css/style.css">
+
+    <script src="https://condux.com.br/site/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+	
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-208708250-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-208708250-1');
+</script>
+
+</head>
+<body>
+<div class="main-wrap">
+<header class="navbar navbar-inverse">
+    <div class="normal-color with-slider">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <div id="control-logo-header">
+                                <a class="navbar-brand" href="/home/"><img src="https://condux.com.br/site/content/logo.png" alt="img"/></a>
+                            </div>
+                    </div>
+                </div>
+                <div class="col-sm-9">
+                    <div class="navbar-collapse collapse navbar-right">
+                        <ul class="nav navbar-nav social-nav">
+                            <li><a href="https://twitter.com/conduxBRA" target="_blank"><i class="entyp-twitter-1"></i></a></li>
+                            <li><a href="https://www.facebook.com/ConduxConsultoria" target="_blank"><i class="entyp-facebook-1"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="inverse-color">
+        <div class="container">
+            <div class="row">
+                <div class="navbar-collapse collapse">
+                    <div class="col-sm-12">
+                        <ul class="nav navbar-nav main-nav">
+                            <li id="control-logo-menu">
+                                <a class="navbar-brand" href="/home/"><img src="https://condux.com.br/site/content/logo.png" alt="img"/></a>
+                            </li>
+                            <li>
+                                <a href="/home/">Início</a>
+                            </li>
+                            <li>
+                                <a href="/empresa/">A empresa</a>
+                            </li>
+                            <li>
+                                <a href="/servicos/">Serviços</a>
+                            </li>
+                            <li>
+                                <a href="#">Utilitários</a>
+                                <ul>	
+                                	<li><a href="http://www.condux.com.br/ler.asp?id=1" target="_blank">Tabelas Práticas</a></li>
+                                    <li><a href="http://www.condux.com.br/ler.asp?id=2" target="_blank">Agenda de Obrigações</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="/noticias/">Notícias</a>
+                            </li>
+                            <li>
+                                <a href="/login/">Área do Cliente</a>
+                            </li>
+                            <li>
+                                <a href="/downloads/">Downloads</a>
+                            </li>
+                            <li>
+                                <a href="/contato/">Contato</a>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</header>
+
+
+<section class="line top">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="col-md-4 col-sm-5 col-xs-12">
+                    <div class="title">
+                        Notícias
+                        <ul class="current-page">
+                            <li><a href="/home/">Página principal</a></li>
+                            <li>></li>
+                            <li><a href="/noticias/">Noticias</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="posts">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <article class="post ">
+                            <h3 class="uppercase">GOVERNO DO RIO DE JANEIRO FIXA OS PISOS SALARIAIS DO ESTADO PARA 2017</h3><h4>Saiba mais!</h4>
+                            <ul class="info">
+                                <li>
+                                    <div class="text date">terça-feira, 14 de março de 2017</div>
+                                </li>
+                                <li>
+                                    <i class="entyp-pencil-1"></i>
+                                    <div class="text">Publicado por CONDUX</div>
+                                </li>
+                                
+                                <li>
+                                    <a href="/noticias/?cat=Legisla%E7%E3o+Trabalhista">
+                                        <i class="entyp-list-1"></i>
+                                        <div class="text">Legislação Trabalhista</div>
+                                    </a>
+                                </li>
+                                
+                            </ul>
+                            
+                            <figure>
+                                <img src="https://condux.com.br/site/imgnews/209c.jpg" alt="GOVERNO DO RIO DE JANEIRO FIXA OS PISOS SALARIAIS DO ESTADO PARA 2017"/>
+                                
+                            </figure>
+                            
+                            <div class="content">
+                            
+                                <p>
+                                    <strong>
+                                       Saiba mais!
+                                    </strong>
+                                </p>
+                            <p style="color: rgb(34, 34, 34); font-family: &quot;Trebuchet MS&quot;; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;">O Governo do Estado do Rio de Janeiro, por meio da Lei 7.530-RJ, de 09/03/2017, publicada no Di&aacute;rio Oficial do Estado de 10/03/2017, reajustou, com efeitos retroativos a partir de 01/01/2017, os pisos salariais dos trabalhadores do Estado, que passam a vigorar com seguintes valores:<br />
+a) 1&ordf; faixa R$ 1.136,53;<br />
+b) 2&ordf; faixa R$ 1.178,41;<br />
+c) 3&ordf; faixa R$ 1.262,20;<br />
+d) 4&ordf; faixa R$ 1.529,26;<br />
+e) 5&ordf; faixa R$ 2.306,45; e<br />
+f) 6&ordf; faixa R$ 2.899,79.</span></span></span></p>
+<p style="color: rgb(34, 34, 34); font-family: &quot;Trebuchet MS&quot;; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;">A Lei 7.530-RJ/2017, que revoga a Lei 7.267-RJ, de 26/04/2016, determinou que:<br />
+- o Piso Salarial para a categoria dos empregados dom&eacute;sticos passa a ser de R$ 1.136,53;<br />
+- toda inclus&atilde;o de novas ocupa&ccedil;&otilde;es dever&aacute; possuir CBO - Classifica&ccedil;&atilde;o Brasileira de Ocupa&ccedil;&atilde;o, quando existente, e ser submetida &agrave; an&aacute;lise t&eacute;cnica do Ceterj - Conselho Estadual de Trabalho, Emprego e Gera&ccedil;&atilde;o de Renda.</span></span></span></p>
+<p style="color: rgb(34, 34, 34); font-family: &quot;Trebuchet MS&quot;; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;">Veja a &iacute;ntegra da Lei 7.530-RJ/2017:</span></span></span></p>
+<p align="center" style="color: rgb(34, 34, 34); font-family: &quot;Trebuchet MS&quot;;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;">&quot;LEI N&ordm; 7.530 DE 09 DE MAR&Ccedil;O DE 2017</span></span></span></p>
+<p style="color: rgb(34, 34, 34); font-family: &quot;Trebuchet MS&quot;; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;">INSTITUI PISOS SALARIAIS NO &Acirc;MBITO DO ESTADO DO RIO DE JANEIRO PARA AS CATEGORIAS PROFISSIONAIS, QUE MENCIONA E ESTABELECE OUTRAS PROVID&Ecirc;NCIAS.</span></span></span></p>
+<p style="color: rgb(34, 34, 34); font-family: &quot;Trebuchet MS&quot;; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;">O GOVERNADOR DO ESTADO DO RIO DE JANEIRO,</span></span></span></p>
+<p style="color: rgb(34, 34, 34); font-family: &quot;Trebuchet MS&quot;; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;">Fa&ccedil;o saber que a Assembl&eacute;ia Legislativa do Estado do Rio de Janeiro decreta e eu sanciono a seguinte Lei:</span></span></span></p>
+<p style="color: rgb(34, 34, 34); font-family: &quot;Trebuchet MS&quot;; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;">Art. 1&ordm; - No Estado do Rio de Janeiro, o piso salarial dos empregados, integrantes das categorias profissionais, abaixo enunciadas, que n&atilde;o o tenham definido em Lei Federal, conven&ccedil;&atilde;o ou acordo coletivo de trabalho que o fixe a maior, ser&aacute; de:</span></span></span></p>
+<p style="color: rgb(34, 34, 34); font-family: &quot;Trebuchet MS&quot;; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;">I - R$ 1.136, 53 (Um mil cento e trinta e seis reais e cinquenta e tr&ecirc;s centavos) - para os trabalhadores agropecu&aacute;rios (CBO 6210-05); trabalhadores florestais (CBO 6320-15); empregados dom&eacute;sticos (CBO 5121-05); faxineiro (CBO 5143-20); cont&iacute;nuo (CBO 4122-05); auxiliar de escrit&oacute;rio (CBO 4110-05); cumim (CBO 5134-15); lavadores de ve&iacute;culos (CBO 5199-35); guardadores de ve&iacute;culos (CBO 5199-25) e trabalhadores de servi&ccedil;os veterin&aacute;rios (CBO 5193); trabalhadores de servi&ccedil;os de conserva&ccedil;&atilde;o, manuten&ccedil;&atilde;o, empresas comerciais, industriais, &aacute;reas verdes e logradouros p&uacute;blicos, n&atilde;o especializados; catadores de material recicl&aacute;vel.</span></span></span></p>
+<p style="color: rgb(34, 34, 34); font-family: &quot;Trebuchet MS&quot;; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;">II - R$ 1.178,41 (Um mil cento e setenta e oito reais e quarenta e um centavos) - para classificadores de correspond&ecirc;ncias (CBO 4152-10); carteiros (CBO 4152-05); cozinheiros (CBO 5132); lavadeiras e tintureiros (CBO 5163); barbeiros (CBO 5161-05); cabeleireiros (CBO 5161-10); manicures (CBO 5161-20) e pedicures (CBO 5161-40); trabalhadores de tratamento e prepara&ccedil;&atilde;o de madeira (CBO 7721); trabalhadores de fabrica&ccedil;&atilde;o de papel e papel&atilde;o (CBO 8331); fiandeiros (CBO 7612); trabalhadores do curtimento de couro e peles (CBO 7622); trabalhadores de fabrica&ccedil;&atilde;o de cal&ccedil;ados (CBO 7641); controladores de pragas (CBO 5199); cuidadores de idosos (CBO 5162-10); esteticistas (CBO 3221-30); trabalhadores de servi&ccedil;os de embelezamento e higiene (CBO 5161); trabalhadores de apostas e jogos (CBO 4212); trabalhadores em beneficiamento de pedras (CBO 7122); pedreiros (CBO 7152); ascensorista (CBO 5141-05); gar&ccedil;ons (CBO 5134-05); maqueiros; auxiliar de massagista; trabalhadores em servi&ccedil;os administrativos; operadores de caixa, inclusive de supermercados; operadores de m&aacute;quinas e implementos de agricultura, pecu&aacute;ria e explora&ccedil;&atilde;o florestal; tecel&otilde;es e tingidores; trabalhadores de prepara&ccedil;&atilde;o de alimentos e bebidas; trabalhadores de costura e estofadores; trabalhadores de artefatos de couro; vidreiros e ceramistas; pescadores; criadores de r&atilde;s; trabalhadores dos servi&ccedil;os de higiene e sa&uacute;de; trabalhadores de servi&ccedil;os de prote&ccedil;&atilde;o e seguran&ccedil;a; trabalhadores de servi&ccedil;os de turismo e hospedagem; motoboys; depiladores; vendedores e comerci&aacute;rios; trabalhadores da constru&ccedil;&atilde;o civil; trabalhadores de transportes coletivos - cobradores, despachantes e fiscais, exceto cobradores de transporte ferrovi&aacute;rio; trabalhadores de minas e pedreiras; sondadores; pintores; cortadores; trabalhadores de fabrica&ccedil;&atilde;o de produtos de borracha e pl&aacute;stico; mototaxistas, merendeiras, artes&atilde;os; auxiliares de creche.</span></span></span></p>
+<p style="color: rgb(34, 34, 34); font-family: &quot;Trebuchet MS&quot;; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;">III - R$ 1.262,20 (Um mil duzentos e sessenta e dois reais e vinte centavos) - para trabalhadores de soldagem e ligas met&aacute;licas (CBO 7243); trabalhadores de confec&ccedil;&atilde;o de instrumentos musicais (CBO 7421); radiotelegrafista (CBO 3722-10); barman (CBO 5134-20); porteiros de edif&iacute;cios e condom&iacute;nios (CBO 5174-10); zeladores de edif&iacute;cios e condom&iacute;nios (CBO 5141-20); datil&oacute;grafos (CBO 4121-05); esten&oacute;grafos (CBO 3515-10); supervisores de compras (CBO 3542-10); supervisor de vendas (CBO 5201); compradores (CBO 3542-05); t&eacute;cnicos de vendas (CBO 3541-35 e CBO 3541-40); representantes comerciais (CBO 3541-45); mordomos e governantas (CBO 5131); sommeliers (CBO 5134-10); maitres de hotel (CBO 5101-35); m&uacute;sicos (CBO 2626 e CBO 2627); joalheiros (CBO 7510); ourives (CBO 7511-25); marceneiros (CBO 7711); supervisores de manuten&ccedil;&atilde;o industrial (CBO 9503-05); frentistas (CBO 5211-35); lubrificadores de ve&iacute;culos (CBO 9191-10); bombeiros civis n&iacute;vel b&aacute;sico (CBO 5171-10); eletromec&acirc;nico de manuten&ccedil;&atilde;o de elevadores (CBO 9541-05); terapeutas hol&iacute;sticos (CBO 3132-25); doulas (CBO 3221-35); t&eacute;cnicos de imobiliza&ccedil;&atilde;o ortop&eacute;dica (CBO 3226-05); agentes de tr&acirc;nsito (CBO 5172-20); guias de turismo (CBO 5114); auxiliares de enfermagem (CBO 3222-30), auxiliares de biblioteca (CBO 3711-05); administradores e capatazes de explora&ccedil;&otilde;es agropecu&aacute;rias ou florestais; chapeadores; caldeireiros; montadores de estruturas met&aacute;licas; trabalhadores de artes gr&aacute;ficas; condutores de ve&iacute;culos de transportes; trabalhadores de confec&ccedil;&atilde;o de produtos de vime e similares; trabalhadores de derivados de minerais n&atilde;o met&aacute;licos; trabalhadores de movimenta&ccedil;&atilde;o e manipula&ccedil;&atilde;o de mercadorias e materiais; operadores de m&aacute;quinas da constru&ccedil;&atilde;o civil e minera&ccedil;&atilde;o; trabalhadores em podologia; atendentes de consult&oacute;rio, cl&iacute;nica m&eacute;dica e servi&ccedil;o hospitalar; t&eacute;cnicos em reabilita&ccedil;&atilde;o de dependentes qu&iacute;micos; trabalhadores de servi&ccedil;os de contabilidade; operadores de m&aacute;quinas de processamento autom&aacute;tico de dados; chefes de servi&ccedil;os de transportes e comunica&ccedil;&otilde;es; telefonistas e operadores de telefone e de telemarketing; teleatendentes; teleoperadores n&iacute;vel 1 a 10; operadores de call center; atendentes de cadastro; representantes de servi&ccedil;os empresariais; agentes de marketing; agentes de cobran&ccedil;a; agentes de venda; atendentes de call center; auxiliares t&eacute;cnicos de telecom n&iacute;vel 1 a 3; operadores de suporte CNS; representantes de servi&ccedil;os 103; atendentes de reten&ccedil;&atilde;o; operadores de atendimento n&iacute;vel 1 a 3; representantes de servi&ccedil;os; assistentes de servi&ccedil;os n&iacute;vel 1 a 3; telemarketing ativos e receptivos; trabalhadores da rede de energia e telecomunica&ccedil;&otilde;es; trabalhadores de serventia e comiss&aacute;rios (nos servi&ccedil;os de transporte de passageiros); agentes de mestria; mestre; contramestres; supervisor de produ&ccedil;&atilde;o e manuten&ccedil;&atilde;o industrial; trabalhadores metal&uacute;rgicos e sider&uacute;rgicos; operadores de instala&ccedil;&otilde;es de processamento qu&iacute;mico; trabalhadores de tratamentos de fumo e de fabrica&ccedil;&atilde;o de charutos e cigarros; operadores de esta&ccedil;&atilde;o de r&aacute;dio, televis&atilde;o, equipamentos de sonoriza&ccedil;&atilde;o e de proje&ccedil;&atilde;o cinematogr&aacute;fica; operadores de m&aacute;quinas fixas e de equipamentos similares; ajustadores mec&acirc;nicos; montadores e mec&acirc;nicos de m&aacute;quinas, ve&iacute;culos e instrumentos de precis&atilde;o; eletricistas; eletr&ocirc;nicos; operadores de m&aacute;quinas de lavrar madeira; supervisores de produ&ccedil;&atilde;o industrial; t&eacute;cnicos estat&iacute;sticos; t&eacute;cnicos de administra&ccedil;&atilde;o; guardi&otilde;es de piscina; pr&aacute;ticos de farm&aacute;cia e empregados em empresas prestadoras de servi&ccedil;os de brigada de inc&ecirc;ndio (n&iacute;vel b&aacute;sico); agentes de sa&uacute;de e endemias, monitores; Guarda-Parques, com curso de forma&ccedil;&atilde;o espec&iacute;fica, em n&iacute;vel de ensino m&eacute;dio.</span></span></span></p>
+<p style="color: rgb(34, 34, 34); font-family: &quot;Trebuchet MS&quot;; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;">IV - R$ 1.529,26 (Um mil quinhentos e vinte e nove reais e vinte e seis centavos) - para trabalhadores de n&iacute;vel t&eacute;cnico, devidamente registrados nos conselhos de suas &aacute;reas ou &oacute;rg&atilde;os competentes; t&eacute;cnicos de biblioteca (CBO 3711-10); t&eacute;cnicos em contabilidade (CBO 3511); t&eacute;cnicos em enfermagem (CBO 3222-05); t&eacute;cnicos em podologia (CBO 3221-10); t&eacute;cnicos em radiologia (CBO 3241-15); t&eacute;cnicos de transa&ccedil;&otilde;es imobili&aacute;rias (CBO 3546); t&eacute;cnicos em secretariado (CBO 3515-05); t&eacute;cnicos em farm&aacute;cia (CBO 3251-10 e CBO 3251-15); t&eacute;cnicos em laborat&oacute;rio (CBO 3242); educador social (CBO 5153-05); bombeiro civil l&iacute;der, formado como t&eacute;cnico em preven&ccedil;&atilde;o e combate a inc&ecirc;ndio, em n&iacute;vel de ensino m&eacute;dio; t&eacute;cnicos em higiene dental e empregados em empresas prestadoras de servi&ccedil;os de brigada de inc&ecirc;ndio (n&iacute;vel m&eacute;dio).</span></span></span></p>
+<p style="color: rgb(34, 34, 34); font-family: &quot;Trebuchet MS&quot;; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;">V - R$ 2.306,45 (Dois mil trezentos e seis reais e quarenta e cinco centavos) - para t&eacute;cnicos de eletr&ocirc;nica (CBO 3132); t&eacute;cnico de telecomunica&ccedil;&otilde;es (CBO 3133); t&eacute;cnicos em mecatr&ocirc;nica (CBO 3001); tradutor e int&eacute;rprete da L&iacute;ngua Brasileira de Sinais - LIBRAS (CBO 2614-25); t&eacute;cnicos de seguran&ccedil;a do trabalho (CBO 3516); motoristas de ambul&acirc;ncia (CBO 7823-20); t&eacute;cnico de instrumentaliza&ccedil;&atilde;o cir&uacute;rgica (CBO 3222-25); taxistas profissionais reconhecidos pela Lei Federal n&ordm; 12.468, de 26 de agosto de 2011 (CBO 7823-15), bem como aqueles que se encontrem em contrato celebrado com empresas de loca&ccedil;&atilde;o de ve&iacute;culos, excetuando-se os permission&aacute;rios aut&ocirc;nomos que possuem motorista auxiliar; professores de Educa&ccedil;&atilde;o Infantil e de Ensino Fundamental (1&deg; ao 5&deg; ano), com regime de 40 (quarenta) horas semanais; t&eacute;cnicos em eletrot&eacute;cnica.</span></span></span></p>
+<p style="color: rgb(34, 34, 34); font-family: &quot;Trebuchet MS&quot;; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;">VI - R$ 2.899,79 (Dois mil oitocentos e noventa e nove reais e setenta e nove centavos) - para administradores de empresas (CBO 2521-05); arquitetos (CBO 2141); arquivistas (CBO 2613-05); advogados (CBO 2410); psic&oacute;logos (CBO 2515) exceto psicanalistas (CBO 2515-50); soci&oacute;logos (CBO 2511-20); fonoaudi&oacute;logos (CBO 2238); fisioterapeutas (CBO 2236); terapeutas ocupacionais (CBO 2239-05); estat&iacute;sticos (CBO 2212); profissionais de educa&ccedil;&atilde;o f&iacute;sica (CBO 2241); assistentes sociais (CBO 2516-05); bi&oacute;logos (CBO 2211); nutricionistas (CBO 2237-10); biom&eacute;dicos (CBO 2212); bibliotec&aacute;rios (CBO 2612-05); farmac&ecirc;uticos (CBO 2234); enfermeiros (CBO 2235); turism&oacute;logos (CBO 1225-20); secret&aacute;rios executivos (CBO 2523) exceto tecn&oacute;logos em secretariado escolar (CBO 2523-20); bombeiro civil mestre, formado em engenharia com especializa&ccedil;&atilde;o em preven&ccedil;&atilde;o e combate a inc&ecirc;ndio e empregados em empresas prestadoras de servi&ccedil;os de brigada de inc&ecirc;ndio (n&iacute;vel superior); contadores.</span></span></span></p>
+<p style="color: rgb(34, 34, 34); font-family: &quot;Trebuchet MS&quot;; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;">Par&aacute;grafo &Uacute;nico - O disposto no inciso III deste artigo aplica-se a telefonistas e operadores de telefone e de telemarketing; teleoperadores n&iacute;vel 1 a 10; operadores de call center; atendentes de cadastro; representantes de servi&ccedil;os empresariais; agentes de marketing; agentes de cobran&ccedil;a; agentes de venda; atendentes de call center; auxiliares t&eacute;cnicos de telecom n&iacute;vel 1 a 3; operadores de suporte CNS; representantes de servi&ccedil;os 103; atendentes de reten&ccedil;&atilde;o; operadores de atendimento n&iacute;vel 1 a 3; representantes de servi&ccedil;os; assistentes de servi&ccedil;os n&iacute;vel 1 a 3; telemarketing ativos e receptivos, cuja jornada de trabalho seja de 06 (seis) horas di&aacute;rias ou 180 (cento e oitenta) horas mensais.</span></span></span></p>
+<p style="color: rgb(34, 34, 34); font-family: &quot;Trebuchet MS&quot;; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;">Art. 2&ordm; - Os Poderes Legislativos, Executivo e Judici&aacute;rio dever&atilde;o observar os valores do Piso Salarial Regional previsto em lei estadual em todos os editais de licita&ccedil;&atilde;o para a contrata&ccedil;&atilde;o de empresa prestadora de servi&ccedil;os e demais modalidades de terceiriza&ccedil;&atilde;o de m&atilde;o de obra.</span></span></span></p>
+<p style="color: rgb(34, 34, 34); font-family: &quot;Trebuchet MS&quot;; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;">Par&aacute;grafo &Uacute;nico - O disposto no caput deste artigo aplica-se tamb&eacute;m a toda a administra&ccedil;&atilde;o indireta, inclusive &agrave;s Organiza&ccedil;&otilde;es Sociais contratadas pelo Poder P&uacute;blico.</span></span></span></p>
+<p style="color: rgb(34, 34, 34); font-family: &quot;Trebuchet MS&quot;; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;">Art. 3&ordm; - O Estado enviar&aacute; projeto de lei definindo os pisos salariais regionais no &acirc;mbito do Estado do Rio de Janeiro at&eacute; o dia 30 de dezembro do ano anterior.</span></span></span></p>
+<p style="color: rgb(34, 34, 34); font-family: &quot;Trebuchet MS&quot;; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;">Art. 4&ordm; - Toda inclus&atilde;o de novas ocupa&ccedil;&otilde;es na Lei dever&aacute; possuir CBO (Classifica&ccedil;&atilde;o Brasileira de Ocupa&ccedil;&atilde;o), quando existente, e ser submetida &agrave; an&aacute;lise t&eacute;cnica do Conselho Estadual de Trabalho, Emprego e Gera&ccedil;&atilde;o de Renda - CETERJ.</span></span></span></p>
+<p style="color: rgb(34, 34, 34); font-family: &quot;Trebuchet MS&quot;; text-align: justify;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;"><span style="font-family: Arial;">Art. 5&ordm; - Esta Lei entrar&aacute; em vigor na data de sua publica&ccedil;&atilde;o, produzindo os seus efeitos a partir de 1&ordm; de janeiro de 2017, revogadas as disposi&ccedil;&otilde;es da Lei n&ordm; 7267, de 27 de abril de 2016.</span></span></span></p>
+<p align="center" style="color: rgb(34, 34, 34); font-family: &quot;Trebuchet MS&quot;;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Rio de Janeiro, 09 de mar&ccedil;o de 2017</span></span></p>
+<p align="center" style="color: rgb(34, 34, 34); font-family: &quot;Trebuchet MS&quot;;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">LUIZ FERNANDO DE SOUZA<br />
+Governador&quot;</span></span></p>
+<p align="center" style="color: rgb(34, 34, 34); font-family: &quot;Trebuchet MS&quot;;">&nbsp;</p>
+<p style="color: rgb(34, 34, 34); font-family: &quot;Trebuchet MS&quot;;"><span style="color: rgb(0, 0, 0);"><span style="font-size: 15px;">Fonte: COAD</span></span></p>
+<p>&nbsp;</p>
+                            </div>
+                            
+                        </article>
+                        
+                        
+                    </div>
+                    <div class="col-md-1 hidden-sm"></div>
+                    <div class="col-md-2 col-sm-3">
+                        <aside class="widgets">
+                    <div class="widget list">
+                        <h3>Categorias</h3>
+                        <ul>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Calend%E1rio+de+Obriga%E7%F5es">Calendário de Obrigações</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Direitos+do+Consumidor">Direitos do Consumidor</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Empresarial">Empresarial</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=IRPF">IRPF</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Legisla%E7%E3o">Legislação</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Legisla%E7%E3o+Trabalhista">Legislação Trabalhista</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Previd%EAncia">Previdência</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Receita+Federal">Receita Federal</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?cat=Recursos+Humanos">Recursos Humanos</a>
+                            </li>
+ 
+                        </ul>
+                    </div>
+                    <div class="widget list">
+                        <h3>Por mês</h3>
+                        <ul>
+                        
+                            <li>
+                                <a href="/noticias/?mes=8&ano=2021">Agosto&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2021">Maio&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2021">Abril&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2021">Março&nbsp;2021</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=7&ano=2020">Julho&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2020">Maio&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2020">Abril&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2020">Março&nbsp;2020</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=10&ano=2019">Outubro&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2019">Setembro&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2019">Março&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2019">Janeiro&nbsp;2019</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=12&ano=2018">Dezembro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2018">Setembro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=6&ano=2018">Junho&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2018">Abril&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2018">Março&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=2&ano=2018">Fevereiro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2018">Janeiro&nbsp;2018</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=12&ano=2017">Dezembro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=11&ano=2017">Novembro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=10&ano=2017">Outubro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2017">Setembro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=7&ano=2017">Julho&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=6&ano=2017">Junho&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2017">Maio&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2017">Abril&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2017">Março&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=2&ano=2017">Fevereiro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2017">Janeiro&nbsp;2017</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=12&ano=2016">Dezembro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=11&ano=2016">Novembro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=10&ano=2016">Outubro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=9&ano=2016">Setembro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=8&ano=2016">Agosto&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=7&ano=2016">Julho&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=6&ano=2016">Junho&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=5&ano=2016">Maio&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=4&ano=2016">Abril&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=3&ano=2016">Março&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=2&ano=2016">Fevereiro&nbsp;2016</a>
+                            </li>
+                        
+                            <li>
+                                <a href="/noticias/?mes=1&ano=2016">Janeiro&nbsp;2016</a>
+                            </li>
+ 
+                        </ul>
+                    </div>
+
+                </aside>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+<footer class="main-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="footer-widget">
+                    <h2>Últimas Notícias</h2>
+                    <div class="widget-content latest-post">
+                        <ul>
+                        
+                            <li>
+                                <h3><a href="?a=noticia&id=295">BEM</a></h3>
+                                <p></p>
+                                <span class="date">26/08/2021</span>
+                            </li>
+                        
+                            <li>
+                                <h3><a href="?a=noticia&id=294">HOME OFFICE PARA GESTANTES</a></h3>
+                                <p></p>
+                                <span class="date">13/05/2021</span>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="footer-widget">
+                    <h2>Contato</h2>
+                    <div class="widget-content">
+                        <address>
+                            Rua Rep&uacute;blica do L&iacute;bano, 61 gr. 1102 <br/>
+                            Centro &ndash; Rio de Janeiro RJ
+                        </address>
+                        <address>
+                            <strong>Telefone: +55 (21) 3203-4348</strong> <br/>
+                            <strong>E-mail: condux@condux.com.br</strong>
+                        </address>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="footer-widget">
+                    <h2>Links</h2>
+                    <ul>    
+                        <li><a href="/home/">Home Page</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/empresa/">A Empresa</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="http://www.condux.com.br/ler.asp?id=1" target="_blank">Tabelas Pr&aacute;ticas</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="http://www.condux.com.br/ler.asp?id=2" target="_blank">Agenda de Obriga&ccedil;&otilde;es</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/noticias/">Not&iacute;cias</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/downloads/">Downloads</a></li>
+                        <hr style="margin-top:5px; margin-bottom: 5px">
+                        <li><a href="/contato/">Contato</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="footer-info text-right">
+                    <ul class="footer-social">
+                        <li><a href="https://twitter.com/conduxBRA" target="_blank"><i class="entyp-twitter-1"></i></a></li>
+                        <li><a href="https://www.facebook.com/ConduxConsultoria" target="_blank"><i class="entyp-facebook-1"></i></a></li>
+                    </ul>
+                    <p>Copyright &copy; 2016</p>
+                    <p>CONDUX - Todos os Direitos Reservados</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="https://condux.com.br/site/js/vendor/jquery-1.11.0.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery-ui-1.10.3.custom.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.mousewheel.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.mCustomScrollbar.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.selectBoxIt.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.raty.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.flexslider.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.isotope.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/jquery.fancybox.pack.js"></script>
+<script src="https://condux.com.br/site/rs-plugin/js/jquery.themepunch.plugins.min.js"></script>
+<script src="https://condux.com.br/site/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/bootstrap.min.js"></script>
+<script src="https://condux.com.br/site/js/vendor/simpleInstagramFancybox.js"></script>
+<script src="https://condux.com.br/site/js/vendor/fitvids.js"></script>
+<script src="https://condux.com.br/site/js/main.js"></script>
+<script>
+    $('#revolution-shortcode').revolution({
+        delay : 90000,
+        hideThumbs:10,
+        navigationVOffset : -30,
+        navigationType : "none",
+        navigationStyle : "round-old",
+		startheight:700
+    });
+</script>
+<style>
+/*#revolution-shortcode { height: 700px !important }
+#revolution-shortcode > ul > li:nth-child(1) > div.slotholder { height: 700px !important }*/
+</style>
+</body>
+</html>
